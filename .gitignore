@@ -1,0 +1,6 @@
+# ignore 
+tmp/
+
+__pycache__/
+*.pyc
+

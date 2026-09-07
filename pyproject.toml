@@ -1,0 +1,19 @@
+[project]
+name = "tampu"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Tony Mason", email = "fsgeek@cs.ubc.ca" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "opentimestamps-client>=0.7.2",
+]
+
+[project.scripts]
+tampu = "tampu:main"
+
+[build-system]
+requires = ["uv_build>=0.12.6,<0.13.0"]
+build-backend = "uv_build"
