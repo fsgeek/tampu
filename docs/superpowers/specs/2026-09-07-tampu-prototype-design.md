@@ -4,6 +4,8 @@ Date: 2026-09-07
 
 Revised: 2026-09-08, following Claude's review and Astra's assessment.
 
+Follow-up: [two accepted dispositions](2026-09-08-disposition-of-claude-follow-up.md) move the first path experiment to llm-memory and add empirical scope to capability discovery.
+
 Status: proposed design for review; no prototype implementation or experimental result is claimed.
 
 ## Purpose and research questions
@@ -67,11 +69,13 @@ The first MVP provides:
 - Bounded counts, coverage, and consumer-declared findings, including machine-checked predicate negatives.
 - Structural operational measurements and an explicitly enabled research trace mode.
 
-The first path experiment adds only bounded history, parent-based branching, and recorded-result replay within one process. A parent-linked map of immutable records is sufficient. Measure its contribution before building set composition, recursive refresh, durable preservation, or saved-journey database collections. Their contracts below describe optional extensions; they are not MVP completion requirements. A finding of no useful same-session benefit should trigger simplification and a separately justified later-session/human-reader experiment, not automatic construction of the full graph machinery. Results or components that do not earn their cost in Tampu may still inform Yanantin.
+The first path experiment runs against llm-memory using a retrievable record of operations the consumer already observed; it requires no Tampu implementation. Follow the conditions and transfer limits in the linked disposition. If that result or a separately justified use case supports Tampu-specific path work, test bounded history, parent-based branching, and recorded-result replay within one process using a small PDF transfer check. A parent-linked map of immutable records is sufficient. Measure its contribution before building set composition, recursive refresh, durable preservation, or saved-journey database collections. Their contracts below describe optional extensions; they are not MVP completion requirements. A finding of no useful same-session benefit should trigger simplification and a separately justified later-session/human-reader experiment, not automatic construction of the full graph machinery. Results or components that do not earn their cost in Tampu may still inform Yanantin.
 
 General semantic embeddings follow the core interface diagnostics and early path experiment; composition and durable preservation are not prerequisites. Before a comparative vector experiment, freeze the embedding model/version, input projection and chunking, query transformation, corpus revision, index/search settings, filters, deduplication, and consumer settings. Verify the vector index works and expected candidates are retrievable. Give the baselines relevance thresholds and abstention behavior calibrated on separate development tasks. Compare one-shot and iterative retrieval with Tampu using the same semantic candidate provider; vary interface features separately. If a lens change is itself the treatment, report that separately from a navigation-interface claim. These conditions make the comparison possible; availability of a vector-enabled server alone does not.
 
 The storage and tool contracts below label deferred capabilities explicitly. `describe` reports their actual absence, and unimplemented actions are excluded from tool schemas. This preserves an architectural destination without making it a release checklist.
+
+Capability discovery also carries `collection_scope` and `validation_scope` as specified in the follow-up disposition: current revision/size and per-lens processing counts, separately from evaluated corpus/task/model conditions and the status of each tested or untested mechanism. Counts come from the observed revision. Before consumer studies, validation status is `not_tested`; implemented capabilities do not imply demonstrated benefits. The compact startup statement and exported findings carry this limitation or its profile reference. Growing the corpus must not silently enlarge a claim about evaluated scale.
 
 Other deferred capabilities: cloud connectors, continuous filesystem watchers, automatic work/version resolution, citation-graph extraction, ontology construction, automatic summarization, historical query re-execution with identical rankings, managed conversation compaction, and multi-user hosting. The service can expose a useful compact state; the consuming runtime controls whether old tool responses remain in its context.
 
@@ -246,7 +250,7 @@ These are directional hypotheses and revision rules, not a completed experimenta
 3. Budgets, typed errors, unavailable evidence, and processing gaps remain visible. Default operation does not persist journey content.
 4. The extraction pilot compares Unstructured with `pdftotext`, with the chosen primary profile and limitations recorded.
 5. The six core diagnostic tasks have checked outcomes, and the negative-scope/counts pilots have been exercised with labeled observations.
-6. A minimal path treatment preserves parent immutability and recorded replay and has been compared with context-based reconstruction before committing to the full journey machinery. Record the scope decision, including an inconclusive result where appropriate.
+6. Record the external llm-memory path result and the resulting scope decision, including an inconclusive result where appropriate. If a Tampu path treatment is retained, check its parent immutability and recorded replay and test transfer on PDFs before committing to the full journey machinery. A favorable path result is not required to complete the core.
 7. At least one real cross-topic task has been exercised, with evidence for any failure diagnosis distinguished from the consumer's self-report.
 8. Capability discovery and documentation report what exists and what passed. Composition, recursive refresh, durable preservation, embeddings, and historical query re-execution are not required for this completion claim.
 
@@ -254,9 +258,11 @@ This establishes a functioning research prototype and early interface observatio
 
 ## Delivery sequence
 
+First empirical step, before Tampu-specific implementation: prepare and run the llm-memory path comparison described in the follow-up disposition. Use its outcome to decide which, if any, path affordance deserves the PDF transfer experiment below. This is an experiment on an existing tool, not a prerequisite assertion that the hypothesis must succeed.
+
 1. Build one vertical path: capture a PDF, partition it, publish a revision, search through MCP, inspect a page-addressed passage, and record its scope. Include count/coverage and core `finish` semantics so the first consumer interaction can be evaluated.
 2. Run controlled negative-scope and count/coverage pilots, including answerable controls and processing gaps. Add/reconcile a small successor revision and exercise explicit new-revision searches.
-3. Add only the minimal in-memory path treatment and run the backtracking comparison. Record whether to retain, simplify, or investigate it further before implementing composition, recursive refresh, or durable preservation.
+3. If justified by the external path experiment or a separately stated use case, add the minimal in-memory path treatment and run the PDF transfer comparison. Otherwise record its deferral or simplification. Do this before implementing composition, recursive refresh, or durable preservation.
 4. Finish the core diagnostics and one exploratory finding task. This is the first MVP boundary.
 5. Prepare the semantic provider and matched RAG baselines using the explicit prerequisites above. Register and run a comparative protocol; the full journey extension is not a prerequisite.
 6. Implement composition, recursive refresh, or preservation only against an identified consumer benefit or concrete downstream use case, with its own evaluation. These are separate delivery decisions rather than an automatic second half of the MVP.
