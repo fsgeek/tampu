@@ -25,6 +25,23 @@ honesty.
 Three objections follow, in descending order of how much they should change the
 document.
 
+**On the status of this review.** The two sibling projects were built by two
+different methods, and the difference is instructive. llm-memory went from
+initial commit to working MCP server in about thirty-six hours, with findings and
+a corrected confound recorded before the interface existed. qhaway spent seven
+rounds of adversarial spec review — Codex and Gemini, folded round by round to
+convergence — before a single line of the planned implementation, and pivoted
+architecturally mid-spec (`db is truth, MCP verbs are the product`). The
+difference is not inconsistency. It tracks how expensive it is to be wrong about
+the interface: llm-memory could be wrong cheaply and reindex; qhaway defines a
+contract other sessions depend on.
+
+Tampu is qhaway-shaped. Artifact identity, revision immutability, and evidence
+addressing are contracts, and being wrong about them corrupts everything derived
+from them. So this document is not an argument for shipping something smaller and
+faster. It is round one of the adversarial pattern, and it expects to be answered
+rather than accepted.
+
 ## Objection 1: the stated research question is a task, not a research question
 
 The document opens: "The first research question is: **When does forgetting
@@ -97,10 +114,23 @@ claim, and the evaluation should be able to tell the two apart.
 
 **Recommendation.** Two changes.
 
-First, restate the question as above, and place its measurement early in the
-delivery sequence rather than at the end. If path-holding does not improve
-backtracking, that is a design finding that should reshape the prototype, not a
-result discovered after the machinery is built.
+First, restate the question as above — and note that answering it **does not
+require Tampu**. This follows the method llm-memory actually used: its third
+commit records a finding (`Confirm conversation-inclusive memory search`), its
+fourth corrects a confound in that finding and adds a controlled A/B, and the
+MCP server does not appear until commit fifteen. The experiment preceded the
+interface. The same move is available here. llm-memory already exposes search
+over ~26,600 episodes through an MCP server; that is an instrumented finding
+environment that exists today. A consumer can be given a multi-step finding task
+in two conditions — one reconstructing its path from its own context, one handed
+an explicit record of visited nodes and dead ends — and the difference measured
+in days, against a corpus that already exists.
+
+Run that before Tampu commits to the journey machinery. If path-holding does not
+improve backtracking, that is a design finding that should reshape the prototype
+rather than a result discovered after the machinery is built. If it does, the
+graph is justified by evidence instead of intuition, and the justification is
+citable.
 
 Second — and this is the scope objection — separate *architecture* from *MVP
 implementation* explicitly. The semantic kernel should accommodate journeys,
