@@ -1,0 +1,73 @@
+{
+  "frozen_at_utc": "2026-09-08T17:06:52.499383+00:00",
+  "stage": "before scored consumer dispatch",
+  "corpus": {
+    "corpus_sha256": "210a1dca4d9a5a740105d1598e8ae4ad96277ac507aa1bb2d1d19b11e5297881",
+    "episodes": 1000,
+    "bytes": 1631310,
+    "labels": {
+      "llm-memory": 217,
+      "ai-honesty": 59,
+      "hamutay": 465,
+      "qhaway": 184,
+      "tessera": 75
+    },
+    "selection": {
+      "until_exclusive": "2026-09-06",
+      "all_project": "llm-memory",
+      "distractor_projects": [
+        "hamutay",
+        "qhaway",
+        "tessera",
+        "ai-honesty"
+      ],
+      "distractor_order": "sha256(_key) ascending",
+      "target_size": 1000,
+      "candidate_episodes": 13303
+    },
+    "source_arango_version": "3.12.4-3",
+    "isolated_arango_version": "3.12.4-3",
+    "source_llm_memory_commit": "bd10d32d532a8e08de93b2730b750ceb47ff242c",
+    "vendor_sha256": {
+      "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "search.py": "51bde20cfc2bd5bc73d769617342c013c0d6e09c4f28dcbefebeb9b2a86fd1c6",
+      "index.py": "8ad9de73397890e179b989ca5902a937361be984da404fd2d90fbfbba199146e",
+      "recall.py": "ad53eacd7276474bdf6d87d42e022c871148878692c0a0ac720aee3cdbb033c6"
+    },
+    "image_digest": "sha256:c1819a9b2da82c98bfbb91a4a7becde1582281ac3bd2f2130ec8859314aac101"
+  },
+  "tracked_files_sha256": {
+    "docs/experiments/2026-09-08-path-pilot-protocol.md": "554c366f6bcd62861cec6df75934a3484a513990508dc4972a1119cce092967c",
+    "experiments/path_holding/harness.py": "48c95fd6766b32581c93c8665b7f91c3d5df213c9d3c4708046d505c7abc88be",
+    "experiments/path_holding/test_harness.py": "9650f03b0035a2cef223d78994831975dd54b8d9254c7a02663740419f9e8897",
+    "experiments/path_holding/README.md": "8c81578891da181261b4945267184d6ec899f94eefd68e1d2174de2b36f14cf6"
+  },
+  "private_files_sha256": {
+    "manifest.json": "54b1e50b518aecc3d8f9c3c46ca5bdde513ce5773bd367a4af2d3bc3ab38cfec",
+    "tasks.json": "2f5ec2780829ce7b7f715f65146e09a914afadd73ed7174111a2e45620733ec6",
+    "gold.json": "42543c67f5d9c46e091b8a5cb6194d124fb0f3327fb3d4c327496bbe52ab203c",
+    "task-review.md": "9930ef424fdfe159fa0b092f56b1adfeaee052d2a3abebfb5c8e2bb974b298c0",
+    "runs/r01/instructions.txt": "84c6b5c2459f829c82eb474756e2829238345c7481e5b7e37c0b588d67b83d21",
+    "runs/r02/instructions.txt": "8857f1ce32548d189905262f88516d1e10fa4f3d5d2188cb8e02ca6dbc9ea0fe",
+    "runs/r03/instructions.txt": "3aa7dee8e6fc0f90fa22024965b038f92babe52f603621f4c6bb0d6ec263a9bc",
+    "runs/r04/instructions.txt": "86d88651bb2af99122284bba78fa06294d8c3f028071fccfa880c0ff411a79c3",
+    "runs/r05/instructions.txt": "1decc88109885038636d677c87ddf30102638755b2e8b8ac3d430b37e9b13139",
+    "runs/r06/instructions.txt": "aaaa1d082294011413bae3aa625b29a1f870e77ebe004cd544f1aadce0a5e6fb",
+    "runs/r07/instructions.txt": "a476de3e239203ec0b8732e61af391d47860f4d965a66c21a8856e8c192f824c",
+    "runs/r08/instructions.txt": "2771f6993a2a46082a2d87e9460d5638bbafe56fdccc452baa5d4bafeb8572d5"
+  },
+  "environment": {
+    "python": "3.14.3 (main, Feb 12 2026, 00:42:54) [Clang 21.1.4 ]",
+    "python_arango": "8.3.3",
+    "pytest": "9.1.0",
+    "model": "inherited GPT-6/Astra; fork_turns=none; no model or effort override",
+    "sampling_parameters": "platform inherited, not fully observable"
+  },
+  "checks": {
+    "full_database_roundtrip_equal": true,
+    "diagnostic_replay_outputs_equal": true,
+    "vendor_hashes_equal": true,
+    "pytest_passed": 21
+  },
+  "clock_policy": "per-run started_at written immediately before dispatch; pre-existing seed operations retained; configuration clock intentionally not part of frozen prompts"
+}
