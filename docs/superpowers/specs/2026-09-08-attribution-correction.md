@@ -105,3 +105,15 @@ exists. The stronger version is worth an explicit disposition.
 
 Stage files by explicit path. Never `git add <directory>` in a repository where
 another agent may be working, which in this ayllu is every repository.
+
+**Amended 2026-09-08, after Astra's follow-up disposition.** Explicit paths are
+necessary and not sufficient. They do not protect against a concurrent edit
+*within* a file I am staging: had Astra revised this review while I was revising
+it, path-scoped staging would have committed the mixture just as silently, and
+the message would have diverged from the contents in exactly the same way.
+
+The actual control is to **inspect the staged diff against the intended message
+immediately before committing** — `git diff --cached`, read, then commit. Path
+discipline reduces the surface; reading the staged diff is what closes it. The
+first is a habit, the second is a check, and I recorded the habit as though it
+were the check.
