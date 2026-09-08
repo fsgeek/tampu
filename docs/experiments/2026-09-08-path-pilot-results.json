@@ -1,0 +1,714 @@
+{
+  "schema": "tampu.path_pilot.results.v1",
+  "protocol_commit": "18c3f448085b2e248a0f22481f654f3dbc1256be",
+  "recorded_at_utc": "2026-09-08T17:20:51.735146+00:00",
+  "validation_scope": {
+    "mechanism": "optional retrieval of prior operation record",
+    "status": "inconclusive",
+    "corpus_type": "selected llm-memory transcript episodes",
+    "corpus_episodes": 1000,
+    "corpus_sha256": "210a1dca4d9a5a740105d1598e8ae4ad96277ac507aa1bb2d1d19b11e5297881",
+    "model": "gpt-6-astra",
+    "effort": "high",
+    "consumer_trials": 8,
+    "task_families": 2,
+    "natural_trials": 4,
+    "scripted_diagnostic_trials": 4,
+    "ledger_users": 0,
+    "pdf_transfer": "not_tested",
+    "large_corpus_scale": "not_tested"
+  },
+  "runs": [
+    {
+      "run": "r01",
+      "task": "coverage",
+      "start": "natural",
+      "arm": "control",
+      "seed_calls": 0,
+      "consumer_operation_counts": {
+        "search": 3,
+        "recall": 6,
+        "finalize": 1
+      },
+      "navigation_attempts_including_seed": 9,
+      "total_invocations_including_seed_and_finalize": 10,
+      "errors": [],
+      "repeated_exact_search_or_recall": 0,
+      "repeated_requests": [],
+      "distinct_inspected_episodes": 6,
+      "ledger_calls": 0,
+      "ledger_request_bytes": 0,
+      "ledger_response_bytes": 0,
+      "seed_response_bytes": 0,
+      "consumer_request_bytes": 3299,
+      "consumer_response_bytes": 29190,
+      "prompt_bytes": 3467,
+      "operation_log_bytes": 68788,
+      "consumer_wall_seconds": 90.6220760345459,
+      "consumer_harness_seconds": 1.1604403851088136,
+      "started_at": 1788887247.7702713,
+      "finalized_at": 1788887338.3923473,
+      "model": [
+        "gpt-6-astra"
+      ],
+      "effort": [
+        "high"
+      ],
+      "compaction_events": 0,
+      "provider_reported_tokens": {
+        "input_tokens": 270550,
+        "cached_input_tokens": 242176,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1964,
+        "reasoning_output_tokens": 37,
+        "total_tokens": 272514
+      },
+      "provider_responses": 12,
+      "first_response_input_tokens": 16035,
+      "max_response_input_tokens": 28506,
+      "model_context_window": 258400,
+      "hashes": {
+        "operations": "add3671bd091d2c95f5a7096e05f1f7f2afbf1f57095c51a2826b7ed7c7a3400",
+        "answer": "3d020d52af664c51527c68a10b8ce63e2d2980182868ba37b05845e4bed5ab58",
+        "config": "79777b365c8096972a5834485bc36fb99e035d9460ed2fdb16103a7367c32531",
+        "prompt": "84c6b5c2459f829c82eb474756e2829238345c7481e5b7e37c0b588d67b83d21",
+        "transcript": "53a73a707e7489f6f8bed3ad0f9189741c2460ff5066eae2d0eea282caaf141d"
+      },
+      "score": {
+        "total": 6,
+        "maximum": 6,
+        "atoms": {
+          "c1": 1,
+          "c2": 1,
+          "c3": 1,
+          "c4": 1,
+          "c5": 1,
+          "c6": 1
+        },
+        "material_unsupported_additions": 0,
+        "citations_verified": true,
+        "minor_observations": [
+          "The spec commit time 18:36 UTC lacks an explicit September 1 date; nearby September 2 session-end wording could confuse chronology. The stated relationship to the ingestion cutoff remains correct.",
+          "Mid-conversation ingestion is conveyed through the stored cutoff and later session continuation rather than explicitly naming the one-off ingest."
+        ]
+      }
+    },
+    {
+      "run": "r02",
+      "task": "coverage",
+      "start": "natural",
+      "arm": "record",
+      "seed_calls": 0,
+      "consumer_operation_counts": {
+        "search": 2,
+        "recall": 5,
+        "finalize": 1
+      },
+      "navigation_attempts_including_seed": 7,
+      "total_invocations_including_seed_and_finalize": 8,
+      "errors": [],
+      "repeated_exact_search_or_recall": 0,
+      "repeated_requests": [],
+      "distinct_inspected_episodes": 5,
+      "ledger_calls": 0,
+      "ledger_request_bytes": 0,
+      "ledger_response_bytes": 0,
+      "seed_response_bytes": 0,
+      "consumer_request_bytes": 2807,
+      "consumer_response_bytes": 21945,
+      "prompt_bytes": 3466,
+      "operation_log_bytes": 52499,
+      "consumer_wall_seconds": 90.15732669830322,
+      "consumer_harness_seconds": 0.9363372217630967,
+      "started_at": 1788887247.7705092,
+      "finalized_at": 1788887337.927836,
+      "model": [
+        "gpt-6-astra"
+      ],
+      "effort": [
+        "high"
+      ],
+      "compaction_events": 0,
+      "provider_reported_tokens": {
+        "input_tokens": 210168,
+        "cached_input_tokens": 184576,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1636,
+        "reasoning_output_tokens": 28,
+        "total_tokens": 211804
+      },
+      "provider_responses": 10,
+      "first_response_input_tokens": 16035,
+      "max_response_input_tokens": 25412,
+      "model_context_window": 258400,
+      "hashes": {
+        "operations": "7d199f37dddc68397f1f7152e727655093592d5c2c0d6781b544ba3f5dbf85a1",
+        "answer": "956257f437561e6a50fff9fd3392bc03a9d1f4cec609fb367a8590abe48a76f3",
+        "config": "2ab536f11c0dd1fa1c5b39e23c58d0d744532221c9e8821a6483a5cefbf095dd",
+        "prompt": "8857f1ce32548d189905262f88516d1e10fa4f3d5d2188cb8e02ca6dbc9ea0fe",
+        "transcript": "d389a20c9ccff4adb96693181c02cf062e371ee452a3cfe97ac7197a4827cbef"
+      },
+      "score": {
+        "total": 6,
+        "maximum": 6,
+        "atoms": {
+          "c1": 1,
+          "c2": 1,
+          "c3": 1,
+          "c4": 1,
+          "c5": 1,
+          "c6": 1
+        },
+        "material_unsupported_additions": 0,
+        "citations_verified": true,
+        "minor_observations": []
+      }
+    },
+    {
+      "run": "r03",
+      "task": "backup",
+      "start": "natural",
+      "arm": "record",
+      "seed_calls": 0,
+      "consumer_operation_counts": {
+        "search": 4,
+        "recall": 6,
+        "finalize": 1
+      },
+      "navigation_attempts_including_seed": 10,
+      "total_invocations_including_seed_and_finalize": 11,
+      "errors": [],
+      "repeated_exact_search_or_recall": 0,
+      "repeated_requests": [],
+      "distinct_inspected_episodes": 6,
+      "ledger_calls": 0,
+      "ledger_request_bytes": 0,
+      "ledger_response_bytes": 0,
+      "seed_response_bytes": 0,
+      "consumer_request_bytes": 4589,
+      "consumer_response_bytes": 27264,
+      "prompt_bytes": 3621,
+      "operation_log_bytes": 67787,
+      "consumer_wall_seconds": 110.73021364212036,
+      "consumer_harness_seconds": 1.3263808189658448,
+      "started_at": 1788887366.388631,
+      "finalized_at": 1788887477.1188447,
+      "model": [
+        "gpt-6-astra"
+      ],
+      "effort": [
+        "high"
+      ],
+      "compaction_events": 0,
+      "provider_reported_tokens": {
+        "input_tokens": 289984,
+        "cached_input_tokens": 261632,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2488,
+        "reasoning_output_tokens": 92,
+        "total_tokens": 292472
+      },
+      "provider_responses": 13,
+      "first_response_input_tokens": 16035,
+      "max_response_input_tokens": 27943,
+      "model_context_window": 258400,
+      "hashes": {
+        "operations": "aa7daaf464c14d3f60cda11e02fc9f70510243ab32ec0374a867a882281a94e9",
+        "answer": "8edeafc7bffb8eb45dd30a521bedebf0dcab6c82b8104bc79133ee433e4c1ccb",
+        "config": "a2b4af3254748cad4fef17f3b347adb79fbf08f40b30c7de295cc9aed0214980",
+        "prompt": "3aa7dee8e6fc0f90fa22024965b038f92babe52f603621f4c6bb0d6ec263a9bc",
+        "transcript": "28e92eaea84cda1e82b0320ffc1021a90ef88eb240a6c090689f74d62424f5df"
+      },
+      "score": {
+        "total": 5.5,
+        "maximum": 6,
+        "atoms": {
+          "b1": 1,
+          "b2": 1,
+          "b3": 0.5,
+          "b4": 1,
+          "b5": 1,
+          "b6": 1
+        },
+        "material_unsupported_additions": 0,
+        "citations_verified": true,
+        "minor_observations": [
+          "The hash-limit omission is scored in b3; describing the historical proposal as detecting divergence is not separately counted as an unsupported claim of full-content equality."
+        ]
+      }
+    },
+    {
+      "run": "r04",
+      "task": "backup",
+      "start": "natural",
+      "arm": "control",
+      "seed_calls": 0,
+      "consumer_operation_counts": {
+        "search": 4,
+        "recall": 5,
+        "finalize": 1
+      },
+      "navigation_attempts_including_seed": 9,
+      "total_invocations_including_seed_and_finalize": 10,
+      "errors": [],
+      "repeated_exact_search_or_recall": 0,
+      "repeated_requests": [],
+      "distinct_inspected_episodes": 5,
+      "ledger_calls": 0,
+      "ledger_request_bytes": 0,
+      "ledger_response_bytes": 0,
+      "seed_response_bytes": 0,
+      "consumer_request_bytes": 4267,
+      "consumer_response_bytes": 23170,
+      "prompt_bytes": 3622,
+      "operation_log_bytes": 58469,
+      "consumer_wall_seconds": 107.47648048400879,
+      "consumer_harness_seconds": 1.1472177628893405,
+      "started_at": 1788887366.3888955,
+      "finalized_at": 1788887473.865376,
+      "model": [
+        "gpt-6-astra"
+      ],
+      "effort": [
+        "high"
+      ],
+      "compaction_events": 0,
+      "provider_reported_tokens": {
+        "input_tokens": 259315,
+        "cached_input_tokens": 243072,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2220,
+        "reasoning_output_tokens": 53,
+        "total_tokens": 261535
+      },
+      "provider_responses": 12,
+      "first_response_input_tokens": 16035,
+      "max_response_input_tokens": 26827,
+      "model_context_window": 258400,
+      "hashes": {
+        "operations": "128bdb0fc8d2518d535c6613962c54be34e5ed954912f2c940c2d290f56e4953",
+        "answer": "70e2f2573c8e766ec8f28083e47a8933c25ff0a5e80153c31ef657bb98d791e9",
+        "config": "6fbe64b310c0a6fbc03acb608a4330307e4e2e72b82989c5c3b17dd57da88360",
+        "prompt": "86d88651bb2af99122284bba78fa06294d8c3f028071fccfa880c0ff411a79c3",
+        "transcript": "41cc068349dbe466de2f9242fada093814eb5da37ac99dee24b469f442f8b80f"
+      },
+      "score": {
+        "total": 5.5,
+        "maximum": 6,
+        "atoms": {
+          "b1": 1,
+          "b2": 1,
+          "b3": 0.5,
+          "b4": 1,
+          "b5": 1,
+          "b6": 1
+        },
+        "material_unsupported_additions": 0,
+        "citations_verified": true,
+        "minor_observations": [
+          "The hash-limit omission is scored in b3; describing the historical proposal as detecting divergence is not separately counted as an unsupported claim of full-content equality."
+        ]
+      }
+    },
+    {
+      "run": "r05",
+      "task": "coverage",
+      "start": "diagnostic",
+      "arm": "record",
+      "seed_calls": 3,
+      "consumer_operation_counts": {
+        "search": 3,
+        "recall": 5,
+        "finalize": 1
+      },
+      "navigation_attempts_including_seed": 11,
+      "total_invocations_including_seed_and_finalize": 12,
+      "errors": [],
+      "repeated_exact_search_or_recall": 0,
+      "repeated_requests": [],
+      "distinct_inspected_episodes": 5,
+      "ledger_calls": 0,
+      "ledger_request_bytes": 0,
+      "ledger_response_bytes": 0,
+      "seed_response_bytes": 3639,
+      "consumer_request_bytes": 3112,
+      "consumer_response_bytes": 20997,
+      "prompt_bytes": 8667,
+      "operation_log_bytes": 60246,
+      "consumer_wall_seconds": 102.67797303199768,
+      "consumer_harness_seconds": 0.9962202821625397,
+      "started_at": 1788887494.7629163,
+      "finalized_at": 1788887597.4408894,
+      "model": [
+        "gpt-6-astra"
+      ],
+      "effort": [
+        "high"
+      ],
+      "compaction_events": 0,
+      "provider_reported_tokens": {
+        "input_tokens": 251442,
+        "cached_input_tokens": 225280,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1797,
+        "reasoning_output_tokens": 42,
+        "total_tokens": 253239
+      },
+      "provider_responses": 11,
+      "first_response_input_tokens": 16035,
+      "max_response_input_tokens": 27691,
+      "model_context_window": 258400,
+      "hashes": {
+        "operations": "ed70862c3fee7d318b6bea592157d07b9effeaa7fe0328cb9fffd78d7f7e4d4c",
+        "answer": "386a29e433fe3011eb877834976c4e6e9da39a86529dd262fc00caa38c8a18a8",
+        "config": "2bbb85304cee30af072f0dd45d5db616e93a1766d63e7264c9a603facbd26ea2",
+        "prompt": "1decc88109885038636d677c87ddf30102638755b2e8b8ac3d430b37e9b13139",
+        "transcript": "fe7bc60b9f53c8fe3fa11a14f9838b5d758a1c38cd15b4a607180e706efb3c00"
+      },
+      "score": {
+        "total": 6,
+        "maximum": 6,
+        "atoms": {
+          "c1": 1,
+          "c2": 1,
+          "c3": 1,
+          "c4": 1,
+          "c5": 1,
+          "c6": 1
+        },
+        "material_unsupported_additions": 0,
+        "citations_verified": true,
+        "minor_observations": []
+      }
+    },
+    {
+      "run": "r06",
+      "task": "coverage",
+      "start": "diagnostic",
+      "arm": "control",
+      "seed_calls": 3,
+      "consumer_operation_counts": {
+        "search": 2,
+        "recall": 5,
+        "finalize": 1
+      },
+      "navigation_attempts_including_seed": 10,
+      "total_invocations_including_seed_and_finalize": 11,
+      "errors": [],
+      "repeated_exact_search_or_recall": 0,
+      "repeated_requests": [],
+      "distinct_inspected_episodes": 5,
+      "ledger_calls": 0,
+      "ledger_request_bytes": 0,
+      "ledger_response_bytes": 0,
+      "seed_response_bytes": 3639,
+      "consumer_request_bytes": 2968,
+      "consumer_response_bytes": 17575,
+      "prompt_bytes": 8668,
+      "operation_log_bytes": 52668,
+      "consumer_wall_seconds": 82.34131026268005,
+      "consumer_harness_seconds": 0.8777939279098064,
+      "started_at": 1788887494.7631636,
+      "finalized_at": 1788887577.1044738,
+      "model": [
+        "gpt-6-astra"
+      ],
+      "effort": [
+        "high"
+      ],
+      "compaction_events": 0,
+      "provider_reported_tokens": {
+        "input_tokens": 176169,
+        "cached_input_tokens": 163200,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1577,
+        "reasoning_output_tokens": 23,
+        "total_tokens": 177746
+      },
+      "provider_responses": 8,
+      "first_response_input_tokens": 16035,
+      "max_response_input_tokens": 26113,
+      "model_context_window": 258400,
+      "hashes": {
+        "operations": "84a5beed66ccabb0ccb0598c2fa70f8f08803774838dfb815af4b5fabcb168e8",
+        "answer": "f63469da0f4bf3fb5dff69444e8f81b375bbec08e1a807108f7df2cb00f3ed4d",
+        "config": "ca2d5bdfdd7acc7f591bf8ce3740887a5edf6b40e001f78c7db7d7383680b544",
+        "prompt": "aaaa1d082294011413bae3aa625b29a1f870e77ebe004cd544f1aadce0a5e6fb",
+        "transcript": "1b947350239081c1ed7f00600025558b0b6558180a3f699f7e003d0ae349b65b"
+      },
+      "score": {
+        "total": 6,
+        "maximum": 6,
+        "atoms": {
+          "c1": 1,
+          "c2": 1,
+          "c3": 1,
+          "c4": 1,
+          "c5": 1,
+          "c6": 1
+        },
+        "material_unsupported_additions": 0,
+        "citations_verified": true,
+        "minor_observations": [
+          "The spec commit time 18:36 UTC lacks an explicit September 1 date; nearby September 2 session-end wording could confuse chronology. The stated relationship to the ingestion cutoff remains correct."
+        ]
+      }
+    },
+    {
+      "run": "r07",
+      "task": "backup",
+      "start": "diagnostic",
+      "arm": "control",
+      "seed_calls": 3,
+      "consumer_operation_counts": {
+        "search": 3,
+        "recall": 6,
+        "finalize": 1
+      },
+      "navigation_attempts_including_seed": 12,
+      "total_invocations_including_seed_and_finalize": 13,
+      "errors": [],
+      "repeated_exact_search_or_recall": 0,
+      "repeated_requests": [],
+      "distinct_inspected_episodes": 6,
+      "ledger_calls": 0,
+      "ledger_request_bytes": 0,
+      "ledger_response_bytes": 0,
+      "seed_response_bytes": 8559,
+      "consumer_request_bytes": 3951,
+      "consumer_response_bytes": 23205,
+      "prompt_bytes": 13619,
+      "operation_log_bytes": 76455,
+      "consumer_wall_seconds": 108.99759984016418,
+      "consumer_harness_seconds": 1.1765735698863864,
+      "started_at": 1788887611.014488,
+      "finalized_at": 1788887720.0120878,
+      "model": [
+        "gpt-6-astra"
+      ],
+      "effort": [
+        "high"
+      ],
+      "compaction_events": 0,
+      "provider_reported_tokens": {
+        "input_tokens": 292885,
+        "cached_input_tokens": 261248,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2232,
+        "reasoning_output_tokens": 108,
+        "total_tokens": 295117
+      },
+      "provider_responses": 12,
+      "first_response_input_tokens": 16035,
+      "max_response_input_tokens": 29565,
+      "model_context_window": 258400,
+      "hashes": {
+        "operations": "efe6b77c3acf8591c363db98f77d371e0e1d959d75488645896383a77ddedb12",
+        "answer": "69cfb6aa4b8eac338643972d748882d4aacc3d2779cb741a6514a4f675c112c2",
+        "config": "fd7bdbd1d472b0041e427eef2060020945b1e9f71b9de6912416f6e44b55f5fc",
+        "prompt": "a476de3e239203ec0b8732e61af391d47860f4d965a66c21a8856e8c192f824c",
+        "transcript": "94d88b880529b95b2fefef172cc981dcdd9d74faf5893b0b4326be3f225df5fa"
+      },
+      "score": {
+        "total": 5.5,
+        "maximum": 6,
+        "atoms": {
+          "b1": 1,
+          "b2": 1,
+          "b3": 0.5,
+          "b4": 1,
+          "b5": 1,
+          "b6": 1
+        },
+        "material_unsupported_additions": 0,
+        "citations_verified": true,
+        "minor_observations": [
+          "The hash-limit omission is scored in b3; describing the historical proposal as detecting divergence is not separately counted as an unsupported claim of full-content equality."
+        ]
+      }
+    },
+    {
+      "run": "r08",
+      "task": "backup",
+      "start": "diagnostic",
+      "arm": "record",
+      "seed_calls": 3,
+      "consumer_operation_counts": {
+        "search": 5,
+        "recall": 6,
+        "finalize": 1
+      },
+      "navigation_attempts_including_seed": 14,
+      "total_invocations_including_seed_and_finalize": 15,
+      "errors": [],
+      "repeated_exact_search_or_recall": 0,
+      "repeated_requests": [],
+      "distinct_inspected_episodes": 6,
+      "ledger_calls": 0,
+      "ledger_request_bytes": 0,
+      "ledger_response_bytes": 0,
+      "seed_response_bytes": 8559,
+      "consumer_request_bytes": 4659,
+      "consumer_response_bytes": 25178,
+      "prompt_bytes": 13618,
+      "operation_log_bytes": 82495,
+      "consumer_wall_seconds": 129.91888904571533,
+      "consumer_harness_seconds": 1.4336151600582525,
+      "started_at": 1788887611.0147312,
+      "finalized_at": 1788887740.9336202,
+      "model": [
+        "gpt-6-astra"
+      ],
+      "effort": [
+        "high"
+      ],
+      "compaction_events": 0,
+      "provider_reported_tokens": {
+        "input_tokens": 353132,
+        "cached_input_tokens": 318720,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2661,
+        "reasoning_output_tokens": 104,
+        "total_tokens": 355793
+      },
+      "provider_responses": 14,
+      "first_response_input_tokens": 16035,
+      "max_response_input_tokens": 30850,
+      "model_context_window": 258400,
+      "hashes": {
+        "operations": "c7053b2463438fda22cf31e7ac51e5a63f3b45b06025e5353323d243e16b9e7a",
+        "answer": "494029dc3d68cb80a11c5a813d8000df3318e23d344793fcbd43aa528f8732e4",
+        "config": "37f3b5c590e06b654adb7b98f06861c39288800a50860f9ac4d01b3af8c1328d",
+        "prompt": "2771f6993a2a46082a2d87e9460d5638bbafe56fdccc452baa5d4bafeb8572d5",
+        "transcript": "c279769656e91b17af1ab3260a5f444659d8ee0de24d3bc7d94837dc658eb849"
+      },
+      "score": {
+        "total": 5.5,
+        "maximum": 6,
+        "atoms": {
+          "b1": 1,
+          "b2": 1,
+          "b3": 0.5,
+          "b4": 1,
+          "b5": 1,
+          "b6": 1
+        },
+        "material_unsupported_additions": 0,
+        "citations_verified": true,
+        "minor_observations": [
+          "The hash-limit omission is scored in b3; describing the historical proposal as detecting divergence is not separately counted as an unsupported claim of full-content equality."
+        ]
+      }
+    }
+  ],
+  "totals": {
+    "consumer_search_calls": 26,
+    "consumer_recall_calls": 44,
+    "consumer_finalizations": 8,
+    "seed_operations": 12,
+    "provider_reported_tokens": {
+      "input_tokens": 2103645,
+      "cached_input_tokens": 1899904,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 16575,
+      "reasoning_output_tokens": 487,
+      "total_tokens": 2120220
+    },
+    "consumer_response_bytes": 188524,
+    "consumer_request_bytes": 29652,
+    "seed_response_bytes": 24396,
+    "prompt_bytes": 58748,
+    "operation_log_bytes": 519407,
+    "consumer_wall_seconds_sum": 822.9218690395355,
+    "pilot_dispatch_to_last_finalize_seconds": 493.16334891319275,
+    "consumer_harness_seconds_sum": 9.05457912874408
+  },
+  "evidence_sha256": {
+    "analyze.py": "9e792807b463d8932d57c742659bd6d079bf17e6e7c5a7f10b20e307fdf447e7",
+    "blind-answers.json": "58370062526727ff356585247a682c8e48ac04af6dced2d860f963d434f3fe16",
+    "blind-scores.json": "016c49243aa4097bbb54fec62058ad72829995070f2cf6fdfb9ca3109706d394",
+    "blind-map.json": "75e5feedfea1f28a8e38e1db5147ffb85aa10ff57baca80a04f019d18088489f",
+    "gold.json": "42543c67f5d9c46e091b8a5cb6194d124fb0f3327fb3d4c327496bbe52ab203c",
+    "tasks.json": "2f5ec2780829ce7b7f715f65146e09a914afadd73ed7174111a2e45620733ec6",
+    "task-review.md": "9930ef424fdfe159fa0b092f56b1adfeaee052d2a3abebfb5c8e2bb974b298c0",
+    "harness-review.md": "a71f46904d97fb5e8eae33298a7dbb6a927e934b475cffadcb220f4d780bc47e",
+    "scoring-notes.md": "c464778da0742ed558c9b878662c913bcdfd412a462a7d2117ea4a734e14ee1b",
+    "post-audit.json": "aa528c14e756e2275296f813a770d98ff5d7763af7b1b17117cdffade8f1af53",
+    "dispatches.json": "a092af1485f6bddd5602227595775da1e3f5e951266e29224deded34ab02d563",
+    "resource-checkpoint.json": "57603df23d8118670c78648a0aeea5abad484e175581e2db84cdafccf8b36a06",
+    "final-review.md": "5df97da090f0eae1b576fc87c63d4d3ce0c81f73f0dff9a0daade3928b8805ca",
+    "trace-audit.md": "83d068aaae24aa03dfbc137c87a5b2e33359d8f12df0fed059c7a475eeed0724",
+    "teardown.json": "1e99447923ebe711d07c53df899eb7f6a8c512d32c7ddbae31039a5fa35a0b31"
+  },
+  "monetary_cost": null,
+  "monetary_cost_reason": "No per-run charge/pricing telemetry; provider token records are not invoices.",
+  "preparation_resource_checkpoint": {
+    "interval_start_utc": "2026-09-08T16:50:09Z",
+    "checkpoint_utc": "2026-09-08T17:21:47.370318Z",
+    "scope": "Controller and four preparation/audit/scoring agents through this checkpoint only; excludes eight consumers and subsequent report review/completion. Replayed inherited context is included in input counts.",
+    "roles": {
+      "/root": {
+        "responses": 65,
+        "usage": {
+          "input_tokens": 5966484,
+          "cached_input_tokens": 5786112,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 42758,
+          "reasoning_output_tokens": 10070,
+          "total_tokens": 6009242
+        }
+      },
+      "/root/task_evidence_review": {
+        "responses": 10,
+        "usage": {
+          "input_tokens": 329577,
+          "cached_input_tokens": 282880,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3854,
+          "reasoning_output_tokens": 315,
+          "total_tokens": 333431
+        }
+      },
+      "/root/pilot_harness": {
+        "responses": 23,
+        "usage": {
+          "input_tokens": 790334,
+          "cached_input_tokens": 720256,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 11527,
+          "reasoning_output_tokens": 1388,
+          "total_tokens": 801861
+        }
+      },
+      "/root/harness_audit": {
+        "responses": 39,
+        "usage": {
+          "input_tokens": 2689753,
+          "cached_input_tokens": 2574848,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 14749,
+          "reasoning_output_tokens": 1427,
+          "total_tokens": 2704502
+        }
+      },
+      "/root/blind_scorer": {
+        "responses": 6,
+        "usage": {
+          "input_tokens": 149088,
+          "cached_input_tokens": 128640,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2327,
+          "reasoning_output_tokens": 147,
+          "total_tokens": 151415
+        }
+      }
+    }
+  },
+  "teardown": {
+    "container": "tampu-path-pilot-20260908",
+    "status": "exited",
+    "exit_code": 0,
+    "finished_at_utc": "2026-09-08T17:26:31.703402156Z",
+    "data_retained": true
+  }
+}
