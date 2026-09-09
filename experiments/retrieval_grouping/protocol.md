@@ -1,0 +1,19 @@
+# Frozen retrieval grouping diagnostic
+
+This six-case development diagnostic asks whether replacing artifact-level grouping with individual passages recovers already known evidence within the same output budget. It does not test consumer success or establish retrieval non-inferiority.
+
+All cases run against research revision `0ea79b79668943969e5ee21dfdcbdfae` (473 artifacts). Historical traces supply query text, not historical score claims. The first three cases use the full revision, including short papers, long papers, and proceedings. The final three use artifact filters inherited from prior lexical-negative, alias, and extraction-gap controls. Their old diagnostic revision differs from this run and is not replayed.
+
+Cases and probe text hashes are frozen before new rankings are inspected. Probes are selected from prior source reviews; they are not exhaustive relevant passages. No query will be adjusted after observing results. A probe can be useful to the research question while failing the frozen lexical predicate: that is an observed matching limitation, not evidence against its usefulness.
+
+Each case exports one scored match set from the existing `text_view`, `text_en`, and BM25 implementation. Predicate strings match production lexical modes. Ties use score descending, artifact ID ascending, ordinal ascending. Both presentations derive from the same export. The grouped arm retains only the first row for each artifact; the passage arm retains all rows. Artifact/projection IDs, page, ordinal, score, and text-prefix excerpt fields are identical. Excerpts contain at most 800 Unicode characters. Both responses include the same scope and exact pre-presentation match counts. Both have a 20-entry ceiling and an 8192-byte ceiling over compact, sorted-key, non-ASCII-escaped UTF-8 JSON, including the envelope and omission counts. No entry is skipped to fit a later shorter entry. Neither arm uses query-centered snippets, adjacency expansion, reranking, or diversity tuning.
+
+The response is a normalized audit format, not the production MCP envelope or historical limit=2 response. This isolates grouping under common limits but does not estimate production wire savings. Evidence addresses count separately from complete probe-text visibility; `required_chars` conservatively requires the entire known element. It does not judge whether a shorter prefix would suffice for a particular answer.
+
+The export ceiling is 20,000 matches (request 20,001 to detect overflow), with the existing 10-second AQL runtime ceiling. Overflow, query errors, missing or changed source probes, or a changed index-generation fingerprint make the affected comparison inconclusive. Export and response files retain full source text only in owner-local storage. Offline replay reproduces presentation decisions from a capture without accessing the database.
+
+Scope includes revision identity, corpus admission summary, filtered extraction coverage, predicate, and projection selection digest. A zero-hit alias case is not conceptual absence; a zero-hit blank projection is not source absence. No normalized probe ordinal is invented for the extraction gap.
+
+Report known-probe matching, within-artifact position, global and grouped rank, address visibility, whole-probe visibility, returned unique artifacts, repeated-artifact entries, and packed bytes. Repeated-artifact entries are a breadth cost, not automatically semantic redundancy. Small exposed samples permit a next-change decision, not a general effectiveness claim.
+
+Index-generation observation fingerprints projection IDs and element counts, not all index bytes or analyzer configuration. Published projections are immutable under the repository contract; the fingerprint cannot independently prove absence of out-of-band same-count modifications. This diagnostic performs no database mutations.
