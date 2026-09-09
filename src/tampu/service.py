@@ -79,6 +79,17 @@ class Service:
             "revision_limit": revision_limit,
             "byte_budget": byte_budget,
         }
+        revision_starts: dict[str, int] = {}
+
+        def preserve_revision_underfill(collection_result: dict) -> None:
+            name = collection_result["name"]
+            next_offset = revision_starts[name] + len(
+                collection_result["revisions"]
+            )
+            collection_result["revision_continuation"] = self._make_cursor(
+                f"revisions:{name}", next_offset
+            )
+
         return self._run(
             "describe",
             arguments,
@@ -92,7 +103,9 @@ class Service:
                 detail_limit,
                 revision_cursor,
                 revision_limit,
+                revision_starts,
             ),
+            on_revisions_underfilled=preserve_revision_underfill,
         )
 
     def _describe(
@@ -105,6 +118,7 @@ class Service:
         detail_limit: int,
         revision_cursor: str | None,
         revision_limit: int,
+        revision_starts: dict[str, int],
     ) -> tuple[dict, dict, list[str]]:
         if not isinstance(limit, int) or isinstance(limit, bool) or not 1 <= limit <= 20:
             raise TampuError("invalid_input", "The collection page limit is invalid.")
@@ -146,6 +160,7 @@ class Service:
                 if revision_cursor is not None
                 else 0
             )
+            revision_starts[raw["name"]] = revision_start
             revision_page = published_revisions[
                 revision_start : revision_start + revision_limit
             ]
@@ -1410,6 +1425,7 @@ class Service:
         *,
         lens: str | None = None,
         on_hits_underfilled: Callable[[dict], None] | None = None,
+        on_revisions_underfilled: Callable[[dict], None] | None = None,
     ) -> dict:
         started = time.monotonic()
         error_code = None
@@ -1425,6 +1441,7 @@ class Service:
                 },
                 budget,
                 on_hits_underfilled=on_hits_underfilled,
+                on_revisions_underfilled=on_revisions_underfilled,
             )
         except TampuError as error:
             error_code = error.code
@@ -1512,6 +1529,7 @@ class Service:
         budget: int,
         *,
         on_hits_underfilled: Callable[[dict], None] | None = None,
+        on_revisions_underfilled: Callable[[dict], None] | None = None,
     ) -> dict:
         if _size(response) <= budget:
             return response
@@ -1540,7 +1558,26 @@ class Service:
                         return response
         collections = result.get("collections")
         if isinstance(collections, list):
-            while collections and _size(response) > budget:
+            if on_revisions_underfilled is not None:
+                for collection in collections:
+                    revisions = collection.get("revisions")
+                    while (
+                        isinstance(revisions, list)
+                        and len(revisions) > 1
+                        and _size(response) > budget
+                    ):
+                        revisions.pop()
+                        on_revisions_underfilled(collection)
+                        if (
+                            "revisions_underfilled_by_budget"
+                            not in response["omissions"]
+                        ):
+                            response["omissions"].append(
+                                "revisions_underfilled_by_budget"
+                            )
+                    if _size(response) <= budget:
+                        return response
+            while len(collections) > 1 and _size(response) > budget:
                 collections.pop()
                 next_offset = response.get("scope", {}).get(
                     "collection_offset", 0
@@ -1554,6 +1591,11 @@ class Service:
                     )
             if _size(response) <= budget:
                 return response
+            if collections:
+                raise _BudgetError(
+                    "One collection and published revision summary cannot fit the requested budget; increase the budget or narrow the request.",
+                    _size(response),
+                )
         for hit in result.get("hits", []):
             for key in ("extract", "title", "source_aliases", "score"):
                 if key in hit:

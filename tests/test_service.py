@@ -659,6 +659,65 @@ def test_describe_underfills_collection_page_without_losing_continuation(tmp_pat
     assert second["result"]["collections"][0]["name"] == "two"
 
 
+def test_describe_underfills_initial_and_subsequent_revision_pages(tmp_path: Path):
+    repository = FakeRepository(tmp_path / "store")
+    expected = [f"revision-{number:02}" for number in range(20)]
+
+    def published_revisions(collection):
+        base = repository.resolve_revision(collection, None)
+        return [
+            {
+                **base,
+                "revision_id": revision_id,
+                "selection_digest": f"selection-{revision_id}",
+                "published_at": f"2026-09-{20 - number:02}T00:01:01Z",
+            }
+            for number, revision_id in enumerate(expected)
+        ]
+
+    repository.published_revisions = published_revisions
+    service = Service(repository)
+    cursor = None
+    delivered = []
+    pages = []
+
+    for _ in range(20):
+        response = service.describe(
+            collection="papers",
+            revision_cursor=cursor,
+            revision_limit=20,
+        )
+        assert response["status"] == "ok"
+        assert len(encoded(response)) <= 8192
+        assert len(response["result"]["collections"]) == 1
+        pages.append(response)
+        page = response["result"]["collections"][0]
+        revision_ids = [item["revision_id"] for item in page["revisions"]]
+        assert revision_ids
+        assert not set(revision_ids) & set(delivered)
+        delivered.extend(revision_ids)
+        cursor = page["revision_continuation"]
+        if cursor is None:
+            break
+
+    assert delivered == expected
+    assert len(pages) > 1
+    assert "revisions_underfilled_by_budget" in pages[0]["omissions"]
+
+    too_small = service.describe(
+        collection="papers", revision_limit=20, byte_budget=3500
+    )
+    assert too_small["status"] == "error"
+    assert too_small["error"]["code"] == "budget_too_small"
+    minimum = too_small["error"]["minimum_bytes"]
+    assert minimum > 3500
+    at_minimum = service.describe(
+        collection="papers", revision_limit=20, byte_budget=minimum
+    )
+    assert at_minimum["status"] == "ok"
+    assert at_minimum["result"]["collections"][0]["revisions"]
+
+
 def test_trace_is_explicit_and_records_argument_response_pairs(tmp_path: Path):
     trace = tmp_path / "trace.jsonl"
     service = Service(FakeRepository(tmp_path / "store"), trace_path=trace)
