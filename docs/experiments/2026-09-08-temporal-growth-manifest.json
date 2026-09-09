@@ -1,0 +1,4301 @@
+{
+  "schema": "tampu-growth-fixture/v1",
+  "status": "development fixture; not a preregistered or held-out experiment",
+  "created_at_utc": "2026-09-09T01:31:58.130066+00:00",
+  "clock": "Simulated acquisition order only; day offsets are not publication, submission, filesystem modification, or actual historical observation times.",
+  "assignment": "Reserve the seven named controls in the companion scenario; sort all other PDF SHA-256 values lexicographically and fill first-admission batches to 160,160,153.",
+  "source_inventory": {
+    "pdf_paths": 479,
+    "distinct_pdf_contents": 473,
+    "duplicate_aliases_collapsed": 6
+  },
+  "membership_digest_recipe": "SHA256 of sorted lowercase full PDF SHA256 strings, each followed by one ASCII newline. This is a fixture membership checksum, not a Tampu revision identifier.",
+  "stages": [
+    {
+      "id": "r0",
+      "simulated_day_offset": 0,
+      "added_distinct_artifacts": 160,
+      "distinct_artifacts": 160,
+      "membership_sha256": "54ed06b1997667e363bfd43f6f47a3776ae453db497d893781fa43f65874634b"
+    },
+    {
+      "id": "r1",
+      "simulated_day_offset": 7,
+      "added_distinct_artifacts": 160,
+      "distinct_artifacts": 320,
+      "membership_sha256": "da8845f3cd83c93d57f140e309688312182f529302b02667eb6c3e7ec3cd98e9"
+    },
+    {
+      "id": "r2",
+      "simulated_day_offset": 14,
+      "added_distinct_artifacts": 153,
+      "distinct_artifacts": 473,
+      "membership_sha256": "045e8edfaecc10e8adcad811b2931b89bf1033860304693887dca8fb85fe384c"
+    }
+  ],
+  "artifacts": [
+    {
+      "sha256": "011381a3bb412887024e0e41dc17b995211706b8b90150131fb53ad50559d142",
+      "pdf_bytes": 77222,
+      "source_paths": [
+        "tmp/research/ols2004v2-pages-175-180.pdf"
+      ],
+      "replay_path": "ols2004v2-pages-175-180.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "017e8861cc063b7a32be8b71bea9285107579bd6fc722ff2d2554f0a4580e4f4",
+      "pdf_bytes": 3409534,
+      "source_paths": [
+        "tmp/research/2018 A systematic review of provenance systems.pdf"
+      ],
+      "replay_path": "2018 A systematic review of provenance systems.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "0243f3e488aeb4c726aebce07a559c827f3bfb7f94652ac51d40129cf5b0cec8",
+      "pdf_bytes": 3934976,
+      "source_paths": [
+        "tmp/research/2017 POSIX-based Operating System in the environment of NVMSCM memory.pdf"
+      ],
+      "replay_path": "2017 POSIX-based Operating System in the environment of NVMSCM memory.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "02603f30d7d60fbd4db1c44932097204e8f2eb98246e6ee8dc0b7afa52382737",
+      "pdf_bytes": 775918,
+      "source_paths": [
+        "tmp/research/2017 Proust A Design Space for Highly-Concurrent Transactional Data Structures.pdf"
+      ],
+      "replay_path": "2017 Proust A Design Space for Highly-Concurrent Transactional Data Structures.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "02b9f08616c9492be7cff7da4a56ca6e57a29df3d42e3d0a9b166cf99e237800",
+      "pdf_bytes": 1627874,
+      "source_paths": [
+        "tmp/research/2017 Evolving Ext4 for Shingled Disks.pdf"
+      ],
+      "replay_path": "2017 Evolving Ext4 for Shingled Disks.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "032e3627a73e0e4991ff4f19ac9532e58b029fa9cddf8c94c8c5ed739d42f35d",
+      "pdf_bytes": 5326407,
+      "source_paths": [
+        "tmp/research/2017 The Popper Convention Making Reproducible Systems Evaluation Practical.pdf"
+      ],
+      "replay_path": "2017 The Popper Convention Making Reproducible Systems Evaluation Practical.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "05ab9861e8e7be41ede34f59c1ca6824b2bb2b45c5a9a81b2b156ad93523a22b",
+      "pdf_bytes": 304283,
+      "source_paths": [
+        "tmp/research/2012 BURRITO Wrapping Your Lab Notebook in Computational Infrastructure.pdf"
+      ],
+      "replay_path": "2012 BURRITO Wrapping Your Lab Notebook in Computational Infrastructure.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "05c26023900efe4bcf18a3d546346055a92d0598d0e475eee6c080eb8ba381c6",
+      "pdf_bytes": 1199924,
+      "source_paths": [
+        "tmp/research/2017 Log Structured Non-Volatile Main Memory.pdf"
+      ],
+      "replay_path": "2017 Log Structured Non-Volatile Main Memory.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "06a7b15969b227490e2beadd2ae1ea16be4989e40283b8d1e1d4c1530724cbe0",
+      "pdf_bytes": 1614004,
+      "source_paths": [
+        "tmp/research/p103-chase.pdf"
+      ],
+      "replay_path": "p103-chase.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "07034ea6f67ceff7d1ccc9603cb82441cd4d25a842a97a6533f174ebfcd657ba",
+      "pdf_bytes": 2809381,
+      "source_paths": [
+        "tmp/research/2020 An Integrated Indexing and Search Service for Distributed File Systems.pdf"
+      ],
+      "replay_path": "2020 An Integrated Indexing and Search Service for Distributed File Systems.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "07b0855a77b99f80aad7a75defcd8ba3386319b59bf0a78823df9092dc06c289",
+      "pdf_bytes": 912671,
+      "source_paths": [
+        "tmp/research/2016 A Code Plagiarism Detection System Based on Abstract Syntax Tree and a High Level Fuzzy Petri Net.pdf"
+      ],
+      "replay_path": "2016 A Code Plagiarism Detection System Based on Abstract Syntax Tree and a High Level Fuzzy Petri Net.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "07f0b4de6a423ada4a1a9a0ef1c4639680210feb459ad3d14094f78b7cc42aa8",
+      "pdf_bytes": 406821,
+      "source_paths": [
+        "tmp/research/nines-98.pdf"
+      ],
+      "replay_path": "nines-98.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "08d69630cfd40d05119928057a0cfc85ca04ed3c13d7e64ed68bd6ea7386d02a",
+      "pdf_bytes": 385669,
+      "source_paths": [
+        "tmp/research/2015 NVMCached An NVM-based Key-Value Cache.pdf"
+      ],
+      "replay_path": "2015 NVMCached An NVM-based Key-Value Cache.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "093db79763f66f7eb09245e4e1a0acd10bf5c9e122c70d84ff6fe6ec30923fd2",
+      "pdf_bytes": 421322,
+      "source_paths": [
+        "tmp/research/2017 Process Monitoring on Sequences of System Call Count Vectors.pdf"
+      ],
+      "replay_path": "2017 Process Monitoring on Sequences of System Call Count Vectors.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "09c0048f043649ab80a5d0597c7dcc204216d7321c8a24623a52321464abba56",
+      "pdf_bytes": 370418,
+      "source_paths": [
+        "tmp/research/2012 Online Optimization with Uncertain Information.pdf"
+      ],
+      "replay_path": "2012 Online Optimization with Uncertain Information.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "09cd64b5d88f1ea94ff55eb448d1338f59a9a87ebc5cbca556fc3de94b08c3e0",
+      "pdf_bytes": 517929,
+      "source_paths": [
+        "tmp/research/2017 Ethereum A Secure Decentralised Generalised Transaction Ledger.pdf"
+      ],
+      "replay_path": "2017 Ethereum A Secure Decentralised Generalised Transaction Ledger.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "0a3f60d7501e22344a89459e9ea76c160e79f9442496fc75b25d985e5ba2f023",
+      "pdf_bytes": 6643334,
+      "source_paths": [
+        "tmp/research/2015 Scaling HTM-Supported Database Transactions to Many Cores.pdf"
+      ],
+      "replay_path": "2015 Scaling HTM-Supported Database Transactions to Many Cores.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "0a90c74469b5f9d91df78c526be289979caafe94be3f8594e54980a340cb367b",
+      "pdf_bytes": 1486885,
+      "source_paths": [
+        "tmp/research/Efficient Software Based Fault Isolation.pdf"
+      ],
+      "replay_path": "Efficient Software Based Fault Isolation.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "0bf332378e668199fc5be6f1251ea6ea334e81b01cfc136a9d10f32aa999f821",
+      "pdf_bytes": 1816294,
+      "source_paths": [
+        "tmp/research/2020 Agamotto How Persistent is your Persistent Memory Application.pdf"
+      ],
+      "replay_path": "2020 Agamotto How Persistent is your Persistent Memory Application.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "0ceb771de7adef195d044b49c04ec800e7b634fbfd6c1ed2fa42d8afc1fa89ad",
+      "pdf_bytes": 119339017,
+      "source_paths": [
+        "tmp/research/2023 SIGIR Proceedings.pdf"
+      ],
+      "replay_path": "2023 SIGIR Proceedings.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "0d3650096cf840642cc2aea3889845e6961e6480600a44eb9271d98bea941b74",
+      "pdf_bytes": 152104,
+      "source_paths": [
+        "tmp/research/2017 Automated Personalized Assesment of Computational Thinking MOOC Assignments.pdf"
+      ],
+      "replay_path": "2017 Automated Personalized Assesment of Computational Thinking MOOC Assignments.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "0db603065ae6fc650b20a16de18022c7d88e91321bc9f1b2574ce6788336b377",
+      "pdf_bytes": 2302063,
+      "source_paths": [
+        "tmp/research/2016 SEMANTIC INTEROPERABILITY AND DATA MAPPING IN EHR SYSTEMS.pdf"
+      ],
+      "replay_path": "2016 SEMANTIC INTEROPERABILITY AND DATA MAPPING IN EHR SYSTEMS.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "0dd45fcfdff5c03b38e03d033029b090ce015b7a4e5014481d1827d44eabf0e1",
+      "pdf_bytes": 1357975,
+      "source_paths": [
+        "tmp/research/2016 Transactions for Distributed Actors in the Cloud.pdf"
+      ],
+      "replay_path": "2016 Transactions for Distributed Actors in the Cloud.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "0ed7249f4f4dbbe0ecc29c3c5933c20e4cf5406e8982d9340d6a6fa5ef9d38fc",
+      "pdf_bytes": 523623,
+      "source_paths": [
+        "tmp/research/p261-isard.pdf"
+      ],
+      "replay_path": "p261-isard.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "0f3067ff00968a197755951a8e92e40f9af6fc6278de6cbc5ea9f67731903682",
+      "pdf_bytes": 1802280,
+      "source_paths": [
+        "tmp/research/HardFails Insights into Software-Exploitable Hardware Bugs.pdf"
+      ],
+      "replay_path": "HardFails Insights into Software-Exploitable Hardware Bugs.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "10492100cd7a24e535d665ba70a2d60a50509e17e0480c2eb459edd53fd54532",
+      "pdf_bytes": 281542,
+      "source_paths": [
+        "tmp/research/CLOSER_2016_Microservices_Pahl_Jamshidi.pdf"
+      ],
+      "replay_path": "CLOSER_2016_Microservices_Pahl_Jamshidi.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "104b2669f0a4a3e48f3f1bacacc33a66183dd301de51f299e4230cc7dc9c557c",
+      "pdf_bytes": 446695,
+      "source_paths": [
+        "tmp/research/2022 A Review on recent research in information retrieval.pdf"
+      ],
+      "replay_path": "2022 A Review on recent research in information retrieval.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "10657bcd56ea6e7db36e7aa2d06281d39e033aa07dbe7a3aa4bb0df8863c483f",
+      "pdf_bytes": 388349,
+      "source_paths": [
+        "tmp/research/2014 Building global and scalable systems with Atomic Multicast.pdf"
+      ],
+      "replay_path": "2014 Building global and scalable systems with Atomic Multicast.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1081a94917014a8b0c56b4e822310cdcb2bf293d7ac116f616c3371654ca6de3",
+      "pdf_bytes": 1406531,
+      "source_paths": [
+        "tmp/research/2013 Tango Distributed Data Structures over a Shared Log.pdf"
+      ],
+      "replay_path": "2013 Tango Distributed Data Structures over a Shared Log.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "109de66191edb78cc46551baaceb2ca0632f8b44d76bbce894e30da17caf156b",
+      "pdf_bytes": 1568930,
+      "source_paths": [
+        "tmp/research/2016 Design of Object Storage Using OpenNVM for High-performance Distributed File System.pdf"
+      ],
+      "replay_path": "2016 Design of Object Storage Using OpenNVM for High-performance Distributed File System.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "11cb66ec0178082a7c09c7e874551e2e368a39c1433f4fb28cfc6f222b3394e0",
+      "pdf_bytes": 937100,
+      "source_paths": [
+        "tmp/research/2017 semantify.it a Platform for Creation Publication and Distribution of Semantic Annotations.pdf"
+      ],
+      "replay_path": "2017 semantify.it a Platform for Creation Publication and Distribution of Semantic Annotations.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "12bb3bc4a937c115861c6585902d360fef4035ccd79669daa1254ee82e4ede5b",
+      "pdf_bytes": 373304,
+      "source_paths": [
+        "tmp/research/2603.28788v3.pdf"
+      ],
+      "replay_path": "2603.28788v3.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "12dfd8b46570e438885f173a666f17abd3d5ab630b49e821f5b22e995d67f2ca",
+      "pdf_bytes": 4582977,
+      "source_paths": [
+        "tmp/research/2019 Intelligence Beyond the Edge Inference on IntermittentEmbedded Systems.pdf"
+      ],
+      "replay_path": "2019 Intelligence Beyond the Edge Inference on IntermittentEmbedded Systems.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "13ee89db024ba79e0fdb51e51b26d8ad25a288fb4460ae59f08143a7ab680f27",
+      "pdf_bytes": 572963,
+      "source_paths": [
+        "tmp/research/2002 Reclaiming Space from Duplicate Files in a Serverless Distributed File System.pdf"
+      ],
+      "replay_path": "2002 Reclaiming Space from Duplicate Files in a Serverless Distributed File System.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1514c3012fc8cf5d7ed8245176a68dac048a5f11a71649f287bd030508bdbc3a",
+      "pdf_bytes": 884306,
+      "source_paths": [
+        "tmp/research/2013 A Fault Tolerant K-means Algorithm Based on Storage-class Memory.pdf"
+      ],
+      "replay_path": "2013 A Fault Tolerant K-means Algorithm Based on Storage-class Memory.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "156c1685bdd50e5b129628e6a05714ecd000b41d733fd79c6d28e3428b435cf9",
+      "pdf_bytes": 134043,
+      "source_paths": [
+        "tmp/research/2019 Search is the future The young search less for files.pdf"
+      ],
+      "replay_path": "2019 Search is the future The young search less for files.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1680342babe9e3649713ac5e06f26e7c4c58364566f296cbd32cae3b9ed1a240",
+      "pdf_bytes": 265260,
+      "source_paths": [
+        "tmp/research/2019 Metall A Persistent Memory Allocator Enabling Graph Processing.pdf"
+      ],
+      "replay_path": "2019 Metall A Persistent Memory Allocator Enabling Graph Processing.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "169caf6d4930d3414c8556037a25b188e79d107902ba9df6bcda4978e4c3f1b0",
+      "pdf_bytes": 522318,
+      "source_paths": [
+        "tmp/research/2020 Theseus an experiment in operating system structure and state management.pdf"
+      ],
+      "replay_path": "2020 Theseus an experiment in operating system structure and state management.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "17367171dffb27b840a3c6aac0796902e95c3e2253439ef93eb8562dcf120940",
+      "pdf_bytes": 1030347,
+      "source_paths": [
+        "tmp/research/2017 GFS A Graph-based File System Enhanced with Semantic Features.pdf"
+      ],
+      "replay_path": "2017 GFS A Graph-based File System Enhanced with Semantic Features.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "17ba8878da014904060dd6a24e376196a3338f21ba16f16bacff638cf181e619",
+      "pdf_bytes": 5395807,
+      "source_paths": [
+        "tmp/research/2017 Relationships of First Principles of Instruction and Student Mastery A MOOC on How to Recognize Plagiarism.pdf"
+      ],
+      "replay_path": "2017 Relationships of First Principles of Instruction and Student Mastery A MOOC on How to Recognize Plagiarism.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1869312217447bb4964944a7313ef85b77d7cd35e0332b18052bcb530921d246",
+      "pdf_bytes": 1119658,
+      "source_paths": [
+        "tmp/research/2010 The Life and Times of Files and Information A Study of Desktop Provenance.pdf"
+      ],
+      "replay_path": "2010 The Life and Times of Files and Information A Study of Desktop Provenance.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1940abfbed1fb0bb3674bec614534e8d462382f3003b986184fb861750504986",
+      "pdf_bytes": 486940,
+      "source_paths": [
+        "tmp/research/2014 MICA A holistic approach to fast in-memory key-value storage.pdf"
+      ],
+      "replay_path": "2014 MICA A holistic approach to fast in-memory key-value storage.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1a67da09a8bd5ba9a3577176e30aa2fbd88534e6baf0bc31522b4999f643d2a1",
+      "pdf_bytes": 165614,
+      "source_paths": [
+        "tmp/research/2015 Hidden Technical Debt in Machine Learning Systems.pdf"
+      ],
+      "replay_path": "2015 Hidden Technical Debt in Machine Learning Systems.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1a737b2b47d1d4118257bc2792b7b151db8d944606c43204d48384e28a622001",
+      "pdf_bytes": 1811033,
+      "source_paths": [
+        "tmp/research/2017 TC-Release++ An Efficient Timestamp-Based Coherence Protocol for Many-Core Architectures.pdf"
+      ],
+      "replay_path": "2017 TC-Release++ An Efficient Timestamp-Based Coherence Protocol for Many-Core Architectures.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1aa75db70a3b8358af93f6845f6097883ce9a034b31fe84364019228434a98d9",
+      "pdf_bytes": 177738,
+      "source_paths": [
+        "tmp/research/2016 How to Make an Academic Poster.pdf"
+      ],
+      "replay_path": "2016 How to Make an Academic Poster.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1b1fc7136408b42ae598d91ac7ebc861de0f857e1317f300e1f9f1e7d3382cac",
+      "pdf_bytes": 780523,
+      "source_paths": [
+        "tmp/research/2011 HyPer A Hybrid OLTP and OLAP Main Memory Database System Based on Virtual Memory Snapshots.pdf"
+      ],
+      "replay_path": "2011 HyPer A Hybrid OLTP and OLAP Main Memory Database System Based on Virtual Memory Snapshots.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1b249130e8d08025828b40630d7666744b1f1335f358b7ee7a3e500940aa09d8",
+      "pdf_bytes": 1648180,
+      "source_paths": [
+        "tmp/research/2602.20507v1.pdf"
+      ],
+      "replay_path": "2602.20507v1.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1b520b77beeb1f1974ab1cc034b8c0ce67274932f48e23331d2e0a76ed4b30f1",
+      "pdf_bytes": 1234070,
+      "source_paths": [
+        "tmp/research/1988 The Cedar File System.pdf"
+      ],
+      "replay_path": "1988 The Cedar File System.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1b632cef42b034d9fde238613dcb58b5851cb8f4f60dca184c10e0403e4a533f",
+      "pdf_bytes": 121226,
+      "source_paths": [
+        "tmp/research/2013 Online Academic-integrity Mastery Training May Improve Students' Awareness of and Attitudes toward Plagiarism.pdf"
+      ],
+      "replay_path": "2013 Online Academic-integrity Mastery Training May Improve Students' Awareness of and Attitudes toward Plagiarism.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1bb4b7996442902a9c662525271a638558718a928049d1e34d1aa312a37c20e1",
+      "pdf_bytes": 376279,
+      "source_paths": [
+        "tmp/research/2016 A Semantic Search Engine for Indexing and Retrieval of Relevant Text Documents.pdf"
+      ],
+      "replay_path": "2016 A Semantic Search Engine for Indexing and Retrieval of Relevant Text Documents.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1c74125f5c575005bd434379e73726b06fec955658681db459957464d257349a",
+      "pdf_bytes": 652322,
+      "source_paths": [
+        "tmp/research/2016 Flamingo Enabling Evolvable HDD-based Near-Line Storage.pdf"
+      ],
+      "replay_path": "2016 Flamingo Enabling Evolvable HDD-based Near-Line Storage.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1cf4fcaa466e9ba497f3de3d021cc22cf8296252b6393653ea85ed9fab0752b5",
+      "pdf_bytes": 2193420,
+      "source_paths": [
+        "tmp/research/2018 Exploring New Metaphors for a Networked World through the File Biography.pdf"
+      ],
+      "replay_path": "2018 Exploring New Metaphors for a Networked World through the File Biography.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1d6ca680571a817b078494f084eea92e2b88a0f18efab6b5d72290eaf8a91adc",
+      "pdf_bytes": 4945853,
+      "source_paths": [
+        "tmp/research/Exporting Storage Systems in a Scalable Manner with pNFS.pdf"
+      ],
+      "replay_path": "Exporting Storage Systems in a Scalable Manner with pNFS.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1dd3ebc778b4b8e773fbebd11e9b735c8fef8276f8e527e5be3ceba12f12cd1e",
+      "pdf_bytes": 463772,
+      "source_paths": [
+        "tmp/research/2013 Beyond file systems understanding the nature of places where people store their data.pdf"
+      ],
+      "replay_path": "2013 Beyond file systems understanding the nature of places where people store their data.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1de109bf09c0d98451c715b417540c2a823d089aed7c1e0c98d34cb9812158dc",
+      "pdf_bytes": 1796151,
+      "source_paths": [
+        "tmp/research/2014 Overcoming data locality An in-memory runtime file system with.pdf"
+      ],
+      "replay_path": "2014 Overcoming data locality An in-memory runtime file system with.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1df6559905ba35e85c5afc7a558e9e3805df41955d12c2efaf0bf981bed097d7",
+      "pdf_bytes": 874245,
+      "source_paths": [
+        "tmp/research/2014 Replicated Data Type Specification, Verification, Optimality.pdf"
+      ],
+      "replay_path": "2014 Replicated Data Type Specification, Verification, Optimality.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1e0fdbcb9afb9bd44036c16bca7948b6a3914c78a87f65d980dcae517e741290",
+      "pdf_bytes": 367414,
+      "source_paths": [
+        "tmp/research/2016 Addressing plagiarism in online programmes at a health sciences university a case study.pdf"
+      ],
+      "replay_path": "2016 Addressing plagiarism in online programmes at a health sciences university a case study.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1ea0c9b337ab634f20b5ed7c0c8396cd42b8937cef84a269864d31e15f182f35",
+      "pdf_bytes": 413781,
+      "source_paths": [
+        "tmp/research/2017 Everything you always wanted to know about multicore graph processing but were afraid to ask.pdf"
+      ],
+      "replay_path": "2017 Everything you always wanted to know about multicore graph processing but were afraid to ask.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1eb147d01d0ef875f6c9e8727b28851fc2d0405dae29d45424c45bcc8506cf67",
+      "pdf_bytes": 217296,
+      "source_paths": [
+        "tmp/research/2017 The Effectiveness of Teaching-Learning Process in Online Education as Perceived by University Faculty and Instructional Technology Professionals.pdf"
+      ],
+      "replay_path": "2017 The Effectiveness of Teaching-Learning Process in Online Education as Perceived by University Faculty and Instructional Technology Professionals.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1ec2975e589745cef2348b0202c3749f52c5d13d6de3aceb410c221bf549b13c",
+      "pdf_bytes": 4120227,
+      "source_paths": [
+        "tmp/research/2019 Extension Framework for File Systems in User Space.pdf"
+      ],
+      "replay_path": "2019 Extension Framework for File Systems in User Space.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1ed9e0b39882c3f03c9c64770cc51b76a24af2489d4eb40684d16ab467960410",
+      "pdf_bytes": 343084,
+      "source_paths": [
+        "tmp/research/2019 Universal and Dynamic Locally Repairable Codes with Maximal Recoverability via Sum-Rank Codes.pdf"
+      ],
+      "replay_path": "2019 Universal and Dynamic Locally Repairable Codes with Maximal Recoverability via Sum-Rank Codes.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1f1c9c81290b8dadfbd98ca410e3adb8b6a98d2eec86b696e34f3d4cad4e55b8",
+      "pdf_bytes": 1378405,
+      "source_paths": [
+        "tmp/research/1988 Accommodating individual differences in searching a hierarchical file system.pdf"
+      ],
+      "replay_path": "1988 Accommodating individual differences in searching a hierarchical file system.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1fcf459da524d7483d491a43df7b96a72cbf3238dbe100bd29a1b8d63754d881",
+      "pdf_bytes": 634905,
+      "source_paths": [
+        "tmp/research/2015 ThyNVM Enabling Software-Transparent Crash Consistency in Persistent Memory Systems.pdf"
+      ],
+      "replay_path": "2015 ThyNVM Enabling Software-Transparent Crash Consistency in Persistent Memory Systems.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "1ffdfee656f05a9ae27282e371ef16ee9fe6a93b0b5da092e712e9356740f1bb",
+      "pdf_bytes": 221513,
+      "source_paths": [
+        "tmp/research/2017 Perceptual Comparison of Source-Code Plagiarism within Students from UK China and South Cyprus Higher Education Institutions.pdf"
+      ],
+      "replay_path": "2017 Perceptual Comparison of Source-Code Plagiarism within Students from UK China and South Cyprus Higher Education Institutions.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "20b1c8d8b7ed39c7e0d74d3aed7e2f103781582fb7f4076cd5e46d0e3175533d",
+      "pdf_bytes": 1029127,
+      "source_paths": [
+        "tmp/research/1974 Formal Requirements for Virtualizable Third Generation Architectures.pdf"
+      ],
+      "replay_path": "1974 Formal Requirements for Virtualizable Third Generation Architectures.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "20d81578ea4ec403724b01a561a0655c37ee2097a8c52abd05a5aaad191a198c",
+      "pdf_bytes": 608865,
+      "source_paths": [
+        "tmp/research/2016 Fast and Failure Consistent Updates of Application Data in Non-Volatile Main Memory File System.pdf"
+      ],
+      "replay_path": "2016 Fast and Failure Consistent Updates of Application Data in Non-Volatile Main Memory File System.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "20e00f6f24309f67206426046aba152c5bf1cdbefd5d1302a2d5c986415bdbe4",
+      "pdf_bytes": 154301,
+      "source_paths": [
+        "tmp/research/2017 Exploring the Design Space of Metadata-Focused File Management Systems.pdf"
+      ],
+      "replay_path": "2017 Exploring the Design Space of Metadata-Focused File Management Systems.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "218668d7c64a50173eaea442b98fbcbcda13f1e540c3b477b59f52e3056f32e9",
+      "pdf_bytes": 1400792,
+      "source_paths": [
+        "tmp/research/nsdi17-fouladi.pdf"
+      ],
+      "replay_path": "nsdi17-fouladi.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "21c01ac92b3df957260cf264ebc90cb5d8d204487af3a9ed7a581c13bb735919",
+      "pdf_bytes": 9553114,
+      "source_paths": [
+        "tmp/research/2015 Search Engines Information Retrieval in Practice.pdf"
+      ],
+      "replay_path": "2015 Search Engines Information Retrieval in Practice.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "224772ece2765c1db79d2bcb9be526b9641ea12ae4c9e38d6d4e05e626534c78",
+      "pdf_bytes": 1634147,
+      "source_paths": [
+        "tmp/research/2020 SafetyPin Encrypted Backups with Human-Memorable Secrets.pdf"
+      ],
+      "replay_path": "2020 SafetyPin Encrypted Backups with Human-Memorable Secrets.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "22891f2efb6e748c241823687dca0bd184197853c9ea24df6ae2014746968bea",
+      "pdf_bytes": 638859,
+      "source_paths": [
+        "tmp/research/2017 CacheZoom How SGX Amplifies the Power of Cache Attacks.pdf"
+      ],
+      "replay_path": "2017 CacheZoom How SGX Amplifies the Power of Cache Attacks.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "22afdc0d9035b04bc11702c2530d02cd43b6801f13994e378a2350d1da8436fb",
+      "pdf_bytes": 1696316,
+      "source_paths": [
+        "tmp/research/2017 SlimDB A Space-Efficient Key-Value Storage Engine for Semi-Sorted Data.pdf"
+      ],
+      "replay_path": "2017 SlimDB A Space-Efficient Key-Value Storage Engine for Semi-Sorted Data.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2332a27f3098a5aa28c91e3829fb75aa9eafef3ff7a9418e7fd7ee9746c16917",
+      "pdf_bytes": 422465,
+      "source_paths": [
+        "tmp/research/Hardware Scheduler for RT.pdf"
+      ],
+      "replay_path": "Hardware Scheduler for RT.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2421e970ac12dc158e5d8d9049856cb54dedef98e7a1b34aa6ac595d0ea25ebf",
+      "pdf_bytes": 650554,
+      "source_paths": [
+        "tmp/research/2018 Unity Unified Memory and File Space.pdf"
+      ],
+      "replay_path": "2018 Unity Unified Memory and File Space.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "24245238c10c890a0bb21c3f20d0327076b4d126d2e5741c4564682b323705da",
+      "pdf_bytes": 1273811,
+      "source_paths": [
+        "tmp/research/2017 Can Online Delivery Increase Access to Education.pdf"
+      ],
+      "replay_path": "2017 Can Online Delivery Increase Access to Education.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "251a84d3a83fe2eb2ca5fa009169dd4adf6cb0e53c527d24293e6610a13dbbec",
+      "pdf_bytes": 563964,
+      "source_paths": [
+        "tmp/research/2017 VennTags A File Management System based on Overlapping Sets of Tags.pdf"
+      ],
+      "replay_path": "2017 VennTags A File Management System based on Overlapping Sets of Tags.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2541822c0465d3ecb9822898cb9757d38137aeffddc98566639dabc63e1f037b",
+      "pdf_bytes": 929856,
+      "source_paths": [
+        "tmp/research/2019 The Computing Landscape of the 21st Century.pdf"
+      ],
+      "replay_path": "2019 The Computing Landscape of the 21st Century.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "257564d735450fe15a7e977b63d189ca607e6753c1cb9b4b950656402210af4a",
+      "pdf_bytes": 846700,
+      "source_paths": [
+        "tmp/research/dipc-eurosys17.pdf"
+      ],
+      "replay_path": "dipc-eurosys17.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "267a676ecf034576a43dae4f773d169d9fcbed9275ee15287ab778b7bbf68f3f",
+      "pdf_bytes": 416088,
+      "source_paths": [
+        "tmp/research/2603.28788v2.pdf"
+      ],
+      "replay_path": "2603.28788v2.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2719b98e0f7f0aa50f5aef8f8daa6ca99d9d2fce3cce8b5b7142d6f43147189b",
+      "pdf_bytes": 255229,
+      "source_paths": [
+        "tmp/research/Tiny Task.pdf"
+      ],
+      "replay_path": "Tiny Task.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "278a32fb0c3d154d2b88c4dede7544b8742b8658baa072c1275d60dc60222adb",
+      "pdf_bytes": 768677,
+      "source_paths": [
+        "tmp/research/2018 Orca Differential Bug Localization in Large-Scale Services.pdf"
+      ],
+      "replay_path": "2018 Orca Differential Bug Localization in Large-Scale Services.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "27aa3448733c5d539e6b45caab506a65b171bd13f7d9b7a8ea6924d53ac41201",
+      "pdf_bytes": 419665,
+      "source_paths": [
+        "tmp/research/2019 Performance and Protection in the ZoFS User-space NVM File System.pdf"
+      ],
+      "replay_path": "2019 Performance and Protection in the ZoFS User-space NVM File System.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "280cc821d5a76ff60b09e9d0ec4c549d0c19034a44a928152723e20280394033",
+      "pdf_bytes": 2192909,
+      "source_paths": [
+        "tmp/research/2018 Programming and Proving with Distributed Protocols.pdf"
+      ],
+      "replay_path": "2018 Programming and Proving with Distributed Protocols.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "285e71bf56470620ff6080be39a416ea5de0ec855750983f50471712226b1d6a",
+      "pdf_bytes": 992098,
+      "source_paths": [
+        "tmp/research/1985 Distributed Snapshots Determining Global State of Distributed Systems.pdf"
+      ],
+      "replay_path": "1985 Distributed Snapshots Determining Global State of Distributed Systems.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "28f86bd08d8fa3c042b6688ca738526fdf5072f81d0bf5707d3cbb6b7625a735",
+      "pdf_bytes": 2548752,
+      "source_paths": [
+        "tmp/research/2018 Glass A New Media for a New Era.pdf"
+      ],
+      "replay_path": "2018 Glass A New Media for a New Era.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "28ff28f2fabc33fb589a44b00119a620fde278a30b07ba76879c34f880383b32",
+      "pdf_bytes": 307442,
+      "source_paths": [
+        "tmp/research/2015 A Scalable Distributed Graph Partitioner.pdf"
+      ],
+      "replay_path": "2015 A Scalable Distributed Graph Partitioner.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "293dc0aa69259a47ee7020327c4aac2502073e7ce5bf0abaa8a7229a2b1f4517",
+      "pdf_bytes": 790410,
+      "source_paths": [
+        "tmp/research/2017 Drizzle Fast and Adaptable Stream Processing at Scale.pdf"
+      ],
+      "replay_path": "2017 Drizzle Fast and Adaptable Stream Processing at Scale.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "297bd476e7fb56a91984383dc13404a1fb371654078e1d148636a0d9c054fbd0",
+      "pdf_bytes": 917911,
+      "source_paths": [
+        "tmp/research/2014 I Saw You Cheating.pdf"
+      ],
+      "replay_path": "2014 I Saw You Cheating.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "29a3da6ff7459dfc6236b70b0706182fd014e9add85e280bd6a7adff6892ba43",
+      "pdf_bytes": 714936,
+      "source_paths": [
+        "tmp/research/2019 3D-based Video Recognition Acceleration by Leveraging Temporal Locality.pdf"
+      ],
+      "replay_path": "2019 3D-based Video Recognition Acceleration by Leveraging Temporal Locality.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "29bf71b230d3e10f39e2716fe56bbe632d04003a07d9ca3fcdb939f12126c55e",
+      "pdf_bytes": 2617332,
+      "source_paths": [
+        "tmp/research/IJNGCVol4No2.pdf"
+      ],
+      "replay_path": "IJNGCVol4No2.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2a55c6ce3abbf7d5f37e39464a0da1021a9dfa4a86e499442e157c1deba0a807",
+      "pdf_bytes": 1236016,
+      "source_paths": [
+        "tmp/research/2020 hXDP Efficient Software Packet Processing on FPGA NICs.pdf"
+      ],
+      "replay_path": "2020 hXDP Efficient Software Packet Processing on FPGA NICs.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2a70f476e5dd22c464637267c29034f122f51837ff874d265babec7fbdaec803",
+      "pdf_bytes": 197808,
+      "source_paths": [
+        "tmp/research/hotcloud16_hendrickson.pdf"
+      ],
+      "replay_path": "hotcloud16_hendrickson.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2a95688e4fa664a9d2b53361b15121a8af4c7fa10e198263fccaca91dbb18a9f",
+      "pdf_bytes": 5241364,
+      "source_paths": [
+        "tmp/research/2019 360 Semantic File System Augmented Directory Navigation for Nonhierarchical Retrieval of Files.pdf"
+      ],
+      "replay_path": "2019 360 Semantic File System Augmented Directory Navigation for Nonhierarchical Retrieval of Files.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2b629d352d0aaf5036a7d5457f4af5267fcb1b92d92b2279b0695fa35e98d647",
+      "pdf_bytes": 759969,
+      "source_paths": [
+        "tmp/research/2018 Bounded Data Races in Space and Time.pdf"
+      ],
+      "replay_path": "2018 Bounded Data Races in Space and Time.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2bd6bfe553896e56004c7b49cf4acecc1e3a5d359379a3e0aa5aa57d2cfc1614",
+      "pdf_bytes": 520951,
+      "source_paths": [
+        "tmp/research/2017 MERCURY a Transparent Guided IO Framework.pdf"
+      ],
+      "replay_path": "2017 MERCURY a Transparent Guided IO Framework.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2c58c41578aeeb08de06e75c4e953466c7c437330db9ca716e889a7b1c848fd5",
+      "pdf_bytes": 122462,
+      "source_paths": [
+        "tmp/research/2003 Too Many Hierarchies The Daily Struggle for Control of the Workspace.pdf"
+      ],
+      "replay_path": "2003 Too Many Hierarchies The Daily Struggle for Control of the Workspace.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2df0aa3a26fbd9545d5575f45f9dff885deb4fa32f2a498ad8ae8ae32301cfaf",
+      "pdf_bytes": 517854,
+      "source_paths": [
+        "tmp/research/2016 A Study of Modern Linux API Usage and Compatibility What to Support When You are Supporting.pdf"
+      ],
+      "replay_path": "2016 A Study of Modern Linux API Usage and Compatibility What to Support When You are Supporting.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2df4be4daf58c4a9bc8ef5e574a40a0c3bec8a3730c5e9b959ad42556654cc59",
+      "pdf_bytes": 6295046,
+      "source_paths": [
+        "tmp/research/2013 thesis.pdf"
+      ],
+      "replay_path": "2013 thesis.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "2f33c8104a02fb59e4ee7e8823e343d833ea026823802cf999ac6916a2c52fc1",
+      "pdf_bytes": 9008458,
+      "source_paths": [
+        "tmp/research/2017 Strata A Cross Media File System - SOSP.pdf"
+      ],
+      "replay_path": "2017 Strata A Cross Media File System - SOSP.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "30b2d2c09282e60620a6ad15ad19ec9551876222fa414e74be5d4a9bd61d50af",
+      "pdf_bytes": 151433,
+      "source_paths": [
+        "tmp/research/2015 Can Serious Games Prevent Plagarism.pdf"
+      ],
+      "replay_path": "2015 Can Serious Games Prevent Plagarism.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "310ab3d1a35cfd1fb0322d0845169c339a9a3dea2cad1f10490ce6e5b3b0e059",
+      "pdf_bytes": 2269826,
+      "source_paths": [
+        "tmp/research/2017 ffwd delegation slides.pdf"
+      ],
+      "replay_path": "2017 ffwd delegation slides.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3149f11633b692286bbe7c4b27e4ca7a5e3947fb5099ff60d07927eeb1ab26aa",
+      "pdf_bytes": 515167,
+      "source_paths": [
+        "tmp/research/2017 Ground a Data Context Service.pdf"
+      ],
+      "replay_path": "2017 Ground a Data Context Service.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "315ab9a86ef10bbb0c503ed5923f55a60780d24f7979ae1f2cee21f239707112",
+      "pdf_bytes": 445999,
+      "source_paths": [
+        "tmp/research/2017 The use frequency of 10 different methods for preventing and detecting academic dishonesty and the factors influencing their use.pdf"
+      ],
+      "replay_path": "2017 The use frequency of 10 different methods for preventing and detecting academic dishonesty and the factors influencing their use.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "316283f48cbcb1dc3ab45fcfb964952f16d741083839a970b855ef419f2f6ca0",
+      "pdf_bytes": 1875875,
+      "source_paths": [
+        "tmp/research/2017 WASTK A Weighted Abstract Syntax Tee Kernel Method for Source Code Plagiarism Detection.pdf"
+      ],
+      "replay_path": "2017 WASTK A Weighted Abstract Syntax Tee Kernel Method for Source Code Plagiarism Detection.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "31dd3983871c1a47b3e3395786d7035a9ff88fe2b3dd15d762d58796496ecd5a",
+      "pdf_bytes": 922824,
+      "source_paths": [
+        "tmp/research/2018 Redesigning LSM s for Nonvolatile Memory with NovelLSM.pdf"
+      ],
+      "replay_path": "2018 Redesigning LSM s for Nonvolatile Memory with NovelLSM.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "31e12ad02b25dfc0296bbaa577c4dd46cee8bf3ae4e4db51aaa5d557a794abfb",
+      "pdf_bytes": 856804,
+      "source_paths": [
+        "tmp/research/2020 Serving DNNs like Clockwork Performance Predictability from the Bottom Up.pdf"
+      ],
+      "replay_path": "2020 Serving DNNs like Clockwork Performance Predictability from the Bottom Up.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "324940ccb3621c2dce4d0730edafe2208b36fd60e638ee4f22437335b3095b9c",
+      "pdf_bytes": 194155,
+      "source_paths": [
+        "tmp/research/2019 Factors hindering shared files retrieval.pdf"
+      ],
+      "replay_path": "2019 Factors hindering shared files retrieval.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "329111b73e0d26ededd94996c80593c794d999a452f9514adbbb1c2925a0065f",
+      "pdf_bytes": 432047,
+      "source_paths": [
+        "tmp/research/2011 Self-Improving Algorithms.pdf"
+      ],
+      "replay_path": "2011 Self-Improving Algorithms.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "32ca48eb4b963b9bf33d2362b145d772e5dedfcc0971f1164bf8a4234d39e978",
+      "pdf_bytes": 610636,
+      "source_paths": [
+        "tmp/research/2016 Stuff I've seen a system for personal information retrieval and re-use.pdf"
+      ],
+      "replay_path": "2016 Stuff I've seen a system for personal information retrieval and re-use.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "334950a6eebf276bb42bb677a9c522cc434a7d626fd74b1ec535495c3eaa89f6",
+      "pdf_bytes": 919250,
+      "source_paths": [
+        "tmp/research/2017 Towards O(1) Memory - Swift - HotOS 17.pdf"
+      ],
+      "replay_path": "2017 Towards O(1) Memory - Swift - HotOS 17.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "339c802d148559555dba578410d588da97de9b625676e1dc3fd3523c04cf0179",
+      "pdf_bytes": 161170,
+      "source_paths": [
+        "tmp/research/2009 The cheating culture A global societal phenomenon.pdf"
+      ],
+      "replay_path": "2009 The cheating culture A global societal phenomenon.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "341e5429c7c2b53f499d3051488e513dfb7291dd7151a5630c097c7043012ffd",
+      "pdf_bytes": 948196,
+      "source_paths": [
+        "tmp/research/1997 The availability of crumbling wall quorum systems.pdf"
+      ],
+      "replay_path": "1997 The availability of crumbling wall quorum systems.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "343f6e0b1c7a97513e7912187e70fbc19c9a4be63b6df2e2b8e07190c0888f06",
+      "pdf_bytes": 313595,
+      "source_paths": [
+        "tmp/research/2016 In Search of a Scalable File System State-of-the-art File System Review and Map view of new Scalable File system.pdf"
+      ],
+      "replay_path": "2016 In Search of a Scalable File System State-of-the-art File System Review and Map view of new Scalable File system.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "34f17b4ca986e7cfaac10221c8799ee0a28b8520eed3ca7942fe7dabe287c718",
+      "pdf_bytes": 212847,
+      "source_paths": [
+        "tmp/research/2018 Hoarding and Minimalism Tendencies in Digital Data Preservation.pdf"
+      ],
+      "replay_path": "2018 Hoarding and Minimalism Tendencies in Digital Data Preservation.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "35ffa34f59085d1647e813d0a41996bb1100119551f072f49dec95de3ebc4b49",
+      "pdf_bytes": 947995,
+      "source_paths": [
+        "tmp/research/icer-2-nrk.pdf"
+      ],
+      "replay_path": "icer-2-nrk.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "36adc53f44dbbdc2dd88563518ca0f05f2e088cb5ef8959cae734004d745c0f9",
+      "pdf_bytes": 451291,
+      "source_paths": [
+        "tmp/research/2017 HopsFS Scaling Hierarchical File System Metadata Using NewSQL Databases.pdf"
+      ],
+      "replay_path": "2017 HopsFS Scaling Hierarchical File System Metadata Using NewSQL Databases.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "373cb14013e1dceb6124f912356a3e7195e562f3ab335cc759d86593365bf953",
+      "pdf_bytes": 705716,
+      "source_paths": [
+        "tmp/research/2020 DORY An Encrypted Search System with Distributed Trust.pdf"
+      ],
+      "replay_path": "2020 DORY An Encrypted Search System with Distributed Trust.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "37ee2f2d80c0d124661f778ec328d907d8f6a1d6543385778c1745f85168650e",
+      "pdf_bytes": 353846,
+      "source_paths": [
+        "tmp/research/p18-Lepers.pdf"
+      ],
+      "replay_path": "p18-Lepers.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "384af10052d4d3875bc0af210d8edea8cf975e5a065dd61cdd93663c63c9a16e",
+      "pdf_bytes": 406067,
+      "source_paths": [
+        "tmp/research/2603.08993v1.pdf"
+      ],
+      "replay_path": "2603.08993v1.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "38a68e15c6a42c06c479cb47191d0b3c0fe8b604ee874ba69d7393f510fb7282",
+      "pdf_bytes": 905778,
+      "source_paths": [
+        "tmp/research/2006 Plagiarism A Survey.pdf"
+      ],
+      "replay_path": "2006 Plagiarism A Survey.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3927e4c2c443b130b3d933d8da09417e4f26c4f16f5536edad5b74eb363e315c",
+      "pdf_bytes": 3637915,
+      "source_paths": [
+        "tmp/research/2016 BigchainDB A Scalable Blockchain Database.pdf"
+      ],
+      "replay_path": "2016 BigchainDB A Scalable Blockchain Database.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "396fe097db9c71c645b7e1faae5640b32f3a4cd606a5b262fe6cbe360d35e499",
+      "pdf_bytes": 591747,
+      "source_paths": [
+        "tmp/research/1812.00276v1.pdf"
+      ],
+      "replay_path": "1812.00276v1.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "39fdf18efd1d7d0ed019ca6409865c3ed5f14e064294a65d181874cbe598b774",
+      "pdf_bytes": 218004,
+      "source_paths": [
+        "tmp/research/2019 A Generalised Solution to Distributed Consensus.pdf"
+      ],
+      "replay_path": "2019 A Generalised Solution to Distributed Consensus.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3aaf8117cd82092f4bd845e153b905791d0d80927ae45ed23f2cfb1f2151c1ca",
+      "pdf_bytes": 2111677,
+      "source_paths": [
+        "tmp/research/2011 SILT A Memory-Efficient High-Performance Key-Value Store.pdf"
+      ],
+      "replay_path": "2011 SILT A Memory-Efficient High-Performance Key-Value Store.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3ae864e1e0a485cd032c894a40a4b5bf9ad7ad51c6a28add362125c0dabac420",
+      "pdf_bytes": 1240928,
+      "source_paths": [
+        "tmp/research/2019 Dynamic Task-Based intermittent Execution for Energy-Harvesting Devices.pdf"
+      ],
+      "replay_path": "2019 Dynamic Task-Based intermittent Execution for Energy-Harvesting Devices.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3b3f63aa57019a861c49b669a089c498257695a65046d46c5551eb68714a9704",
+      "pdf_bytes": 208405,
+      "source_paths": [
+        "tmp/research/2010 ROARS A Scalable Repository for Data Intensive Scientific Computing.pdf"
+      ],
+      "replay_path": "2010 ROARS A Scalable Repository for Data Intensive Scientific Computing.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+      "pdf_bytes": 500135,
+      "source_paths": [
+        "tmp/research/2018 Better Caching with Machine Learning Advice.pdf"
+      ],
+      "replay_path": "2018 Better Caching with Machine Learning Advice.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3ce12123bf2d00e6d6a43e358c311a843f68283e2eab2c9a01f8291aa27b40f9",
+      "pdf_bytes": 1024528,
+      "source_paths": [
+        "tmp/research/2016 Performance Analysis of 64-bit ext4, xfs and btrfs filesystems on the Solid-State disk technology.pdf"
+      ],
+      "replay_path": "2016 Performance Analysis of 64-bit ext4, xfs and btrfs filesystems on the Solid-State disk technology.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3d1142cd52ba6eb26c8544edf80293d108a986a092ff7fec57abdc2a09bd45f9",
+      "pdf_bytes": 431640,
+      "source_paths": [
+        "tmp/research/2010 Efficient Object Storage Journaling in a Distributed Parallel File System.pdf"
+      ],
+      "replay_path": "2010 Efficient Object Storage Journaling in a Distributed Parallel File System.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3d82637fe5c915f0238c9c693716f418ae0cb245846fd0c78241ce61232fa9d2",
+      "pdf_bytes": 455768,
+      "source_paths": [
+        "tmp/research/2012 Lost in Translation Understanding the Possession of Digital Things in the Clud.pdf"
+      ],
+      "replay_path": "2012 Lost in Translation Understanding the Possession of Digital Things in the Clud.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3d83ef2b70aa0e594779118891f0df6c8a3600b6dd877ed73d22daa779dc9aec",
+      "pdf_bytes": 182852,
+      "source_paths": [
+        "tmp/research/2002 Query Routing in the TerraDir Distributed Directory.pdf"
+      ],
+      "replay_path": "2002 Query Routing in the TerraDir Distributed Directory.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3dc9a065b492d430daef70f34878bd0b3f1601707e4b5c064f3bb84347cfabf1",
+      "pdf_bytes": 507635,
+      "source_paths": [
+        "tmp/research/2011 SAP HANA Database Data Management for Modern Business Applications.pdf"
+      ],
+      "replay_path": "2011 SAP HANA Database Data Management for Modern Business Applications.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3dccd96d5027992d37cbc0c0b336514c4dca3fac3d82f39aad9a41af4529f496",
+      "pdf_bytes": 427511,
+      "source_paths": [
+        "tmp/research/2012 A File IO System for Many-core Based Clusters.pdf"
+      ],
+      "replay_path": "2012 A File IO System for Many-core Based Clusters.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3dddc22373078dd29ede0ad0bed0f1f226df2f14e09cb3126863f55b5c8d7926",
+      "pdf_bytes": 644790,
+      "source_paths": [
+        "tmp/research/2016 TAPS A MOSS Extension for Detecting Software Plagiarism at Scale.pdf"
+      ],
+      "replay_path": "2016 TAPS A MOSS Extension for Detecting Software Plagiarism at Scale.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3e7b13a9100e899ef68d8add6600588a138beb32a953a7a791c087646006b972",
+      "pdf_bytes": 1150184,
+      "source_paths": [
+        "tmp/research/2011 Which Version is this Improving the desktop experience within a copy-aware computing ecosystem.pdf"
+      ],
+      "replay_path": "2011 Which Version is this Improving the desktop experience within a copy-aware computing ecosystem.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3eea0a0cd6c357cbd8cd3e29f1e1f9fcafaea94d9b2de98bff18cd9ad7bd02df",
+      "pdf_bytes": 20699385,
+      "source_paths": [
+        "tmp/research/2020 Personal Data Curation in the Cloud Age Individual Differences and Design Opportunities.pdf"
+      ],
+      "replay_path": "2020 Personal Data Curation in the Cloud Age Individual Differences and Design Opportunities.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "3f6eec6e8cfd03cee87508fec2505da01f84208053cc5522875c35e4958f2b21",
+      "pdf_bytes": 165787,
+      "source_paths": [
+        "tmp/research/2015 Transaction Local Aliasing in Storage Class Memory.pdf"
+      ],
+      "replay_path": "2015 Transaction Local Aliasing in Storage Class Memory.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "40a07cd2fee7f3cb240b8a6719007cf801bbfc315dbbf117735d980bb2365989",
+      "pdf_bytes": 810249,
+      "source_paths": [
+        "tmp/research/2019 COMET A Distributed Metadata Service for Federated Cloud Infrastructures.pdf"
+      ],
+      "replay_path": "2019 COMET A Distributed Metadata Service for Federated Cloud Infrastructures.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "41c77cb6bb3b240c0f82ea2604f84dafcd5a442704fcf787d9fa0838687850b9",
+      "pdf_bytes": 811478,
+      "source_paths": [
+        "tmp/research/1971 On the criteria to be used in decomposing systems into modules.pdf"
+      ],
+      "replay_path": "1971 On the criteria to be used in decomposing systems into modules.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "427a844ce20951631c0b54d1c440fe8dc81df4ad8f5c5ee1f57268b1276f7fb9",
+      "pdf_bytes": 853953,
+      "source_paths": [
+        "tmp/research/2013 Popcorn Linux enabling efficient inter-core communication in a Linux-based multikernel operating system.pdf"
+      ],
+      "replay_path": "2013 Popcorn Linux enabling efficient inter-core communication in a Linux-based multikernel operating system.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "439beaba3bc56aefd775a1b4417791017a2b4c1bb397cf6890c7d29a6fa853fc",
+      "pdf_bytes": 877277,
+      "source_paths": [
+        "tmp/research/2017 The Unwritten Contract of Solid State Drives.pdf"
+      ],
+      "replay_path": "2017 The Unwritten Contract of Solid State Drives.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "43a1e928ba691e0968306057252b45b43f58fa2ac32a4c2ece99d43dafb95aa1",
+      "pdf_bytes": 1515189,
+      "source_paths": [
+        "tmp/research/2018 Geriatrix Aging what you see and what you don't see.  A file system aging approach for modern storage systems.pdf"
+      ],
+      "replay_path": "2018 Geriatrix Aging what you see and what you don't see.  A file system aging approach for modern storage systems.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "4581535ebd8c721d665bba3a2da3021e37c89a57694051d3a945f85cfb6d23a2",
+      "pdf_bytes": 3872606,
+      "source_paths": [
+        "tmp/research/vee_2017.pdf"
+      ],
+      "replay_path": "vee_2017.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "46177642ac6d636b68f03fe8e33d7ce135dc4b7736f17fd46dd375676abb8d09",
+      "pdf_bytes": 531850,
+      "source_paths": [
+        "tmp/research/2012 CORFU A Shared Log Design for Flash Clusters.pdf"
+      ],
+      "replay_path": "2012 CORFU A Shared Log Design for Flash Clusters.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "46c7b71713bbcf735b7aef972327063ba4021c5390bcfd0bbc3f03bbb5e468f6",
+      "pdf_bytes": 1652259,
+      "source_paths": [
+        "tmp/research/Performance of a Hardware Scheduler for Many-Core Architecture.pdf"
+      ],
+      "replay_path": "Performance of a Hardware Scheduler for Many-Core Architecture.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "46d56f9f08bc311c3f53b8657b0a566d6efdf92acd0d3ca43d2a776e424322da",
+      "pdf_bytes": 876720,
+      "source_paths": [
+        "tmp/research/2011 Conflict-free Replicated Data Types.pdf"
+      ],
+      "replay_path": "2011 Conflict-free Replicated Data Types.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "47096d8af165cc92d2f9dca0039b136e1e36e071fb89795df8d9b5186d697c40",
+      "pdf_bytes": 196786,
+      "source_paths": [
+        "tmp/research/1996 Technology and Courage.pdf"
+      ],
+      "replay_path": "1996 Technology and Courage.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "47a5959d27a27b35d844b91c37ff3ac586c24637e7d92edaf41087c8547cc8d1",
+      "pdf_bytes": 360367,
+      "source_paths": [
+        "tmp/research/2603.25015v1.pdf"
+      ],
+      "replay_path": "2603.25015v1.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "4845ffa41c8b46a69916fbc26ea17ea9d993e037e32886e2b010c6ddfdddf92d",
+      "pdf_bytes": 528864,
+      "source_paths": [
+        "tmp/research/1995 Finding and Reminding File Organization from the Desktop.pdf"
+      ],
+      "replay_path": "1995 Finding and Reminding File Organization from the Desktop.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "48ea1e7122518c599c96de5ced98415fb89b27349d8cf87c1262958b0e34aa88",
+      "pdf_bytes": 254770,
+      "source_paths": [
+        "tmp/research/2017 Exploring the Use and Creation of a MOOC environment a case study.pdf"
+      ],
+      "replay_path": "2017 Exploring the Use and Creation of a MOOC environment a case study.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "49d246cd14569efd7bac0ff65b25b50bcb0c76b009610cee41cc565c39c0648c",
+      "pdf_bytes": 331657,
+      "source_paths": [
+        "tmp/research/2020 Data Dashboard Exploring Centralization and Customization in Personal Data Curation.pdf"
+      ],
+      "replay_path": "2020 Data Dashboard Exploring Centralization and Customization in Personal Data Curation.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "49efc2fac48fd44cbc64a2e9bb8d26cd1ad47e34c5f1579c191ae1014ec6e56f",
+      "pdf_bytes": 1500015,
+      "source_paths": [
+        "tmp/research/2017 Understanding the massive open online course (MOOC) student experience An examination of attitudes, motivations, and barriers.pdf"
+      ],
+      "replay_path": "2017 Understanding the massive open online course (MOOC) student experience An examination of attitudes, motivations, and barriers.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "4a164468752f0aa0a18a7cb650ee9b2f9200144d281b77dae6152ac7dddd3cd6",
+      "pdf_bytes": 592173,
+      "source_paths": [
+        "tmp/research/2018 BERT Pre-training of Deep Bidirectional Transformers for Language Understanding.pdf"
+      ],
+      "replay_path": "2018 BERT Pre-training of Deep Bidirectional Transformers for Language Understanding.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "4ab4f1d4841deb0143d906598ec619a4ab188c76b9d9bdec65e739eb9b6497cb",
+      "pdf_bytes": 253550,
+      "source_paths": [
+        "tmp/research/2014 HICAMP Bitmap Space-Efficient Updatable Bitmap Index for In-Memory Databases.pdf"
+      ],
+      "replay_path": "2014 HICAMP Bitmap Space-Efficient Updatable Bitmap Index for In-Memory Databases.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "4c20fe8fab1793bd819a0acecda0803a58b85b89808e11c8ff6fe843bd2a7cda",
+      "pdf_bytes": 353978,
+      "source_paths": [
+        "tmp/research/2004 Cheating Cheating Detectors.pdf"
+      ],
+      "replay_path": "2004 Cheating Cheating Detectors.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "4ca2ee2ac91dc637f1f28c6406dfcfdb7369f92fd3f6261ecc67c5dcbe3cb95e",
+      "pdf_bytes": 1347510,
+      "source_paths": [
+        "tmp/research/MIT Cryptographer Silvio Micali - ALGORAND - The Efficient and Democratic Ledger.pdf"
+      ],
+      "replay_path": "MIT Cryptographer Silvio Micali - ALGORAND - The Efficient and Democratic Ledger.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "4d286eb8524d77f9eb24a3ec3a87e93de2b2449fa22c064064b1fa5afc8be3c1",
+      "pdf_bytes": 10334182,
+      "source_paths": [
+        "tmp/research/nsdi17_slides_fouladi.pdf"
+      ],
+      "replay_path": "nsdi17_slides_fouladi.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "4d31f6edfa13672e5d45f6f1537ae077ff2d16eb3fb76bf96ed36759004ff306",
+      "pdf_bytes": 880529,
+      "source_paths": [
+        "tmp/research/2017 The Future of the Semantic Web Prototypes on a Global Distributed Filesystem.pdf"
+      ],
+      "replay_path": "2017 The Future of the Semantic Web Prototypes on a Global Distributed Filesystem.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "4f60754efd05b86301aeab4f7ada36295772e43ccf97362092395b3a2d83441d",
+      "pdf_bytes": 2551808,
+      "source_paths": [
+        "tmp/research/v-cacm88.pdf"
+      ],
+      "replay_path": "v-cacm88.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "5091c600211355d170b89491c488b4cbc4ade9264c46f573e210a120d3cfc089",
+      "pdf_bytes": 218289,
+      "source_paths": [
+        "tmp/research/epistemic_honest.pdf"
+      ],
+      "replay_path": "epistemic_honest.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "51048c28f3651801d16f709ebba478351d07b65ab09e558b7a89578c998f48f3",
+      "pdf_bytes": 330931,
+      "source_paths": [
+        "tmp/research/2017 Learning Scenarios in the Initial Teacher Education Designing a MOOC.pdf"
+      ],
+      "replay_path": "2017 Learning Scenarios in the Initial Teacher Education Designing a MOOC.pdf",
+      "first_stage": 0
+    },
+    {
+      "sha256": "514eea42429e94499acfde28da791fca04ec5ac0f5fb1b6f3395228536d734d4",
+      "pdf_bytes": 4993028,
+      "source_paths": [
+        "tmp/research/2015 Studies-and-Practices-for-Advancement-in-ODE- blended learning 2015.pdf"
+      ],
+      "replay_path": "2015 Studies-and-Practices-for-Advancement-in-ODE- blended learning 2015.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "53fa580229c742d9df9219ee8fc9b54a71106f585c240644a73d8c8d9a7157f6",
+      "pdf_bytes": 1204591,
+      "source_paths": [
+        "tmp/research/2016 SpaceJMP Programming with Multiple Virtual Address Spaces.pdf"
+      ],
+      "replay_path": "2016 SpaceJMP Programming with Multiple Virtual Address Spaces.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5491602f693bd1fcbac6921293a876d2f0c367c952681205b627d1144071c806",
+      "pdf_bytes": 657915,
+      "source_paths": [
+        "tmp/research/2015 Measuring and Maximizing the Effectiveness of Honor Code in Online Courses.pdf"
+      ],
+      "replay_path": "2015 Measuring and Maximizing the Effectiveness of Honor Code in Online Courses.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "55713b57eadb8c70fa31bb3fc86c8df18e4375b8f8f0f7814cc62d2984eaaf83",
+      "pdf_bytes": 1031696,
+      "source_paths": [
+        "tmp/research/2020 Hailstorm Disaggregated Compute and Storage for Distributed LSM-based Databases.pdf"
+      ],
+      "replay_path": "2020 Hailstorm Disaggregated Compute and Storage for Distributed LSM-based Databases.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "55dd62c9550e89f75465e3a7f73e74a2658aaf19a854a7aea0c3e1ffb74520c7",
+      "pdf_bytes": 3284546,
+      "source_paths": [
+        "tmp/research/2019 SplitFS Reducing Software Overhead in File Systems For Persistent Memory.pdf"
+      ],
+      "replay_path": "2019 SplitFS Reducing Software Overhead in File Systems For Persistent Memory.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "56224274de0a600f5c44d5a6773f7f0b3704e2e78ec18973899083528b8035ef",
+      "pdf_bytes": 864816,
+      "source_paths": [
+        "tmp/research/2016 Intermittent Computation without Hardware Support or Programmer Intervention.pdf"
+      ],
+      "replay_path": "2016 Intermittent Computation without Hardware Support or Programmer Intervention.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "56ebde5063fbb9bb2cc29be3b390969361709458d30b102de9da8c78231fdd85",
+      "pdf_bytes": 433144,
+      "source_paths": [
+        "tmp/research/1975 NP-Complete Scheduling Problems.pdf"
+      ],
+      "replay_path": "1975 NP-Complete Scheduling Problems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "57a6e004ab81dc22ca51a85c87e555936c219ab39dd26f1092946acf27c95cbf",
+      "pdf_bytes": 376409,
+      "source_paths": [
+        "tmp/research/2015 Protecting Private Keys against Memory Disclosure Attacks using Hardware Transactional Memory.pdf"
+      ],
+      "replay_path": "2015 Protecting Private Keys against Memory Disclosure Attacks using Hardware Transactional Memory.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5958446f398b02b19eb2f16306841d6a66c6d14a31894583c1babccf8e09e604",
+      "pdf_bytes": 288793,
+      "source_paths": [
+        "tmp/research/2016 RamCrypt Kernel-based Address Space Encryption for User-mode Processes.pdf"
+      ],
+      "replay_path": "2016 RamCrypt Kernel-based Address Space Encryption for User-mode Processes.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5972d85d02904acf428ec9a23bdec8e55bb1af1914d76cf952ec208e99a55b90",
+      "pdf_bytes": 2092497,
+      "source_paths": [
+        "tmp/research/2016 Write-Aware Management of NVM-based Memory Extensions.pdf"
+      ],
+      "replay_path": "2016 Write-Aware Management of NVM-based Memory Extensions.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "59f8517b031d1714f8ea1a24a2e862c12238ba3dd8a0e5b99bf1cfa18caaae78",
+      "pdf_bytes": 610470,
+      "source_paths": [
+        "tmp/research/2017 Scaling a file system to many cores using an operation log - SOSP.pdf"
+      ],
+      "replay_path": "2017 Scaling a file system to many cores using an operation log - SOSP.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5a32f23b64cec50ca4e35e6b980f4e0540e242c13238b717e2d837eb041d37c0",
+      "pdf_bytes": 713279,
+      "source_paths": [
+        "tmp/research/2017 Preventing Keystroke Based Identification in Open Data Sets.pdf"
+      ],
+      "replay_path": "2017 Preventing Keystroke Based Identification in Open Data Sets.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5aa70c58c9121107bddba16b0ede035b528018be08fcf8c7b9e46961c9a4e53c",
+      "pdf_bytes": 236458,
+      "source_paths": [
+        "tmp/research/1970 A Relational Model of Data for Large Shared Data Bank.pdf"
+      ],
+      "replay_path": "1970 A Relational Model of Data for Large Shared Data Bank.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5aea1ad5bbe78dc1bccfe76241e07b6c4deb74d223f8ca0b683447e44a8e1f34",
+      "pdf_bytes": 1375303,
+      "source_paths": [
+        "tmp/research/2017 On the Performance Variation in Modern Storage Stacks.pdf"
+      ],
+      "replay_path": "2017 On the Performance Variation in Modern Storage Stacks.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5be0aa220ec112ca3359f7a5970c5d8bde29ade747d062c0470b68f629fe4252",
+      "pdf_bytes": 1255574,
+      "source_paths": [
+        "tmp/research/2013 Evaluating the Strategic and Leadership Challenges of MOOCs.pdf"
+      ],
+      "replay_path": "2013 Evaluating the Strategic and Leadership Challenges of MOOCs.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5bfe8fe7ef84f6a7587ea2280c36cb33c448bac3f53a5a7a9da34036cda21762",
+      "pdf_bytes": 622184,
+      "source_paths": [
+        "tmp/research/2016 Using Memory-style Storage to Support Fault Tolerance in Data Centers.pdf"
+      ],
+      "replay_path": "2016 Using Memory-style Storage to Support Fault Tolerance in Data Centers.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5c320273da2f40f959aba2503bf146d58713e416ff773f9d986d5d8323c0a320",
+      "pdf_bytes": 2365838,
+      "source_paths": [
+        "tmp/research/2016 NOVA A Log-structured File System for Hybrid Volatile Non-Volatile Main Memories.pdf",
+        "tmp/research/2016 NOVA A Log-structured File System for Hybrid Volatile Non-volatile Main Memories.pdf"
+      ],
+      "replay_path": "2016 NOVA A Log-structured File System for Hybrid Volatile Non-Volatile Main Memories.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5c5d65d9ea0080fd7bd2db5bd1113859f5aa444dbd847234bd8f27331d8f3025",
+      "pdf_bytes": 913684,
+      "source_paths": [
+        "tmp/research/2010 Improving File System Consistency and Durability with Patches and BPFS.pdf"
+      ],
+      "replay_path": "2010 Improving File System Consistency and Durability with Patches and BPFS.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5d251f133bd1602888a1af7f155afd2201a38692480535b70427dea99ce783be",
+      "pdf_bytes": 568877,
+      "source_paths": [
+        "tmp/research/2014 Exploiting Hardware Transactional Memory in Main-Memory Databases.pdf"
+      ],
+      "replay_path": "2014 Exploiting Hardware Transactional Memory in Main-Memory Databases.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5d8971419e15289ccc49f4e1afb790726e37cb70ec9aa51b781f58652f63512b",
+      "pdf_bytes": 638771,
+      "source_paths": [
+        "tmp/research/2014 System Software for Persistent Memory.pdf"
+      ],
+      "replay_path": "2014 System Software for Persistent Memory.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5d8de443e2c0f52b50aa5f3ec567c986bfca22f67cb3960337f1d58ab5ebf94b",
+      "pdf_bytes": 987723,
+      "source_paths": [
+        "tmp/research/2017 Instruction Tables (Agner Fog).pdf"
+      ],
+      "replay_path": "2017 Instruction Tables (Agner Fog).pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5ddd9fb2db4bf89ed0a8bb576126413eb102fe12778d34212dd3f3130680b375",
+      "pdf_bytes": 1990495,
+      "source_paths": [
+        "tmp/research/2016 Energy-sustainable relay node deployment in wireless sensor networks.pdf"
+      ],
+      "replay_path": "2016 Energy-sustainable relay node deployment in wireless sensor networks.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5e9c8c017be6c1edcfe6bafc3aa7b7a728aa97d0464440363e4b5f81da2ef475",
+      "pdf_bytes": 670473,
+      "source_paths": [
+        "tmp/research/2017 HarvOS Efficient Code Instrumentation forTransiently-powered Embedded Sensing.pdf"
+      ],
+      "replay_path": "2017 HarvOS Efficient Code Instrumentation forTransiently-powered Embedded Sensing.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5ed895f5c13f279ef91ea1937f05e09be6e5900302ef2af3709ae838591ca4a2",
+      "pdf_bytes": 2118270,
+      "source_paths": [
+        "tmp/research/2017 Gradescope a Fast, Flexible, and Fair System for Scalable Assessment of Handwritten Work.pdf"
+      ],
+      "replay_path": "2017 Gradescope a Fast, Flexible, and Fair System for Scalable Assessment of Handwritten Work.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5f1893ca948ad0971033fc2ddc43f644a396dd86e4f509c207f0fa50bfe4285a",
+      "pdf_bytes": 197338,
+      "source_paths": [
+        "tmp/research/2016 Implicit Semantic Text Retrieval and Distributed Implementation for Rural Medical Care.pdf"
+      ],
+      "replay_path": "2016 Implicit Semantic Text Retrieval and Distributed Implementation for Rural Medical Care.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "5f8c1102f51b67b7c787e64e7fa86951184438bb94ae9803f20494f58f90b8d3",
+      "pdf_bytes": 174368,
+      "source_paths": [
+        "tmp/research/2004 The Bloomier Filter An Efficient Data Structure for Static Support Lookup Tables.pdf"
+      ],
+      "replay_path": "2004 The Bloomier Filter An Efficient Data Structure for Static Support Lookup Tables.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "608cb0805d82a1029d891d2d2a110cdd59d1bde262db9a79cad42707f7d6b1cc",
+      "pdf_bytes": 6579513,
+      "source_paths": [
+        "tmp/research/2019 Transactional Concurrency Control for Intermittent Energy-Harvesting Computing Systems.pdf"
+      ],
+      "replay_path": "2019 Transactional Concurrency Control for Intermittent Energy-Harvesting Computing Systems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "632908cfd3c04d235158c060c0d628977e31138edf96be830420d3f4947dc96b",
+      "pdf_bytes": 1165571,
+      "source_paths": [
+        "tmp/research/p620-Wang.pdf"
+      ],
+      "replay_path": "p620-Wang.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "63a221898e367b4f980db710b5467be051f5ba6785f7b67834f4f81c07ffd3d2",
+      "pdf_bytes": 1585663,
+      "source_paths": [
+        "tmp/research/2015 More Than You Ever Wanted to Know about Synchronization.pdf"
+      ],
+      "replay_path": "2015 More Than You Ever Wanted to Know about Synchronization.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "640de67ae891336935ff71ae59e11a30161535cddca68303cd79e8387d1a0068",
+      "pdf_bytes": 508069,
+      "source_paths": [
+        "tmp/research/EECS-2013-29.pdf"
+      ],
+      "replay_path": "EECS-2013-29.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "640f56431084876da593c58d80be88af65e5e6f1c38015c564ffaba7df3e30ba",
+      "pdf_bytes": 631205,
+      "source_paths": [
+        "tmp/research/2013 Everything You Always Wanted to Know About Synchronization but Were Afraid to Ask.pdf"
+      ],
+      "replay_path": "2013 Everything You Always Wanted to Know About Synchronization but Were Afraid to Ask.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "6463a286f94c75d6240802638501de4859b4648bc79abb3e9620773365881563",
+      "pdf_bytes": 1553614,
+      "source_paths": [
+        "tmp/research/1993 Interposition Agents Transparently Interposing User Code at the System Interface.pdf"
+      ],
+      "replay_path": "1993 Interposition Agents Transparently Interposing User Code at the System Interface.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "64bf440293ec645c29d19ebefa845b8c58295a1c8fce1aa7fafd02929016a7e3",
+      "pdf_bytes": 818996,
+      "source_paths": [
+        "tmp/research/2015 Challenges of Memory Management on Modern NUMA Systems.pdf"
+      ],
+      "replay_path": "2015 Challenges of Memory Management on Modern NUMA Systems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "64c8ad618b8ab418e413765f36c3f129b8ef2895ef1c48f8415f806befd74284",
+      "pdf_bytes": 2621697,
+      "source_paths": [
+        "tmp/research/1979 Extending the Database Relational Model to Capture More Meaning.pdf"
+      ],
+      "replay_path": "1979 Extending the Database Relational Model to Capture More Meaning.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "650411af3a48267159ec720014fdc4f8ee30c350cc97a5fe98d947884490afa0",
+      "pdf_bytes": 14438085,
+      "source_paths": [
+        "tmp/research/1985 Bulldog A Compiler for VLIW Architectures (Parallel Computing, Reduced-Instruction-Set, Trace Scheduling, Scientific).pdf"
+      ],
+      "replay_path": "1985 Bulldog A Compiler for VLIW Architectures (Parallel Computing, Reduced-Instruction-Set, Trace Scheduling, Scientific).pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "650f47e60f5f767142f0dcd55ab86172b6b627819aaebaeb7a95a1c46081a7cd",
+      "pdf_bytes": 283057,
+      "source_paths": [
+        "tmp/research/2017 Revenue Optimization with Approximate Bid Predictions.pdf"
+      ],
+      "replay_path": "2017 Revenue Optimization with Approximate Bid Predictions.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "66e3681116b9987b33e9b9bfd0c9d59b9bef301bc4c344b4edc1aec227e6dd89",
+      "pdf_bytes": 769395,
+      "source_paths": [
+        "tmp/research/2021 Moderining File System through In-Storage Indexing.pdf"
+      ],
+      "replay_path": "2021 Moderining File System through In-Storage Indexing.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "66e5a7e692740a647f9fff8dfc67bcad521cf22a29f80c1488fcc4011511ae5f",
+      "pdf_bytes": 879660,
+      "source_paths": [
+        "tmp/research/2021 XFUSE An Infrastructure for Running Filesystem Services in User Space.pdf"
+      ],
+      "replay_path": "2021 XFUSE An Infrastructure for Running Filesystem Services in User Space.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "66f557dbfbe39b92d5e55bd9e80a7a124dd1b3cbcf6e4f1c241d1cc1b0a0dc43",
+      "pdf_bytes": 383055,
+      "source_paths": [
+        "tmp/research/2010 Hyperflow A Distributed Control Plane for OpenFlow.pdf"
+      ],
+      "replay_path": "2010 Hyperflow A Distributed Control Plane for OpenFlow.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213",
+      "pdf_bytes": 64150323,
+      "source_paths": [
+        "tmp/research/nsdi18_full_proceedings.pdf"
+      ],
+      "replay_path": "nsdi18_full_proceedings.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "6b984302aeff299f7cccf4bdccdc62cb46ead6a0b5d475c4d9f618a5ce4be9d5",
+      "pdf_bytes": 155473,
+      "source_paths": [
+        "tmp/research/2003 Winnowing Local Algorithms for Document Fingerprinting.pdf"
+      ],
+      "replay_path": "2003 Winnowing Local Algorithms for Document Fingerprinting.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "6ba60f5f4aed768e0368294e61a6e1fb4ef1448fe61233281aac457d008252df",
+      "pdf_bytes": 357226,
+      "source_paths": [
+        "tmp/research/2015 File System-Independent Block Device Support for Storage Class Memory.pdf"
+      ],
+      "replay_path": "2015 File System-Independent Block Device Support for Storage Class Memory.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "6be71251b7453ada24695a21c4f3376d8c0a099d63fa5eb57fa3ace04e8e801b",
+      "pdf_bytes": 6640546,
+      "source_paths": [
+        "tmp/research/IA64-softdevman-vol2.pdf"
+      ],
+      "replay_path": "IA64-softdevman-vol2.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "6bfcfaeafe323fe38389bfc11925a099f198d7a67e3a48cd5d5e4b3a71a0f77e",
+      "pdf_bytes": 78411,
+      "source_paths": [
+        "tmp/research/2016 Modern Main-Memory Database Systems.pdf",
+        "tmp/research/2016 Modern main-memory database systems.pdf"
+      ],
+      "replay_path": "2016 Modern Main-Memory Database Systems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "6cbfda2680cd122e66ae45149eab3e08f87f989bc67a5942a66f7dc4f05a2393",
+      "pdf_bytes": 588569,
+      "source_paths": [
+        "tmp/research/2018 Smithsonian Data Management Best Practices.pdf"
+      ],
+      "replay_path": "2018 Smithsonian Data Management Best Practices.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "6d6bad6a99e033adc375afb7056899ce8b148a49fb5921efc59a784236040b64",
+      "pdf_bytes": 374672,
+      "source_paths": [
+        "tmp/research/2016 Distributed Consensus and Implications of NVM on Database Management Systems.pdf"
+      ],
+      "replay_path": "2016 Distributed Consensus and Implications of NVM on Database Management Systems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "6dd43c3b7247e6b5b4a9f56e7f2feb200a2b34f5825be1f18691987b70f2b6c3",
+      "pdf_bytes": 781179,
+      "source_paths": [
+        "tmp/research/p450-lo.pdf"
+      ],
+      "replay_path": "p450-lo.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "6f1fb8453d689ff2728f7f1d3a46029afac31bff0cde59062d48cd958db40854",
+      "pdf_bytes": 809419,
+      "source_paths": [
+        "tmp/research/2017 Online Academic Integrity An Examination of MBA students behavioral intent of engaging in plagiarism.pdf"
+      ],
+      "replay_path": "2017 Online Academic Integrity An Examination of MBA students behavioral intent of engaging in plagiarism.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "710024e1b4a9d0e6075b698600a7abb0a2738e2d0afe19f8c6d0ca38a2fafdd9",
+      "pdf_bytes": 350639,
+      "source_paths": [
+        "tmp/research/2016 Realizing the Fault-Tolerance Promise of Cloud Storage Using Locks with Intent.pdf"
+      ],
+      "replay_path": "2016 Realizing the Fault-Tolerance Promise of Cloud Storage Using Locks with Intent.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "71be36addfba32c7a3734fbf418185da3892a83ca21205d71e9019eab8233708",
+      "pdf_bytes": 442320,
+      "source_paths": [
+        "tmp/research/2006 Matching with Mismatches and Assorted Applications.pdf"
+      ],
+      "replay_path": "2006 Matching with Mismatches and Assorted Applications.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7204e14294b5aec2015a656dc3f710ba12bf56e5719eab002e508b7e7a82f3e9",
+      "pdf_bytes": 327097,
+      "source_paths": [
+        "tmp/research/2006 Covert and Side Channels due to Processor Architecture.pdf"
+      ],
+      "replay_path": "2006 Covert and Side Channels due to Processor Architecture.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7290c3346f079ef232ffc195a77046a90fcf58346c05d5b5bc36dff27435c8ce",
+      "pdf_bytes": 2142849,
+      "source_paths": [
+        "tmp/research/Turing-1937-Proceedings_of_the_London_Mathematical_Society.pdf"
+      ],
+      "replay_path": "Turing-1937-Proceedings_of_the_London_Mathematical_Society.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "72d781c3ce639e706d4477a4c33a774e9ea64bd81b32e86fe77ea13c2c4990f4",
+      "pdf_bytes": 331728,
+      "source_paths": [
+        "tmp/research/hotcloud16_subramanya.pdf"
+      ],
+      "replay_path": "hotcloud16_subramanya.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "72ec6246ba05ab9946764d2fb1948113b26ed757814be80530932f01baef340b",
+      "pdf_bytes": 322619,
+      "source_paths": [
+        "tmp/research/2013 Using One-Sided RDMA Reads to Build a Fast CPU-Efficient Key-Value Store.pdf"
+      ],
+      "replay_path": "2013 Using One-Sided RDMA Reads to Build a Fast CPU-Efficient Key-Value Store.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "73a47388a8e7fca698777bb18311b96e499ca6b3160e1c8c7acc8d832b41add0",
+      "pdf_bytes": 934027,
+      "source_paths": [
+        "tmp/research/1994 An Overview of the Spring System.pdf"
+      ],
+      "replay_path": "1994 An Overview of the Spring System.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "73ae22d0852ba1e42ae5fb59bbb1aa2afb900c106f3baf2e4261820089b1467e",
+      "pdf_bytes": 1393218,
+      "source_paths": [
+        "tmp/research/2016 FSLRU A Page Cache Algorithm for Mobile Devices with Hybrid Memory Architecture.pdf"
+      ],
+      "replay_path": "2016 FSLRU A Page Cache Algorithm for Mobile Devices with Hybrid Memory Architecture.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7416173b6c05f75109999a79ea3536480ce2795ccbeb69bb757c89bf1cdc0a5a",
+      "pdf_bytes": 5135109,
+      "source_paths": [
+        "tmp/research/Sadjad_Fouladi.pdf"
+      ],
+      "replay_path": "Sadjad_Fouladi.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7447f5e54a171f2ae50d9fc1bbfe9cee93dc72088aa6db04605b9d3d9e1cfd9d",
+      "pdf_bytes": 404007,
+      "source_paths": [
+        "tmp/research/2016 Tucana Design and Implementation of a Fast and Efficient Scale-up Key-value Store.pdf"
+      ],
+      "replay_path": "2016 Tucana Design and Implementation of a Fast and Efficient Scale-up Key-value Store.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "745f6db18e0e033d9b3bda2daf7d8e72e3b9adfb6c8f22fcfa74bc81536621fd",
+      "pdf_bytes": 276665,
+      "source_paths": [
+        "tmp/research/2011 Simultaneous Approximations for Adversarial and Stochastic Online Budgeted Allocation.pdf"
+      ],
+      "replay_path": "2011 Simultaneous Approximations for Adversarial and Stochastic Online Budgeted Allocation.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7514053c0ec1ded7c0d18631c90a50ab55a4a285088ecc418acecda5f496711c",
+      "pdf_bytes": 464860,
+      "source_paths": [
+        "tmp/research/2021 The ubiquitous digital file A review of File Management research.pdf"
+      ],
+      "replay_path": "2021 The ubiquitous digital file A review of File Management research.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7575946887e6e3efbf5d30b3bdfa8423238cfb35d23c2e4dfcf49ceb5e77bb17",
+      "pdf_bytes": 169105,
+      "source_paths": [
+        "tmp/research/2007 Highly Distributed XQuery with DXQ.pdf"
+      ],
+      "replay_path": "2007 Highly Distributed XQuery with DXQ.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "759036e55ef9858fb5cb22fad64fbc7a3fae91d5bc0ddcf7ef7a6fdfc7c0146e",
+      "pdf_bytes": 1158787,
+      "source_paths": [
+        "tmp/research/2016 Playing the numbers game Students as assessors in a MOOC.pdf"
+      ],
+      "replay_path": "2016 Playing the numbers game Students as assessors in a MOOC.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "76c8bb526eb859943e4bf22b6aeb1d2f0008cb4a02acdd7e96358f827d61c204",
+      "pdf_bytes": 1197564,
+      "source_paths": [
+        "tmp/research/2016 GraphMeta A Graph-Based Engine for Managing Large-Scale HPC Rich Metadata.pdf"
+      ],
+      "replay_path": "2016 GraphMeta A Graph-Based Engine for Managing Large-Scale HPC Rich Metadata.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7780a0afd66cba5f8825c636c2584ce9325dca95f2ff4b93ab6d1e146529fdb5",
+      "pdf_bytes": 327470,
+      "source_paths": [
+        "tmp/research/2014 Using Restricted Transactional Memory to Build a Scalable In-Memory Database.pdf"
+      ],
+      "replay_path": "2014 Using Restricted Transactional Memory to Build a Scalable In-Memory Database.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7789716c324b8f7405801b2ae43d64e424fc8f06c871d99962513a1faeba0b8a",
+      "pdf_bytes": 705969,
+      "source_paths": [
+        "tmp/research/2011 Don't Settle for Eventual Scalable Causal Consistency for Wide-Area Storage with COPS.pdf"
+      ],
+      "replay_path": "2011 Don't Settle for Eventual Scalable Causal Consistency for Wide-Area Storage with COPS.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7849acfdb73a6d4f584898de74454a805ec0cee379eed6f7dbee9f4841f196d1",
+      "pdf_bytes": 2175120,
+      "source_paths": [
+        "tmp/research/2603.20531v2.pdf"
+      ],
+      "replay_path": "2603.20531v2.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "79358a7035fb6b59ed72e19cf191d368fb2c63d8c045ec4c3e6f4a95a62e099b",
+      "pdf_bytes": 933142,
+      "source_paths": [
+        "tmp/research/2015 CalvinFS Consistent WAN Replication and Scalable Metadata Management for Distributed File Systems.pdf"
+      ],
+      "replay_path": "2015 CalvinFS Consistent WAN Replication and Scalable Metadata Management for Distributed File Systems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "799ef912e8842d41ac16da80fc8454e5a66a018b202b5ff4dd5f6c5d08c68fc6",
+      "pdf_bytes": 425527,
+      "source_paths": [
+        "tmp/research/2019 Exploiting Intel Optane SSD for Microsoft SQL Server.pdf"
+      ],
+      "replay_path": "2019 Exploiting Intel Optane SSD for Microsoft SQL Server.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "79f4e550ae0ac9c6a70adb922c5fcd37fa6138ee4a7b8df6c0b2be58f406d768",
+      "pdf_bytes": 330082,
+      "source_paths": [
+        "tmp/research/2018 DenseFS A Cache-Compact Filesystem.pdf"
+      ],
+      "replay_path": "2018 DenseFS A Cache-Compact Filesystem.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7adc966fe655a789165e234feeb24fa5acff602a2295b0926f13c3493a2ffa92",
+      "pdf_bytes": 437217,
+      "source_paths": [
+        "tmp/research/2018 Quantifying and reducint execution variance in STM via model driven commit optimization.pdf"
+      ],
+      "replay_path": "2018 Quantifying and reducint execution variance in STM via model driven commit optimization.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7b0a8c1b6aa4a7545b534cf51aa1902871af055a1bdce0cccf44de7b275d404c",
+      "pdf_bytes": 397951,
+      "source_paths": [
+        "tmp/research/07923793.pdf"
+      ],
+      "replay_path": "07923793.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7c083a16a9ca486e9bd0850654d2f8fdfba207bfa418a0352c1d15651e5b98cf",
+      "pdf_bytes": 265505,
+      "source_paths": [
+        "tmp/research/2018 The Ubiquity of Large Graphs and Surprising Challenges of Graph Processing.pdf"
+      ],
+      "replay_path": "2018 The Ubiquity of Large Graphs and Surprising Challenges of Graph Processing.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7cded8f50b5d42f3e548fff4042b21952e23389801ccab254aeb519288593c84",
+      "pdf_bytes": 938501,
+      "source_paths": [
+        "tmp/research/2016 XFabric A Reconfigurable In-Rack Network for Rack-Scale Computers.pdf"
+      ],
+      "replay_path": "2016 XFabric A Reconfigurable In-Rack Network for Rack-Scale Computers.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7ced82fea49e6504147e479c26f5a16cdc3f4537e6e8b658d806cf8beb968e42",
+      "pdf_bytes": 3872720,
+      "source_paths": [
+        "tmp/research/2014 Scalable Multi-Access Flash Store for Big Data Analytics.pdf"
+      ],
+      "replay_path": "2014 Scalable Multi-Access Flash Store for Big Data Analytics.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7e174a5237e470098fce3888037e3b71993498cc1d86aec4185b58855002c42e",
+      "pdf_bytes": 282490,
+      "source_paths": [
+        "tmp/research/2011 NV-Heaps Making Persistent Objects Fast and Safe with Next-Generation, Non-Volatile Memories.pdf"
+      ],
+      "replay_path": "2011 NV-Heaps Making Persistent Objects Fast and Safe with Next-Generation, Non-Volatile Memories.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7e4bc3906efeadb31afc798d0ddc4f2b219131caf09a73cad169c461549fc432",
+      "pdf_bytes": 748329,
+      "source_paths": [
+        "tmp/research/2023 eZNS An Elastic Zoned Namespace for Commodity ZNS SSDs.pdf"
+      ],
+      "replay_path": "2023 eZNS An Elastic Zoned Namespace for Commodity ZNS SSDs.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7e5a7bcd7a3135f5ae2432813a25df3cfde33e3ad52886c05023d66886b9102d",
+      "pdf_bytes": 402846,
+      "source_paths": [
+        "tmp/research/2019 The What’s Next Intermittent Computing Architecture.pdf"
+      ],
+      "replay_path": "2019 The What’s Next Intermittent Computing Architecture.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7e5fd7d706727a7f3daefcadb391f486516b2dc49d1f205d04dfcb0bffe8ed65",
+      "pdf_bytes": 1141851,
+      "source_paths": [
+        "tmp/research/2017 Verifying a high-performance crash-safe file system using a tree specification.pdf"
+      ],
+      "replay_path": "2017 Verifying a high-performance crash-safe file system using a tree specification.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7e702af80a4310f74d0af9542accbcc3d483ca3ac0a67f24d707b947c61f96e0",
+      "pdf_bytes": 187633,
+      "source_paths": [
+        "tmp/research/2013 Ranking and New Database Architectures.pdf"
+      ],
+      "replay_path": "2013 Ranking and New Database Architectures.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7ea1362bd2f27588bb16774d500d8eefbc1dc506fc735ebc709ae8f76305f38f",
+      "pdf_bytes": 424703,
+      "source_paths": [
+        "tmp/research/2017 It's not fair policy discourses and students understandings of plagiarism in a New Zealand university.pdf"
+      ],
+      "replay_path": "2017 It's not fair policy discourses and students understandings of plagiarism in a New Zealand university.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7ea6510f50a8770193f494bb68e2c7912cd6767a0034ede3b97539ecb0648235",
+      "pdf_bytes": 1475541,
+      "source_paths": [
+        "tmp/research/2015 Optimizing Optimistic Concurrency Control for Tree-Structured, Log-Structured Databases.pdf"
+      ],
+      "replay_path": "2015 Optimizing Optimistic Concurrency Control for Tree-Structured, Log-Structured Databases.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7f0648677ed0cababd247c88046e3eecb7c40b0ef2819004adf76faf3a2cffe3",
+      "pdf_bytes": 274654,
+      "source_paths": [
+        "tmp/research/DVMM a Distributed VMM for Supporting Single System Images on Clusters.pdf"
+      ],
+      "replay_path": "DVMM a Distributed VMM for Supporting Single System Images on Clusters.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7f2787ea9da2805ea4b798c1e7b7c0cb51faa5a15e88cf7dcd7babafaacffc7e",
+      "pdf_bytes": 5233297,
+      "source_paths": [
+        "tmp/research/2018 Termination Checking and Task Decomposition forTask-Based Intermittent Programs.pdf"
+      ],
+      "replay_path": "2018 Termination Checking and Task Decomposition forTask-Based Intermittent Programs.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "7f4753fcdb543bc536423c0d64a6d7c4574a14f34140c89dd60a8ca43aed42e0",
+      "pdf_bytes": 405342,
+      "source_paths": [
+        "tmp/research/2017 Preventing Plagarism and Fostering Academic Integrity A Practical Approach.pdf"
+      ],
+      "replay_path": "2017 Preventing Plagarism and Fostering Academic Integrity A Practical Approach.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "824d185efa46bd26af6408334901ec8e6d039ab32419ff0820153ae0f51825da",
+      "pdf_bytes": 448699,
+      "source_paths": [
+        "tmp/research/2014 Improving In-Memory Database Index Performance wtih Intel Transactional Synchronization Extensions.pdf"
+      ],
+      "replay_path": "2014 Improving In-Memory Database Index Performance wtih Intel Transactional Synchronization Extensions.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "82807f2af2f5b163c23ffe3625c09d13fefb34f13140cf25a998969058caff33",
+      "pdf_bytes": 702964,
+      "source_paths": [
+        "tmp/research/2015 Clustering Attributed graphs models measures and methods.pdf"
+      ],
+      "replay_path": "2015 Clustering Attributed graphs models measures and methods.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "829af59e0f82499da5f4f34503789cd83b7942591e88b1ea72c9c0bab5e7cf6e",
+      "pdf_bytes": 549715,
+      "source_paths": [
+        "tmp/research/2020 Persistent State Machines for Recoverable In-Memory Storage Systems with NVRam.pdf"
+      ],
+      "replay_path": "2020 Persistent State Machines for Recoverable In-Memory Storage Systems with NVRam.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "83415ff27b1b616b5f9b282d60bb905093cf20ee0e97bad14683f5121d10fe24",
+      "pdf_bytes": 137066,
+      "source_paths": [
+        "tmp/research/2018 How to Teach an Old File System Dog New Object Store Tricks.pdf"
+      ],
+      "replay_path": "2018 How to Teach an Old File System Dog New Object Store Tricks.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "86509e4f47d3ca7eeb36bf8887f21d7837c3b679932a75a38bd89bd64c3415d6",
+      "pdf_bytes": 235264,
+      "source_paths": [
+        "tmp/research/2007 Sinfonia a new paradigm for building scalable distributed systems.pdf"
+      ],
+      "replay_path": "2007 Sinfonia a new paradigm for building scalable distributed systems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "866e0f0e9c4dfa2bb736900efd5cf1e9fb88511342d2020ddbd9de3d8fa4bf58",
+      "pdf_bytes": 253212,
+      "source_paths": [
+        "tmp/research/2008 On Obstruction-Free Transactions.pdf"
+      ],
+      "replay_path": "2008 On Obstruction-Free Transactions.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "871173becf971b4f33a7a72c14934c9d0dd7606817f3734efac41ad76ef6d223",
+      "pdf_bytes": 2643073,
+      "source_paths": [
+        "tmp/research/2014 The Dynamics of Repeat Consumption.pdf"
+      ],
+      "replay_path": "2014 The Dynamics of Repeat Consumption.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "871e3c664402ee1865767b17b8ca6197941753796f1f9256420351c1f9ffcbeb",
+      "pdf_bytes": 599157,
+      "source_paths": [
+        "tmp/research/2016 To FUSE or not to FUSE - Performance of User-Space File Systems.pdf"
+      ],
+      "replay_path": "2016 To FUSE or not to FUSE - Performance of User-Space File Systems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "877ba8d90b27c281940ff05530b91cf9982c6824755aacf6e50b58aebded2bc5",
+      "pdf_bytes": 558384,
+      "source_paths": [
+        "tmp/research/2016 ParaFS A Log-Structured File System to Exploit the Internal Parallelism of Flash Devices.pdf"
+      ],
+      "replay_path": "2016 ParaFS A Log-Structured File System to Exploit the Internal Parallelism of Flash Devices.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "87e81a84c56a47a3a5afab4ad03db65daa76bbb0a940d3438e7459ae3f4e7b55",
+      "pdf_bytes": 933044,
+      "source_paths": [
+        "tmp/research/2019 Experiences with FUSE in the Real World.pdf"
+      ],
+      "replay_path": "2019 Experiences with FUSE in the Real World.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "886b8b6a2c01d6b257ad29a4509167c76a2d26074fca36eef271972b6771486c",
+      "pdf_bytes": 226490,
+      "source_paths": [
+        "tmp/research/2018 Forgotten but Not Gone Identifying the Need for Longitudinal Data Management in Cloud Storage.pdf"
+      ],
+      "replay_path": "2018 Forgotten but Not Gone Identifying the Need for Longitudinal Data Management in Cloud Storage.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "88744d2b9828240fc29f9fba3550cb630b8af303103ea875c0be3f4821896daa",
+      "pdf_bytes": 74860,
+      "source_paths": [
+        "tmp/research/1999 Experience using MOSS to Detect Cheating on Programming Assignments.pdf"
+      ],
+      "replay_path": "1999 Experience using MOSS to Detect Cheating on Programming Assignments.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "88a539374c58d18b1087a5e1e06429cd8a7eddb4ffacc589f6818fc69baf0c4d",
+      "pdf_bytes": 623303,
+      "source_paths": [
+        "tmp/research/2603.09023v1.pdf"
+      ],
+      "replay_path": "2603.09023v1.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "88e554373582c3ab4459c0eceb3593d26cc3890585b90135c16d4c3432ed1459",
+      "pdf_bytes": 508475,
+      "source_paths": [
+        "tmp/research/2012 The Best of Both Worlds Stochastic and Adversarial Bandits.pdf"
+      ],
+      "replay_path": "2012 The Best of Both Worlds Stochastic and Adversarial Bandits.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "892b42e584a6b761006bd4e7181f45d4bde881813ebeff9dcdf2cf38da05df40",
+      "pdf_bytes": 719587,
+      "source_paths": [
+        "tmp/research/2018 Performance Comprehension at WiredTiger.pdf"
+      ],
+      "replay_path": "2018 Performance Comprehension at WiredTiger.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8aac299066b15001bc6a18064b4f79323ecd23b25ce17111e19b1ef1a7495572",
+      "pdf_bytes": 926478,
+      "source_paths": [
+        "tmp/research/1970 Computer Network Development to Achieve Resource Sharing.pdf"
+      ],
+      "replay_path": "1970 Computer Network Development to Achieve Resource Sharing.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8ad17fc09d2f765c238bb663f67a15b280dfff55ecdfecc270bbce047f3c4ac1",
+      "pdf_bytes": 1939829,
+      "source_paths": [
+        "tmp/research/2017 My VM is Lighter (and Safer) than your Container.pdf"
+      ],
+      "replay_path": "2017 My VM is Lighter (and Safer) than your Container.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8aec7d97f6f12e7a5221e133c3e49a5795636db51852fd759263d47d2809de87",
+      "pdf_bytes": 1329723,
+      "source_paths": [
+        "tmp/research/73240141.pdf",
+        "tmp/research/Shared-memory-for-read-mostly-rpc.pdf"
+      ],
+      "replay_path": "73240141.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8b29d8b7fc62b898f174e3d9c59371c869527931099dcb0cde4cf5f81ca121fb",
+      "pdf_bytes": 850353,
+      "source_paths": [
+        "tmp/research/1978 Time Clocks and the Ordering of Events in a Distributed System.pdf"
+      ],
+      "replay_path": "1978 Time Clocks and the Ordering of Events in a Distributed System.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8b98ce6f58249d36abd4738cf954fefcfa822d8de6d2ab6154e9a12935a28e1e",
+      "pdf_bytes": 360381,
+      "source_paths": [
+        "tmp/research/2013 Bolt-on Causal Consistency.pdf"
+      ],
+      "replay_path": "2013 Bolt-on Causal Consistency.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8bf1edab637a305457c1966e7000011d0801ed18dbf30da8f2acc97914f60bce",
+      "pdf_bytes": 1314985,
+      "source_paths": [
+        "tmp/research/2014 File System Alternatives.pdf"
+      ],
+      "replay_path": "2014 File System Alternatives.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8c58a02b8e602fa7adef1a14d4bc79596299ec0e063ba8fbb7c308571d4a11d5",
+      "pdf_bytes": 498238,
+      "source_paths": [
+        "tmp/research/2018 Seeping Semantics Linking Datasets using Word Embeddings for Data Discovery.pdf"
+      ],
+      "replay_path": "2018 Seeping Semantics Linking Datasets using Word Embeddings for Data Discovery.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8dacca2c8b84dc66db1c08252a0878a17e1b46602a7aa1ab52123945303148ec",
+      "pdf_bytes": 1055965,
+      "source_paths": [
+        "tmp/research/2013 What is a File.pdf"
+      ],
+      "replay_path": "2013 What is a File.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8e935fb1dfb01097fa539c46febf12df2020f5d1fec905302c5147a567a13c1f",
+      "pdf_bytes": 364112,
+      "source_paths": [
+        "tmp/research/2018 A Scalable Distributed Graph Partitioner.pdf"
+      ],
+      "replay_path": "2018 A Scalable Distributed Graph Partitioner.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8ebee8ea897ddf93a54b9b8b8768a0cf32a64595c99a03dcd179ac59b937a9ab",
+      "pdf_bytes": 210447,
+      "source_paths": [
+        "tmp/research/Distributed Systems of Microservices Using Docker.pdf"
+      ],
+      "replay_path": "Distributed Systems of Microservices Using Docker.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8f54bebb4868d9658e69d819f22eacc27dec9c359b03c8fb6cc3445460d83512",
+      "pdf_bytes": 471509,
+      "source_paths": [
+        "tmp/research/1999 EROS a fast capability system.pdf"
+      ],
+      "replay_path": "1999 EROS a fast capability system.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8f7dd41c8444f6d0645cf502a3ea8105a5c587f30648b8a543fc3200b51287f2",
+      "pdf_bytes": 58114,
+      "source_paths": [
+        "tmp/research/2004 Whitesides Group Writing a Paper.pdf"
+      ],
+      "replay_path": "2004 Whitesides Group Writing a Paper.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8fa1cb2ec55f85a1110d2240d93554d571a6adb1aa763fbaeab9c28d42dd0ccf",
+      "pdf_bytes": 580327,
+      "source_paths": [
+        "tmp/research/2604.09602v1.pdf"
+      ],
+      "replay_path": "2604.09602v1.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8fa6f1166e24719980090538e1817d4cbae83197b6daf84ea3852d3e92bfb26b",
+      "pdf_bytes": 1108621,
+      "source_paths": [
+        "tmp/research/2016 Negotiating the Maze of Academic Integrity In Computing Education.pdf"
+      ],
+      "replay_path": "2016 Negotiating the Maze of Academic Integrity In Computing Education.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8fa8408d3de6fdfc6878e0ac7e08da00b91af60c6ec1fdb517abad3800c983a3",
+      "pdf_bytes": 592868,
+      "source_paths": [
+        "tmp/research/2014 QuickRecall A Low Overhead HW SW Approach for Enabling Computations acrsso Power Cycles in Tranisently Powered Computers.pdf"
+      ],
+      "replay_path": "2014 QuickRecall A Low Overhead HW SW Approach for Enabling Computations acrsso Power Cycles in Tranisently Powered Computers.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8fcec9a7820f21b58a48b51db5a756fe2095554cbeaa2f77896984cc1cef5100",
+      "pdf_bytes": 591061,
+      "source_paths": [
+        "tmp/research/2020 DelveFS An event-driven semantic file system for object stores.pdf"
+      ],
+      "replay_path": "2020 DelveFS An event-driven semantic file system for object stores.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8fd9e21821d57c4f24a6c4d72bbd8cd31983b0727b0057c343bf23e581a7450d",
+      "pdf_bytes": 4792991,
+      "source_paths": [
+        "tmp/research/2016 Intel 64 and IA-32 Architectures Optimization Reference Manual.pdf"
+      ],
+      "replay_path": "2016 Intel 64 and IA-32 Architectures Optimization Reference Manual.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "8fde6578157e4a8ecbf1f035c669abe43ded370ec13c08cf4ba3f8cacdfbdd8e",
+      "pdf_bytes": 677338,
+      "source_paths": [
+        "tmp/research/1979 Polyvalues A Tool for Implementing Atomic Updates to Distributed Data.pdf"
+      ],
+      "replay_path": "1979 Polyvalues A Tool for Implementing Atomic Updates to Distributed Data.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "900cb9582b5b6f722bfe90744b671c862cd8fc4cc700c4870bb5baecf026f4d0",
+      "pdf_bytes": 1827530,
+      "source_paths": [
+        "tmp/research/2014 Strata High-Performance Scalable Storage on Virtualized Non-volatile Memory.pdf"
+      ],
+      "replay_path": "2014 Strata High-Performance Scalable Storage on Virtualized Non-volatile Memory.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "90bd3cb64dd69dc91cee0002772908d3977677422c1cecf6f092eb9d0bffd8d6",
+      "pdf_bytes": 3207380,
+      "source_paths": [
+        "tmp/research/2017 Using Visual Histories to Reconstruct the Mental Context of Suspended Activities.pdf"
+      ],
+      "replay_path": "2017 Using Visual Histories to Reconstruct the Mental Context of Suspended Activities.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9126cf3b930fd7be2de6248f82565c9b970482eb063bdc30be8c1b29c86b2167",
+      "pdf_bytes": 221214,
+      "source_paths": [
+        "tmp/research/2006 Bigtable A Distributed Storage System for Structured Data.pdf"
+      ],
+      "replay_path": "2006 Bigtable A Distributed Storage System for Structured Data.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9152cebd182878e190b5fc86c20eaee9a768cf04edf4309863f7799f5c84be5b",
+      "pdf_bytes": 383224,
+      "source_paths": [
+        "tmp/research/2006 Data Unification in Personal Information Management.pdf"
+      ],
+      "replay_path": "2006 Data Unification in Personal Information Management.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "91b3a1a36b4b56d238d76920a924e3c587f5767dcba4cc29a648caffb699617a",
+      "pdf_bytes": 1121017,
+      "source_paths": [
+        "tmp/research/2017 DudeTM Building Durable Transactions with Decoupling for Persistent Memory.pdf"
+      ],
+      "replay_path": "2017 DudeTM Building Durable Transactions with Decoupling for Persistent Memory.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9203b2ed4c24ab25e0fc05f0454333409f8960686b862ec237c10b4c9ccde0a2",
+      "pdf_bytes": 4537924,
+      "source_paths": [
+        "tmp/research/2016 A review of emerging non-volatile memory (NVM) technologies and.pdf"
+      ],
+      "replay_path": "2016 A review of emerging non-volatile memory (NVM) technologies and.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "92a95a408d3eacd6f6532fb271659d06d43789e83e6159c7c18a78283cf319c4",
+      "pdf_bytes": 306577,
+      "source_paths": [
+        "tmp/research/2014 Teaching International Students how to Avoid Plagarism Librarians and Faculty in Collaboration.pdf"
+      ],
+      "replay_path": "2014 Teaching International Students how to Avoid Plagarism Librarians and Faculty in Collaboration.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "92e98ba10667e2e29482cf1bb6b7048e87e3c8a14950c07c260042041b24dd19",
+      "pdf_bytes": 866060,
+      "source_paths": [
+        "tmp/research/2016 Preventing Page Faults from Telling Your Secrets.pdf"
+      ],
+      "replay_path": "2016 Preventing Page Faults from Telling Your Secrets.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "930243be430b677a61e969f9f1324f80ee3acdfd453ec9214a7c05e2a081d78f",
+      "pdf_bytes": 779390,
+      "source_paths": [
+        "tmp/research/2014 Linked Open Vocabularies LOV A gateway to reusable semantic vocabularies on the Web.pdf"
+      ],
+      "replay_path": "2014 Linked Open Vocabularies LOV A gateway to reusable semantic vocabularies on the Web.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "930f5699d5b9ed576034878f62859633871a3b0e22d295aee8fe674dd7e1bf57",
+      "pdf_bytes": 3240337,
+      "source_paths": [
+        "tmp/research/2015 MBFS a parallel metadata search method based on Bloomfilters using MapReduce for large-scale file systems.pdf"
+      ],
+      "replay_path": "2015 MBFS a parallel metadata search method based on Bloomfilters using MapReduce for large-scale file systems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "93476d8700187240d531b27696492828a2b2f8c856d66c4f884313bc7bb75399",
+      "pdf_bytes": 698204,
+      "source_paths": [
+        "tmp/research/2014 Rethinking Main Memory OLTP Recovery.pdf"
+      ],
+      "replay_path": "2014 Rethinking Main Memory OLTP Recovery.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "93dbdd876492c7a380b74f90bdf29147f3b9b1092fda848cb133764f2d9d31f6",
+      "pdf_bytes": 826968,
+      "source_paths": [
+        "tmp/research/2017 The Case for Learned Data Structures.pdf"
+      ],
+      "replay_path": "2017 The Case for Learned Data Structures.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "944743b1672746690407ff9fdcd03b548cb569f48fab91bfe79e2f7b610398b1",
+      "pdf_bytes": 927198,
+      "source_paths": [
+        "tmp/research/2015 Hibernus Sustaining Computation During Intermittent Supply for Energy-Harvesting Systems.pdf"
+      ],
+      "replay_path": "2015 Hibernus Sustaining Computation During Intermittent Supply for Energy-Harvesting Systems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "94ac0fde81ad8851d7e1549d0cb6a524645b3dafdf60b863cd5c200db4b6b551",
+      "pdf_bytes": 2095460,
+      "source_paths": [
+        "tmp/research/2017 Intermittent Computing Challenges and Opportunities.pdf"
+      ],
+      "replay_path": "2017 Intermittent Computing Challenges and Opportunities.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "966125720dc9ac9399676bc64a2483a82ca6abb80c15571af9873dd1d156753b",
+      "pdf_bytes": 23381843,
+      "source_paths": [
+        "tmp/research/2018 fast18_full_proceedings_interior.pdf"
+      ],
+      "replay_path": "2018 fast18_full_proceedings_interior.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "96a80c8205e1b6a51467f72c075704af6205386b77fed1d8bba7b870fab2aec6",
+      "pdf_bytes": 833838,
+      "source_paths": [
+        "tmp/research/2004 Academic Dishonest, Plagarism Included, in the Digital Age A Literature Review.pdf"
+      ],
+      "replay_path": "2004 Academic Dishonest, Plagarism Included, in the Digital Age A Literature Review.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "98771e0b0d120ed902f1bead1adbf46969d4a891dae421087f6ac29ab3d64c11",
+      "pdf_bytes": 566751,
+      "source_paths": [
+        "tmp/research/2020 Pegasus Tolerating Skewed Workloads in Distributed Storage with In-Network Coherence Directories.pdf"
+      ],
+      "replay_path": "2020 Pegasus Tolerating Skewed Workloads in Distributed Storage with In-Network Coherence Directories.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "988d22da09f781aa01e6d6c74eae1e14f1ce51ef73ee491a46d6e258b22a6b03",
+      "pdf_bytes": 434370,
+      "source_paths": [
+        "tmp/research/2003 Improving the Usability of the Hierarchical File System.pdf"
+      ],
+      "replay_path": "2003 Improving the Usability of the Hierarchical File System.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "99970614ad492bfb067d89b130267e54a0e39a1ccfd13ce5d43380ae9d7041f8",
+      "pdf_bytes": 602808,
+      "source_paths": [
+        "tmp/research/2017 Technical specifications of a service-oriented architectgure for semantic interoperability of EHR electronic health records.pdf"
+      ],
+      "replay_path": "2017 Technical specifications of a service-oriented architectgure for semantic interoperability of EHR electronic health records.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9a3fc63cf655ec2e5858c8404fb44711a957eb5ad29a70a3210e7e62f6dba167",
+      "pdf_bytes": 353569,
+      "source_paths": [
+        "tmp/research/2019 A Primer on Provenance.pdf"
+      ],
+      "replay_path": "2019 A Primer on Provenance.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9a45e3c3bf436911eeb330af40ab5768112294ac4ad266384fc90e4e7ad3202c",
+      "pdf_bytes": 230437,
+      "source_paths": [
+        "tmp/research/2009 Better IO Through Byte-Addressable, Persistent Memory.pdf"
+      ],
+      "replay_path": "2009 Better IO Through Byte-Addressable, Persistent Memory.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9ab5feab472d3fd9a4dffb85b9b07dde769b20b3bb065474e08430dd84eea958",
+      "pdf_bytes": 609849,
+      "source_paths": [
+        "tmp/research/Benchmarking Performance of Hypervisors.pdf"
+      ],
+      "replay_path": "Benchmarking Performance of Hypervisors.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9ac780844abb33f51949ce9eef72254249e50faa7cc9b291975b21bd0afd6785",
+      "pdf_bytes": 1474474,
+      "source_paths": [
+        "tmp/research/2023 Information Retrieval Recent Advances and Beyond.pdf"
+      ],
+      "replay_path": "2023 Information Retrieval Recent Advances and Beyond.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9ad798991f3954ac0e1506a54e87b11cf5d7179fdcbd393330d62c50e85516e8",
+      "pdf_bytes": 70996,
+      "source_paths": [
+        "tmp/research/2009 Online Academic Integrity.pdf"
+      ],
+      "replay_path": "2009 Online Academic Integrity.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9b9be695a21315c165f83d22180378131e409d2fe3ec8437a365b26acc54a8ec",
+      "pdf_bytes": 276640,
+      "source_paths": [
+        "tmp/research/Paper  Paxos Made Moderately Complex.pdf"
+      ],
+      "replay_path": "Paper  Paxos Made Moderately Complex.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9c11fa504c92b3d4da49b9a39ee589373f6388fbf64f7f0d9401d43b9323cca2",
+      "pdf_bytes": 678671,
+      "source_paths": [
+        "tmp/research/2004 Practical Lock-freedom.pdf"
+      ],
+      "replay_path": "2004 Practical Lock-freedom.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9c3877333d918aeadaa81826594587a26e7c040535b9ce600266f78791784406",
+      "pdf_bytes": 1519260,
+      "source_paths": [
+        "tmp/research/1965 Introduction and Overview of the Multics System.pdf"
+      ],
+      "replay_path": "1965 Introduction and Overview of the Multics System.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9ce75ce0d31102e639baafbf78f914d96498d6dbf2dfa9e48452349951b61973",
+      "pdf_bytes": 739862,
+      "source_paths": [
+        "tmp/research/2019 Files of a Feather Flock Together.pdf"
+      ],
+      "replay_path": "2019 Files of a Feather Flock Together.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9d0a736bd0cec00e18c4da32051cd7648ea75130949485bebf396ee4edc0528b",
+      "pdf_bytes": 886076,
+      "source_paths": [
+        "tmp/research/2021 LifeStream A High-Performance Stream Processing Engine for Periodic Streams.pdf"
+      ],
+      "replay_path": "2021 LifeStream A High-Performance Stream Processing Engine for Periodic Streams.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9d1e9378b8c94000be20d027ad5318fdc4fbedc8756797ca221d99e04957944a",
+      "pdf_bytes": 324028,
+      "source_paths": [
+        "tmp/research/2017 A Plagiarism Detection Algorithm based on Extended Winnowing.pdf"
+      ],
+      "replay_path": "2017 A Plagiarism Detection Algorithm based on Extended Winnowing.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9d255284ccdf2626e480a9cd0c11d75952cb753c5b708c3fb3a6d14a0fc0b737",
+      "pdf_bytes": 4940836,
+      "source_paths": [
+        "tmp/research/2017 Nova-Fortis A Fault-Tolerant Non-Volatile Main Memory File System.pdf"
+      ],
+      "replay_path": "2017 Nova-Fortis A Fault-Tolerant Non-Volatile Main Memory File System.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9d7ea34c144fe5a808c7a9c548c6cee4213a52e7630212fac20e63aa3f9624c4",
+      "pdf_bytes": 701440,
+      "source_paths": [
+        "tmp/research/2018 DurableFS A File System for Persistent Memory.pdf"
+      ],
+      "replay_path": "2018 DurableFS A File System for Persistent Memory.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9dec126d6c85346a11133e1edc5347122c0bac3ad2d83c2595a5fbc8952d60df",
+      "pdf_bytes": 175073,
+      "source_paths": [
+        "tmp/research/2014 Nonvolatile memory is a broken time machine.pdf"
+      ],
+      "replay_path": "2014 Nonvolatile memory is a broken time machine.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9e09b823fa335c7900eda4a6ef315fd477f22c146b3884d24cb82995e6078c87",
+      "pdf_bytes": 641965,
+      "source_paths": [
+        "tmp/research/2020 CrossFS A Cross-layered Direct-Access File System.pdf"
+      ],
+      "replay_path": "2020 CrossFS A Cross-layered Direct-Access File System.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9eeedbd267ed3bea4ccd2925c0611d985e79e848b95f95ae8765c520204b9f76",
+      "pdf_bytes": 574744,
+      "source_paths": [
+        "tmp/research/2018 Price Manipulation in the Bitcoin Ecosystem.pdf"
+      ],
+      "replay_path": "2018 Price Manipulation in the Bitcoin Ecosystem.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9f47282dd5d51f9f492ea595ebf4003f2d4a4db6888b42695611bf8dc756be8a",
+      "pdf_bytes": 1394719,
+      "source_paths": [
+        "tmp/research/2017 TagIt An Integrated Indexing and Search Service for File Systems.pdf"
+      ],
+      "replay_path": "2017 TagIt An Integrated Indexing and Search Service for File Systems.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9f6c429d3e16f419f5b0a01af819ae9a5cfc3a9bdbec3ac812f229a668bb973b",
+      "pdf_bytes": 1327543,
+      "source_paths": [
+        "tmp/research/2016 Data Narratives uncovering tensions in personal data management.pdf"
+      ],
+      "replay_path": "2016 Data Narratives uncovering tensions in personal data management.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "9f9bfba1d427a22b5243d1582bf667851ce4458da82945a7d52e2a2609ddf87d",
+      "pdf_bytes": 1215242,
+      "source_paths": [
+        "tmp/research/2020 Dataset search a survey.pdf"
+      ],
+      "replay_path": "2020 Dataset search a survey.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "a0577d495d3ca7954d8f9e43648d3715d13b3da7d42a4553895b68605756a475",
+      "pdf_bytes": 7614593,
+      "source_paths": [
+        "tmp/research/2012 Abstract Syntax Tree Analysis for Plagiarism Detection.pdf"
+      ],
+      "replay_path": "2012 Abstract Syntax Tree Analysis for Plagiarism Detection.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "a074b0b1c2cf7ef7703b1c0872e53826c8113033aad606c1c062a0629ab3fee9",
+      "pdf_bytes": 380204,
+      "source_paths": [
+        "tmp/research/DEVSML 3.0 Stack - Rapid Deployment of Devs Farm in Distributed Cloud Environment Using Microservices and Containers.pdf"
+      ],
+      "replay_path": "DEVSML 3.0 Stack - Rapid Deployment of Devs Farm in Distributed Cloud Environment Using Microservices and Containers.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "a1074e45e7935aaae109d2ceb0612e059f266c289912a2f7977abea9388438bd",
+      "pdf_bytes": 1378201,
+      "source_paths": [
+        "tmp/research/2017 TRIAD Creating Synergies Between Memory, Disk and Log in Log Structured Key-Value Stores.pdf"
+      ],
+      "replay_path": "2017 TRIAD Creating Synergies Between Memory, Disk and Log in Log Structured Key-Value Stores.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "a126650c315e998ba96ea8248a60bde0afe60fec3e810acfc2b6c70d3b0e9f36",
+      "pdf_bytes": 2198146,
+      "source_paths": [
+        "tmp/research/Turing_Paper_1936.pdf"
+      ],
+      "replay_path": "Turing_Paper_1936.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "a209a910f7f7e4a394dec872c0e195876d796865fd0c91d965171845523689f3",
+      "pdf_bytes": 22393636,
+      "source_paths": [
+        "tmp/research/2016 Advances in Computer and Computational Sciences.pdf"
+      ],
+      "replay_path": "2016 Advances in Computer and Computational Sciences.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "a4bbc440ab6270f20412d1194f716b53641ff6f8d62a138dbd2f82f8e9e2a147",
+      "pdf_bytes": 854344,
+      "source_paths": [
+        "tmp/research/2015 Thinking Like a Vertex A Survey of Vertex-Centric Frameworks for Large-Scale Distributed Graph Processing.pdf"
+      ],
+      "replay_path": "2015 Thinking Like a Vertex A Survey of Vertex-Centric Frameworks for Large-Scale Distributed Graph Processing.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "a530cf66fe61cf19d435436de7ea38f0faa4637d673d458fa0135cee504a4b33",
+      "pdf_bytes": 434985,
+      "source_paths": [
+        "tmp/research/2016 PHyTM Persistent Hybrid Transactional Memory.pdf"
+      ],
+      "replay_path": "2016 PHyTM Persistent Hybrid Transactional Memory.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "a53d011fec01ca74978372023758661599c407eda234d528341209c3a146b36d",
+      "pdf_bytes": 1850989,
+      "source_paths": [
+        "tmp/research/2019 Storage Systems And IO Organizing, Storing, and Accessing Data for Scientific Discovery.pdf"
+      ],
+      "replay_path": "2019 Storage Systems And IO Organizing, Storing, and Accessing Data for Scientific Discovery.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "a63e21d092993c12845be244925813f57b0d7d90de8774e12b233e0790375899",
+      "pdf_bytes": 73987,
+      "source_paths": [
+        "tmp/research/1999 Using a Single Address Space Operating System for Distributed Computing and High Performance.pdf"
+      ],
+      "replay_path": "1999 Using a Single Address Space Operating System for Distributed Computing and High Performance.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "a6572520281564bc8ece89d78b75068f1c1aee45da2f8c71f161e70274f07c95",
+      "pdf_bytes": 1522009,
+      "source_paths": [
+        "tmp/research/2016 Fine Grained Direct Access File System Support.pdf"
+      ],
+      "replay_path": "2016 Fine Grained Direct Access File System Support.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "a7529f6f1fd86ef0c3a0c47b68826b1adb15d1af925872ceac629c1b5ac1c37f",
+      "pdf_bytes": 721526,
+      "source_paths": [
+        "tmp/research/2013 Dynamic Interval Polling and Pipelined Post IO PRocessing for Low Latency Storage Class Memory.pdf"
+      ],
+      "replay_path": "2013 Dynamic Interval Polling and Pipelined Post IO PRocessing for Low Latency Storage Class Memory.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "a7adf1b93f0c7c372a162247d485f4ce877ed859b2f856868a4b7ca76925ea91",
+      "pdf_bytes": 381582,
+      "source_paths": [
+        "tmp/research/2017 Eaton, Guglielmin & Otoo - Edited IDEAS 2017 Proceedings June 14-1[1].pdf",
+        "tmp/research/2017 Plagiarism Moving from Punitve to Proactive Approaches.pdf"
+      ],
+      "replay_path": "2017 Eaton, Guglielmin & Otoo - Edited IDEAS 2017 Proceedings June 14-1[1].pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "a7c2b3ed1d15eb04ed9dd661ce4230dab9a6a25963a1a4ccde5a8fade3561547",
+      "pdf_bytes": 829968,
+      "source_paths": [
+        "tmp/research/2018 Direct-FUSE Removing the Middleman for High-Performance FUSE FIle System Support.pdf"
+      ],
+      "replay_path": "2018 Direct-FUSE Removing the Middleman for High-Performance FUSE FIle System Support.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "a919209061484888ab4a41e41568bcee4ad33e42ea89a5071baa3ff9b80c305d",
+      "pdf_bytes": 474354,
+      "source_paths": [
+        "tmp/research/1987 Evolving the UNIX Interface to Support Multithreaded Programs.pdf"
+      ],
+      "replay_path": "1987 Evolving the UNIX Interface to Support Multithreaded Programs.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ab0aeefc0ccc7382ac60b3ec4a95c1b27704397a1918ec57223c69f7f74e855c",
+      "pdf_bytes": 11079223,
+      "source_paths": [
+        "tmp/research/2016 Gluster Slide Deck - Vault 2016 (Working Draft).pdf"
+      ],
+      "replay_path": "2016 Gluster Slide Deck - Vault 2016 (Working Draft).pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ab5c594092124c167e36f7232aa05cacdf0ee633b73c6115676e37d1791fa9d7",
+      "pdf_bytes": 146973,
+      "source_paths": [
+        "tmp/research/2015 The IBM z Systems Coupling Facility exploitation of storage-class memory.pdf"
+      ],
+      "replay_path": "2015 The IBM z Systems Coupling Facility exploitation of storage-class memory.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ab83dc7d0831e11c3a583940a89a956657bb278fb6dd22604e44e14222ad72bb",
+      "pdf_bytes": 36109,
+      "source_paths": [
+        "tmp/research/remoteunix.pdf"
+      ],
+      "replay_path": "remoteunix.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "aba05249032532d02f786e2e4d6066dfc5a9010d23c39977eb7ac0b85bfa0311",
+      "pdf_bytes": 415583,
+      "source_paths": [
+        "tmp/research/2012 Transactional Language Constructs for C++.pdf"
+      ],
+      "replay_path": "2012 Transactional Language Constructs for C++.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ac38ce69d3568791dce9a93bf258f37348edabe318181f43a9a9f956c0b2ba19",
+      "pdf_bytes": 328561,
+      "source_paths": [
+        "tmp/research/2016 User-space IO for us-level strorage devices.pdf"
+      ],
+      "replay_path": "2016 User-space IO for us-level strorage devices.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ac82712f3077d3ad090ded896540888221224d1cb490a27a2b166e99a4415b81",
+      "pdf_bytes": 2330238,
+      "source_paths": [
+        "tmp/research/2004 User Problems and Practices with Modern Desktop Systems.pdf"
+      ],
+      "replay_path": "2004 User Problems and Practices with Modern Desktop Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ad96daa249f63e5edca6f7472b9dfcb69888876579ae9b1313f5b281c37d7bdb",
+      "pdf_bytes": 877599,
+      "source_paths": [
+        "tmp/research/2020 Write Dependency Disentanglement with HORAE.pdf"
+      ],
+      "replay_path": "2020 Write Dependency Disentanglement with HORAE.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "adff6f19681d54865ccd41765b0f39a1c241072e2a2c8dfb696a8f58b4d32bf5",
+      "pdf_bytes": 503876,
+      "source_paths": [
+        "tmp/research/2015 NVMKV A Scalable Lightweight FTL-aware Key-Value Store.pdf"
+      ],
+      "replay_path": "2015 NVMKV A Scalable Lightweight FTL-aware Key-Value Store.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ae32787e446f10ef1fb0049911a3474681a80daeca0c3388d5d065f2fb186d01",
+      "pdf_bytes": 2273645,
+      "source_paths": [
+        "tmp/research/2017 Efficient Programming of Massive-Memory Machines.pdf"
+      ],
+      "replay_path": "2017 Efficient Programming of Massive-Memory Machines.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "af131f9b4211f33ecaa14066f9dae199accfd19550499e3f8eb4d67b54eda289",
+      "pdf_bytes": 578473,
+      "source_paths": [
+        "tmp/research/2009 File Management with Hierarchical Folders and Tags.pdf"
+      ],
+      "replay_path": "2009 File Management with Hierarchical Folders and Tags.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "af4bd7c7e9cfd754657ec58ed6f862be545fd28fdc973d9421746612e1bf3268",
+      "pdf_bytes": 264846,
+      "source_paths": [
+        "tmp/research/2014 How Well do Canadian Distance Education Students Understand Plagiarism.pdf"
+      ],
+      "replay_path": "2014 How Well do Canadian Distance Education Students Understand Plagiarism.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b04aa6ab17cf1432eb4f5ec155cabf91b38b8f97c20f43bc074982f45faf7aec",
+      "pdf_bytes": 199284,
+      "source_paths": [
+        "tmp/research/2013 Personal knowledge and information management - conception and exemplification.pdf"
+      ],
+      "replay_path": "2013 Personal knowledge and information management - conception and exemplification.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b056ec3d32d3edf2df5e0ccbb666956d8c86a675f0c285c286e47476c8fa7dd1",
+      "pdf_bytes": 1641015,
+      "source_paths": [
+        "tmp/research/2015 Let's Talk about Storage & Recovery Methods for Non-Volatile Memory Database Systems.pdf"
+      ],
+      "replay_path": "2015 Let's Talk about Storage & Recovery Methods for Non-Volatile Memory Database Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b06c586108cd4db96345030b8775cd0dc24f52254bff1984070f56d3e1e3937b",
+      "pdf_bytes": 272938,
+      "source_paths": [
+        "tmp/research/2014 Procrastination Beats Prevention Timely Sufficient Persistence for Efficient Crash Resilience.pdf"
+      ],
+      "replay_path": "2014 Procrastination Beats Prevention Timely Sufficient Persistence for Efficient Crash Resilience.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b06e980b5bd9a260d9e1d760ff7170ca71bf139b9723b2a65b414282d2cbdbde",
+      "pdf_bytes": 342329,
+      "source_paths": [
+        "tmp/research/2014 A Comparison of Similarity Techniques for Detecting Source Code Plagiarism.pdf"
+      ],
+      "replay_path": "2014 A Comparison of Similarity Techniques for Detecting Source Code Plagiarism.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b087b45dd52edda4a27a7b883256029870a43c263ff3da704d13523485936b4e",
+      "pdf_bytes": 1339291,
+      "source_paths": [
+        "tmp/research/2017 Malacology A Programmable Storage System.pdf"
+      ],
+      "replay_path": "2017 Malacology A Programmable Storage System.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b207773b358682a41ab5795261e342812023e362dbd3c99bc70911abed60935a",
+      "pdf_bytes": 443255,
+      "source_paths": [
+        "tmp/research/2016 Lynx Using OS and Hardware Support for Fast File-Grained Inter-Core Communication.pdf"
+      ],
+      "replay_path": "2016 Lynx Using OS and Hardware Support for Fast File-Grained Inter-Core Communication.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b2783d50a66ba4627925389aed9b858a806b10a0f9752c09127845a3498ea394",
+      "pdf_bytes": 247162,
+      "source_paths": [
+        "tmp/research/2016 NVMeDirect A User-space IO Framework for Application-specific Optimization on NVMe SSDs.pdf"
+      ],
+      "replay_path": "2016 NVMeDirect A User-space IO Framework for Application-specific Optimization on NVMe SSDs.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b31b7bae148b7cc02ad402cf18df4df03139416d5b15ade6cd7391278239ecc8",
+      "pdf_bytes": 401444,
+      "source_paths": [
+        "tmp/research/2016 PASTE Network Stacks Must Integrate with NVM Abstractions.pdf"
+      ],
+      "replay_path": "2016 PASTE Network Stacks Must Integrate with NVM Abstractions.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b482d1972e94c768a51659dfe391e2d3f16a2fb473433e5fbd29a201d966b647",
+      "pdf_bytes": 405181,
+      "source_paths": [
+        "tmp/research/2015 LLAMA Efficient graph analytics using Large Multiversioned Arrays.pdf"
+      ],
+      "replay_path": "2015 LLAMA Efficient graph analytics using Large Multiversioned Arrays.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b5d52d48b8896b9f1e2fbdef5a75919b5be8e634eab2c77163574e73b70539d7",
+      "pdf_bytes": 154464,
+      "source_paths": [
+        "tmp/research/2002 Competitive Paging Algorithms.pdf"
+      ],
+      "replay_path": "2002 Competitive Paging Algorithms.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b5e6383fc2be25f3a5cfcee4eb2297736f51c9f0ddb7f3e30abc36e52c49cb2e",
+      "pdf_bytes": 956726,
+      "source_paths": [
+        "tmp/research/2015 Arrakis The Operating System Is the Control Plane.pdf"
+      ],
+      "replay_path": "2015 Arrakis The Operating System Is the Control Plane.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b6ccb1d5c20de51e25d21ae33910063e5f75877b978bcdf60d0926991e7a8bc5",
+      "pdf_bytes": 708174,
+      "source_paths": [
+        "tmp/research/2020 Flexible File Address Space Management.pdf"
+      ],
+      "replay_path": "2020 Flexible File Address Space Management.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b745dc8505e14d8af5e1d226fa3ceae95de8f5c86d0c6959e33cbc84a3e464e4",
+      "pdf_bytes": 271295,
+      "source_paths": [
+        "tmp/research/2017 StAdHyTM A A Statically Adaptive Hybrid Transactional Memory A Scalability Study on Large Parallel Graphs.pdf"
+      ],
+      "replay_path": "2017 StAdHyTM A A Statically Adaptive Hybrid Transactional Memory A Scalability Study on Large Parallel Graphs.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b7a5bcf96b21e1c5eb8e7e993fe7d13fbd72b6154a11818ac7169fed8e7cba55",
+      "pdf_bytes": 192281,
+      "source_paths": [
+        "tmp/research/2019 UMap A user level memory mapping library.pdf"
+      ],
+      "replay_path": "2019 UMap A user level memory mapping library.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b81815422ea7761965c15a0ac2ace9a4cdee6f28a45c7aa19f103b1da89690d4",
+      "pdf_bytes": 1896347,
+      "source_paths": [
+        "tmp/research/2014 A Novel Tag-Based Filesystem.pdf"
+      ],
+      "replay_path": "2014 A Novel Tag-Based Filesystem.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b81a394cf14ab614562a2d654c1b6028686fbd352036c8a0a2447a696d6e5008",
+      "pdf_bytes": 16774098,
+      "source_paths": [
+        "tmp/research/2017 Advanced Topics in Intelligent Information and Database Systems.pdf"
+      ],
+      "replay_path": "2017 Advanced Topics in Intelligent Information and Database Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "b8796321ede19e1bde637145c9c879f09074f094fa8bc8983aacbb0bb380194c",
+      "pdf_bytes": 4748761,
+      "source_paths": [
+        "tmp/research/2014 The 2nd International Workshop on Learning Technology.pdf"
+      ],
+      "replay_path": "2014 The 2nd International Workshop on Learning Technology.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "bac25258964f587b1dabee6889e9f90e8c5830ffa47053ca6430dd393b65e4cb",
+      "pdf_bytes": 547930,
+      "source_paths": [
+        "tmp/research/2016 Virtualizing the Edge of the Cloud—the New Frontier.pdf"
+      ],
+      "replay_path": "2016 Virtualizing the Edge of the Cloud—the New Frontier.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "bc00f33bf803758f5cd14812affadbd3a36ec14572996080f7e4e7ae8f0df7e3",
+      "pdf_bytes": 273906,
+      "source_paths": [
+        "tmp/research/2018 Meltdown.pdf"
+      ],
+      "replay_path": "2018 Meltdown.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "bc6b68c7c416d6dd8d2bab8898ffe0e2cb1ce141f99f23a39c4b37c4558a656d",
+      "pdf_bytes": 3198225,
+      "source_paths": [
+        "tmp/research/2019 Keeping and Discarding Personal Data Exploring a Design Space.pdf"
+      ],
+      "replay_path": "2019 Keeping and Discarding Personal Data Exploring a Design Space.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "bc6d6b4130df4a648d615df8cf89c030c02bf8af35c6a3ef42f9e332f64e52c1",
+      "pdf_bytes": 559399,
+      "source_paths": [
+        "tmp/research/2016 The Unexpected Pedagogical Benefits of Making Higher Education Accessible.pdf"
+      ],
+      "replay_path": "2016 The Unexpected Pedagogical Benefits of Making Higher Education Accessible.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "bed91e1e90c3288085ac992b124355ed4728bdfc6b0f623328f2b67d3ba7f8c0",
+      "pdf_bytes": 566727,
+      "source_paths": [
+        "tmp/research/2018 The Full Path to Full-Path Indexing.pdf"
+      ],
+      "replay_path": "2018 The Full Path to Full-Path Indexing.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "bef7d4d13297faebc1f85300e7ab263c35cb834024f7632d4a54e22376d87ca9",
+      "pdf_bytes": 1119220,
+      "source_paths": [
+        "tmp/research/2017 SMaRT An Approach to Shingled Magnetic Recording Translation.pdf"
+      ],
+      "replay_path": "2017 SMaRT An Approach to Shingled Magnetic Recording Translation.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "bf52e8b016a268bdbb15b57f103a3f03e5e836d0475fb5564e8ddea07a8ab644",
+      "pdf_bytes": 1029847,
+      "source_paths": [
+        "tmp/research/2014 Aeri Flexible File-System Interfaces to Storage-Class Memory.pdf"
+      ],
+      "replay_path": "2014 Aeri Flexible File-System Interfaces to Storage-Class Memory.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "bf5dd36d9b31f9c47aef81192682f2aa687a516eb6761f9cce82754067b8632a",
+      "pdf_bytes": 5338776,
+      "source_paths": [
+        "tmp/research/2020 FVM FPGA-assisted Virtual Device Emulation for Fast Scalable and Flexible Storage Virtualization.pdf"
+      ],
+      "replay_path": "2020 FVM FPGA-assisted Virtual Device Emulation for Fast Scalable and Flexible Storage Virtualization.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c099829aeea341c8d3ae6d7509f9cf863ee0cc4448deceb6d022b18834fa6144",
+      "pdf_bytes": 520782,
+      "source_paths": [
+        "tmp/research/2017 An Empirical Study on the Correctness of Formally Verified Distributed Systems.pdf"
+      ],
+      "replay_path": "2017 An Empirical Study on the Correctness of Formally Verified Distributed Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c0d99ee07a3ec791e0e75b60a2834a6f46afb41c0959230aae4110d5321f9515",
+      "pdf_bytes": 373198,
+      "source_paths": [
+        "tmp/research/2016 The Linux Scheduler a Decade of Wasted Cores.pdf"
+      ],
+      "replay_path": "2016 The Linux Scheduler a Decade of Wasted Cores.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c0fb2784b58c4b127ba1652b0f2bb53eee0e4b9975958e2843b125653c395fb3",
+      "pdf_bytes": 397531,
+      "source_paths": [
+        "tmp/research/2016 Failure-Atomic Persistent Memory Updates via JUSTDO Logging.pdf"
+      ],
+      "replay_path": "2016 Failure-Atomic Persistent Memory Updates via JUSTDO Logging.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c1426dcb31ce841f52fbd569922ad58f8e9a346387e9201683594d074f16083b",
+      "pdf_bytes": 1875128,
+      "source_paths": [
+        "tmp/research/1988 A Theory of Reliability in Database Systems.pdf"
+      ],
+      "replay_path": "1988 A Theory of Reliability in Database Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c2b17cb2cd625b337033b9e568a840b3e8d81a63a46ac4423d1cc4919d5daf43",
+      "pdf_bytes": 805100,
+      "source_paths": [
+        "tmp/research/1982 Concurrency on High-Traffic Data Elements.pdf"
+      ],
+      "replay_path": "1982 Concurrency on High-Traffic Data Elements.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c3b244107e0a48d9379750187958ec7ca31a8fdde8663cfa1458c4e1d2bbc19b",
+      "pdf_bytes": 474989,
+      "source_paths": [
+        "tmp/research/2009 SmartStore A New Metadata Organization Paradigm with Semantic-awareness for Next-Generation File Systems.pdf"
+      ],
+      "replay_path": "2009 SmartStore A New Metadata Organization Paradigm with Semantic-awareness for Next-Generation File Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c4910dfc0b96ede84c552de30f333f0169e64cef105e7a2f8ef4efd169fc2006",
+      "pdf_bytes": 143240,
+      "source_paths": [
+        "tmp/research/2020 Out of sight and out of mind Bookmarks are created but not used..pdf"
+      ],
+      "replay_path": "2020 Out of sight and out of mind Bookmarks are created but not used..pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c4c9dbedf0ffa6a66cd119815b5d895790047926bc96125002207e7d339950ac",
+      "pdf_bytes": 237943,
+      "source_paths": [
+        "tmp/research/2018 Effect of Meltdown and Spectre Patches on the Performance of HPC Applications.pdf"
+      ],
+      "replay_path": "2018 Effect of Meltdown and Spectre Patches on the Performance of HPC Applications.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c4e3bd872ef20b7d2c4d77a63cd8f37cb8ff518609ae09acaf0fd5dd9e76c54c",
+      "pdf_bytes": 6565323,
+      "source_paths": [
+        "tmp/research/2014 Intriguing properties of neural networks.pdf"
+      ],
+      "replay_path": "2014 Intriguing properties of neural networks.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c4e9265e560c4cb78d128d933a67ec496b4059295b50cecc8a213471c278ce76",
+      "pdf_bytes": 650984,
+      "source_paths": [
+        "tmp/research/2017 ffwd delegation is (much) faster than you think.pdf"
+      ],
+      "replay_path": "2017 ffwd delegation is (much) faster than you think.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c50eba094c3f422ef43233802cce0b8ff5334c40cedc255805a7d377b36bf2d0",
+      "pdf_bytes": 431783,
+      "source_paths": [
+        "tmp/research/1986 Representing Information About Files.pdf"
+      ],
+      "replay_path": "1986 Representing Information About Files.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c5cdbe8f18682ef8609a2596d8c0795661496b04921a1258db9b221358fad334",
+      "pdf_bytes": 1275605,
+      "source_paths": [
+        "tmp/research/2017 Lightweight Provenance Service for High-Performance Computing.pdf"
+      ],
+      "replay_path": "2017 Lightweight Provenance Service for High-Performance Computing.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c7d0ec131dfa3d450e56884eea0dcb717195cd535ea8a1c76ddd7572cf37b764",
+      "pdf_bytes": 1661607,
+      "source_paths": [
+        "tmp/research/2017 Continuous Checkpointing of HTM Transactions in NVM.pdf"
+      ],
+      "replay_path": "2017 Continuous Checkpointing of HTM Transactions in NVM.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c838abe447eccbb1f827db15ee58d85fc405ba8e4f6e552f7a0439d24b3ac5ed",
+      "pdf_bytes": 58044,
+      "source_paths": [
+        "tmp/research/1992 Realtime Scheduling in SunOS 5.0.pdf"
+      ],
+      "replay_path": "1992 Realtime Scheduling in SunOS 5.0.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c89fb48aef7b26977a9177f9a447188f982f7a2acd1dac10f465c6806b481c78",
+      "pdf_bytes": 393638,
+      "source_paths": [
+        "tmp/research/2010 How to Benchmark Code Execution Times on Intel IA-32 and IA-64 Instruction Set Architectures.pdf"
+      ],
+      "replay_path": "2010 How to Benchmark Code Execution Times on Intel IA-32 and IA-64 Instruction Set Architectures.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c8dacc1ecf59187e48192888b7a1d6c116a7084b336208182e3f3f217d911b58",
+      "pdf_bytes": 391474,
+      "source_paths": [
+        "tmp/research/BFb0022286.pdf"
+      ],
+      "replay_path": "BFb0022286.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "c941213b4b538fefe01558fd05316db11c19ba26446008503570261744bd4ddb",
+      "pdf_bytes": 355831,
+      "source_paths": [
+        "tmp/research/2015 Addressing plagiarism in online programmes at a health sciences university a case study.pdf"
+      ],
+      "replay_path": "2015 Addressing plagiarism in online programmes at a health sciences university a case study.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ca5d25be875e1ef09ab06263ab613124afe98d9bdd02ea07bd1bcb231c76935c",
+      "pdf_bytes": 1196698,
+      "source_paths": [
+        "tmp/research/2013 Performance Introspection of Graph Databases.pdf"
+      ],
+      "replay_path": "2013 Performance Introspection of Graph Databases.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "cac32ab85da4a0a9c0f450eee0e5d5d1508fdb95ce24e28dc3a2c54913486143",
+      "pdf_bytes": 423123,
+      "source_paths": [
+        "tmp/research/A Hardware Architecture to Deploy Complex Multiprocessor Scheduling Algorithms.pdf"
+      ],
+      "replay_path": "A Hardware Architecture to Deploy Complex Multiprocessor Scheduling Algorithms.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "cb1bb10c0168576cc85b7ccddca0b4c70368c4376205a8d1f06db0c023befa6a",
+      "pdf_bytes": 582565,
+      "source_paths": [
+        "tmp/research/2017 A Systematic Review Into the Psychological Causes and Correlates of Plagiarism.pdf"
+      ],
+      "replay_path": "2017 A Systematic Review Into the Psychological Causes and Correlates of Plagiarism.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "cc6b84a631ed27622797e46e46285f81c3a9d3899ba5ea96b3522f6d6235ee4a",
+      "pdf_bytes": 753008,
+      "source_paths": [
+        "tmp/research/2015 Building Consistent Transactions with Inconsistent Replication.pdf"
+      ],
+      "replay_path": "2015 Building Consistent Transactions with Inconsistent Replication.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "cd42a74c667d275ebf4425d881e146a11a1e7f3b9e833b064f106d944229aa25",
+      "pdf_bytes": 1071799,
+      "source_paths": [
+        "tmp/research/2016 Real-Time Semantic Search Using Approximate Methodology for Large-Scale Storage Systems.pdf"
+      ],
+      "replay_path": "2016 Real-Time Semantic Search Using Approximate Methodology for Large-Scale Storage Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "cfc635e62b5193c461c87ebeedb6275596a7b45dcec51ef0a492f2d597443924",
+      "pdf_bytes": 50588,
+      "source_paths": [
+        "tmp/research/Implementing Transparent Shared Memory on Clusters using Virtual Machines.pdf"
+      ],
+      "replay_path": "Implementing Transparent Shared Memory on Clusters using Virtual Machines.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d0b3455aeb414b026ff12b7e4fcc52484ff4483d3e1a2a1378d56a4a8d02e885",
+      "pdf_bytes": 977918,
+      "source_paths": [
+        "tmp/research/2017 PebblesDB Building Key-Value Stores using Fragmented Log-Structured Merge Trees.pdf"
+      ],
+      "replay_path": "2017 PebblesDB Building Key-Value Stores using Fragmented Log-Structured Merge Trees.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d136fb9dd52ebf5bceb092754a376fac008fb653fa802d49d57568510ea7976d",
+      "pdf_bytes": 3726308,
+      "source_paths": [
+        "tmp/research/2019 CHS Medium A Human-Centered Information Space Designing Dynamic Personalized Visual Information.pdf"
+      ],
+      "replay_path": "2019 CHS Medium A Human-Centered Information Space Designing Dynamic Personalized Visual Information.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d24a2520cf5590ca5c52582492ff709f75daa1b0588136a84aa182bcb78985ae",
+      "pdf_bytes": 2382670,
+      "source_paths": [
+        "tmp/research/2017 Elastic Transactions.pdf"
+      ],
+      "replay_path": "2017 Elastic Transactions.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d27277c7181cb844940dd0629f54000bd6c6bed7025f3916873d2b21f09dda8a",
+      "pdf_bytes": 861410,
+      "source_paths": [
+        "tmp/research/2017 LightNVM The Linux Open-Channel SSD Subsystem.pdf"
+      ],
+      "replay_path": "2017 LightNVM The Linux Open-Channel SSD Subsystem.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+      "pdf_bytes": 605564,
+      "source_paths": [
+        "tmp/research/2018 Competitive caching with machine learned advice.pdf"
+      ],
+      "replay_path": "2018 Competitive caching with machine learned advice.pdf",
+      "first_stage": 1
+    },
+    {
+      "sha256": "d39799c989632c26b6578bd2ae86d7bdb500396a2252dc0e79de9437235711b9",
+      "pdf_bytes": 469891,
+      "source_paths": [
+        "tmp/research/2011 Consistent and Durable Data Structures for Non-Volatile Byte-Addressable Memory.pdf"
+      ],
+      "replay_path": "2011 Consistent and Durable Data Structures for Non-Volatile Byte-Addressable Memory.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d3e93e0190b0654f8d5b0a9511c4069908eb65476db8ddf40c50a5586656aafc",
+      "pdf_bytes": 774159,
+      "source_paths": [
+        "tmp/research/2017 Mosaic Processing a Trillion-Edge Graph on a Single Machine.pdf"
+      ],
+      "replay_path": "2017 Mosaic Processing a Trillion-Edge Graph on a Single Machine.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d4b20a4ad55c1eface82bd9241e81c31d49ad3824c016a04475a4e6b919154cb",
+      "pdf_bytes": 3861789,
+      "source_paths": [
+        "tmp/research/2020 Forget Failure.pdf"
+      ],
+      "replay_path": "2020 Forget Failure.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d4d0ce2dfeffe527a69b57b0de6a58031ada931c3cd976bdafe335c6efd5bff7",
+      "pdf_bytes": 1185288,
+      "source_paths": [
+        "tmp/research/2012 Randomized Algorithms.pdf"
+      ],
+      "replay_path": "2012 Randomized Algorithms.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d590aee41769c01e6ce113cb866ab0bc3347d0e84a93e1bf6f9d5283826a1398",
+      "pdf_bytes": 775133,
+      "source_paths": [
+        "tmp/research/2015 Persistent B+-Trees in Non-Volatile Memory.pdf"
+      ],
+      "replay_path": "2015 Persistent B+-Trees in Non-Volatile Memory.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d598b8ddd4a0779e0d6079d352d29fe6a34cbc3d40947e1bc0c047b16746d22b",
+      "pdf_bytes": 2426470,
+      "source_paths": [
+        "tmp/research/2016 Host Side Caching Solutions and Opportunities.pdf"
+      ],
+      "replay_path": "2016 Host Side Caching Solutions and Opportunities.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d667b15b9145f47868db5b8c4a18282cae39def2bd7fba5ebd75ef049c189736",
+      "pdf_bytes": 331275,
+      "source_paths": [
+        "tmp/research/1981 A Tool that Detects Plagiarism in Pascal Programs.pdf"
+      ],
+      "replay_path": "1981 A Tool that Detects Plagiarism in Pascal Programs.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d6cff0b25718a9f4768a05f3e1de8009bea9f79a95750fd1a84a10b3a35814bb",
+      "pdf_bytes": 435320,
+      "source_paths": [
+        "tmp/research/2017 Exploring the Spatial Ability of Undergraduate Students.pdf"
+      ],
+      "replay_path": "2017 Exploring the Spatial Ability of Undergraduate Students.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d7f0c66820bc2d60b6653650d1e7b0bdd44ab7d306d1a152352c90ecab312c8c",
+      "pdf_bytes": 169922,
+      "source_paths": [
+        "tmp/research/2013 OPUS A Lightweight system for Observational Provenance.pdf"
+      ],
+      "replay_path": "2013 OPUS A Lightweight system for Observational Provenance.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d8022a8aa70c8e74475b421c478bb8d983d053be486b0f0722a0bf715aefa064",
+      "pdf_bytes": 667256,
+      "source_paths": [
+        "tmp/research/2015 Deterring Cheating in Online Environments.pdf"
+      ],
+      "replay_path": "2015 Deterring Cheating in Online Environments.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d8517750993b51047744f066a6c9ad038eaa24c7fb4648b859d449aee850a7b8",
+      "pdf_bytes": 408056,
+      "source_paths": [
+        "tmp/research/2011 Consistency, Availability, and Convergence.pdf"
+      ],
+      "replay_path": "2011 Consistency, Availability, and Convergence.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d8c721a5de3aa882939d4cbb0da87b361b02dea66f5bfeb9704ac07b4b5acbb5",
+      "pdf_bytes": 412662,
+      "source_paths": [
+        "tmp/research/2016 Understanding Manycore Scalability of File Systems.pdf"
+      ],
+      "replay_path": "2016 Understanding Manycore Scalability of File Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "d8f6a17658fd4913e9c747b450c8df7539a0f34995d6efd42eb4bd058d73f5ae",
+      "pdf_bytes": 549589,
+      "source_paths": [
+        "tmp/research/2017 GFS a Graph-based File System Enhanced with Semantic Features.pdf"
+      ],
+      "replay_path": "2017 GFS a Graph-based File System Enhanced with Semantic Features.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "daf184e9e6d3d7506e2c05832d6842892fa192d93d9bd3000a0bf08de0619afd",
+      "pdf_bytes": 1720812,
+      "source_paths": [
+        "tmp/research/2017 Concurrent Log-Structured Memory for Many-Core Key-Value Stores.pdf"
+      ],
+      "replay_path": "2017 Concurrent Log-Structured Memory for Many-Core Key-Value Stores.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "db79e82b1ffa767cbe46c0e553fd6c6c0f86e9263ec035c35056edbef96567dd",
+      "pdf_bytes": 356919,
+      "source_paths": [
+        "tmp/research/2009 Software Reuse and Plagiarism A Code of Practice.pdf"
+      ],
+      "replay_path": "2009 Software Reuse and Plagiarism A Code of Practice.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "dbfd153d98a646896fedf7cd69fa13cc466db104321ae94fe6b91c1736ce5894",
+      "pdf_bytes": 633504,
+      "source_paths": [
+        "tmp/research/2017 Are We on the Same Page College Students' and Faculty's Perception of Student Plagiarism in Taiwan.pdf"
+      ],
+      "replay_path": "2017 Are We on the Same Page College Students' and Faculty's Perception of Student Plagiarism in Taiwan.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "dc094d0db446eaa680383e1b81925cea2a386554ab02bdb62b9458bd729245ba",
+      "pdf_bytes": 706972,
+      "source_paths": [
+        "tmp/research/2019 Exploring Metadata Search Essentials for Scientific Data Management.pdf"
+      ],
+      "replay_path": "2019 Exploring Metadata Search Essentials for Scientific Data Management.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "dc288b2ff6df5de6df455d376b9faeb322537611ee752d13473d083e584a8d56",
+      "pdf_bytes": 2361019,
+      "source_paths": [
+        "tmp/research/2018 Random access in large-scale DNA data storage..pdf"
+      ],
+      "replay_path": "2018 Random access in large-scale DNA data storage..pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "dd8a7d42f844e68278475b594892e8c4f792e21433705332ade2f9833afdcd24",
+      "pdf_bytes": 359071,
+      "source_paths": [
+        "tmp/research/2010 Can Streaming SIMD Non-Temporal Instructions Benefit Intra-node MPI Communications on Modern Multi-core Platforms.pdf"
+      ],
+      "replay_path": "2010 Can Streaming SIMD Non-Temporal Instructions Benefit Intra-node MPI Communications on Modern Multi-core Platforms.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e0bb2e644ec5e17a4f53cc484141398156b5f671c9d70ca3c95b81880ea384bf",
+      "pdf_bytes": 202161,
+      "source_paths": [
+        "tmp/research/Microservices - yesterday, today, and tomorrow.pdf"
+      ],
+      "replay_path": "Microservices - yesterday, today, and tomorrow.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e0d8608855801c03d0b8e7ab01ea8ac9709f5de3ca95f40ac451c5e3829faf09",
+      "pdf_bytes": 483909,
+      "source_paths": [
+        "tmp/research/2016 Flexible Paxos Quorum intersection revisited.pdf"
+      ],
+      "replay_path": "2016 Flexible Paxos Quorum intersection revisited.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e0e3ba3513c3be92238ca9f7e651189b0d87b0a176c1aee6efc2c3eef189447c",
+      "pdf_bytes": 401599,
+      "source_paths": [
+        "tmp/research/ai-banking-governance.pdf"
+      ],
+      "replay_path": "ai-banking-governance.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e14f539fc0f59f5f33d22681a7ceaeb705d3d17bb8b65c0687e837179004f3f6",
+      "pdf_bytes": 3208364,
+      "source_paths": [
+        "tmp/research/2014 Student Perceptions of the Acceptability of Various Code-Writing Practices.pdf"
+      ],
+      "replay_path": "2014 Student Perceptions of the Acceptability of Various Code-Writing Practices.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e1d873b7254200b8e7187c8fe9d6777486b827cc182696bc16302fb63ae29402",
+      "pdf_bytes": 214443,
+      "source_paths": [
+        "tmp/research/2005 Don't Take My Folders Away!  Organizing Personal Information to Get Things Done.pdf"
+      ],
+      "replay_path": "2005 Don't Take My Folders Away!  Organizing Personal Information to Get Things Done.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e1f44c37f1eb07d38937a67d679ea6a0f1e455e49af0c3811c862f9ea7b5000a",
+      "pdf_bytes": 1276953,
+      "source_paths": [
+        "tmp/research/2016 The Research and Implementation of Metadata Cache Backup Technology Based on CEPH File System.pdf"
+      ],
+      "replay_path": "2016 The Research and Implementation of Metadata Cache Backup Technology Based on CEPH File System.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e249f2bd07ed603226a958c6acb9051552d5c3e8bdd3a61967e2c0d7cac7c21a",
+      "pdf_bytes": 128512,
+      "source_paths": [
+        "tmp/research/2017 Comparison of string matching based algorithms for plagiarism detection of source code.pdf"
+      ],
+      "replay_path": "2017 Comparison of string matching based algorithms for plagiarism detection of source code.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e2e4fd967a0b9379507b42d1c846584a629cb4253ee920075883b6d4ac6328da",
+      "pdf_bytes": 460555,
+      "source_paths": [
+        "tmp/research/2017 Eris Coordination-Free Consistent Transactions using In-Network Concurrency Control.pdf"
+      ],
+      "replay_path": "2017 Eris Coordination-Free Consistent Transactions using In-Network Concurrency Control.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+      "pdf_bytes": 2717143,
+      "source_paths": [
+        "tmp/research/2013 CORFU A Distributed Shared Log.pdf"
+      ],
+      "replay_path": "2013 CORFU A Distributed Shared Log.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e3a2065f0cddb86375714563cb40bbf7cc043117fb2ce65c7116591f0963e017",
+      "pdf_bytes": 434094,
+      "source_paths": [
+        "tmp/research/2016 Taiwanese College Students' Perceptions of Plagiarism Cultural and Educational Considerations.pdf"
+      ],
+      "replay_path": "2016 Taiwanese College Students' Perceptions of Plagiarism Cultural and Educational Considerations.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e40e1be472096e3a33a97d16242d4ea3e471d842ebeacda8159f26cc847f7ea7",
+      "pdf_bytes": 997737,
+      "source_paths": [
+        "tmp/research/2018 A Location-Query-Browse Graph for Contextual Recommendation.pdf"
+      ],
+      "replay_path": "2018 A Location-Query-Browse Graph for Contextual Recommendation.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e48a4e1103e1a2453bbc8660251fce4658277d3a664b1fb3f36df5064b616bc3",
+      "pdf_bytes": 861984,
+      "source_paths": [
+        "tmp/research/2017 CoMerge Toward Efficient Data Placement in Shared Heterogenous Memory Systems.pdf"
+      ],
+      "replay_path": "2017 CoMerge Toward Efficient Data Placement in Shared Heterogenous Memory Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e4dc147df38ffab947a54d5547d28d45aa01fa924b8a78d78dc637aba3048c61",
+      "pdf_bytes": 1093510,
+      "source_paths": [
+        "tmp/research/2018 Easy Lock-Free Indexing in Non-Volatile Memory.pdf"
+      ],
+      "replay_path": "2018 Easy Lock-Free Indexing in Non-Volatile Memory.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e5a16039005590c611abc7b23e636ee6cfa14d7f2e8009b7594344ab4c1e4159",
+      "pdf_bytes": 1477251,
+      "source_paths": [
+        "tmp/research/p267-garikipati.pdf"
+      ],
+      "replay_path": "p267-garikipati.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e5f911bc5239ad7edd04cca25059dd82483c37945f8c73cbd9764f2406600620",
+      "pdf_bytes": 33088649,
+      "source_paths": [
+        "tmp/research/2004 Information Retrieval Algorithms and Heuristics.pdf"
+      ],
+      "replay_path": "2004 Information Retrieval Algorithms and Heuristics.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e65708391d6fda9dff30c2b14beacbb6c6330a98480a4e46c60afc6e05ed038b",
+      "pdf_bytes": 514762,
+      "source_paths": [
+        "tmp/research/2015 Software-Defined Caching Managing Caches in Multi-Tenant Data Centers.pdf"
+      ],
+      "replay_path": "2015 Software-Defined Caching Managing Caches in Multi-Tenant Data Centers.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e6bd224122f29e123d548b33b7cc907a6d701e2adbf26f5a32a536fbf2d6ff4b",
+      "pdf_bytes": 22725879,
+      "source_paths": [
+        "tmp/research/2015 Emerging Research in Computing Ifnormation Comuncation and Applications.pdf"
+      ],
+      "replay_path": "2015 Emerging Research in Computing Ifnormation Comuncation and Applications.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e76c2a7a8fff10cc6be222931c665fd75e050f1345e810972b17b7bdf8dc94d9",
+      "pdf_bytes": 836578,
+      "source_paths": [
+        "tmp/research/2017 A review of collisions in cryptographic hash function used in digital forensic tools.pdf"
+      ],
+      "replay_path": "2017 A review of collisions in cryptographic hash function used in digital forensic tools.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e785ba00af211472e1199a824378bb5d2d4a74bf9d31bd36a4759896efe7c649",
+      "pdf_bytes": 213124,
+      "source_paths": [
+        "tmp/research/2016 On Testing Persistent-Memory-Based Software.pdf"
+      ],
+      "replay_path": "2016 On Testing Persistent-Memory-Based Software.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e84337d12d0ad2b6362551acb8f56e1c46240edd82641a462e5dec8c310d152a",
+      "pdf_bytes": 5444894,
+      "source_paths": [
+        "tmp/research/2008 Formal Concept Analaysis and Semantic File Systems.pdf"
+      ],
+      "replay_path": "2008 Formal Concept Analaysis and Semantic File Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e86785c9a15d61cebede90ec66a94b6adad098df24b6bbd1c2caf2f635b93f30",
+      "pdf_bytes": 335963,
+      "source_paths": [
+        "tmp/research/2021 Beyond malloc efficiency to fleet efficiency a hugepage-aware memory allocator.pdf"
+      ],
+      "replay_path": "2021 Beyond malloc efficiency to fleet efficiency a hugepage-aware memory allocator.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "e868c7b3d2349c14bc1cccd38c93f84e5f7bc849a5a345806078ecbac9edf4a9",
+      "pdf_bytes": 41802191,
+      "source_paths": [
+        "tmp/research/2018 Computing Domain Ontology Knowledge Representation and Reasoning on Graph Database.pdf"
+      ],
+      "replay_path": "2018 Computing Domain Ontology Knowledge Representation and Reasoning on Graph Database.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "eac7292c737d78702bbb077b8bf44570e08be44de73d9e1e21eb75002ab03cdb",
+      "pdf_bytes": 1532368,
+      "source_paths": [
+        "tmp/research/2013 Beyond Block IO Implementing a Distributed Shared Log in Hardware.pdf"
+      ],
+      "replay_path": "2013 Beyond Block IO Implementing a Distributed Shared Log in Hardware.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "eb20351e718b57b901a61bf76bfad1d49bf190ddfe343c9a8a334b5109d98cac",
+      "pdf_bytes": 257346,
+      "source_paths": [
+        "tmp/research/2016 An Operating System Level Data Migration Scheme in Hybrid DRAM-NVM Memory Architecture.pdf"
+      ],
+      "replay_path": "2016 An Operating System Level Data Migration Scheme in Hybrid DRAM-NVM Memory Architecture.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ebcc2941cde85fde0e94ecc1a513b1465ddbf7e11fab2254756ba077f34f8b63",
+      "pdf_bytes": 964232,
+      "source_paths": [
+        "tmp/research/2018 Informing Students about Academic Integrity in Programming.pdf"
+      ],
+      "replay_path": "2018 Informing Students about Academic Integrity in Programming.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "eccc6531c8359220963a8b5e11194638edb3f193e67224b613752cdfc63a64fd",
+      "pdf_bytes": 2611363,
+      "source_paths": [
+        "tmp/research/2017 Analyzing a decade of Linux system calls.pdf"
+      ],
+      "replay_path": "2017 Analyzing a decade of Linux system calls.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "edb53794cf4c1188256ed8034267d4f000b3629a9875eb023c7c4ee5c2bd73b3",
+      "pdf_bytes": 1115764,
+      "source_paths": [
+        "tmp/research/2017 Clank Architectural Support for Intermient Computation.pdf"
+      ],
+      "replay_path": "2017 Clank Architectural Support for Intermient Computation.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "edfc12c4902d2b70929de08829b4bddfe227b3275d36bf870f6b32f924d68ceb",
+      "pdf_bytes": 18398173,
+      "source_paths": [
+        "tmp/research/2016 pVM Persistent Virtual Memory for Efficient Capacity Scaling and Object Storage.pdf"
+      ],
+      "replay_path": "2016 pVM Persistent Virtual Memory for Efficient Capacity Scaling and Object Storage.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ee23c3ef1e8e7cc884bcc07f3b87cf439f54ac552fb6c558c2da3e5c60b84014",
+      "pdf_bytes": 669756,
+      "source_paths": [
+        "tmp/research/2017 Optimizing the TLB Shootdown Algorithm with Page Access Tracking.pdf"
+      ],
+      "replay_path": "2017 Optimizing the TLB Shootdown Algorithm with Page Access Tracking.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "eec2ec98b8f4e6eff84ab05fb0c9e15d0525bac9d3c5e30e98872f0388e92de7",
+      "pdf_bytes": 5294427,
+      "source_paths": [
+        "tmp/research/2013 Hekaton SQL Server's Memory-Optimized OLTP Engine.pdf"
+      ],
+      "replay_path": "2013 Hekaton SQL Server's Memory-Optimized OLTP Engine.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ef035a483b9a09ad42e12f07f06e0ee2339f0a940cad5136baa6e6b60ff40b5d",
+      "pdf_bytes": 103883,
+      "source_paths": [
+        "tmp/research/2006 Academic Honest and Online Courses.pdf"
+      ],
+      "replay_path": "2006 Academic Honest and Online Courses.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "efdebd8efbd49ae4735d08fc2b6a0d6b3932424e4efa221f03f3b869d74b3075",
+      "pdf_bytes": 5595172,
+      "source_paths": [
+        "tmp/research/2017 NetCache Balancing Key-Value Stores with Fast In-Network Caching.pdf"
+      ],
+      "replay_path": "2017 NetCache Balancing Key-Value Stores with Fast In-Network Caching.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f09019a7b8f0da990531817ae9ebb082ba08140d827cf9eb61b7a6f0f192ade7",
+      "pdf_bytes": 2160049,
+      "source_paths": [
+        "tmp/research/2020 TH-DPMS Design and Implementation of an RDMA-enabled Distributed Persistent Memory Storage System.pdf"
+      ],
+      "replay_path": "2020 TH-DPMS Design and Implementation of an RDMA-enabled Distributed Persistent Memory Storage System.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f22748bcfddf8c507dae1b4ca7356392579527b3d38d031268e7d94b44d01699",
+      "pdf_bytes": 244756,
+      "source_paths": [
+        "tmp/research/2018 Spectre Attacks Exploiting Speculative Execution.pdf"
+      ],
+      "replay_path": "2018 Spectre Attacks Exploiting Speculative Execution.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f24ec0ba38ec3bbedcf869908038124aec3e11e31c359a412381962d95d92ca4",
+      "pdf_bytes": 473298,
+      "source_paths": [
+        "tmp/research/2013 Whose Cache Line is it Anyway Operating System Support for Live Detection and Repair of False Sharing.pdf",
+        "tmp/research/plastic-eurosys-final.pdf"
+      ],
+      "replay_path": "2013 Whose Cache Line is it Anyway Operating System Support for Live Detection and Repair of False Sharing.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f28d1cba5f0f079b7786ac76d86892f829378c8698feee3f8fcb243a02a6a375",
+      "pdf_bytes": 1282895,
+      "source_paths": [
+        "tmp/research/2005 Distributed Secure Load Balancing with Skew Heterogeneity and Churn.pdf"
+      ],
+      "replay_path": "2005 Distributed Secure Load Balancing with Skew Heterogeneity and Churn.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f2a7bfdc0b6ea8520742e2289a693d08fb588e7bb0990513d72afe1158b65e64",
+      "pdf_bytes": 8459271,
+      "source_paths": [
+        "tmp/research/2014 Text stream mining for Massive Open Online courses review and perspectives.pdf"
+      ],
+      "replay_path": "2014 Text stream mining for Massive Open Online courses review and perspectives.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f3377d5fab4837d19cb6f27ab5794cd5adef756235a0ad484726104003082753",
+      "pdf_bytes": 148597,
+      "source_paths": [
+        "tmp/research/2015 Building a Replicated Logging System with Apache Kafka.pdf"
+      ],
+      "replay_path": "2015 Building a Replicated Logging System with Apache Kafka.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f344716ac0d9df145bd541f786607b75923d681e3bbc04470f3185b36011c729",
+      "pdf_bytes": 676881,
+      "source_paths": [
+        "tmp/research/2010 FlexSC Flexible System Call Scheduling with Exception-Less System Calls.pdf",
+        "tmp/research/Soares.pdf"
+      ],
+      "replay_path": "2010 FlexSC Flexible System Call Scheduling with Exception-Less System Calls.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f3ab000dc281d593dfcd88cc1df66871450d4de336a0fdd14b78064ee9119c8d",
+      "pdf_bytes": 273017,
+      "source_paths": [
+        "tmp/research/2008 Remus High Availability via Asynchronous Virtual Machine Replication.pdf"
+      ],
+      "replay_path": "2008 Remus High Availability via Asynchronous Virtual Machine Replication.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f3b20c2b65bcda06569ee1b63c126d9f529fe545866c4a4b6dfcb5701f63c915",
+      "pdf_bytes": 247518,
+      "source_paths": [
+        "tmp/research/2016 Finding Consistency in an Inconsistent World Towards Deep Semantic Understanding of Scale-out Distributed Databases.pdf"
+      ],
+      "replay_path": "2016 Finding Consistency in an Inconsistent World Towards Deep Semantic Understanding of Scale-out Distributed Databases.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f4283c072c904deb4397a28a14f1819e8ee685050409acb76c51573d25b8ce23",
+      "pdf_bytes": 209709,
+      "source_paths": [
+        "tmp/research/2017 A Comparative Study of Log-Structured Merge-Tree-Based Spatial Indexes for Big Data.pdf"
+      ],
+      "replay_path": "2017 A Comparative Study of Log-Structured Merge-Tree-Based Spatial Indexes for Big Data.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f5fffc223bbf8afb577e96e195c112974a8c35efebe20a5a8729a4ce369bd470",
+      "pdf_bytes": 666418,
+      "source_paths": [
+        "tmp/research/2020 Paths Explored Paths Omitted Paths Obscured Decision Points and Selective Reporting in End-to-End Data Analysis.pdf"
+      ],
+      "replay_path": "2020 Paths Explored Paths Omitted Paths Obscured Decision Points and Selective Reporting in End-to-End Data Analysis.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f67524524911906ede8c1b9215b940ea0f1f9d5bd3f1ad7dfb5cc0877f518d14",
+      "pdf_bytes": 571254,
+      "source_paths": [
+        "tmp/research/2015 To Lock Swap or Elide On the Interplay of Hardware Transactional Memory and Lock-Free Indexing.pdf"
+      ],
+      "replay_path": "2015 To Lock Swap or Elide On the Interplay of Hardware Transactional Memory and Lock-Free Indexing.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f6a5456db140fac4edb5158f59119e30cfc48a29376ab87c4836cd6c79acc538",
+      "pdf_bytes": 1098980,
+      "source_paths": [
+        "tmp/research/1993 Transactional Memory Architectural Support for Lock Free Data Structures.pdf"
+      ],
+      "replay_path": "1993 Transactional Memory Architectural Support for Lock Free Data Structures.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f73d6b8f2a935c13d4ba569771f11deb3472e39a0aefc110c4d4c97df97f509a",
+      "pdf_bytes": 4542894,
+      "source_paths": [
+        "tmp/research/2014 Algorithm Improvements for Fast Concurrent Cuckoo Hashing.pdf"
+      ],
+      "replay_path": "2014 Algorithm Improvements for Fast Concurrent Cuckoo Hashing.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f9258005de23619f429cf6c5ed8f648127b6de40bfe91c9edf2dfa97e8e399cf",
+      "pdf_bytes": 2583338,
+      "source_paths": [
+        "tmp/research/1995 Plagiarisms Authorships and The Academic Death Penalty.pdf"
+      ],
+      "replay_path": "1995 Plagiarisms Authorships and The Academic Death Penalty.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "f994cfb6fd03da74b9fc3ce461f56b6d087a7064501367f4630fecc255da5224",
+      "pdf_bytes": 73794,
+      "source_paths": [
+        "tmp/research/2013 IBM solidDB In-Memory Database Optimized for Extreme Speed and Availability.pdf"
+      ],
+      "replay_path": "2013 IBM solidDB In-Memory Database Optimized for Extreme Speed and Availability.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "fa079eee73c9f930eb9cd3c78ca1b7df59ad76c3bcf9f561bd53759f4ff3d6c3",
+      "pdf_bytes": 257101,
+      "source_paths": [
+        "tmp/research/2016 Optimizing every operation in a Write-Optimized File System.pdf"
+      ],
+      "replay_path": "2016 Optimizing every operation in a Write-Optimized File System.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "fa45bdbc4a2ca802c2bb48736248b32dfb15abe08cd149548921f2186418e62b",
+      "pdf_bytes": 894054,
+      "source_paths": [
+        "tmp/research/2020 Peregrine A Pattern-Aware Graph Mining System.pdf"
+      ],
+      "replay_path": "2020 Peregrine A Pattern-Aware Graph Mining System.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "fa4b052effb5c31aeeadf7255e1be316a33157372b21cedb04dc84ea3790fcbc",
+      "pdf_bytes": 253131,
+      "source_paths": [
+        "tmp/research/2017 Investigating Student Plagiarism Patterns and Correlations to Grades.pdf"
+      ],
+      "replay_path": "2017 Investigating Student Plagiarism Patterns and Correlations to Grades.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "faf1efc562365d3458d57c58e4386464ad10bdaecf90534ef9b783d2fad917ea",
+      "pdf_bytes": 132406,
+      "source_paths": [
+        "tmp/research/2016 Practical Persistence for Multi-threaded Applications.pdf"
+      ],
+      "replay_path": "2016 Practical Persistence for Multi-threaded Applications.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "fb0176ba79e2bca3e275d01f76c383c24c50855b574f35c45c9b540733463941",
+      "pdf_bytes": 887654,
+      "source_paths": [
+        "tmp/research/2018 TMOSS Using Intermediate Assignment Work to Understand Excessive Collaboration in Large Classes.pdf"
+      ],
+      "replay_path": "2018 TMOSS Using Intermediate Assignment Work to Understand Excessive Collaboration in Large Classes.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "fb75fdf33eef91b6c2ba187d547bcd8e145a053379eecb37cda08b0246fa4d2a",
+      "pdf_bytes": 5330441,
+      "source_paths": [
+        "tmp/research/2019 Supporting Peripherals in Intermittent Systems withJust-In-Time Checkpoints.pdf"
+      ],
+      "replay_path": "2019 Supporting Peripherals in Intermittent Systems withJust-In-Time Checkpoints.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "fbaa5df001e5880a46ce150f9771f37191843bc44a5ccce027446b93c710b6f4",
+      "pdf_bytes": 1096131,
+      "source_paths": [
+        "tmp/research/2018 Digree Building a Distributed Graph Processing Engine out of Single-node Graph Database Installations.pdf"
+      ],
+      "replay_path": "2018 Digree Building a Distributed Graph Processing Engine out of Single-node Graph Database Installations.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "fc4d5a7fb8a169d0694ca7e11d905319cae3a3b25dee00adbb4bd734d37f51e5",
+      "pdf_bytes": 73441,
+      "source_paths": [
+        "tmp/research/2002 Methods for Helping Students Avoid Plagarism.pdf"
+      ],
+      "replay_path": "2002 Methods for Helping Students Avoid Plagarism.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "fcab5536467a1072cf93793b058738f11d7f76f2317096e790947026728b4da2",
+      "pdf_bytes": 2473462,
+      "source_paths": [
+        "tmp/research/2018 Alluxio A Virtual Distributed File System.pdf"
+      ],
+      "replay_path": "2018 Alluxio A Virtual Distributed File System.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "fcaff9cc78c8e2503bb70a17a3c45ca52c717deed63e712856bf04f9363fdf10",
+      "pdf_bytes": 666421,
+      "source_paths": [
+        "tmp/research/s41746-025-01512-6.pdf"
+      ],
+      "replay_path": "s41746-025-01512-6.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "fed4a52ebbfca65901f8f3d960b9d1442dcf3638ec20f9b6e9ff249b200da466",
+      "pdf_bytes": 319995,
+      "source_paths": [
+        "tmp/research/2014 Towards Paravirtualized Network File Systems.pdf"
+      ],
+      "replay_path": "2014 Towards Paravirtualized Network File Systems.pdf",
+      "first_stage": 2
+    },
+    {
+      "sha256": "ffd5e3a7b0e90e7e87b088e6fa9746f3fc7fcb6fd2e10a8820b2078b0b66ee31",
+      "pdf_bytes": 659599,
+      "source_paths": [
+        "tmp/research/2018 The Design and Development of a Semantic File System Ontology.pdf"
+      ],
+      "replay_path": "2018 The Design and Development of a Semantic File System Ontology.pdf",
+      "first_stage": 2
+    }
+  ]
+}
