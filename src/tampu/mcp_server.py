@@ -122,7 +122,11 @@ def create_server(service: Service) -> FastMCP:
             "Page a node's candidates, or open bounded metadata/evidence from any artifact "
             "in that node, including an unseen candidate, by artifact_id plus physical PDF "
             "page or element ordinal. Then slice text with its opaque evidence handle; "
-            "continuations preserve Unicode character boundaries. Physical PDF pages are "
+            "continuations preserve Unicode character boundaries. limit is 1..20; "
+            "slice_chars is 1..4000 (default 800). Search and artifact/page/ordinal "
+            "listings return preview handles: call inspect with evidence_handle to read "
+            "a slice, then use its returned citation handle for positive finish. "
+            "Physical PDF pages are "
             "distinct from unknown printed-page labels. This reads durable data and writes "
             "only expiring process-local delivery/inspection state."
         ),
@@ -223,6 +227,21 @@ def create_server(service: Service) -> FastMCP:
                 "type": "string",
             }
 
+    inspect_tool = server._tool_manager.get_tool("inspect")
+    inspect_tool.parameters["properties"]["slice_chars"].update(
+        {
+            "minimum": 1,
+            "maximum": 4000,
+            "description": "Unicode characters per inspected slice; 1..4000.",
+        }
+    )
+    inspect_tool.parameters["properties"]["limit"].update(
+        {
+            "minimum": 1,
+            "maximum": 20,
+            "description": "Candidate or element listing page size; 1..20.",
+        }
+    )
     return server
 
 

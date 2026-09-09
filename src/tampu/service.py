@@ -32,9 +32,7 @@ class _BudgetError(TampuError):
 
 
 def compact_json(value: Any) -> str:
-    return json.dumps(
-        value, ensure_ascii=False, sort_keys=True, separators=(",", ":")
-    )
+    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
 def _size(value: Any) -> int:
@@ -83,9 +81,7 @@ class Service:
 
         def preserve_revision_underfill(collection_result: dict) -> None:
             name = collection_result["name"]
-            next_offset = revision_starts[name] + len(
-                collection_result["revisions"]
-            )
+            next_offset = revision_starts[name] + len(collection_result["revisions"])
             collection_result["revision_continuation"] = self._make_cursor(
                 f"revisions:{name}", next_offset
             )
@@ -120,7 +116,11 @@ class Service:
         revision_limit: int,
         revision_starts: dict[str, int],
     ) -> tuple[dict, dict, list[str]]:
-        if not isinstance(limit, int) or isinstance(limit, bool) or not 1 <= limit <= 20:
+        if (
+            not isinstance(limit, int)
+            or isinstance(limit, bool)
+            or not 1 <= limit <= 20
+        ):
             raise TampuError("invalid_input", "The collection page limit is invalid.")
         if (
             not isinstance(detail_limit, int)
@@ -405,6 +405,8 @@ class Service:
                 "process_journey_budget_bytes": MAX_STATE_BYTES,
                 "revision_page_default": 2,
                 "revision_page_maximum": 20,
+                "inspection_page_maximum": 20,
+                "evidence_slice_chars": {"minimum": 1, "maximum": 4000, "default": 800},
             },
             "capabilities": {
                 "lexical_search": "available",
@@ -471,9 +473,7 @@ class Service:
                     "offset": result["returned_count"],
                 }
             else:
-                journey["continuations"][token]["offset"] = result[
-                    "returned_count"
-                ]
+                journey["continuations"][token]["offset"] = result["returned_count"]
             if not self._within_capacity(journey, pending.get("original")):
                 raise TampuError(
                     "journey_capacity",
@@ -510,9 +510,9 @@ class Service:
                 journey["evidence"].pop(handle, None)
             continuation = response["result"].get("continuation")
             if continuation is not None:
-                journey["continuations"][continuation]["offset"] = response[
-                    "result"
-                ]["returned_count"]
+                journey["continuations"][continuation]["offset"] = response["result"][
+                    "returned_count"
+                ]
             self._journeys[journey["journey_id"]] = journey
         return response
 
@@ -796,9 +796,7 @@ class Service:
                 raise TampuError("invalid_input", "The inspection limit is invalid.")
             saved = journey["continuations"].get(continuation) if continuation else None
             if continuation and not saved:
-                raise TampuError(
-                    "invalid_continuation", "The continuation is invalid."
-                )
+                raise TampuError("invalid_continuation", "The continuation is invalid.")
             if artifact_id is not None or (saved and saved.get("kind") == "elements"):
                 return self._inspect_elements(
                     journey,
@@ -809,9 +807,15 @@ class Service:
                     limit,
                     saved,
                 )
-            if ordinal is not None or page is not None or start is not None or end is not None:
+            if (
+                ordinal is not None
+                or page is not None
+                or start is not None
+                or end is not None
+            ):
                 raise TampuError(
-                    "invalid_input", "An artifact is required for page or ordinal inspection."
+                    "invalid_input",
+                    "An artifact is required for page or ordinal inspection.",
                 )
             offset = 0
             if continuation:
@@ -825,9 +829,7 @@ class Service:
                     )
                 offset = saved["offset"]
             hits = self._hits(journey, node, offset, limit)
-            next_cursor = self._result_continuation(
-                journey, node, offset + len(hits)
-            )
+            next_cursor = self._result_continuation(journey, node, offset + len(hits))
             result = {
                 "journey_id": journey_id,
                 "node_id": node_id,
@@ -942,9 +944,7 @@ class Service:
                 },
             },
         }
-        omissions = (
-            ["evidence_slice_continues"] if next_handle is not None else []
-        )
+        omissions = ["evidence_slice_continues"] if next_handle is not None else []
         return result, self._node_scope(journey, node), omissions
 
     def _inspect_elements(
@@ -960,7 +960,8 @@ class Service:
         if saved is not None:
             if any(value is not None for value in (artifact_id, ordinal, page)):
                 raise TampuError(
-                    "invalid_input", "A continuation already identifies the artifact range."
+                    "invalid_input",
+                    "A continuation already identifies the artifact range.",
                 )
             artifact_id = saved["artifact_id"]
             ordinal = saved["ordinal"]
@@ -1050,9 +1051,7 @@ class Service:
                 "artifact_id": artifact_id,
                 "metadata": metadata,
                 "source_aliases": candidate.get("aliases", [])[:2],
-                "omitted_source_aliases": max(
-                    0, len(candidate.get("aliases", [])) - 2
-                ),
+                "omitted_source_aliases": max(0, len(candidate.get("aliases", [])) - 2),
                 "projection_status": projection["status"],
                 "projection_coverage": projection["coverage"],
                 "projection_losses": projection.get("losses", [])[:5],
@@ -1066,7 +1065,9 @@ class Service:
             "elements": returned,
             "continuation": continuation,
         }
-        omissions = ["additional_elements_available_by_continuation"] if continuation else []
+        omissions = (
+            ["additional_elements_available_by_continuation"] if continuation else []
+        )
         return result, self._node_scope(journey, node), omissions
 
     def _read_elements(self, projection: dict) -> list[dict]:
@@ -1198,8 +1199,10 @@ class Service:
             "preserved": False,
         }
         if kind == "positive":
-            if not isinstance(handles, list) or not handles or not all(
-                isinstance(handle, str) for handle in handles
+            if (
+                not isinstance(handles, list)
+                or not handles
+                or not all(isinstance(handle, str) for handle in handles)
             ):
                 raise TampuError(
                     "invalid_input", "Positive findings require evidence handles."
@@ -1310,7 +1313,9 @@ class Service:
             counts[key] = counts.get(key, 0) + 1
         return [
             {"value": json.loads(key), "artifacts": count}
-            for key, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))
+            for key, count in sorted(
+                counts.items(), key=lambda item: (-item[1], item[0])
+            )
         ]
 
     def _hits(self, journey: dict, node: dict, offset: int, limit: int) -> list[dict]:
@@ -1320,17 +1325,14 @@ class Service:
                 "artifact_id": candidate["artifact_id"],
                 "title": candidate.get("metadata", {}).get("title"),
                 "source_aliases": candidate.get("aliases", [])[:2],
-                "omitted_source_aliases": max(
-                    0, len(candidate.get("aliases", [])) - 2
-                ),
+                "omitted_source_aliases": max(0, len(candidate.get("aliases", [])) - 2),
                 "score": candidate.get("score"),
                 "projection_status": candidate.get("projection_status", "ready"),
             }
             if "evidence" in candidate:
                 address = candidate["evidence"]
-                if (
-                    node["selection"].get(candidate["artifact_id"])
-                    == address.get("projection_id")
+                if node["selection"].get(candidate["artifact_id"]) == address.get(
+                    "projection_id"
                 ):
                     handle = self._handle("evidence")
                     journey["evidence"][handle] = {
@@ -1355,7 +1357,9 @@ class Service:
             hits.append(hit)
         return hits
 
-    def _result_continuation(self, journey: dict, node: dict, offset: int) -> str | None:
+    def _result_continuation(
+        self, journey: dict, node: dict, offset: int
+    ) -> str | None:
         if offset >= len(node["candidates"]):
             return None
         token = self._handle("continuation")
@@ -1402,7 +1406,9 @@ class Service:
         }
 
     def _journey(self, journey_id: str | None) -> dict:
-        journey = self._journeys.get(journey_id) if isinstance(journey_id, str) else None
+        journey = (
+            self._journeys.get(journey_id) if isinstance(journey_id, str) else None
+        )
         if journey is None:
             raise TampuError("unknown_journey", "The journey is unknown.")
         if time.time() >= journey["expires_at"]:
@@ -1467,7 +1473,7 @@ class Service:
             }
         try:
             self._trace(operation, arguments, response)
-        except (OSError, ValueError, TypeError):
+        except OSError, ValueError, TypeError:
             error_code = "trace_unavailable"
             response = {
                 "status": "error",
@@ -1582,13 +1588,9 @@ class Service:
                 next_offset = response.get("scope", {}).get(
                     "collection_offset", 0
                 ) + len(collections)
-                result["continuation"] = self._make_cursor(
-                    "collections", next_offset
-                )
+                result["continuation"] = self._make_cursor("collections", next_offset)
                 if "collections_underfilled_by_budget" not in response["omissions"]:
-                    response["omissions"].append(
-                        "collections_underfilled_by_budget"
-                    )
+                    response["omissions"].append("collections_underfilled_by_budget")
             if _size(response) <= budget:
                 return response
             if collections:

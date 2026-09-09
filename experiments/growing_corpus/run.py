@@ -171,16 +171,31 @@ def consumer(args):
                     process.wait()
                 break
     items, usage = {}, []
+    turn_completed = False
+    turn_failed = False
     for event in events(out):
         if "item" in event:
             items[event["item"]["id"]] = event["item"]
         if event.get("type") == "turn.completed":
+            turn_completed = True
             usage.append(event.get("usage"))
+        if event.get("type") == "turn.failed":
+            turn_failed = True
     messages = [
         x.get("text", "") for x in items.values() if x.get("type") == "agent_message"
     ]
-    final = messages[-1] if messages else ""
+    last_message = messages[-1] if messages else ""
+    has_final = (
+        bool(last_message)
+        and turn_completed
+        and not turn_failed
+        and reason is None
+        and process.returncode == 0
+    )
+    final = last_message if has_final else ""
     (out / "assessment.txt").write_text(final)
+    if last_message and not has_final:
+        (out / "last-message.txt").write_text(last_message)
     after = identity()
     summary = {
         "exit_code": process.returncode,
@@ -189,7 +204,9 @@ def consumer(args):
         "mcp_tool_calls": sum(x.get("type") == "mcp_tool_call" for x in items.values()),
         "usage": usage,
         "item_types": sorted({x.get("type", "unknown") for x in items.values()}),
-        "has_final_assessment": bool(final),
+        "has_final_assessment": has_final,
+        "turn_completed": turn_completed,
+        "turn_failed": turn_failed,
         "source_after": after,
         "source_unchanged": before == after,
         "files": {

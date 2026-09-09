@@ -233,9 +233,7 @@ def encoded(value: dict) -> bytes:
 
 
 def test_search_defaults_to_two_hits_and_count_only_is_exact(service: Service):
-    result = service.search(
-        collection="papers", intent="find alpha", query="alpha"
-    )
+    result = service.search(collection="papers", intent="find alpha", query="alpha")
     assert result["status"] == "ok"
     assert result["result"]["full_count"] == 3
     assert result["result"]["count_kind"] == "exact"
@@ -488,9 +486,9 @@ def test_finish_validates_inspected_evidence_zero_scope_and_semantic_absence(
     )
     assert supported["result"]["machine_status"] == "structurally_validated"
     delivered = service._journeys[positive["journey_id"]]["evidence"][inspected_handle]
-    assert [delivered["start"], delivered["end"]] == inspected["result"][
-        "evidence"
-    ]["character_range"]
+    assert [delivered["start"], delivered["end"]] == inspected["result"]["evidence"][
+        "character_range"
+    ]
 
     zero = service.search(
         collection="papers", intent="bound a negative", query="none", limit=0
@@ -531,9 +529,7 @@ def test_expiry_capacity_release_and_errors_are_controlled(
     )["result"]
 
     monkeypatch.setattr("tampu.service.MAX_STATE_BYTES", 1)
-    capacity = service.search(
-        collection="papers", intent="too large", query="alpha"
-    )
+    capacity = service.search(collection="papers", intent="too large", query="alpha")
     assert capacity["error"]["code"] == "journey_capacity"
     assert service.active_journey_count == 1
 
@@ -593,9 +589,9 @@ def test_describe_facets_are_bounded_and_source_groups_require_tags(service: Ser
         "revision-1",
         "revision-0",
     ]
-    first_revision_page = service.describe(
-        collection="papers", revision_limit=1
-    )["result"]["collections"][0]
+    first_revision_page = service.describe(collection="papers", revision_limit=1)[
+        "result"
+    ]["collections"][0]
     assert [item["revision_id"] for item in first_revision_page["revisions"]] == [
         "revision-1"
     ]
@@ -629,7 +625,9 @@ def test_describe_facets_are_bounded_and_source_groups_require_tags(service: Ser
     assert description["result"]["schema_version"] == "tampu-tools/v1"
 
 
-def test_describe_underfills_collection_page_without_losing_continuation(tmp_path: Path):
+def test_describe_underfills_collection_page_without_losing_continuation(
+    tmp_path: Path,
+):
     repository = FakeRepository(tmp_path / "store")
 
     def describe(collection=None):
@@ -747,12 +745,8 @@ def test_telemetry_and_trace_failures_are_controlled_and_atomic(
     )
     assert malformed["error"]["code"] == "invalid_input"
 
-    traced = Service(
-        FakeRepository(tmp_path / "trace-store"), trace_path=tmp_path
-    )
-    failed = traced.search(
-        collection="papers", intent="trace failure", query="alpha"
-    )
+    traced = Service(FakeRepository(tmp_path / "trace-store"), trace_path=tmp_path)
+    failed = traced.search(collection="papers", intent="trace failure", query="alpha")
     assert failed["error"] == {
         "code": "trace_unavailable",
         "message": "The configured trace could not be written.",
@@ -827,7 +821,9 @@ def test_consumer_repository_and_service_reads_do_not_mutate_durable_state(
     collection_before = list(owner._db.collection("collections").all())
 
     read_store = tmp_path / "consumer-must-not-create-store"
-    reader = Repository(dict(repository_config, store=str(read_store)), initialize=False)
+    reader = Repository(
+        dict(repository_config, store=str(read_store)), initialize=False
+    )
     description = Service(reader).describe(collection="papers")
     search = Service(reader).search(
         collection="papers", intent="read only", query="sentinel", limit=0
@@ -944,3 +940,24 @@ def test_semantic_absence_cannot_be_structurally_validated_positive(service: Ser
         semantic_absence=True,
     )
     assert rejected["error"]["code"] == "invalid_finding"
+
+
+def test_discovery_slice_limits_match_actual_inspection_validation(service: Service):
+    limits = service.describe(collection="papers")["result"]["limits"]
+    bounds = limits["evidence_slice_chars"]
+    assert bounds == {"minimum": 1, "maximum": 4000, "default": 800}
+    assert limits["inspection_page_maximum"] == 20
+    search = service.search(
+        collection="papers", intent="discovered limits", query="alpha"
+    )
+    result = search["result"]
+    request = {
+        "journey_id": result["journey_id"],
+        "node_id": result["node_id"],
+        "evidence_handle": result["hits"][0]["evidence_handle"],
+    }
+    assert service.inspect(**request, slice_chars=bounds["maximum"])["status"] == "ok"
+    assert (
+        service.inspect(**request, slice_chars=bounds["maximum"] + 1)["error"]["code"]
+        == "invalid_input"
+    )

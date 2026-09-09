@@ -96,11 +96,7 @@ def test_cli_init_ingest_describe_and_real_mcp_stdio_transport(
     metadata_path = tmp_path / "metadata.json"
     metadata_path.write_text(
         json.dumps(
-            {
-                artifact_id: {
-                    "title": {"value": "Transport paper", "origin": "fixture"}
-                }
-            }
+            {artifact_id: {"title": {"value": "Transport paper", "origin": "fixture"}}}
         ),
         encoding="utf-8",
     )
@@ -207,6 +203,13 @@ def test_cli_init_ingest_describe_and_real_mcp_stdio_transport(
         "finish",
     ]
     schemas = {tool.name: tool.inputSchema for tool in listed.tools}
+    assert schemas["inspect"]["properties"]["slice_chars"]["minimum"] == 1
+    assert schemas["inspect"]["properties"]["slice_chars"]["maximum"] == 4000
+    assert schemas["inspect"]["properties"]["limit"]["maximum"] == 20
+    inspect_description = next(
+        tool.description for tool in listed.tools if tool.name == "inspect"
+    )
+    assert "preview" in inspect_description and "citation" in inspect_description
     assert {"revision_cursor", "revision_limit"} <= set(
         schemas["describe"]["properties"]
     )
