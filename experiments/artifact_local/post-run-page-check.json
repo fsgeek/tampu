@@ -1,0 +1,10 @@
+{
+  "stage": "post-run source assessment; not navigation input",
+  "projection_id": "911304ecadd47d0d3321f219b893ccd3cdf02e08d4b894595d93e508b2e84ce8",
+  "physical_page": 409,
+  "elements": 33,
+  "target_ordinal": 14087,
+  "target_position_1based": 29,
+  "returned_elements": 20,
+  "continuation_present": true
+}

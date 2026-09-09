@@ -14,8 +14,10 @@ Follow `docs/superpowers/specs/2026-09-09-artifact-local-navigation-design.md`: 
 
 ## Task: Navigation record and decision
 
-- [ ] Write `experiments/artifact_local/cases.json` with two fixed queries per artifact and references to the prior frozen probes; sign the inputs before searches.
-- [ ] Write `experiments/artifact_local/run.py`: instantiate existing read-only repository and Service, run each query with `artifact_id` filter, inspect the returned handle, inspect returned physical page plus one, stop at fixed call ceilings. Preserve exact compact responses and trace in a new private directory.
-- [ ] Run the script once. Assess probe recovery by matching returned evidence identities and prefix/full text; verify byte/call ceilings, stable index, and summary agreement with source-bearing outputs. Failures remain observed failures; no selective retry.
-- [ ] Write `docs/experiments/2026-09-09-artifact-local-navigation-results.md`, compact results and custody manifest. Distinguish observed capability, research-answer adequacy, and untested unfamiliar-client behavior.
-- [ ] Obtain one focused read-only review, correct material accounting or claim errors, run `git diff --check`, and preserve signed commits. Verify clean tree and unchanged runtime source; do not push or merge.
+- [x] Write `experiments/artifact_local/cases.json` with two fixed queries per artifact and references to the prior frozen probes; sign the inputs before searches.
+- [x] Write `experiments/artifact_local/run.py`: instantiate existing read-only repository and Service, run each query with `artifact_id` filter, inspect the returned handle, inspect returned physical page plus one, stop at fixed call ceilings. Preserve exact compact responses and trace in a new private directory.
+- [x] Run the script once. Assess probe recovery by matching returned evidence identities and prefix/full text; verify byte/call ceilings, stable index, and summary agreement with source-bearing outputs. Failures remain observed failures; no selective retry.
+- [x] Write `docs/experiments/2026-09-09-artifact-local-navigation-results.md`, compact results and custody manifest. Distinguish observed capability, research-answer adequacy, and untested unfamiliar-client behavior.
+- [x] Obtain one focused read-only review, correct material accounting or claim errors, run `git diff --check`, and preserve signed commits. Verify clean tree and unchanged runtime source; do not push or merge.
+
+Execution: one live rehearsal, 12 calls without application errors, exact offline decision/assessment replay, one read-only review. No production change. The decision report selects explicit element totals and remaining counts as the next implementation task. Final signed preservation closes this plan.

@@ -1,0 +1,577 @@
+{
+  "cases": [
+    {
+      "call_count": 6,
+      "calls": [
+        {
+          "bytes": 2456,
+          "call": 1,
+          "omissions": [],
+          "operation": "search",
+          "query": "switch random",
+          "response_sha256": "19fce48a211852a027961c10079a24de031ed8c881d07351c9f3a18f187a6384",
+          "returned_pages": [
+            14
+          ],
+          "status": "ok"
+        },
+        {
+          "bytes": 1787,
+          "call": 2,
+          "omissions": [],
+          "operation": "inspect",
+          "response_sha256": "24ac021e02631d51b24a2c3a13efbd352e11126da42ee1ee06dea53a077456ad",
+          "returned_pages": [],
+          "status": "ok"
+        },
+        {
+          "bytes": 4266,
+          "call": 3,
+          "omissions": [],
+          "operation": "inspect",
+          "requested_page": 15,
+          "response_sha256": "4ae4ed860e7a0a47e618cfa89bcb53c9d3d756b3a1608dfcfd45aa5ee111b920",
+          "returned_pages": [],
+          "status": "ok"
+        },
+        {
+          "bytes": 2556,
+          "call": 4,
+          "omissions": [],
+          "operation": "search",
+          "query": "experimental",
+          "response_sha256": "020d26c7c1031b7490d6987af033f5af19e14055b2147ae2f3224f10524868a5",
+          "returned_pages": [
+            5
+          ],
+          "status": "ok"
+        },
+        {
+          "bytes": 2348,
+          "call": 5,
+          "omissions": [],
+          "operation": "inspect",
+          "response_sha256": "c8cf4fdcf2bd788764d087c6489239454f3b29d630762553954d907b7b211d18",
+          "returned_pages": [],
+          "status": "ok"
+        },
+        {
+          "bytes": 5232,
+          "call": 6,
+          "omissions": [],
+          "operation": "inspect",
+          "requested_page": 6,
+          "response_sha256": "dda26897d877553cd53f17fb485903c30f255c37a3a94e0925a962dab0b0a409",
+          "returned_pages": [],
+          "status": "ok"
+        }
+      ],
+      "id": "long",
+      "inspected": [
+        {
+          "call": 2,
+          "ordinal": 239,
+          "page": 14
+        },
+        {
+          "call": 3,
+          "ordinal": 245,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 246,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 247,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 248,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 249,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 250,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 251,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 252,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 253,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 254,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 255,
+          "page": 15
+        },
+        {
+          "call": 3,
+          "ordinal": 256,
+          "page": 15
+        },
+        {
+          "call": 5,
+          "ordinal": 66,
+          "page": 5
+        },
+        {
+          "call": 6,
+          "ordinal": 76,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 77,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 78,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 79,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 80,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 81,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 82,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 83,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 84,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 85,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 86,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 87,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 88,
+          "page": 6
+        },
+        {
+          "call": 6,
+          "ordinal": 89,
+          "page": 6
+        }
+      ],
+      "probes": [
+        {
+          "address_visible": false,
+          "artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+          "calls": [],
+          "ordinal": 194,
+          "page": 12,
+          "projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+          "required_chars": 548,
+          "text_sha256": "57c5a72bc10225b4576f739b10c3ea973ae54a20f9d5ada1329d48535757d903",
+          "whole_probe_visible": false
+        },
+        {
+          "address_visible": false,
+          "artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+          "calls": [],
+          "ordinal": 206,
+          "page": 12,
+          "projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+          "required_chars": 324,
+          "text_sha256": "ba136b7a59fed29b8a7963a15bbf9dbce211f6642b850179e6c2287a32f5286f",
+          "whole_probe_visible": false
+        },
+        {
+          "address_visible": true,
+          "artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+          "calls": [
+            2
+          ],
+          "ordinal": 239,
+          "page": 14,
+          "projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+          "required_chars": 138,
+          "text_sha256": "4a5d776a23bb747990c3a2595645a63846a137a18e1a38169349880383707829",
+          "whole_probe_visible": true
+        }
+      ],
+      "response_bytes": 18645,
+      "status": "observed"
+    },
+    {
+      "call_count": 6,
+      "calls": [
+        {
+          "bytes": 2326,
+          "call": 1,
+          "omissions": [],
+          "operation": "search",
+          "query": "LHD RankCache",
+          "response_sha256": "6d280a6e30a56fac4acd4694139808f8670151cebb61150b8b4367dbb9c8925f",
+          "returned_pages": [
+            408
+          ],
+          "status": "ok"
+        },
+        {
+          "bytes": 1809,
+          "call": 2,
+          "omissions": [],
+          "operation": "inspect",
+          "response_sha256": "b17f0e2bdee1ebb1513bc29c2f45f5e60196f73dc83c94045c63b774b8120d91",
+          "returned_pages": [],
+          "status": "ok"
+        },
+        {
+          "bytes": 6602,
+          "call": 3,
+          "omissions": [
+            "additional_elements_available_by_continuation"
+          ],
+          "operation": "inspect",
+          "requested_page": 409,
+          "response_sha256": "148bbde6ac16daa3537b6dc98a0159001f5a0124358ce100f95b902f19b45d8c",
+          "returned_pages": [],
+          "status": "ok"
+        },
+        {
+          "bytes": 2313,
+          "call": 4,
+          "omissions": [],
+          "operation": "search",
+          "query": "adapt",
+          "response_sha256": "2df0faaa1760732460e80da4971c2040aff67c0cea1baa611979f9856caa7a3d",
+          "returned_pages": [
+            584
+          ],
+          "status": "ok"
+        },
+        {
+          "bytes": 1802,
+          "call": 5,
+          "omissions": [],
+          "operation": "inspect",
+          "response_sha256": "ed563968ce0893e1228b374477f328a66e6f67b4d5beca0e6a232d8a5acc87d7",
+          "returned_pages": [],
+          "status": "ok"
+        },
+        {
+          "bytes": 6636,
+          "call": 6,
+          "omissions": [
+            "additional_elements_available_by_continuation"
+          ],
+          "operation": "inspect",
+          "requested_page": 585,
+          "response_sha256": "c698f27f404f3cf75116181696e2f3ab65838320cea885b2c4274d4e9043e244",
+          "returned_pages": [],
+          "status": "ok"
+        }
+      ],
+      "id": "proceedings",
+      "inspected": [
+        {
+          "call": 2,
+          "ordinal": 14033,
+          "page": 408
+        },
+        {
+          "call": 3,
+          "ordinal": 14059,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14060,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14061,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14062,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14063,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14064,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14065,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14066,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14067,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14068,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14069,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14070,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14071,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14072,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14073,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14074,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14075,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14076,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14077,
+          "page": 409
+        },
+        {
+          "call": 3,
+          "ordinal": 14078,
+          "page": 409
+        },
+        {
+          "call": 5,
+          "ordinal": 19656,
+          "page": 584
+        },
+        {
+          "call": 6,
+          "ordinal": 19726,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19727,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19728,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19729,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19730,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19731,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19732,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19733,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19734,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19735,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19736,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19737,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19738,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19739,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19740,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19741,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19742,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19743,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19744,
+          "page": 585
+        },
+        {
+          "call": 6,
+          "ordinal": 19745,
+          "page": 585
+        }
+      ],
+      "probes": [
+        {
+          "address_visible": false,
+          "artifact_id": "6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213",
+          "calls": [],
+          "ordinal": 13846,
+          "page": 405,
+          "projection_id": "911304ecadd47d0d3321f219b893ccd3cdf02e08d4b894595d93e508b2e84ce8",
+          "required_chars": 335,
+          "text_sha256": "501a444dfeb2e1098e2e546e4d4cdfa6b7028a39710577f6ebd5dd59c7b36c7c",
+          "whole_probe_visible": false
+        },
+        {
+          "address_visible": false,
+          "artifact_id": "6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213",
+          "calls": [],
+          "ordinal": 14048,
+          "page": 408,
+          "projection_id": "911304ecadd47d0d3321f219b893ccd3cdf02e08d4b894595d93e508b2e84ce8",
+          "required_chars": 488,
+          "text_sha256": "ef718edb2e4851e00ca04429cbee99cedf38d7ff16f806e5517cb7fc5efa3cda",
+          "whole_probe_visible": false
+        },
+        {
+          "address_visible": false,
+          "artifact_id": "6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213",
+          "calls": [],
+          "ordinal": 14087,
+          "page": 409,
+          "projection_id": "911304ecadd47d0d3321f219b893ccd3cdf02e08d4b894595d93e508b2e84ce8",
+          "required_chars": 544,
+          "text_sha256": "617bc500f209da77fa65f7110ecb2a3378b7c3d9af861b03e5ad53395c95417e",
+          "whole_probe_visible": false
+        }
+      ],
+      "response_bytes": 21488,
+      "status": "observed"
+    }
+  ],
+  "config_sha256": "4698092589b9ad91bf3cbdbf4a25e8290601b513d2b0c58c56ff2378a45ac128",
+  "index_stable": true,
+  "record_sha256": "e1208e993c257c0cfd0ea29f3643391049d1b7972b587e6d2fc4a3df4a66a68f"
+}
