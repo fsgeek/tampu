@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pytest
 from arango.aql import AQL
+from arango.exceptions import ArangoError
+from requests.exceptions import Timeout
 
 from tampu.config import load_config
 from tampu.errors import TampuError
@@ -614,3 +616,43 @@ def test_all_database_reads_receive_ten_second_bounds(
     repo.search_candidates(revision["revision_id"], "metadata/v1", "", "filter", {})
     assert request_timeouts == [10]
     assert aql_bounds and set(aql_bounds) == {10}
+
+
+def test_supporting_aql_timeout_is_a_controlled_search_error(
+    repository_config, fake_extraction, tmp_path, monkeypatch
+):
+    root = tmp_path / "source"
+    write_pdf(root, "one.pdf", "alpha")
+    repo = Repository(repository_config)
+    revision = repo.ingest("papers", root, profile="poppler")
+
+    def time_out_generation():
+        raise ArangoError("AQL query max runtime exceeded")
+
+    monkeypatch.setattr(repo, "_refresh_index_generation", time_out_generation)
+    with pytest.raises(TampuError) as raised:
+        repo.search_candidates(
+            revision["revision_id"], "lexical/v1", "alpha", "any_terms", {}
+        )
+    assert raised.value.code == "query_timeout"
+    assert "max runtime" not in str(raised.value)
+
+
+@pytest.mark.parametrize("lens", ["metadata/v1", "temporal/v1"])
+def test_http_timeout_in_nonlexical_supporting_read_is_controlled(
+    repository_config, fake_extraction, tmp_path, monkeypatch, lens
+):
+    root = tmp_path / "source"
+    write_pdf(root, "one.pdf", "alpha")
+    repo = Repository(repository_config)
+    revision = repo.ingest("papers", root, profile="poppler")
+
+    def time_out_coverage(_members):
+        raise Timeout("private endpoint detail")
+
+    monkeypatch.setattr(repo, "_coverage_for_members", time_out_coverage)
+    filters = {"field": "observed_time"} if lens == "temporal/v1" else {}
+    with pytest.raises(TampuError) as raised:
+        repo.search_candidates(revision["revision_id"], lens, "", "filter", filters)
+    assert raised.value.code == "query_timeout"
+    assert "private endpoint detail" not in str(raised.value)

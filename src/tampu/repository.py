@@ -10,6 +10,7 @@ from typing import Any
 
 from arango import ArangoClient
 from arango.exceptions import ArangoError
+from requests.exceptions import Timeout
 
 from .capture import capture_tree
 from .errors import TampuError
@@ -70,6 +71,13 @@ def _instant(value: str) -> datetime:
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=UTC)
     return parsed.astimezone(UTC)
+
+
+def _is_query_timeout(error: ArangoError) -> bool:
+    message = str(error).lower()
+    return getattr(error, "error_code", None) == 1500 or any(
+        marker in message for marker in ("timeout", "timed out", "max runtime")
+    )
 
 
 def _validate_metadata(metadata: dict | None, artifact_ids: set[str]) -> dict:
@@ -553,6 +561,26 @@ function (params) {
     def search_candidates(
         self, revision: str, lens: str, query: str, mode: str, filters: dict
     ) -> dict:
+        try:
+            return self._search_candidates(revision, lens, query, mode, filters)
+        except TampuError:
+            raise
+        except Timeout as error:
+            raise TampuError(
+                "query_timeout", "The database query timed out."
+            ) from error
+        except ArangoError as error:
+            if _is_query_timeout(error):
+                raise TampuError(
+                    "query_timeout", "The database query timed out."
+                ) from error
+            raise TampuError(
+                "storage_unavailable", "The search could not be completed."
+            ) from error
+
+    def _search_candidates(
+        self, revision: str, lens: str, query: str, mode: str, filters: dict
+    ) -> dict:
         if lens not in {"lexical/v1", "metadata/v1", "temporal/v1"}:
             raise TampuError("invalid_input", "The search lens is invalid.")
         self._validate_operation(lens, query, mode, filters)
@@ -593,7 +621,7 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
                     )
                 )
             except ArangoError as error:
-                if "timeout" in str(error).lower():
+                if _is_query_timeout(error):
                     raise TampuError(
                         "query_timeout", "The database query timed out."
                     ) from error

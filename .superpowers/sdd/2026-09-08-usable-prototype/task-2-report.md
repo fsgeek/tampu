@@ -130,6 +130,8 @@ Metadata-only and temporal candidates have this exact shape:
 
 Lexical modes are `any_terms`, `all_terms` (all analyzed terms in one element), and `phrase`. A lexical query must be a nonempty string. Empty lexical queries raise controlled `invalid_input`; callers use `metadata/v1` for an empty textual predicate. Candidates are distinct artifacts. The score is the maximum matching-element BM25; ties use artifact ID. The repository returns the full candidate set up to 10,000 so Task 3 can materialize exact node membership before applying its display limit. Exceeding the cap raises `candidate_limit`; a database max-runtime failure raises `query_timeout` rather than returning a partial exact count.
 
+The complete public search boundary translates recognized Arango AQL max-runtime/query-killed failures and HTTP request timeouts to `TampuError(code="query_timeout", message="The database query timed out.")`. This covers generation observations, revision membership, filtering support reads, lexical execution, coverage reads, and metadata/temporal paths. Other Arango failures become the controlled `storage_unavailable` search error while retaining their original exception as the internal cause; raw endpoint, query, and driver text is not placed in the public message.
+
 Filters are conjunctive and use these keys:
 
 ```text
@@ -245,6 +247,16 @@ Review fix round 2 verification:
 ```text
 uv run pytest tests/test_repository.py -q
 28 passed in 7.27s
+
+uvx ruff check src/tampu/repository.py tests/test_repository.py
+All checks passed
+```
+
+Review fix round 3 verification:
+
+```text
+uv run pytest tests/test_repository.py -q
+31 passed in 6.83s
 
 uvx ruff check src/tampu/repository.py tests/test_repository.py
 All checks passed
