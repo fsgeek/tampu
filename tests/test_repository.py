@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 
 import pytest
@@ -355,3 +356,187 @@ def test_candidate_cap_never_returns_a_partial_exact_count(
             revision["revision_id"], "lexical/v1", "alpha", "any_terms", {}
         )
     assert raised.value.code == "candidate_limit"
+
+
+def test_ready_projection_change_is_reported_as_processing_change(
+    repository_config, fake_extraction, tmp_path
+):
+    root = tmp_path / "source"
+    path = write_pdf(root, "one.pdf", "alpha")
+    artifact_id = hashlib.sha256(path.read_bytes()).hexdigest()
+    repo = Repository(repository_config)
+    repo.ingest("papers", root, profile="poppler")
+    second = repo.ingest("papers", root, profile="unstructured")
+    assert second["changes"]["processing_changed"] == [artifact_id]
+
+
+def test_temporal_bounds_preserve_same_day_source_times_and_scope_unknowns(
+    repository_config, fake_extraction, tmp_path
+):
+    root = tmp_path / "source"
+    early = write_pdf(root, "early.pdf", "early")
+    late = write_pdf(root, "late.pdf", "late")
+    unknown = write_pdf(root, "unknown.pdf", "unknown")
+    early_ns = 1_788_862_800_000_000_000  # 2026-09-08T10:20:00Z
+    late_ns = 1_788_880_800_000_000_000  # 2026-09-08T15:20:00Z
+    os.utime(early, ns=(early_ns, early_ns))
+    os.utime(late, ns=(late_ns, late_ns))
+    early_id = hashlib.sha256(early.read_bytes()).hexdigest()
+    late_id = hashlib.sha256(late.read_bytes()).hexdigest()
+    unknown_id = hashlib.sha256(unknown.read_bytes()).hexdigest()
+    repo = Repository(repository_config)
+    revision = repo.ingest(
+        "papers",
+        root,
+        profile="poppler",
+        metadata={
+            early_id: {
+                "work_id": {"value": "target", "origin": "fixture"},
+                "publication_date": {
+                    "value": "2024-03",
+                    "precision": "month",
+                    "origin": "fixture",
+                },
+            },
+            late_id: {"work_id": {"value": "other", "origin": "fixture"}},
+            unknown_id: {"work_id": {"value": "other", "origin": "fixture"}},
+        },
+    )
+    source_result = repo.search_candidates(
+        revision["revision_id"],
+        "temporal/v1",
+        "",
+        "filter",
+        {
+            "field": "source_modification_time",
+            "from": "2026-09-08T12:00:00Z",
+            "to": "2026-09-08T23:00:00Z",
+        },
+    )
+    source_ids = {row["artifact_id"] for row in source_result["candidates"]}
+    assert late_id in source_ids
+    assert early_id not in source_ids
+    observed_result = repo.search_candidates(
+        revision["revision_id"],
+        "temporal/v1",
+        "",
+        "filter",
+        {
+            "field": "observed_time",
+            "from": revision["observed_end"],
+            "to": revision["observed_end"],
+        },
+    )
+    assert observed_result["count"] == 3
+    publication_result = repo.search_candidates(
+        revision["revision_id"],
+        "temporal/v1",
+        "",
+        "filter",
+        {"field": "publication_date", "work_id": "target", "from": "2024-01-01"},
+    )
+    assert publication_result["count"] == 1
+    assert publication_result["unknown_count"] == 0
+
+
+def test_read_projection_rejects_staged_only_evidence(
+    repository_config, fake_extraction, tmp_path
+):
+    repo = Repository(repository_config)
+    raw = Path(repository_config["store"]) / "raw/staged.json"
+    elements = Path(repository_config["store"]) / "elements/staged.json"
+    raw.parent.mkdir(parents=True, exist_ok=True)
+    elements.parent.mkdir(parents=True, exist_ok=True)
+    raw.write_text("{}")
+    elements.write_text("[]")
+    repo._db.collection("projections").insert(
+        {
+            "_key": "staged",
+            "projection_id": "staged",
+            "artifact_id": "artifact",
+            "recipe": {"profile": "poppler"},
+            "status": "ready",
+            "raw_path": "raw/staged.json",
+            "elements_path": "elements/staged.json",
+            "coverage": {"pages_total": 0, "pages_with_text": 0, "elements": 0},
+            "losses": [],
+            "elapsed_seconds": 0.0,
+        }
+    )
+    with pytest.raises(TampuError) as raised:
+        repo.read_projection("staged")
+    assert raised.value.code == "missing_evidence"
+
+
+def test_index_generation_changes_for_indexed_staged_projection_without_publication(
+    repository_config, fake_extraction, tmp_path, monkeypatch
+):
+    root = tmp_path / "source"
+    write_pdf(root, "one.pdf", "alpha")
+    repo = Repository(repository_config)
+    first = repo.ingest("papers", root, profile="poppler")
+    before = repo.search_candidates(
+        first["revision_id"], "lexical/v1", "alpha", "any_terms", {}
+    )
+    write_pdf(root, "two.pdf", "alpha beta")
+
+    def fail_publish(*_args):
+        raise TampuError("publication_conflict", "Publication failed.")
+
+    monkeypatch.setattr(repo, "_publish", fail_publish)
+    with pytest.raises(TampuError):
+        repo.ingest("papers", root, profile="poppler")
+    after = repo.search_candidates(
+        first["revision_id"], "lexical/v1", "alpha", "any_terms", {}
+    )
+    assert (
+        after["index_generation"]["generation_id"]
+        != before["index_generation"]["generation_id"]
+    )
+    assert after["lens_config"]["analyzer"] == "text_en"
+    assert repo.resolve_revision("papers", None)["revision_id"] == first["revision_id"]
+
+
+def test_empty_lexical_query_has_no_metadata_shaped_success(
+    repository_config, fake_extraction, tmp_path
+):
+    root = tmp_path / "source"
+    write_pdf(root, "one.pdf", "alpha")
+    repo = Repository(repository_config)
+    revision = repo.ingest("papers", root, profile="poppler")
+    with pytest.raises(TampuError) as raised:
+        repo.search_candidates(
+            revision["revision_id"], "lexical/v1", "", "any_terms", {}
+        )
+    assert raised.value.code == "invalid_input"
+
+
+@pytest.mark.parametrize(
+    "lens,query,mode,filters",
+    [
+        ("lexical/v1", "alpha", "any_terms", {"surprise": "ignored"}),
+        ("metadata/v1", "", "filter", {"artifact_id": 7}),
+        ("metadata/v1", "", "filter", {"missing": "not_supported"}),
+        ("temporal/v1", "", "filter", {"field": "observed_time", "from": "yesterday"}),
+        (
+            "temporal/v1",
+            "",
+            "filter",
+            {
+                "field": "observed_time",
+                "from": "2026-09-09T00:00:00Z",
+                "to": "2026-09-08T00:00:00Z",
+            },
+        ),
+    ],
+)
+def test_invalid_filter_shapes_are_controlled(
+    repository_config, fake_extraction, tmp_path, lens, query, mode, filters
+):
+    root = tmp_path / "source"
+    write_pdf(root, "one.pdf", "alpha")
+    repo = Repository(repository_config)
+    revision = repo.ingest("papers", root, profile="poppler")
+    with pytest.raises(TampuError) as raised:
+        repo.search_candidates(revision["revision_id"], lens, query, mode, filters)
+    assert raised.value.code == "invalid_input"

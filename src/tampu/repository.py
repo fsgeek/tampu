@@ -23,6 +23,7 @@ _COLLECTIONS = (
     "projections",
     "memberships",
     "elements",
+    "index_generations",
 )
 _METADATA_FIELDS = {
     "title",
@@ -37,6 +38,13 @@ _CAP = 10_000
 _TIMEOUT = 10
 _COLLECTION_KEY = re.compile(r"^[A-Za-z0-9_.:@()+,=;$!*'%-]+$")
 _DATE = re.compile(r"^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?$")
+_COMMON_FILTERS = {
+    "artifact_id",
+    "source_alias",
+    "source_prefix",
+    "work_id",
+    "publication_status",
+}
 
 
 def _now() -> str:
@@ -52,6 +60,16 @@ def _digest(value: Any) -> str:
 
 def _safe_key(value: str) -> str:
     return hashlib.sha256(value.encode()).hexdigest()
+
+
+def _instant(value: str) -> datetime:
+    try:
+        parsed = datetime.fromisoformat(value)
+    except (AttributeError, ValueError) as error:
+        raise TampuError("invalid_input", "A temporal bound is invalid.") from error
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=UTC)
+    return parsed.astimezone(UTC)
 
 
 def _validate_metadata(metadata: dict | None, artifact_ids: set[str]) -> dict:
@@ -181,6 +199,8 @@ class Repository:
             self._db.create_arangosearch_view("text_view", properties=view_properties)
         else:
             self._db.replace_arangosearch_view("text_view", properties=view_properties)
+        if not self._db.collection("index_generations").has("current"):
+            self._refresh_index_generation()
 
     def ingest(
         self,
@@ -294,6 +314,7 @@ class Repository:
         }
         try:
             self._stage(revision, capture, projections, memberships)
+            self._refresh_index_generation()
             self._verify_visibility(memberships)
             self._publish(
                 collection,
@@ -410,18 +431,21 @@ function (params) {
             if s.get("status") == "captured"
         }
         previous_paths = {}
-        previous_status = {}
+        previous_selection = {}
         if parent:
             rows = self._db.aql.execute(
                 "FOR o IN observations FILTER o.revision_id == @r && o.status == 'captured' RETURN o",
                 bind_vars={"r": parent["revision_id"]},
             )
             previous_paths = {r["relative_path"]: r["artifact_id"] for r in rows}
-            previous_status = {
-                m["artifact_id"]: m["projection_status"]
+            previous_selection = {
+                m["artifact_id"]: (m["projection_id"], m["projection_status"])
                 for m in self.members(parent["revision_id"])
             }
-        current_status = {m["artifact_id"]: m["projection_status"] for m in memberships}
+        current_selection = {
+            m["artifact_id"]: (m["projection_id"], m["projection_status"])
+            for m in memberships
+        }
         return {
             "added": sorted(current_paths.keys() - previous_paths.keys()),
             "removed": sorted(previous_paths.keys() - current_paths.keys()),
@@ -432,9 +456,38 @@ function (params) {
             ),
             "processing_changed": sorted(
                 a
-                for a in current_status.keys() & previous_status.keys()
-                if current_status[a] != previous_status[a]
+                for a in current_selection.keys() & previous_selection.keys()
+                if current_selection[a] != previous_selection[a]
             ),
+        }
+
+    def _refresh_index_generation(self) -> dict:
+        rows = list(
+            self._db.aql.execute(
+                "FOR e IN elements COLLECT projection_id = e.projection_id WITH COUNT INTO element_count SORT projection_id RETURN {projection_id, element_count}",
+                max_runtime=_TIMEOUT,
+            )
+        )
+        generation = {
+            "_key": "current",
+            "generation_id": _digest(rows),
+            "projection_count": len(rows),
+            "element_count": sum(row["element_count"] for row in rows),
+            "observed_at": _now(),
+        }
+        self._db.collection("index_generations").insert(
+            generation, overwrite=True, overwrite_mode="replace"
+        )
+        return {
+            key: value for key, value in generation.items() if not key.startswith("_")
+        }
+
+    def _index_generation(self) -> dict:
+        document = self._db.collection("index_generations").get("current")
+        if not document:
+            return self._refresh_index_generation()
+        return {
+            key: value for key, value in document.items() if not key.startswith("_")
         }
 
     def _coverage(self, memberships, projections):
@@ -483,7 +536,14 @@ function (params) {
 
     def read_projection(self, projection_id: str) -> dict:
         document = self._db.collection("projections").get(projection_id)
-        if not document:
+        published = list(
+            self._db.aql.execute(
+                "FOR m IN memberships FILTER m.projection_id == @projection FOR r IN revisions FILTER r.revision_id == m.revision_id AND r.state == 'published' LIMIT 1 RETURN true",
+                bind_vars={"projection": projection_id},
+                max_runtime=_TIMEOUT,
+            )
+        )
+        if not document or not published:
             raise TampuError("missing_evidence", "Projection evidence is unavailable.")
         if (
             not (self.store / document["raw_path"]).is_file()
@@ -497,17 +557,17 @@ function (params) {
     ) -> dict:
         if lens not in {"lexical/v1", "metadata/v1", "temporal/v1"}:
             raise TampuError("invalid_input", "The search lens is invalid.")
+        self._validate_operation(lens, query, mode, filters)
         revision_doc = self._db.collection("revisions").get(revision)
         if not revision_doc or revision_doc.get("state") != "published":
             raise TampuError(
                 "revision_not_ready", "The requested revision is not published."
             )
+        generation_before = self._index_generation()
         members = self.members(revision)
         filtered, unknown_count = self._filter_members(members, filters, lens)
         allowed = {m["artifact_id"]: m for m in filtered}
-        if lens == "lexical/v1" and query:
-            if mode not in {"any_terms", "all_terms", "phrase"}:
-                raise TampuError("invalid_input", "The lexical mode is invalid.")
+        if lens == "lexical/v1":
             predicates = {
                 "any_terms": 'ANALYZER(e.text IN TOKENS(@query, "text_en"), "text_en")',
                 "all_terms": 'ANALYZER(TOKENS(@query, "text_en") ALL IN e.text, "text_en")',
@@ -574,6 +634,17 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
         if len(candidates) > _CAP:
             raise TampuError("candidate_limit", "The candidate limit was exceeded.")
         coverage = self._coverage_for_members(filtered)
+        generation_after = self._index_generation()
+        lens_config = {"lens": lens, "revision_scope": "pinned_projection_selection"}
+        if lens == "lexical/v1":
+            lens_config.update(
+                {
+                    "analyzer": "text_en",
+                    "mode": mode,
+                    "artifact_score": "maximum_matching_element_bm25",
+                    "tie_breaker": "artifact_id",
+                }
+            )
         return {
             "revision_id": revision,
             "lens": lens,
@@ -588,7 +659,79 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
             "selection": "maximum_element_bm25_then_artifact_id"
             if lens == "lexical/v1"
             else "artifact_id",
+            "index_generation": generation_after,
+            "index_generation_before": generation_before,
+            "index_generation_stable": generation_before["generation_id"]
+            == generation_after["generation_id"],
+            "lens_config": lens_config,
         }
+
+    def _validate_operation(self, lens, query, mode, filters):
+        if (
+            not isinstance(query, str)
+            or not isinstance(mode, str)
+            or not isinstance(filters, dict)
+        ):
+            raise TampuError("invalid_input", "The search operation is malformed.")
+        allowed = set(_COMMON_FILTERS)
+        if lens == "lexical/v1":
+            if not query.strip() or mode not in {"any_terms", "all_terms", "phrase"}:
+                raise TampuError("invalid_input", "The lexical operation is invalid.")
+        elif lens == "metadata/v1":
+            allowed.add("missing")
+            if query or mode != "filter":
+                raise TampuError("invalid_input", "The metadata operation is invalid.")
+            if "missing" in filters and filters["missing"] not in _METADATA_FIELDS:
+                raise TampuError(
+                    "invalid_input", "The missing metadata field is invalid."
+                )
+        else:
+            allowed.update({"field", "from", "to", "missing"})
+            if (
+                query
+                or mode != "filter"
+                or filters.get("field")
+                not in {
+                    "observed_time",
+                    "source_modification_time",
+                    "publication_date",
+                }
+            ):
+                raise TampuError("invalid_input", "The temporal operation is invalid.")
+            if "missing" in filters and not isinstance(filters["missing"], bool):
+                raise TampuError(
+                    "invalid_input", "The temporal missing filter is invalid."
+                )
+            bounds = []
+            for name in ("from", "to"):
+                if name not in filters:
+                    continue
+                value = filters[name]
+                if not isinstance(value, str):
+                    raise TampuError("invalid_input", "A temporal bound is invalid.")
+                if filters["field"] == "publication_date":
+                    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", value):
+                        raise TampuError(
+                            "invalid_input", "A temporal bound is invalid."
+                        )
+                    try:
+                        bound = datetime.fromisoformat(value).replace(tzinfo=UTC)
+                    except ValueError as error:
+                        raise TampuError(
+                            "invalid_input", "A temporal bound is invalid."
+                        ) from error
+                else:
+                    bound = _instant(value)
+                bounds.append(bound)
+            if len(bounds) == 2 and bounds[0] > bounds[1]:
+                raise TampuError("invalid_input", "The temporal bounds are reversed.")
+        if set(filters) - allowed:
+            raise TampuError(
+                "invalid_input", "The search filters contain unknown fields."
+            )
+        for key in _COMMON_FILTERS & set(filters):
+            if not isinstance(filters[key], str) or not filters[key]:
+                raise TampuError("invalid_input", "A search filter value is invalid.")
 
     def _coverage_for_members(self, members):
         projections = {}
@@ -599,11 +742,8 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
         return self._coverage(members, projections)
 
     def _filter_members(self, members, filters, lens):
-        if not isinstance(filters, dict):
-            raise TampuError("invalid_input", "Filters must be an object.")
-        result = []
-        unknown = 0
         temporal_field = filters.get("field") if lens == "temporal/v1" else None
+        scoped = []
         for m in members:
             metadata = m["metadata"]
             aliases = m["aliases"]
@@ -617,44 +757,59 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
             for field in ("work_id", "publication_status"):
                 if field in filters:
                     ok &= metadata.get(field, {}).get("value") == filters[field]
+            if ok:
+                scoped.append(m)
+
+        result = []
+        unknown = 0
+        for m in scoped:
+            metadata = m["metadata"]
+            ok = True
             if "missing" in filters and not temporal_field:
-                if not isinstance(filters["missing"], str):
-                    raise TampuError(
-                        "invalid_input", "The missing metadata field is invalid."
-                    )
-                ok &= filters["missing"] not in metadata
+                ok = filters["missing"] not in metadata
             if temporal_field:
                 if temporal_field == "observed_time":
-                    value = self._db.collection("revisions").get(m["revision_id"])[
-                        "observed_end"
-                    ][:10]
-                elif temporal_field == "source_modification_time":
-                    value = (
-                        datetime.fromtimestamp(m["source_mtime_ns"] / 1e9, UTC)
-                        .date()
-                        .isoformat()
+                    value = _instant(
+                        self._db.collection("revisions").get(m["revision_id"])[
+                            "observed_end"
+                        ]
                     )
-                elif temporal_field == "publication_date":
-                    value = metadata.get("publication_date", {}).get("value")
+                elif temporal_field == "source_modification_time":
+                    value = datetime.fromtimestamp(m["source_mtime_ns"] / 1e9, UTC)
                 else:
-                    raise TampuError("invalid_input", "The temporal field is invalid.")
+                    value = metadata.get("publication_date", {}).get("value")
                 if value is None:
                     unknown += 1
                     ok &= filters.get("missing") is True
                 else:
                     if filters.get("missing") is True:
                         ok = False
-                    normalized = value + (
-                        "-01-01"
-                        if len(value) == 4
-                        else "-01"
-                        if len(value) == 7
-                        else ""
-                    )
+                    normalized = value
+                    if temporal_field == "publication_date":
+                        normalized = datetime.fromisoformat(
+                            value
+                            + (
+                                "-01-01"
+                                if len(value) == 4
+                                else "-01"
+                                if len(value) == 7
+                                else ""
+                            )
+                        ).replace(tzinfo=UTC)
                     if "from" in filters:
-                        ok &= normalized >= filters["from"]
+                        lower = (
+                            datetime.fromisoformat(filters["from"]).replace(tzinfo=UTC)
+                            if temporal_field == "publication_date"
+                            else _instant(filters["from"])
+                        )
+                        ok &= normalized >= lower
                     if "to" in filters:
-                        ok &= normalized <= filters["to"]
+                        upper = (
+                            datetime.fromisoformat(filters["to"]).replace(tzinfo=UTC)
+                            if temporal_field == "publication_date"
+                            else _instant(filters["to"])
+                        )
+                        ok &= normalized <= upper
             if ok:
                 result.append(m)
         return result, unknown
