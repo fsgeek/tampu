@@ -185,7 +185,15 @@ def main():
                 ordinal=38,
                 slice_chars=2400,
             )
+            item["inspection_listing"] = inspection
+            inspection = s.inspect(
+                journey_id=r["journey_id"],
+                node_id=r["node_id"],
+                evidence_handle=inspection["result"]["elements"][0]["evidence_handle"],
+                slice_chars=2400,
+            )
             item["inspection"] = inspection
+            assert "BlindOracle" in inspection["result"]["evidence"]["text"]
             assert inspection["status"] == "ok"
         observations[name] = item
         write(out / "observations.json", observations)

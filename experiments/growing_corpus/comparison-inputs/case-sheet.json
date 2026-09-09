@@ -1,0 +1,360 @@
+[
+  {
+    "label": "A-scope-scope_present",
+    "builder_case": "present",
+    "family": "scope",
+    "arm": "scope_present",
+    "question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+    "expected_class": "present",
+    "class_points": 2,
+    "claim_boundary": "Only the displayed Blind Oracle eviction rule.",
+    "feasible_next_steps": [
+      "Inspect source context",
+      "Inspect known additional candidates when count is shown; requesting more evidence conditionally is also feasible without assuming hidden candidates",
+      "stop for the narrowly displayed rule"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "A-scope-scope_absent",
+    "builder_case": "present",
+    "family": "scope",
+    "arm": "scope_absent",
+    "question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+    "expected_class": "present",
+    "class_points": 2,
+    "claim_boundary": "Only the displayed Blind Oracle eviction rule.",
+    "feasible_next_steps": [
+      "Inspect source context",
+      "Inspect known additional candidates when count is shown; requesting more evidence conditionally is also feasible without assuming hidden candidates",
+      "stop for the narrowly displayed rule"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "A-count_coverage-neither",
+    "builder_case": "present",
+    "family": "count_coverage",
+    "arm": "neither",
+    "question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+    "expected_class": "present",
+    "class_points": 2,
+    "claim_boundary": "Only the displayed Blind Oracle eviction rule.",
+    "feasible_next_steps": [
+      "Inspect source context",
+      "Inspect known additional candidates when count is shown; requesting more evidence conditionally is also feasible without assuming hidden candidates",
+      "stop for the narrowly displayed rule"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "A-count_coverage-count_only",
+    "builder_case": "present",
+    "family": "count_coverage",
+    "arm": "count_only",
+    "question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+    "expected_class": "present",
+    "class_points": 2,
+    "claim_boundary": "Only the displayed Blind Oracle eviction rule.",
+    "feasible_next_steps": [
+      "Inspect source context",
+      "Inspect known additional candidates when count is shown; requesting more evidence conditionally is also feasible without assuming hidden candidates",
+      "stop for the narrowly displayed rule"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "A-count_coverage-coverage_only",
+    "builder_case": "present",
+    "family": "count_coverage",
+    "arm": "coverage_only",
+    "question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+    "expected_class": "present",
+    "class_points": 2,
+    "claim_boundary": "Only the displayed Blind Oracle eviction rule.",
+    "feasible_next_steps": [
+      "Inspect source context",
+      "Inspect known additional candidates when count is shown; requesting more evidence conditionally is also feasible without assuming hidden candidates",
+      "stop for the narrowly displayed rule"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "A-count_coverage-combined",
+    "builder_case": "present",
+    "family": "count_coverage",
+    "arm": "combined",
+    "question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+    "expected_class": "present",
+    "class_points": 2,
+    "claim_boundary": "Only the displayed Blind Oracle eviction rule.",
+    "feasible_next_steps": [
+      "Inspect source context",
+      "Inspect known additional candidates when count is shown; requesting more evidence conditionally is also feasible without assuming hidden candidates",
+      "stop for the narrowly displayed rule"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "B-scope-scope_present",
+    "builder_case": "absent",
+    "family": "scope",
+    "arm": "scope_present",
+    "question": "Does the exact lexical phrase tampuabsentpredicateqxz have a match in the stated short-paper subset and searched representation?",
+    "expected_class": "bounded_negative",
+    "class_points": 2,
+    "claim_boundary": "Only the exact lexical predicate in the explicitly shown pinned representation and subset; masked scope warrants unresolved.",
+    "feasible_next_steps": [
+      "stop only when complete predicate scope is shown",
+      "Request missing representation/scope evidence when hidden"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "B-scope-scope_absent",
+    "builder_case": "absent",
+    "family": "scope",
+    "arm": "scope_absent",
+    "question": "Does the exact lexical phrase tampuabsentpredicateqxz have a match in the stated short-paper subset and searched representation?",
+    "expected_class": "unresolved",
+    "class_points": 2,
+    "claim_boundary": "Only the exact lexical predicate in the explicitly shown pinned representation and subset; masked scope warrants unresolved.",
+    "feasible_next_steps": [
+      "stop only when complete predicate scope is shown",
+      "Request missing representation/scope evidence when hidden"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "C-scope-scope_present",
+    "builder_case": "alias",
+    "family": "scope",
+    "arm": "scope_present",
+    "question": "Does the collection support a prediction-guided Marker caching policy?",
+    "expected_class": "unresolved",
+    "class_points": 2,
+    "claim_boundary": "Concept unresolved; surface-form failure cannot establish absence. Do not invent the hidden alias hit.",
+    "feasible_next_steps": [
+      "Try an independently proposed alias/paraphrase",
+      "Inspect potentially relevant source evidence"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "C-scope-scope_absent",
+    "builder_case": "alias",
+    "family": "scope",
+    "arm": "scope_absent",
+    "question": "Does the collection support a prediction-guided Marker caching policy?",
+    "expected_class": "unresolved",
+    "class_points": 2,
+    "claim_boundary": "Concept unresolved; surface-form failure cannot establish absence. Do not invent the hidden alias hit.",
+    "feasible_next_steps": [
+      "Try an independently proposed alias/paraphrase",
+      "Inspect potentially relevant source evidence"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "D-scope-scope_present",
+    "builder_case": "processing_gap",
+    "family": "scope",
+    "arm": "scope_present",
+    "question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+    "expected_class": "unresolved",
+    "class_points": 2,
+    "claim_boundary": "Source proposition unresolved; name zero text coverage only when shown. Do not invent an automatic fallback.",
+    "feasible_next_steps": [
+      "Request source review or explicit alternative extraction",
+      "Request missing coverage/scope when hidden"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "D-scope-scope_absent",
+    "builder_case": "processing_gap",
+    "family": "scope",
+    "arm": "scope_absent",
+    "question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+    "expected_class": "unresolved",
+    "class_points": 2,
+    "claim_boundary": "Source proposition unresolved; name zero text coverage only when shown. Do not invent an automatic fallback.",
+    "feasible_next_steps": [
+      "Request source review or explicit alternative extraction",
+      "Request missing coverage/scope when hidden"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "D-count_coverage-neither",
+    "builder_case": "processing_gap",
+    "family": "count_coverage",
+    "arm": "neither",
+    "question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+    "expected_class": "unresolved",
+    "class_points": 2,
+    "claim_boundary": "Source proposition unresolved; name zero text coverage only when shown. Do not invent an automatic fallback.",
+    "feasible_next_steps": [
+      "Request source review or explicit alternative extraction",
+      "Request missing coverage/scope when hidden"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "D-count_coverage-count_only",
+    "builder_case": "processing_gap",
+    "family": "count_coverage",
+    "arm": "count_only",
+    "question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+    "expected_class": "unresolved",
+    "class_points": 2,
+    "claim_boundary": "Source proposition unresolved; name zero text coverage only when shown. Do not invent an automatic fallback.",
+    "feasible_next_steps": [
+      "Request source review or explicit alternative extraction",
+      "Request missing coverage/scope when hidden"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "D-count_coverage-coverage_only",
+    "builder_case": "processing_gap",
+    "family": "count_coverage",
+    "arm": "coverage_only",
+    "question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+    "expected_class": "unresolved",
+    "class_points": 2,
+    "claim_boundary": "Source proposition unresolved; name zero text coverage only when shown. Do not invent an automatic fallback.",
+    "feasible_next_steps": [
+      "Request source review or explicit alternative extraction",
+      "Request missing coverage/scope when hidden"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  },
+  {
+    "label": "D-count_coverage-combined",
+    "builder_case": "processing_gap",
+    "family": "count_coverage",
+    "arm": "combined",
+    "question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+    "expected_class": "unresolved",
+    "class_points": 2,
+    "claim_boundary": "Source proposition unresolved; name zero text coverage only when shown. Do not invent an automatic fallback.",
+    "feasible_next_steps": [
+      "Request source review or explicit alternative extraction",
+      "Request missing coverage/scope when hidden"
+    ],
+    "disallowed": [
+      "semantic absence",
+      "invented masked counts or coverage",
+      "automatic fallback",
+      "builder truth"
+    ],
+    "calibration_points": 1,
+    "next_step_points": 1
+  }
+]

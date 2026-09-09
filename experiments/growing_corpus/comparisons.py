@@ -48,7 +48,7 @@ def main():
         "present": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
         "absent": "Does the exact lexical phrase tampuabsentpredicateqxz have a match in the stated short-paper subset and searched representation?",
         "alias": "Does the collection support a prediction-guided Marker caching policy?",
-        "processing_gap": "Does the named CORFU source support implementing a shared log across a cluster?",
+        "processing_gap": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
     }
     public = dict(zip(questions, ["A", "B", "C", "D"], strict=True))
     payloads = {}
@@ -176,7 +176,7 @@ def main():
                         "feasible_next_steps": {
                             "present": [
                                 "Inspect source context",
-                                "Inspect other candidates only when the full count is visible",
+                                "Inspect known additional candidates when count is shown; requesting more evidence conditionally is also feasible without assuming hidden candidates",
                                 "stop for the narrowly displayed rule",
                             ],
                             "absent": [
@@ -274,6 +274,24 @@ def main():
             "seed": 20260909,
             "execution_order": labels,
             "provider_observations_sha256": sha(args.observations.read_bytes()),
+            "provider_cases": {
+                case: {
+                    "request": obs[case]["request"],
+                    "response_sha256": sha(canon(obs[case]["response"]).encode()),
+                    "response_bytes": len(canon(obs[case]["response"]).encode()),
+                    "timestamp": obs[case]["timestamp"],
+                    "response_schema_version": "tampu-tools/v1 (Service constant, not an envelope field)",
+                    "projection_recipes": [
+                        {
+                            "artifact_id": p["artifact_id"],
+                            "projection_id": p["projection_id"],
+                            "recipe": p["recipe"],
+                        }
+                        for p in obs[case]["projection_records"]
+                    ],
+                }
+                for case in questions
+            },
             "provider_observations_path": str(args.observations),
             "revision_id": revision["revision_id"],
             "model": "gpt-5.6-sol",
