@@ -1,0 +1,444 @@
+[
+  {
+    "name": "describe",
+    "title": null,
+    "description": "Describe published collections and paged published revision IDs, bounded facets, supported filter keys/examples, extraction coverage/losses, projection recipes, lexical any_terms/all_terms/phrase modes, limits, and honestly unavailable capabilities. Detail is paged. This is a durable read-only operation.",
+    "inputSchema": {
+      "properties": {
+        "collection": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Collection"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cursor"
+        },
+        "limit": {
+          "default": 10,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "facet": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Facet"
+        },
+        "facet_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Facet Cursor"
+        },
+        "detail_limit": {
+          "default": 20,
+          "title": "Detail Limit",
+          "type": "integer"
+        },
+        "revision_cursor": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Revision Cursor"
+        },
+        "revision_limit": {
+          "default": 2,
+          "title": "Revision Limit",
+          "type": "integer"
+        },
+        "byte_budget": {
+          "default": 8192,
+          "title": "Byte Budget",
+          "type": "integer"
+        }
+      },
+      "title": "describeArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "search",
+    "title": null,
+    "description": "Start a finding journey with collection and intent, or reuse journey_id with a new predicate. The first call creates a pinned revision and projection selection. lexical/v1 requires query plus any_terms, all_terms, or phrase; metadata/v1 and temporal/v1 require an empty query, mode=filter, and typed filters. limit=0 is an exact count-only request; limits 1..20 return bounded hits and an opaque continuation. This reads durable data and writes only expiring process-local journey state.",
+    "inputSchema": {
+      "properties": {
+        "collection": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Collection"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Revision"
+        },
+        "intent": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Intent"
+        },
+        "journey_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Journey Id"
+        },
+        "lens": {
+          "default": "lexical/v1",
+          "title": "Lens",
+          "type": "string"
+        },
+        "query": {
+          "default": "",
+          "title": "Query",
+          "type": "string"
+        },
+        "mode": {
+          "default": "any_terms",
+          "title": "Mode",
+          "type": "string"
+        },
+        "filters": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Filters"
+        },
+        "limit": {
+          "default": 2,
+          "title": "Limit",
+          "type": "integer"
+        },
+        "byte_budget": {
+          "default": 8192,
+          "title": "Byte Budget",
+          "type": "integer"
+        }
+      },
+      "title": "searchArguments",
+      "type": "object"
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false
+    },
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "inspect",
+    "title": null,
+    "description": "Page a node's candidates, or open bounded metadata/evidence from any artifact in that node, including an unseen candidate, by artifact_id plus physical PDF page or element ordinal. Then slice text with its opaque evidence handle; continuations preserve Unicode character boundaries. limit is 1..20; slice_chars is 1..4000 (default 800). Search and artifact/page/ordinal listings return preview handles: call inspect with evidence_handle to read a slice, then use its returned citation handle for positive finish. Physical PDF pages are distinct from unknown printed-page labels. This reads durable data and writes only expiring process-local delivery/inspection state.",
+    "inputSchema": {
+      "properties": {
+        "journey_id": {
+          "title": "Journey Id",
+          "type": "string"
+        },
+        "node_id": {
+          "title": "Node Id",
+          "type": "string"
+        },
+        "continuation": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Continuation"
+        },
+        "limit": {
+          "default": 2,
+          "title": "Limit",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 20,
+          "description": "Candidate or element listing page size; 1..20."
+        },
+        "evidence_handle": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Handle"
+        },
+        "artifact_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Id"
+        },
+        "ordinal": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ordinal"
+        },
+        "page": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Page"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        },
+        "slice_chars": {
+          "default": 800,
+          "title": "Slice Chars",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4000,
+          "description": "Unicode characters per inspected slice; 1..4000."
+        },
+        "byte_budget": {
+          "default": 8192,
+          "title": "Byte Budget",
+          "type": "integer"
+        }
+      },
+      "title": "inspectArguments",
+      "type": "object",
+      "required": [
+        "journey_id",
+        "node_id"
+      ]
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false
+    },
+    "meta": null,
+    "execution": null
+  },
+  {
+    "name": "finish",
+    "title": null,
+    "description": "Record a process-local positive, bounded_negative, or unresolved finding. Positive findings require successfully inspected opaque evidence handles; bounded_negative requires an exact zero-candidate node and does not prove semantic absence; unresolved requires a reason. release=true destructively frees the active journey without a preservation claim. Trace persistence occurs only when the owner explicitly started serve with --trace.",
+    "inputSchema": {
+      "properties": {
+        "journey_id": {
+          "title": "Journey Id",
+          "type": "string"
+        },
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "statement": {
+          "title": "Statement",
+          "type": "string"
+        },
+        "evidence_handles": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Handles"
+        },
+        "node_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Node Id"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "semantic_absence": {
+          "default": false,
+          "title": "Semantic Absence",
+          "type": "boolean"
+        },
+        "release": {
+          "default": false,
+          "title": "Release",
+          "type": "boolean"
+        },
+        "byte_budget": {
+          "default": 8192,
+          "title": "Byte Budget",
+          "type": "integer"
+        }
+      },
+      "title": "finishArguments",
+      "type": "object",
+      "required": [
+        "journey_id",
+        "kind",
+        "statement"
+      ]
+    },
+    "outputSchema": null,
+    "icons": null,
+    "annotations": {
+      "title": null,
+      "readOnlyHint": false,
+      "destructiveHint": true,
+      "idempotentHint": false,
+      "openWorldHint": false
+    },
+    "meta": null,
+    "execution": null
+  }
+]

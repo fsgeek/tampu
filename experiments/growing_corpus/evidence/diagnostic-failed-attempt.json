@@ -1,0 +1,196 @@
+{
+  "status": "failed_before_comparison_consumers",
+  "reason": "Title substring selected 2012 CORFU46177642 instead of required 2013 CORFUe334015c; processing-gap coverage assertion caught selection error",
+  "source_commit": "4329f35",
+  "published_records": {
+    "comparison": [
+      {
+        "aggregate_coverage": {
+          "artifacts": 3,
+          "ready_artifacts": 3,
+          "failed_artifacts": 0,
+          "pages_total": 36,
+          "pages_with_text": 36,
+          "blank_or_partial_artifacts": 2,
+          "pages_unknown": 0
+        },
+        "changes": {
+          "added": [
+            "corfu.pdf",
+            "long.pdf",
+            "short.pdf"
+          ],
+          "removed": [],
+          "replaced": [],
+          "processing_changed": []
+        },
+        "collection": "comparison",
+        "counts": {
+          "sources": 3,
+          "artifacts": 3,
+          "ready": 3,
+          "failed": 0
+        },
+        "enumeration_complete": true,
+        "observed_end": "2026-09-09T08:43:19.340886Z",
+        "observed_start": "2026-09-09T08:43:19.319480Z",
+        "parent_revision": null,
+        "published_at": "2026-09-09T08:43:20.811431Z",
+        "revision_id": "3390b17c0abc4b509f572b549a60ed96",
+        "selection_digest": "e2d21066038110e4cf36a10169d056a8bcdb1ad2f526645644b13dbf8393ff2d",
+        "state": "published"
+      }
+    ],
+    "failure": [
+      {
+        "aggregate_coverage": {
+          "artifacts": 1,
+          "ready_artifacts": 0,
+          "failed_artifacts": 1,
+          "pages_total": 0,
+          "pages_with_text": 0,
+          "blank_or_partial_artifacts": 0,
+          "pages_unknown": 1
+        },
+        "changes": {
+          "added": [
+            "broken.pdf"
+          ],
+          "removed": [],
+          "replaced": [],
+          "processing_changed": []
+        },
+        "collection": "failure",
+        "counts": {
+          "sources": 1,
+          "artifacts": 1,
+          "ready": 0,
+          "failed": 1
+        },
+        "enumeration_complete": true,
+        "observed_end": "2026-09-09T08:43:18.064787Z",
+        "observed_start": "2026-09-09T08:43:18.058423Z",
+        "parent_revision": null,
+        "published_at": "2026-09-09T08:43:18.116490Z",
+        "revision_id": "f8994050ef724a9b8dabcf985a27c2da",
+        "selection_digest": "47fc384889200667e1ee5908ecd1b9add654a8ab9c7e27a69b75977230867a55",
+        "state": "published"
+      }
+    ],
+    "tiny": [
+      {
+        "aggregate_coverage": {
+          "artifacts": 3,
+          "ready_artifacts": 3,
+          "failed_artifacts": 0,
+          "pages_total": 3,
+          "pages_with_text": 3,
+          "blank_or_partial_artifacts": 0,
+          "pages_unknown": 0
+        },
+        "changes": {
+          "added": [
+            "add.pdf"
+          ],
+          "removed": [
+            "remove.pdf"
+          ],
+          "replaced": [
+            "replace.pdf"
+          ],
+          "processing_changed": []
+        },
+        "collection": "tiny",
+        "counts": {
+          "sources": 3,
+          "artifacts": 3,
+          "ready": 3,
+          "failed": 0
+        },
+        "enumeration_complete": true,
+        "observed_end": "2026-09-09T08:43:17.844442Z",
+        "observed_start": "2026-09-09T08:43:17.827545Z",
+        "parent_revision": "434dac71d8b6417fbb319d1f58efe62a",
+        "published_at": "2026-09-09T08:43:18.022179Z",
+        "revision_id": "394033af0395450c913cd6eb8fded77c",
+        "selection_digest": "97a4ad15047e9ab3bcde9a6cc2e5783409374058174916b889f7fa8d97eb9ea9",
+        "state": "published"
+      },
+      {
+        "aggregate_coverage": {
+          "artifacts": 3,
+          "ready_artifacts": 3,
+          "failed_artifacts": 0,
+          "pages_total": 3,
+          "pages_with_text": 3,
+          "blank_or_partial_artifacts": 0,
+          "pages_unknown": 0
+        },
+        "changes": {
+          "added": [
+            "keep.pdf",
+            "remove.pdf",
+            "replace.pdf"
+          ],
+          "removed": [],
+          "replaced": [],
+          "processing_changed": []
+        },
+        "collection": "tiny",
+        "counts": {
+          "sources": 3,
+          "artifacts": 3,
+          "ready": 3,
+          "failed": 0
+        },
+        "enumeration_complete": true,
+        "observed_end": "2026-09-09T08:43:17.613009Z",
+        "observed_start": "2026-09-09T08:43:17.594968Z",
+        "parent_revision": null,
+        "published_at": "2026-09-09T08:43:17.821596Z",
+        "revision_id": "434dac71d8b6417fbb319d1f58efe62a",
+        "selection_digest": "8f1d0f8831566d51b8170cc267248379fa0d72ad0cfdb4f82b4dccb0cc344aac",
+        "state": "published"
+      }
+    ],
+    "versions": [
+      {
+        "aggregate_coverage": {
+          "artifacts": 2,
+          "ready_artifacts": 2,
+          "failed_artifacts": 0,
+          "pages_total": 31,
+          "pages_with_text": 31,
+          "blank_or_partial_artifacts": 0,
+          "pages_unknown": 0
+        },
+        "changes": {
+          "added": [
+            "v2-copy.pdf",
+            "v2.pdf",
+            "v3.pdf"
+          ],
+          "removed": [],
+          "replaced": [],
+          "processing_changed": []
+        },
+        "collection": "versions",
+        "counts": {
+          "sources": 3,
+          "artifacts": 2,
+          "ready": 2,
+          "failed": 0
+        },
+        "enumeration_complete": true,
+        "observed_end": "2026-09-09T08:43:18.150717Z",
+        "observed_start": "2026-09-09T08:43:18.124456Z",
+        "parent_revision": null,
+        "published_at": "2026-09-09T08:43:19.307710Z",
+        "revision_id": "93a8775bb19445e391b70fdd96b8b4ad",
+        "selection_digest": "86c9229f710b9deb046846d9a1675a0d713476363b7eb2882416988d63136656",
+        "state": "published"
+      }
+    ]
+  },
+  "main_consumer_database_affected": false
+}

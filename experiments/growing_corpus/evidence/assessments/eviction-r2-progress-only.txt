@@ -1,0 +1,1 @@
+The current published revision is larger again—473 artifacts, up from 320—but targeted searches still identify the same two caching papers as the directly relevant evidence. I’m now checking the theorem statement, experiment details, and publication/version metadata in the current pinned projection rather than treating collection growth itself as substantive new evidence.

@@ -1,0 +1,61 @@
+{
+  "unique_artifacts": 473,
+  "coverage_totals": {
+    "pages_total": 16990,
+    "pages_with_text": 12198,
+    "elements": 353808
+  },
+  "artifacts_with_each_loss": {
+    "unattributed_pages": 51,
+    "zero_text_elements": 72
+  },
+  "zero_text_artifacts": [
+    "017e8861cc063b7a32be8b71bea9285107579bd6fc722ff2d2554f0a4580e4f4",
+    "07034ea6f67ceff7d1ccc9603cb82441cd4d25a842a97a6533f174ebfcd657ba",
+    "109de66191edb78cc46551baaceb2ca0632f8b44d76bbce894e30da17caf156b",
+    "12dfd8b46570e438885f173a666f17abd3d5ab630b49e821f5b22e995d67f2ca",
+    "1a737b2b47d1d4118257bc2792b7b151db8d944606c43204d48384e28a622001",
+    "1d6ca680571a817b078494f084eea92e2b88a0f18efab6b5d72290eaf8a91adc",
+    "514eea42429e94499acfde28da791fca04ec5ac0f5fb1b6f3395228536d734d4",
+    "5aea1ad5bbe78dc1bccfe76241e07b6c4deb74d223f8ca0b683447e44a8e1f34",
+    "5c320273da2f40f959aba2503bf146d58713e416ff773f9d986d5d8323c0a320",
+    "632908cfd3c04d235158c060c0d628977e31138edf96be830420d3f4947dc96b",
+    "7416173b6c05f75109999a79ea3536480ce2795ccbeb69bb757c89bf1cdc0a5a",
+    "76c8bb526eb859943e4bf22b6aeb1d2f0008cb4a02acdd7e96358f827d61c204",
+    "8ad17fc09d2f765c238bb663f67a15b280dfff55ecdfecc270bbce047f3c4ac1",
+    "8fd9e21821d57c4f24a6c4d72bbd8cd31983b0727b0057c343bf23e581a7450d",
+    "900cb9582b5b6f722bfe90744b671c862cd8fc4cc700c4870bb5baecf026f4d0",
+    "930f5699d5b9ed576034878f62859633871a3b0e22d295aee8fe674dd7e1bf57",
+    "a209a910f7f7e4a394dec872c0e195876d796865fd0c91d965171845523689f3",
+    "b81a394cf14ab614562a2d654c1b6028686fbd352036c8a0a2447a696d6e5008",
+    "cd42a74c667d275ebf4425d881e146a11a1e7f3b9e833b064f106d944229aa25",
+    "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+    "e6bd224122f29e123d548b33b7cc907a6d701e2adbf26f5a32a536fbf2d6ff4b",
+    "e84337d12d0ad2b6362551acb8f56e1c46240edd82641a462e5dec8c310d152a",
+    "e868c7b3d2349c14bc1cccd38c93f84e5f7bc849a5a345806078ecbac9edf4a9",
+    "eccc6531c8359220963a8b5e11194638edb3f193e67224b613752cdfc63a64fd",
+    "edfc12c4902d2b70929de08829b4bddfe227b3275d36bf870f6b32f924d68ceb",
+    "f09019a7b8f0da990531817ae9ebb082ba08140d827cf9eb61b7a6f0f192ade7",
+    "f2a7bfdc0b6ea8520742e2289a693d08fb588e7bb0990513d72afe1158b65e64"
+  ],
+  "full_run": {
+    "artifacts": 473,
+    "statuses": {
+      "ready": 473
+    },
+    "wall_seconds": 1796.5801610029303,
+    "workers": 4,
+    "profile": "unstructured",
+    "image": "downloads.unstructured.io/unstructured-io/unstructured@sha256:806726e3997d33bce9e32facd86c947b241101c58496f2774ad5f09f86e798bc"
+  },
+  "extractor_versions": [
+    {
+      "versions": {
+        "pypdf": "6.10.0",
+        "unstructured": "0.23.3",
+        "unstructured-inference": "1.6.12"
+      },
+      "artifacts": 473
+    }
+  ]
+}

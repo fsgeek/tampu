@@ -1,0 +1,87 @@
+{
+  "tool_names": [
+    "describe",
+    "search",
+    "inspect",
+    "finish"
+  ],
+  "current_revision": "0ea79b79668943969e5ee21dfdcbdfae",
+  "calls": [
+    {
+      "tool": "describe",
+      "arguments": {
+        "collection": "research"
+      },
+      "response_sha256": "742feded1fb37ce13210f0255dad27b577d9d12af709800e2707d43d63aaf347",
+      "response_bytes": 7381,
+      "status": "ok"
+    },
+    {
+      "tool": "search",
+      "arguments": {
+        "collection": "research",
+        "intent": "Owner final CLI/MCP smoke, not consumer evaluation",
+        "query": "Predictive Marker",
+        "mode": "phrase",
+        "filters": {
+          "artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578"
+        }
+      },
+      "response_sha256": "ce43d996c0694492c91c7cc0440681bbbe9832b8c1f70a1c1594bb1445f00edc",
+      "response_bytes": 2164,
+      "status": "ok"
+    },
+    {
+      "tool": "inspect",
+      "arguments": {
+        "journey_id": "journey_85_g1NYh5uPVUroTjhOx7tBh",
+        "node_id": "node_iOTSFYr8EIwOjVG19GHCZ2ay",
+        "evidence_handle": "evidence_UfLJd05eEMnFaTYb7Hel5347"
+      },
+      "response_sha256": "4ef9a25f5dc2c6c7a1d4e42ad309a41845d039bac5321e4e38016931d7b4c5aa",
+      "response_bytes": 1594,
+      "status": "ok"
+    },
+    {
+      "tool": "finish",
+      "arguments": {
+        "journey_id": "journey_85_g1NYh5uPVUroTjhOx7tBh",
+        "kind": "positive",
+        "statement": "The inspected table header names Predictive Marker.",
+        "evidence_handles": [
+          "evidence_QP0qVgLVSVuh3Q91DIkhE_gP"
+        ],
+        "release": true
+      },
+      "response_sha256": "7c6d344c9f1d72c998479e634c1a97f5a8c6bc3dcdce6ae8b4cb89c1e915e7f6",
+      "response_bytes": 522,
+      "status": "ok"
+    }
+  ],
+  "finish": {
+    "durability": "process_local",
+    "evidence_handles": [
+      "evidence_QP0qVgLVSVuh3Q91DIkhE_gP"
+    ],
+    "finding_id": "finding_5bPGYNA6V4-ZYBCvifFhTpoh",
+    "kind": "positive",
+    "machine_status": "structurally_validated",
+    "preserved": false,
+    "released": true,
+    "semantic_entailment": "consumer_judgment_not_certified",
+    "statement": "The inspected table header names Predictive Marker."
+  },
+  "trace_mode": false,
+  "source_hashes": {
+    "src/tampu/__init__.py": "a0ab02a688904925f1e7b0c6b3655f63378ed6e9094317469d5fb6842dc12343",
+    "src/tampu/capability_evidence.py": "0e852f83123f7a5f45eb830e2a7d4d7484eb0f8fb050ff24b813fbd296085fe8",
+    "src/tampu/capture.py": "246db7534e7eb2332c7196962bb5c4faab2193cdab5935ddeea23a62743da312",
+    "src/tampu/cli.py": "eee147780a941371f98e0d3c3128590fdfd9d275157718324257c0f04df66e09",
+    "src/tampu/config.py": "6c2deaf604307682653d1caf6ec6b9ba60bc55cfd487031b8e012b8111681400",
+    "src/tampu/errors.py": "0c61962c3014093b6c34938772a68af533c90999c570978dac2049747fef3ae4",
+    "src/tampu/extraction.py": "3ccf4e57a2380ed5c53aa144e9fbab0456efda9297a86d7bfb4d6ed26515342a",
+    "src/tampu/mcp_server.py": "aa339eb76cf6e2cc1bab70e7822ed6d86a4d651ad2ca5e916d4f485c53e7565a",
+    "src/tampu/repository.py": "9d47cdfa89b2c4da1815ac3563f0ada86ac5d01a1b4fb1533b9dc3d612ee57ae",
+    "src/tampu/service.py": "fb828d8c4aba983c66b9336e45907403fab8b8afac537a00b4d63d8c78d98470"
+  }
+}

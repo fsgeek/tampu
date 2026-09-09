@@ -1,0 +1,333 @@
+[
+  {
+    "label": "short caching",
+    "artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+    "projection_id": "9eac9529e8522e54b1536d6e2b1e5946991598f62af198c663f68dd6d2951938",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 3,
+      "pages_with_text": 3,
+      "elements": 3
+    },
+    "losses": [],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "04a7222b3fc31aba6fb55fc797fee61986c2fdde7c9946b75ebfb6b58f9b69fa",
+      "elements_sha256": "4e638e293f985c5f716f267b95b494c6b99cfb4913300058f9a0c691936d89b3"
+    },
+    "wall_seconds": 0.0934112099930644,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 3
+  },
+  {
+    "label": "long caching",
+    "artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+    "projection_id": "88511a0ed118f196cdb5dc20c97213793de9adb83b693be10f9cc916fa295eb1",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 19,
+      "pages_with_text": 19,
+      "elements": 19
+    },
+    "losses": [],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "aafdae2f6e9bf20c4140163d4d523660cfb076c44b93d8de9590f55f214f1181",
+      "elements_sha256": "415e7f86e2de59aaedc84b8e8dea29ea469b41a211b66717a19228a77c6faec6"
+    },
+    "wall_seconds": 0.2718461990589276,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 19
+  },
+  {
+    "label": "thin Paxos",
+    "artifact_id": "9b9be695a21315c165f83d22180378131e409d2fe3ec8437a365b26acc54a8ec",
+    "projection_id": "bc726a5a24c5002e295d7fa14ff5ba99f7155cb9d098748fdfbe1e6f30904bab",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 2,
+      "pages_with_text": 1,
+      "elements": 2
+    },
+    "losses": [
+      {
+        "code": "zero_text_pages",
+        "pages": [
+          2
+        ],
+        "message": "Some PDF pages produced no text."
+      }
+    ],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "9938abf86dc01ec95ce796b058d2de21b6f7dde0b679f62c43cea500553fafb5",
+      "elements_sha256": "e2c6902efc0bd78e564d87268b5b1cfd3605d6c7b0b245958db96018609ee35b"
+    },
+    "wall_seconds": 0.04930375807452947,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 2
+  },
+  {
+    "label": "new arXiv",
+    "artifact_id": "88a539374c58d18b1087a5e1e06429cd8a7eddb4ffacc589f6818fc69baf0c4d",
+    "projection_id": "ecb05d9097155a24dc65ba944e672f45d3baebe6008999dcb397220fb307a2f4",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 15,
+      "pages_with_text": 15,
+      "elements": 15
+    },
+    "losses": [],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "7765cf6ab2ad4c61c2a7aa911801762a5f7f2e6af9238dabf67622937252027d",
+      "elements_sha256": "839524df14b70fa3410940ec50641c57c50a778cf68a7a44d9cdcfd4702723c3"
+    },
+    "wall_seconds": 0.2756182639859617,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 15
+  },
+  {
+    "label": "arXiv v2",
+    "artifact_id": "267a676ecf034576a43dae4f773d169d9fcbed9275ee15287ab778b7bbf68f3f",
+    "projection_id": "e13377fa89322c33cb0e9cc9a44c2eea267a8eade5488d0f5f455566d8595bd5",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 15,
+      "pages_with_text": 15,
+      "elements": 15
+    },
+    "losses": [],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "969a6cc2231fba592a85fb4578d5f6cea7a9cd23b72dfc1a3d39cbff2c7a8a56",
+      "elements_sha256": "9504a2ea22eb66596a623f26b8ebe79f9bfaecb922b15105c7691f5db83bb7c0"
+    },
+    "wall_seconds": 0.20456065400503576,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 15
+  },
+  {
+    "label": "arXiv v3",
+    "artifact_id": "12bb3bc4a937c115861c6585902d360fef4035ccd79669daa1254ee82e4ede5b",
+    "projection_id": "35ded746808ca361e07719eda51181ca296f9d1b3e82a093e4c603ddb5bad3bb",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 16,
+      "pages_with_text": 16,
+      "elements": 16
+    },
+    "losses": [],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "795b07d9afe9183b1edd478d4b433987d2eca5e3e8fd4d6cde713516d1d51218",
+      "elements_sha256": "e0189257a95dd1ab516015797867abf7b65b75d2b68bc252b23e4caff45e4d13"
+    },
+    "wall_seconds": 0.23520997003652155,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 16
+  },
+  {
+    "label": "online optimization",
+    "artifact_id": "09c0048f043649ab80a5d0597c7dcc204216d7321c8a24623a52321464abba56",
+    "projection_id": "f84f28c2b193b04fed70180e2dbf939f3350505f8c5111c2f3ea5df8d4979243",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 29,
+      "pages_with_text": 29,
+      "elements": 29
+    },
+    "losses": [],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "d8982707f3d1f5912b11ad303fd6de87e7d1b562702111a366eb777c5c4b364c",
+      "elements_sha256": "431a00c906ac7454466a6522104d7f69766faba56ac36d2567628c34cf2b0c6d"
+    },
+    "wall_seconds": 0.360704333987087,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 29
+  },
+  {
+    "label": "software-defined caching",
+    "artifact_id": "e65708391d6fda9dff30c2b14beacbb6c6330a98480a4e46c60afc6e05ed038b",
+    "projection_id": "6f2fb3b06f7ac29049f4171c780e754039a7e1751e10f85ea45abee64031147d",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 8,
+      "pages_with_text": 8,
+      "elements": 8
+    },
+    "losses": [],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "6f38d2e17055e538a723223a2f73cad8896a1f906ce278bcb8327f511268e153",
+      "elements_sha256": "f8f35ad772351eb963e7732060c1c3232677cd358ba805343e5685b4f3c3976d"
+    },
+    "wall_seconds": 0.14093991101253778,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 8
+  },
+  {
+    "label": "learned data structures",
+    "artifact_id": "93dbdd876492c7a380b74f90bdf29147f3b9b1092fda848cb133764f2d9d31f6",
+    "projection_id": "f7fd614c0e88322c5bbb3162601b9f91c3a280ad56701ab37e996c2c1382c9c4",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 27,
+      "pages_with_text": 27,
+      "elements": 27
+    },
+    "losses": [],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "47b9c17a4b4ecb873a0facb178ea8354dd3a8a24298baae40e9dda73123816e4",
+      "elements_sha256": "eaf063cb8ca3292fc047eb07bffae210c1d8379a36c60ad5c054fe2945cb6edd"
+    },
+    "wall_seconds": 0.3825551470508799,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 27
+  },
+  {
+    "label": "copy-aware desktop",
+    "artifact_id": "3e7b13a9100e899ef68d8add6600588a138beb32a953a7a791c087646006b972",
+    "projection_id": "d8fae4669bba95223570dc5fc5e416108ca8e2e322f55aad5e148d7bf8b6a043",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 10,
+      "pages_with_text": 10,
+      "elements": 10
+    },
+    "losses": [],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "d6b51d2e0af73827968873624e1627536f1cc1f74d40f6f6e3559f59532ac8d3",
+      "elements_sha256": "9c888b18424f6df28fb57a08a7889325d7f56a80ebf3f3c485202a7aec6f8a11"
+    },
+    "wall_seconds": 0.28604374290443957,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 10
+  },
+  {
+    "label": "Multics 1965",
+    "artifact_id": "9c3877333d918aeadaa81826594587a26e7c040535b9ce600266f78791784406",
+    "projection_id": "5fe68fa7ad1115c034c4b5df4f982397a76802b29aedb7ad8b7b9f3b40189f9a",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 12,
+      "pages_with_text": 12,
+      "elements": 12
+    },
+    "losses": [],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "6a41e25a0619f1cddbbdbc8abb716737b6e35cf3a460d827ce3854f828146bf7",
+      "elements_sha256": "ed3b9c3eca694eb3df106998c286201a0a5086b9cca55c63af0a9f9d7dc39240"
+    },
+    "wall_seconds": 0.16359747503884137,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 12
+  },
+  {
+    "label": "NSDI proceedings",
+    "artifact_id": "6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213",
+    "projection_id": "e9b8444d417ee4c18bf71ec11b5117feebbcf37357f558a258d3dc759e39dbdb",
+    "status": "ready",
+    "coverage": {
+      "pages_total": 635,
+      "pages_with_text": 619,
+      "elements": 635
+    },
+    "losses": [
+      {
+        "code": "zero_text_pages",
+        "pages": [
+          3,
+          11,
+          45,
+          61,
+          151,
+          243,
+          259,
+          309,
+          383,
+          399,
+          415,
+          429,
+          447,
+          511,
+          529,
+          635
+        ],
+        "message": "Some PDF pages produced no text."
+      }
+    ],
+    "recipe": {
+      "profile": "poppler",
+      "timeout_seconds": 300,
+      "extractor": "pdftotext",
+      "reading_order": "default",
+      "physical_pages": true,
+      "extractor_version": "pdftotext version 22.02.0",
+      "output_sha256": "81134ad874fe349ed0223ce9e4227bb15dacdbb88e3b145ac644441ac561dce5",
+      "elements_sha256": "12980c7df404fd2e2e8d667461c89bcc00679aa9406970ab5a1684b8bad7d0f9"
+    },
+    "wall_seconds": 17.415982930921018,
+    "physical_page_sequence_valid": true,
+    "raw_page_command_count": 635
+  }
+]

@@ -1,0 +1,145 @@
+{
+  "purpose": "Actual original consumer tool responses: JSON validity, exact application byte budgets, no duplicate structured content, equality to explicit trace as operation/response multiset. Excludes MCP framing/schema bytes and makes no completion claim for stopped runs.",
+  "runs": [
+    {
+      "run": "eviction-r0",
+      "actual_completed_mcp_calls": 20,
+      "trace_rows": 20,
+      "actual_textcontent_bytes": 61212,
+      "operation_totals": {
+        "describe": {
+          "calls": 1,
+          "response_bytes": 8695,
+          "application_errors": 0
+        },
+        "search": {
+          "calls": 1,
+          "response_bytes": 7118,
+          "application_errors": 0
+        },
+        "inspect": {
+          "calls": 16,
+          "response_bytes": 42768,
+          "application_errors": 3
+        },
+        "finish": {
+          "calls": 2,
+          "response_bytes": 2631,
+          "application_errors": 0
+        }
+      },
+      "violations": []
+    },
+    {
+      "run": "legible-r0",
+      "actual_completed_mcp_calls": 17,
+      "trace_rows": 17,
+      "actual_textcontent_bytes": 44822,
+      "operation_totals": {
+        "describe": {
+          "calls": 1,
+          "response_bytes": 8695,
+          "application_errors": 0
+        },
+        "search": {
+          "calls": 5,
+          "response_bytes": 11212,
+          "application_errors": 0
+        },
+        "inspect": {
+          "calls": 7,
+          "response_bytes": 22113,
+          "application_errors": 1
+        },
+        "finish": {
+          "calls": 4,
+          "response_bytes": 2802,
+          "application_errors": 2
+        }
+      },
+      "violations": []
+    },
+    {
+      "run": "eviction-r1",
+      "actual_completed_mcp_calls": 20,
+      "trace_rows": 20,
+      "actual_textcontent_bytes": 60220,
+      "operation_totals": {
+        "describe": {
+          "calls": 1,
+          "response_bytes": 9257,
+          "application_errors": 0
+        },
+        "search": {
+          "calls": 5,
+          "response_bytes": 10575,
+          "application_errors": 0
+        },
+        "inspect": {
+          "calls": 12,
+          "response_bytes": 38866,
+          "application_errors": 3
+        },
+        "finish": {
+          "calls": 2,
+          "response_bytes": 1522,
+          "application_errors": 1
+        }
+      },
+      "violations": []
+    },
+    {
+      "run": "eviction-r2",
+      "actual_completed_mcp_calls": 24,
+      "trace_rows": 24,
+      "actual_textcontent_bytes": 75215,
+      "operation_totals": {
+        "describe": {
+          "calls": 1,
+          "response_bytes": 9866,
+          "application_errors": 0
+        },
+        "search": {
+          "calls": 9,
+          "response_bytes": 35267,
+          "application_errors": 0
+        },
+        "inspect": {
+          "calls": 14,
+          "response_bytes": 30082,
+          "application_errors": 6
+        }
+      },
+      "violations": []
+    },
+    {
+      "run": "legible-r2",
+      "actual_completed_mcp_calls": 16,
+      "trace_rows": 16,
+      "actual_textcontent_bytes": 28741,
+      "operation_totals": {
+        "describe": {
+          "calls": 1,
+          "response_bytes": 9866,
+          "application_errors": 0
+        },
+        "search": {
+          "calls": 2,
+          "response_bytes": 6048,
+          "application_errors": 0
+        },
+        "inspect": {
+          "calls": 8,
+          "response_bytes": 9194,
+          "application_errors": 4
+        },
+        "finish": {
+          "calls": 5,
+          "response_bytes": 3633,
+          "application_errors": 1
+        }
+      },
+      "violations": []
+    }
+  ]
+}

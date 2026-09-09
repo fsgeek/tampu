@@ -1,0 +1,17 @@
+Yes. The current published collection revision contains **v3**, dated 21 July 2026. The exact work-ID search returned v2 and v3.
+
+- **New version:** `2603.28788v3.pdf`, artifact `12bb3bc4a937c115861c6585902d360fef4035ccd79669daa1254ee82e4ede5b`. The version mark is on physical PDF p. 1. Relevant projection: `15d79bc46c8c0d68b0871adcc8e1ac3979cb26cc519d49513a0f1494caa8719d`.
+
+- **Changed justification:** On physical PDF p. 10, v3 removes the erroneous assertion that two \(k\)-of-\(|E|\) Phase 2 quorums overlap in at least \(|E|-k+1\) nodes. It now gives the correct hitting-set argument: each Phase 2 quorum omits at most \(|E|-k\) Earth nodes, so any set of \(|E|-k+1\) Earth nodes must intersect it. This resolves the earlier mathematical objection.
+
+- **Requirement:** Unchanged. Phase 1 must contain at least
+  \[
+  |E|-k+1
+  \]
+  Earth nodes—two for 4-of-5 and three for 3-of-5. Under the stated unrestricted \(k\)-subset family, this threshold is both sufficient and necessary. [v3 artifact above, physical PDF p. 10]
+
+- **Evaluated behavior:** v3 continues to report exhaustive TLA+ verification of both constructions. That remains the paper’s reported evaluation and was not independently reproduced. [v3, physical PDF p. 10]
+
+The earlier evidence address remains valid: v2 artifact `267a676ecf034576a43dae4f773d169d9fcbed9275ee15287ab778b7bbf68f3f`, `2603.28788v2.pdf`, physical PDF p. 10, projection `e358eddab928ef4530b47feb06bcf11a929fd5cd3ca6533026fded31ca327288`, originally inspected under revision `fa9221b03c3b4aaaa7c54125f23eadb9`.
+
+This comparison used current published revision `0ea79b79668943969e5ee21dfdcbdfae`, selection `9e4e919562cf376cd4c7607b559a87f7c7dd899fb7abe7a14c763e9468227845`. The authors’ editorial characterization of the v2 wording—as typo, shorthand, or proof error—remains unresolved.

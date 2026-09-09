@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "commands": [
+    {
+      "command": "uv run pytest tests -q",
+      "result": "83 passed, 1 skipped in 11.00s",
+      "skip": "opt-in real Unstructured container test; actual extraction evidence retained separately"
+    },
+    {
+      "command": "uvx ruff check src/tampu tests scripts/provision-tampu.py experiments/growing_corpus",
+      "result": "All checks passed"
+    },
+    {
+      "command": "uv run python -m compileall -q src tests scripts/provision-tampu.py experiments/growing_corpus",
+      "result": "exit0"
+    },
+    {
+      "command": "git diff --check",
+      "result": "clean"
+    },
+    {
+      "command": "live .venv/bin/tampu describe and stdio describe/search/inspect/finish with trace disabled",
+      "result": "allfourtools successful at published473-artifactrevision; positivefinding thenrelease"
+    }
+  ],
+  "targeted_red_green": {
+    "command": "uv run pytest tests/test_growing_corpus.py tests/test_service.py::test_discovery_slice_limits_match_actual_inspection_validation tests/test_mcp.py -q",
+    "red": "5 failed, 1 passed in 3.72s: progress-as-final, failedturn-as-final, stoppedturn-as-final, missingServicebounds, missingMCPschemabounds",
+    "green": "6 passed in 3.52s"
+  },
+  "old_path_pilot": "21 passed in1.58s; separate root-supplied record; dedicated18529container stopped withdata preserved",
+  "independent_task_review": "pending after signed Task4 handoff",
+  "whole_branch_review": "pending controller final review",
+  "source_hashes": {
+    "src/tampu/__init__.py": "a0ab02a688904925f1e7b0c6b3655f63378ed6e9094317469d5fb6842dc12343",
+    "src/tampu/capability_evidence.py": "0e852f83123f7a5f45eb830e2a7d4d7484eb0f8fb050ff24b813fbd296085fe8",
+    "src/tampu/capture.py": "246db7534e7eb2332c7196962bb5c4faab2193cdab5935ddeea23a62743da312",
+    "src/tampu/cli.py": "eee147780a941371f98e0d3c3128590fdfd9d275157718324257c0f04df66e09",
+    "src/tampu/config.py": "6c2deaf604307682653d1caf6ec6b9ba60bc55cfd487031b8e012b8111681400",
+    "src/tampu/errors.py": "0c61962c3014093b6c34938772a68af533c90999c570978dac2049747fef3ae4",
+    "src/tampu/extraction.py": "3ccf4e57a2380ed5c53aa144e9fbab0456efda9297a86d7bfb4d6ed26515342a",
+    "src/tampu/mcp_server.py": "aa339eb76cf6e2cc1bab70e7822ed6d86a4d651ad2ca5e916d4f485c53e7565a",
+    "src/tampu/repository.py": "9d47cdfa89b2c4da1815ac3563f0ada86ac5d01a1b4fb1533b9dc3d612ee57ae",
+    "src/tampu/service.py": "fb828d8c4aba983c66b9336e45907403fab8b8afac537a00b4d63d8c78d98470"
+  },
+  "final_document_and_content_audit": {
+    "local_markdown_links_checked": 56,
+    "broken_links": [],
+    "proposed_file_count": 39,
+    "forbidden_binary_files": [],
+    "credential_value_matches": [],
+    "task4_report_copies_identical": true,
+    "task4_scratch_ignored": true
+  }
+}

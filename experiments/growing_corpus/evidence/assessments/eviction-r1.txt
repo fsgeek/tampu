@@ -1,0 +1,45 @@
+The earlier “graceful fallback” conclusion still holds, but the theorem statement now needs qualification and one unresolved gap has narrowed.
+
+Current collection: revision `7e44b119852a4f16b5f470b321fa91ef`, projection selection `b997ca7b95a0e17063cbeed874c1b9eebb08e439496e911608f82967059b7b0f`. This revision has 320 artifacts, versus 160 in the prior revision.
+
+### New evidence warranting reconsideration
+
+The reassessment newly located a 19-page treatment, *Competitive caching with machine learned advice*, artifact `d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e`. Its filename identifies it as a 2018 paper, so this is newly acquired/available evidence, not demonstrated newly published research. Exact membership in the prior revision was not tested.
+
+- Its abstract reiterates the model: naive reliance on predicted next arrivals can perform poorly despite low average error, while the proposed framework trades prediction-dependent performance against worst-case protection. [artifact `d2c…142e`, physical PDF p. 1]
+- It contains proof machinery and a dedicated Predictive Marker section, so the earlier statement that the collection globally lacked the deferred full treatment is no longer sustainable. However, this review did not inspect the complete proof. [artifact `d2c…142e`, physical PDF pp. 8–9]
+- Most importantly, the long artifact states the ratio as
+
+  \[
+  2\min\!\left(2+2\sqrt{\eta_1/\mathrm{OPT}},\,2H_k\right),
+  \]
+
+  whereas the three-page artifact states
+
+  \[
+  \min\!\left(2+2\sqrt{\eta_1/\mathrm{OPT}},\,4\log k\right).
+  \]
+
+  [artifact `d2c…142e`, physical PDF p. 9; artifact `3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578`, physical PDF p. 2]
+
+Taken literally, the long-version expression has an outer factor of two and approaches 4, rather than 2, at zero error. The earlier “2-consistent” label therefore should not be transferred unqualified to the newly found artifact. The worst-case fallback remains logarithmic in \(k\), since its cap is \(4H_k\), but the exact constants and terminology differ.
+
+### What remains supported
+
+Evaluated behavior remains as previously assessed:
+
+- The compared policies remain Blind Oracle, PredictiveMarker, LRU, randomized Marker, and offline optimum. [artifact `3bd6…1578`, physical PDF p. 2]
+- With \(k=10\) and lognormal perturbations to true next-arrival times, PredictiveMarker reportedly deteriorated gradually and stayed ahead of LRU and Marker, while Blind Oracle became costly as error increased. [artifact `3bd6…1578`, physical PDF p. 2]
+- The preliminary BrightKite/PLECO ratios remain 2.049, 1.280, 1.310, and 1.266 respectively, with the reported PredictiveMarker improvement significant at \(p<0.001\). [artifact `3bd6…1578`, physical PDF p. 2]
+
+The theoretical core also remains supported as a claim of the papers: blindly following predictions is non-robust, while PredictiveMarker preserves an \(O(\log k)\) worst-case fallback and improves as aggregate prediction error falls. [artifact `3bd6…1578`, physical PDF pp. 1–2; artifact `d2c…142e`, physical PDF pp. 1, 8–9]
+
+### What remains unresolved
+
+- Whether the two artifacts are formally different versions of the same work; both have empty structured metadata.
+- Why their displayed bounds and consistency constants differ, and which should govern a particular implementation or citation.
+- Independent verification of the complete proof and the precise definitions of \(\eta_1\), `OPT`, and the consistency terminology.
+- Production robustness, broader workloads and cache sizes, and correlated, adversarial, or distribution-shifted prediction failures. The empirical evidence remains explicitly preliminary.
+- Search completeness: 81 of 320 artifacts are blank or partial, and successful extraction or zero lexical hits cannot establish semantic absence.
+
+An unresolved finding was recorded as `finding_CJoA92pwjn0xLKHrKbvt1Qwp`, and the temporary journey was released. A positive-finding submission was rejected because the trace did not accept the mixed evidence handles as inspected; the supported assessment above is therefore evidence-cited but was not separately persisted as a positive finding.

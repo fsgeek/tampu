@@ -1,0 +1,325 @@
+{
+  "database": "tampu_growth_diagnostics_20260909b",
+  "source_before": {
+    "commit": "704cdef99d3aed0b36dba1d537273c4761b37a05",
+    "source_sha256": {
+      "src/tampu/__init__.py": "a0ab02a688904925f1e7b0c6b3655f63378ed6e9094317469d5fb6842dc12343",
+      "src/tampu/capture.py": "246db7534e7eb2332c7196962bb5c4faab2193cdab5935ddeea23a62743da312",
+      "src/tampu/cli.py": "eee147780a941371f98e0d3c3128590fdfd9d275157718324257c0f04df66e09",
+      "src/tampu/config.py": "6c2deaf604307682653d1caf6ec6b9ba60bc55cfd487031b8e012b8111681400",
+      "src/tampu/errors.py": "0c61962c3014093b6c34938772a68af533c90999c570978dac2049747fef3ae4",
+      "src/tampu/extraction.py": "3ccf4e57a2380ed5c53aa144e9fbab0456efda9297a86d7bfb4d6ed26515342a",
+      "src/tampu/mcp_server.py": "0fff8e2e819a0062a8ad5db6d589ef29ba42309a7dabeabb00d5513b4bd97949",
+      "src/tampu/repository.py": "9d47cdfa89b2c4da1815ac3563f0ada86ac5d01a1b4fb1533b9dc3d612ee57ae",
+      "src/tampu/service.py": "fc9dfe7914e2cc769115d11e1473305831622e14b1132b99cd5898097ce7160b",
+      "experiments/growing_corpus/README.md": "9f54b1a72023315d9c674afbedb5845ec9d73fe3751e881f6c4a78fc209b596f",
+      "experiments/growing_corpus/comparison-protocol.md": "553ced973ccf90bb3fbe0745acff053e3453b375c8499ebcc60729f10e2ad55a",
+      "experiments/growing_corpus/comparisons.py": "82d14eee1168bcdb7477628b93773d71a4b4df8a74a3a3afc99dabc5aa7690bc",
+      "experiments/growing_corpus/diagnostics.py": "def9a5bd81c2387b422c41e8dcff9f40f3ca9ceb46e5ad396de8e810e3dbfd28",
+      "experiments/growing_corpus/prompts.json": "3d9f7ddd9a989a13a29876a461c058e8bf137c6d087239eba8a247fcc1c1c9e0",
+      "experiments/growing_corpus/run.py": "e8743d5adce5dfdc6f657948a88e5576731c27d378b1c63a2a48305ff5336335"
+    }
+  },
+  "source_after": {
+    "commit": "704cdef99d3aed0b36dba1d537273c4761b37a05",
+    "source_sha256": {
+      "src/tampu/__init__.py": "a0ab02a688904925f1e7b0c6b3655f63378ed6e9094317469d5fb6842dc12343",
+      "src/tampu/capture.py": "246db7534e7eb2332c7196962bb5c4faab2193cdab5935ddeea23a62743da312",
+      "src/tampu/cli.py": "eee147780a941371f98e0d3c3128590fdfd9d275157718324257c0f04df66e09",
+      "src/tampu/config.py": "6c2deaf604307682653d1caf6ec6b9ba60bc55cfd487031b8e012b8111681400",
+      "src/tampu/errors.py": "0c61962c3014093b6c34938772a68af533c90999c570978dac2049747fef3ae4",
+      "src/tampu/extraction.py": "3ccf4e57a2380ed5c53aa144e9fbab0456efda9297a86d7bfb4d6ed26515342a",
+      "src/tampu/mcp_server.py": "0fff8e2e819a0062a8ad5db6d589ef29ba42309a7dabeabb00d5513b4bd97949",
+      "src/tampu/repository.py": "9d47cdfa89b2c4da1815ac3563f0ada86ac5d01a1b4fb1533b9dc3d612ee57ae",
+      "src/tampu/service.py": "fc9dfe7914e2cc769115d11e1473305831622e14b1132b99cd5898097ce7160b",
+      "experiments/growing_corpus/README.md": "9f54b1a72023315d9c674afbedb5845ec9d73fe3751e881f6c4a78fc209b596f",
+      "experiments/growing_corpus/comparison-protocol.md": "553ced973ccf90bb3fbe0745acff053e3453b375c8499ebcc60729f10e2ad55a",
+      "experiments/growing_corpus/comparisons.py": "82d14eee1168bcdb7477628b93773d71a4b4df8a74a3a3afc99dabc5aa7690bc",
+      "experiments/growing_corpus/diagnostics.py": "def9a5bd81c2387b422c41e8dcff9f40f3ca9ceb46e5ad396de8e810e3dbfd28",
+      "experiments/growing_corpus/prompts.json": "3d9f7ddd9a989a13a29876a461c058e8bf137c6d087239eba8a247fcc1c1c9e0",
+      "experiments/growing_corpus/run.py": "e8743d5adce5dfdc6f657948a88e5576731c27d378b1c63a2a48305ff5336335"
+    }
+  },
+  "wall_seconds": 3.132002472062595,
+  "records": [
+    {
+      "collection": "tiny",
+      "revision": {
+        "revision_id": "f0aac067d2f94fe2b56a86f5f526a7e7",
+        "collection": "tiny",
+        "parent_revision": null,
+        "state": "published",
+        "observed_start": "2026-09-09T08:50:56.427313Z",
+        "observed_end": "2026-09-09T08:50:56.442339Z",
+        "enumeration_complete": true,
+        "selection_digest": "8f1d0f8831566d51b8170cc267248379fa0d72ad0cfdb4f82b4dccb0cc344aac",
+        "aggregate_coverage": {
+          "artifacts": 3,
+          "ready_artifacts": 3,
+          "failed_artifacts": 0,
+          "pages_total": 3,
+          "pages_with_text": 3,
+          "blank_or_partial_artifacts": 0,
+          "pages_unknown": 0
+        },
+        "counts": {
+          "sources": 3,
+          "artifacts": 3,
+          "ready": 3,
+          "failed": 0
+        },
+        "changes": {
+          "added": [
+            "keep.pdf",
+            "remove.pdf",
+            "replace.pdf"
+          ],
+          "removed": [],
+          "replaced": [],
+          "processing_changed": []
+        },
+        "published_at": "2026-09-09T08:50:56.538770Z"
+      },
+      "wall_seconds": 0.11645477602723986
+    },
+    {
+      "collection": "tiny",
+      "revision": {
+        "revision_id": "2643781d5d2c4aa4bf5598d3e7337857",
+        "collection": "tiny",
+        "parent_revision": "f0aac067d2f94fe2b56a86f5f526a7e7",
+        "state": "published",
+        "observed_start": "2026-09-09T08:50:56.544326Z",
+        "observed_end": "2026-09-09T08:50:56.563026Z",
+        "enumeration_complete": true,
+        "selection_digest": "97a4ad15047e9ab3bcde9a6cc2e5783409374058174916b889f7fa8d97eb9ea9",
+        "aggregate_coverage": {
+          "artifacts": 3,
+          "ready_artifacts": 3,
+          "failed_artifacts": 0,
+          "pages_total": 3,
+          "pages_with_text": 3,
+          "blank_or_partial_artifacts": 0,
+          "pages_unknown": 0
+        },
+        "counts": {
+          "sources": 3,
+          "artifacts": 3,
+          "ready": 3,
+          "failed": 0
+        },
+        "changes": {
+          "added": [
+            "add.pdf"
+          ],
+          "removed": [
+            "remove.pdf"
+          ],
+          "replaced": [
+            "replace.pdf"
+          ],
+          "processing_changed": []
+        },
+        "published_at": "2026-09-09T08:50:56.662598Z"
+      },
+      "wall_seconds": 0.12317085999529809
+    },
+    {
+      "collection": "failure",
+      "revision": {
+        "revision_id": "b789d33742c5446da0605c0453ed2cc2",
+        "collection": "failure",
+        "parent_revision": null,
+        "state": "published",
+        "observed_start": "2026-09-09T08:50:56.694731Z",
+        "observed_end": "2026-09-09T08:50:56.700483Z",
+        "enumeration_complete": true,
+        "selection_digest": "483abb3b8867a8948c7795413710384c1a7b8d9e3e8ac3848bb10f9e9bd022fe",
+        "aggregate_coverage": {
+          "artifacts": 1,
+          "ready_artifacts": 0,
+          "failed_artifacts": 1,
+          "pages_total": 0,
+          "pages_with_text": 0,
+          "blank_or_partial_artifacts": 0,
+          "pages_unknown": 1
+        },
+        "counts": {
+          "sources": 1,
+          "artifacts": 1,
+          "ready": 0,
+          "failed": 1
+        },
+        "changes": {
+          "added": [
+            "broken.pdf"
+          ],
+          "removed": [],
+          "replaced": [],
+          "processing_changed": []
+        },
+        "published_at": "2026-09-09T08:50:56.750026Z"
+      },
+      "wall_seconds": 0.059457619092427194
+    },
+    {
+      "collection": "versions",
+      "revision": {
+        "revision_id": "828b3762d10148d7ad6852f7a8ef679f",
+        "collection": "versions",
+        "parent_revision": null,
+        "state": "published",
+        "observed_start": "2026-09-09T08:50:56.757117Z",
+        "observed_end": "2026-09-09T08:50:56.779593Z",
+        "enumeration_complete": true,
+        "selection_digest": "86c9229f710b9deb046846d9a1675a0d713476363b7eb2882416988d63136656",
+        "aggregate_coverage": {
+          "artifacts": 2,
+          "ready_artifacts": 2,
+          "failed_artifacts": 0,
+          "pages_total": 31,
+          "pages_with_text": 31,
+          "blank_or_partial_artifacts": 0,
+          "pages_unknown": 0
+        },
+        "counts": {
+          "sources": 3,
+          "artifacts": 2,
+          "ready": 2,
+          "failed": 0
+        },
+        "changes": {
+          "added": [
+            "v2-copy.pdf",
+            "v2.pdf",
+            "v3.pdf"
+          ],
+          "removed": [],
+          "replaced": [],
+          "processing_changed": []
+        },
+        "published_at": "2026-09-09T08:50:57.929690Z"
+      },
+      "wall_seconds": 1.1770506120519713
+    },
+    {
+      "collection": "comparison",
+      "revision": {
+        "revision_id": "05146497610646da9c334e5fef49dffb",
+        "collection": "comparison",
+        "parent_revision": null,
+        "state": "published",
+        "observed_start": "2026-09-09T08:50:57.943736Z",
+        "observed_end": "2026-09-09T08:50:57.974815Z",
+        "enumeration_complete": true,
+        "selection_digest": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "aggregate_coverage": {
+          "artifacts": 3,
+          "ready_artifacts": 3,
+          "failed_artifacts": 0,
+          "pages_total": 46,
+          "pages_with_text": 22,
+          "blank_or_partial_artifacts": 2,
+          "pages_unknown": 0
+        },
+        "counts": {
+          "sources": 3,
+          "artifacts": 3,
+          "ready": 3,
+          "failed": 0
+        },
+        "changes": {
+          "added": [
+            "corfu.pdf",
+            "long.pdf",
+            "short.pdf"
+          ],
+          "removed": [],
+          "replaced": [],
+          "processing_changed": []
+        },
+        "published_at": "2026-09-09T08:50:58.720747Z"
+      },
+      "wall_seconds": 0.7830968509661034
+    },
+    {
+      "collection": "processing-change",
+      "revision": {
+        "revision_id": "9f5844ca72b441ce831f9388dcd5ecf8",
+        "collection": "processing-change",
+        "parent_revision": null,
+        "state": "published",
+        "observed_start": "2026-09-09T08:50:58.971066Z",
+        "observed_end": "2026-09-09T08:50:58.984373Z",
+        "enumeration_complete": true,
+        "selection_digest": "e6cf3c438c89136ba1b2115b77e60ffed99bcabdd329ac5f0a3e9aec18f0f233",
+        "aggregate_coverage": {
+          "artifacts": 1,
+          "ready_artifacts": 1,
+          "failed_artifacts": 0,
+          "pages_total": 24,
+          "pages_with_text": 0,
+          "blank_or_partial_artifacts": 1,
+          "pages_unknown": 0
+        },
+        "counts": {
+          "sources": 1,
+          "artifacts": 1,
+          "ready": 1,
+          "failed": 0
+        },
+        "changes": {
+          "added": [
+            "corfu.pdf"
+          ],
+          "removed": [],
+          "replaced": [],
+          "processing_changed": []
+        },
+        "published_at": "2026-09-09T08:50:59.015810Z"
+      },
+      "wall_seconds": 0.05178621399682015
+    },
+    {
+      "collection": "processing-change",
+      "revision": {
+        "revision_id": "aeaf4bdf459a4e54a0b53b3693291442",
+        "collection": "processing-change",
+        "parent_revision": "9f5844ca72b441ce831f9388dcd5ecf8",
+        "state": "published",
+        "observed_start": "2026-09-09T08:50:59.023155Z",
+        "observed_end": "2026-09-09T08:50:59.035600Z",
+        "enumeration_complete": true,
+        "selection_digest": "fb2d5d83202063912e0643fab563960428aa296f23599c161336d0d22b85cfb3",
+        "aggregate_coverage": {
+          "artifacts": 1,
+          "ready_artifacts": 1,
+          "failed_artifacts": 0,
+          "pages_total": 24,
+          "pages_with_text": 24,
+          "blank_or_partial_artifacts": 0,
+          "pages_unknown": 0
+        },
+        "counts": {
+          "sources": 1,
+          "artifacts": 1,
+          "ready": 1,
+          "failed": 0
+        },
+        "changes": {
+          "added": [],
+          "removed": [],
+          "replaced": [],
+          "processing_changed": [
+            "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93"
+          ]
+        },
+        "published_at": "2026-09-09T08:50:59.515262Z"
+      },
+      "wall_seconds": 0.4969285560073331
+    }
+  ],
+  "assertions": "add/replace/remove; pinned old passage; explicit failed projection; aliases distinct from same-work versions; present/count; bounded lexical zero; alias recovery; CORFU processing-change and old-byte verification passed",
+  "source_checks": "Separate builder passage review required; assertions do not establish semantic completeness",
+  "corfu": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93"
+}

@@ -12,6 +12,7 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
+from .capability_evidence import CAPABILITY_EVIDENCE
 from .errors import TampuError
 
 DEFAULT_BYTE_BUDGET = 8_192
@@ -420,10 +421,7 @@ class Service:
                 "preservation": "unavailable",
                 "historical_score_reexecution": "unavailable",
             },
-            "validation": {
-                "consumer_benefit": "not_tested",
-                "evaluated_scale": "not_established",
-            },
+            "validation": copy.deepcopy(CAPABILITY_EVIDENCE),
         }
         scope = {
             "collection_filter": collection,
