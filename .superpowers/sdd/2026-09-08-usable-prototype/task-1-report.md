@@ -47,7 +47,8 @@ Artifact bytes are installed at `artifacts/<digest-prefix>/<sha256>.pdf` by a sa
     "profile": str,
     "timeout_seconds": int,
     ... exact profile configuration and extractor versions ...,
-    "output_sha256": str
+    "output_sha256": str,
+    "elements_sha256": str
   },
   "status": "ready" | "failed",
   "raw_path": str,
@@ -80,10 +81,10 @@ The Poppler profile executes these commands under one per-file deadline:
 ```text
 pdftotext -v
 pdfinfo <captured-pdf>
-pdftotext -layout <captured-pdf> -
+pdftotext -f <page> -l <page> <captured-pdf> -
 ```
 
-The verified development host reports Poppler `pdftotext version 22.02.0`; the exact version line is recorded per projection. Exact stdout, stderr, and return codes are retained in raw JSON.
+The final Poppler profile runs the last command once for each one-based physical page, with default reading order. Its recipe records `reading_order: "default"` and `physical_pages: true`. The verified development host reports Poppler `pdftotext version 22.02.0`; the exact version line is recorded per projection. Exact version, `pdfinfo`, and per-page `pdftotext` stdout, stderr, return codes, and page numbers are retained in raw JSON.
 
 The Unstructured profile requires an `@sha256:<64 hex>` image reference and executes the equivalent of:
 
@@ -118,7 +119,7 @@ clean
 
 ### Limitations and development observations
 
-- Poppler supplies one normalized page element per PDF page, including empty elements for zero-text pages. Layout text is deterministic for a fixed Poppler version but is not a geometric reconstruction.
+- Poppler supplies one normalized page element per PDF page, including empty elements for zero-text pages. Default-order text is deterministic for a fixed Poppler version but is not a geometric reconstruction.
 - Unstructured uses `strategy="fast"` with page breaks and has no automatic fallback. Its raw output is retained before normalization.
 - The readiness sample attributed all pages for both born-digital caching papers. An image-heavy two-page Paxos paper attributed content only to page 1 and retained relatively little text; the adapter records unattributed and zero-text page losses, but OCR/hi-res extraction is outside this task.
 - Readiness token overlap against `pdftotext` is comparative lexical coverage only. It does not establish reading order, semantic completeness, or general extractor superiority.
@@ -136,7 +137,7 @@ The `-layout` option was removed. The recipe records `reading_order: "default"` 
 
 Projection recipes now record both `output_sha256` for raw JSON and `elements_sha256` for normalized JSON. Successful recipe reuse verifies both immutable files against their recorded digests; missing or corrupted normalized evidence is not accepted. A nonzero or empty Poppler version response produces a failed projection with controlled `extractor_version_failed` loss instead of indexing empty output.
 
-Capture traversal now opens the root and every descended directory with `O_DIRECTORY | O_NOFOLLOW`, compares the opened descriptor with the no-follow observation, enumerates through the directory descriptor, and opens candidate files relative to that descriptor. A symlink root is reported as `unsafe_root`; a directory swapped for a symlink is reported as `unsafe_source`, sets `enumeration_complete` false, and cannot expose files outside the opened root.
+Capture traversal now opens each root path component and every descended directory with `O_DIRECTORY | O_NOFOLLOW`, compares descended directories with their no-follow observation, enumerates through directory descriptors, and opens candidate files relative to those descriptors. A symlink in the root or any ancestor is reported as `unsafe_root`; a descended directory swapped for a symlink is reported as `unsafe_source`, sets `enumeration_complete` false, and cannot expose files outside the opened root.
 
 Review verification:
 
@@ -147,4 +148,11 @@ uv run pytest tests/test_capture.py tests/test_extraction.py -q
 TAMPU_TEST_UNSTRUCTURED_IMAGE=<inspected-pinned-image> \
   uv run pytest tests/test_extraction.py::test_real_unstructured_container_runs_offline_and_records_versions -q
 1 passed in 8.29s
+```
+
+The second review added a real ancestor-symlink regression and component-by-component root opening. Its focused verification was:
+
+```text
+uv run pytest tests/test_capture.py -q
+9 passed
 ```

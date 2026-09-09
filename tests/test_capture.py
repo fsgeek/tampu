@@ -193,6 +193,28 @@ def test_rejects_symlink_root_without_observing_target(tmp_path: Path) -> None:
     ]
 
 
+def test_rejects_symlink_in_root_ancestor_without_observing_target(
+    tmp_path: Path,
+) -> None:
+    outside_root = tmp_path / "outside" / "source"
+    outside_root.mkdir(parents=True)
+    (outside_root / "paper.pdf").write_bytes(PDF)
+    visible = tmp_path / "visible"
+    visible.mkdir()
+    (visible / "linked-parent").symlink_to(
+        tmp_path / "outside", target_is_directory=True
+    )
+    root = visible / "linked-parent" / "source"
+
+    scan = capture_tree(root, tmp_path / "store")
+
+    assert scan["enumeration_complete"] is False
+    assert scan["artifacts"] == []
+    assert scan["sources"] == [
+        {"relative_path": ".", "status": "error", "error_code": "unsafe_root"}
+    ]
+
+
 def test_parent_directory_swapped_to_symlink_cannot_escape_root(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

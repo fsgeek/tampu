@@ -85,6 +85,27 @@ def _install(temporary: Path, destination: Path, digest: str) -> None:
             )
 
 
+def _open_directory_nofollow(path: Path) -> int:
+    flags = os.O_RDONLY | os.O_DIRECTORY | os.O_CLOEXEC | os.O_NOFOLLOW
+    if path.is_absolute():
+        descriptor = os.open("/", flags)
+        components = path.parts[1:]
+    else:
+        descriptor = os.open(".", flags)
+        components = path.parts
+    try:
+        for component in components:
+            if component in {"", "."}:
+                continue
+            child = os.open(component, flags, dir_fd=descriptor)
+            os.close(descriptor)
+            descriptor = child
+        return descriptor
+    except BaseException:
+        os.close(descriptor)
+        raise
+
+
 def capture_tree(root: Path, store: Path) -> dict:
     root = Path(root)
     store = Path(store)
@@ -254,15 +275,8 @@ def capture_tree(root: Path, store: Path) -> dict:
                 )
         return True
 
-    root_flags = os.O_RDONLY | os.O_DIRECTORY | os.O_CLOEXEC | os.O_NOFOLLOW
     try:
-        root_observed = root.stat(follow_symlinks=False)
-        if not stat.S_ISDIR(root_observed.st_mode):
-            raise OSError(errno.ELOOP, "root is not a real directory")
-        root_fd = os.open(root, root_flags)
-        if not _same_file(root_observed, os.fstat(root_fd)):
-            os.close(root_fd)
-            raise OSError(errno.ELOOP, "root changed")
+        root_fd = _open_directory_nofollow(root)
     except OSError as error:
         enumeration_complete = False
         code = (
