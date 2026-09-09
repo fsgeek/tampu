@@ -269,9 +269,17 @@ def publish(args):
     prerequisites = ["eviction-r0", "legible-r0"] if stage == 1 else ["eviction-r1"]
     for label in prerequisites:
         summary = json.loads((args.consumers / label / "summary.json").read_text())
-        if not summary["source_unchanged"] or summary["mcp_tool_calls"] < 1:
+        if not (
+            summary.get("has_final_assessment") is True
+            and summary.get("turn_completed") is True
+            and summary.get("turn_failed") is False
+            and summary.get("stop_reason") is None
+            and summary.get("exit_code") == 0
+            and summary.get("source_unchanged") is True
+            and summary.get("mcp_tool_calls", 0) >= 1
+        ):
             raise RuntimeError(
-                "Predecessor original observation must be recorded before growth"
+                "Predecessor original observation must be completed before growth"
             )
     if (out / f"r{stage}-publication.json").exists():
         raise RuntimeError("Refusing to overwrite a publication observation")

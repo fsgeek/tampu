@@ -1,0 +1,82 @@
+{
+  "phase": "post-observation Task4 review fix round1",
+  "default_byte_budget": 8192,
+  "wire_framing_included": false,
+  "live_profile_pages": [
+    {
+      "page": 1,
+      "application_json_bytes": 8044,
+      "response_sha256": "0b0a84cce7d0387c0ae28b60919e815a70b1b5fceb4d0e4365d51bdd992e89b3",
+      "experiment_ids": [
+        "growing_corpus"
+      ],
+      "has_continuation": true,
+      "omissions": [
+        "collections.projection_recipes",
+        "collections.failure_details",
+        "collections.facets"
+      ],
+      "revision": "0ea79b79668943969e5ee21dfdcbdfae"
+    },
+    {
+      "page": 2,
+      "application_json_bytes": 7600,
+      "response_sha256": "ecf32399a86e7013ccb7f5a1884ff84ba2ac798fb3fddbe975c85b740938f4f5",
+      "experiment_ids": [
+        "transcript_path"
+      ],
+      "has_continuation": false,
+      "omissions": [
+        "collections.projection_recipes",
+        "collections.failure_details",
+        "collections.facets"
+      ],
+      "revision": "0ea79b79668943969e5ee21dfdcbdfae"
+    }
+  ],
+  "profile_reference": {
+    "schema": "tampu-validation/v1",
+    "sha256": "de835420b18e3902b4203c3b42fd30e653ccbed33ba42823e03298553c02d934",
+    "record": "src/tampu/capability_evidence.py"
+  },
+  "checks": [
+    {
+      "command": "uv run pytest tests/test_growing_corpus.py tests/test_service.py::test_validation_profile_is_bounded_frozen_and_travels_with_findings tests/test_service.py::test_inspect_rejects_listing_limits_outside_disclosed_range tests/test_mcp.py -q",
+      "red": "15 failed, 11 passed in 3.89s",
+      "green": "26 passed in 3.64s"
+    },
+    {
+      "command": "uv run pytest tests/test_growing_corpus.py tests/test_service.py tests/test_mcp.py -q",
+      "result": "47 passed in 4.12s"
+    },
+    {
+      "command": "uv run pytest tests/test_growing_corpus.py tests/test_service.py::test_validation_profile_is_bounded_frozen_and_travels_with_findings -q",
+      "result": "23 passed in 0.56s after adding live processing-count/frozen-evaluation separation assertions and static-check corrections"
+    },
+    {
+      "command": "uvx ruff check src/tampu tests experiments/growing_corpus",
+      "result": "All checks passed"
+    },
+    {
+      "command": "uv run python -m compileall -q src/tampu tests experiments/growing_corpus",
+      "result": "exit0"
+    },
+    {
+      "command": "git diff --check",
+      "result": "clean"
+    }
+  ],
+  "source_hashes": {
+    "src/tampu/__init__.py": "a0ab02a688904925f1e7b0c6b3655f63378ed6e9094317469d5fb6842dc12343",
+    "src/tampu/capability_evidence.py": "fba6b16790e1172a141ff8a10e41f47e4f1e8856ee8b1e5bc95ba815d5af12d6",
+    "src/tampu/capture.py": "246db7534e7eb2332c7196962bb5c4faab2193cdab5935ddeea23a62743da312",
+    "src/tampu/cli.py": "eee147780a941371f98e0d3c3128590fdfd9d275157718324257c0f04df66e09",
+    "src/tampu/config.py": "6c2deaf604307682653d1caf6ec6b9ba60bc55cfd487031b8e012b8111681400",
+    "src/tampu/errors.py": "0c61962c3014093b6c34938772a68af533c90999c570978dac2049747fef3ae4",
+    "src/tampu/extraction.py": "3ccf4e57a2380ed5c53aa144e9fbab0456efda9297a86d7bfb4d6ed26515342a",
+    "src/tampu/mcp_server.py": "171434611a3be16b0a1c81378e61514d3750aa7a423c1d6174d1560010def15c",
+    "src/tampu/repository.py": "9d47cdfa89b2c4da1815ac3563f0ada86ac5d01a1b4fb1533b9dc3d612ee57ae",
+    "src/tampu/service.py": "48a67722a1ffdf28e71e757ac39aeb4805b514d91c78c03a3757a3cb290b9048"
+  },
+  "review_status": "scoped rereview pending; original experiments not rerun"
+}

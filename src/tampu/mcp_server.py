@@ -34,7 +34,7 @@ def create_server(service: Service) -> FastMCP:
             "Describe published collections and paged published revision IDs, bounded "
             "facets, supported filter keys/examples, extraction coverage/losses, projection "
             "recipes, lexical any_terms/all_terms/phrase modes, limits, and honestly "
-            "unavailable capabilities. Detail is paged. This is a durable read-only "
+            "unavailable capabilities. collection_scope reports current counts; validation_scope reports frozen evaluation conditions and per-mechanism statuses. Follow validation_scope.continuation as validation_cursor for more experiment records. Detail is paged. This is a durable read-only "
             "operation."
         ),
         annotations=ToolAnnotations(
@@ -54,6 +54,7 @@ def create_server(service: Service) -> FastMCP:
         detail_limit: SkipValidation[int] = 20,
         revision_cursor: SkipValidation[str | None] = None,
         revision_limit: SkipValidation[int] = 2,
+        validation_cursor: SkipValidation[str | None] = None,
         byte_budget: SkipValidation[int] = 8192,
     ) -> TextContent:
         return _content(
@@ -66,6 +67,7 @@ def create_server(service: Service) -> FastMCP:
                 detail_limit=detail_limit,
                 revision_cursor=revision_cursor,
                 revision_limit=revision_limit,
+                validation_cursor=validation_cursor,
                 byte_budget=byte_budget,
             )
         )

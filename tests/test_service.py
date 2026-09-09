@@ -565,12 +565,15 @@ def test_expired_journeys_are_reclaimed_before_capacity_check(
 
 
 def test_describe_facets_are_bounded_and_source_groups_require_tags(service: Service):
-    description = service.describe(collection="papers")
+    description = service.describe(collection="papers", byte_budget=16384)
     assert description["status"] == "ok"
     collection = description["result"]["collections"][0]
     assert collection["root"] == "owner_configured_source"
-    assert collection["coverage"]["pages_with_text"] == 3
-    assert collection["coverage"]["ready_does_not_mean_complete_text"] is True
+    assert collection["collection_scope"]["coverage"]["pages_with_text"] == 3
+    assert (
+        collection["collection_scope"]["coverage"]["ready_does_not_mean_complete_text"]
+        is True
+    )
     source_groups = collection["facets"]["source_group"]
     assert source_groups["values"] == [{"value": "deliberate", "artifacts": 2}]
     assert source_groups["unknown_artifacts"] == 1
@@ -647,7 +650,7 @@ def test_describe_underfills_collection_page_without_losing_continuation(
 
     repository.describe = describe
     service = Service(repository)
-    first = service.describe(limit=3, byte_budget=5000)
+    first = service.describe(limit=3, byte_budget=8192)
     assert first["status"] == "ok"
     assert len(first["result"]["collections"]) < 3
     assert isinstance(first["result"]["continuation"], str)
@@ -946,6 +949,7 @@ def test_discovery_slice_limits_match_actual_inspection_validation(service: Serv
     limits = service.describe(collection="papers")["result"]["limits"]
     bounds = limits["evidence_slice_chars"]
     assert bounds == {"minimum": 1, "maximum": 4000, "default": 800}
+    assert limits["inspection_page_minimum"] == 1
     assert limits["inspection_page_maximum"] == 20
     search = service.search(
         collection="papers", intent="discovered limits", query="alpha"
@@ -961,3 +965,122 @@ def test_discovery_slice_limits_match_actual_inspection_validation(service: Serv
         service.inspect(**request, slice_chars=bounds["maximum"] + 1)["error"]["code"]
         == "invalid_input"
     )
+
+
+def test_validation_profile_is_bounded_frozen_and_travels_with_findings(
+    service: Service,
+):
+    first = service.describe(collection="papers")
+    assert first["status"] == "ok"
+    assert len(encoded(first)) <= 8192
+    profile = first["result"]["validation_scope"]
+    assert "validation" not in first["result"]
+    mechanisms = profile["mechanisms"]
+    assert set(mechanisms) == {
+        "sample_ambiguity",
+        "context_accumulation",
+        "missed_relationships",
+        "embedding_candidate_crowding",
+        "staleness",
+        "path_affordance",
+    }
+    for mechanism in mechanisms.values():
+        assert mechanism["status"] in {
+            "not_tested",
+            "inconclusive",
+            "supported_under_conditions",
+            "not_supported_under_conditions",
+        }
+        assert mechanism["result"]
+    assert mechanisms["embedding_candidate_crowding"]["status"] == "not_tested"
+    assert mechanisms["path_affordance"]["status"] == "inconclusive"
+    assert profile["continuation"]
+    second = service.describe(
+        collection="papers", validation_cursor=profile["continuation"]
+    )
+    assert second["status"] == "ok"
+    assert len(encoded(second)) <= 8192
+    experiments = (
+        profile["experiments"] + second["result"]["validation_scope"]["experiments"]
+    )
+    assert len(experiments) == 2
+    assert (
+        experiments[0]["corpus"]["revisions"]["0ea79b79668943969e5ee21dfdcbdfae"] == 473
+    )
+    assert experiments[1]["corpus"]["size"] == 1000
+    assert {x["id"] for x in experiments} == {"growing_corpus", "transcript_path"}
+    for experiment in experiments:
+        assert experiment["protocol"] and experiment["implementation_versions"]
+        assert (
+            experiment["corpus"] and experiment["conditions"] and experiment["result"]
+        )
+    assert second["result"]["validation_scope"]["continuation"] is None
+    scope = first["result"]["collections"][0]["collection_scope"]
+    assert scope["revision_id"] == "revision-1"
+    assert scope["source_files"] == scope["distinct_artifacts"] == 3
+    assert scope["observation_interval"] == [
+        "2026-09-08T00:00:00Z",
+        "2026-09-08T00:01:00Z",
+    ]
+    assert scope["lenses"]["lexical/v1"]["represented"] == 3
+    assert "3 current artifacts" in scope["startup_statement"]
+    for lens in scope["lenses"].values():
+        assert {
+            key: lens[key]
+            for key in ("represented", "failed", "unprocessed", "unknown")
+        } == {"represented": 3, "failed": 0, "unprocessed": 0, "unknown": 0}
+    service.repository.current_revision = "revision-2"
+    changed = service.describe(collection="papers")
+    assert (
+        changed["result"]["collections"][0]["collection_scope"]["revision_id"]
+        == "revision-2"
+    )
+    assert changed["result"]["validation_scope"] == profile
+    search = service.search(collection="papers", intent="carry scope", query="alpha")[
+        "result"
+    ]
+    finding = service.finish(
+        journey_id=search["journey_id"],
+        kind="unresolved",
+        statement="Need additional evidence.",
+        reason="Not inspected.",
+    )
+    assert finding["status"] == "ok"
+    assert finding["result"]["profile_reference"] == profile["profile_reference"]
+    service.repository._members[0]["projection_status"] = "failed"
+    service.repository._members[1]["projection_status"] = "unknown"
+    revised = service.describe(collection="papers")
+    live = revised["result"]["collections"][0]["collection_scope"]["lenses"][
+        "lexical/v1"
+    ]
+    assert (
+        live["represented"],
+        live["failed"],
+        live["unprocessed"],
+        live["unknown"],
+    ) == (1, 1, 0, 1)
+    assert revised["result"]["validation_scope"] == profile
+    service.repository._members[1]["projection_status"] = "pending"
+    pending = service.describe(collection="papers")["result"]["collections"][0][
+        "collection_scope"
+    ]["lenses"]["lexical/v1"]
+    assert (pending["unprocessed"], pending["unknown"]) == (1, 0)
+    small = service.describe(collection="papers", byte_budget=256)
+    assert small["error"]["code"] == "budget_too_small"
+    assert len(encoded(small)) <= 256
+
+
+@pytest.mark.parametrize("limit", [0, 21])
+def test_inspect_rejects_listing_limits_outside_disclosed_range(
+    service: Service, limit
+):
+    search = service.search(
+        collection="papers", intent="boundaries", query="alpha", limit=0
+    )
+    assert search["status"] == "ok"
+    assert search["result"]["hits"] == []
+    result = search["result"]
+    inspection = service.inspect(
+        journey_id=result["journey_id"], node_id=result["node_id"], limit=limit
+    )
+    assert inspection["error"]["code"] == "invalid_input"

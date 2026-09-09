@@ -12,7 +12,7 @@ from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
-from .capability_evidence import CAPABILITY_EVIDENCE
+from .capability_evidence import CAPABILITY_EVIDENCE, PROFILE_REFERENCE
 from .errors import TampuError
 
 DEFAULT_BYTE_BUDGET = 8_192
@@ -65,6 +65,7 @@ class Service:
         detail_limit: int = 20,
         revision_cursor: str | None = None,
         revision_limit: int = 2,
+        validation_cursor: str | None = None,
         byte_budget: int = DEFAULT_BYTE_BUDGET,
     ) -> dict:
         arguments = {
@@ -76,6 +77,7 @@ class Service:
             "detail_limit": detail_limit,
             "revision_cursor": revision_cursor,
             "revision_limit": revision_limit,
+            "validation_cursor": validation_cursor,
             "byte_budget": byte_budget,
         }
         revision_starts: dict[str, int] = {}
@@ -101,6 +103,7 @@ class Service:
                 revision_cursor,
                 revision_limit,
                 revision_starts,
+                validation_cursor,
             ),
             on_revisions_underfilled=preserve_revision_underfill,
         )
@@ -116,6 +119,7 @@ class Service:
         revision_cursor: str | None,
         revision_limit: int,
         revision_starts: dict[str, int],
+        validation_cursor: str | None,
     ) -> tuple[dict, dict, list[str]]:
         if (
             not isinstance(limit, int)
@@ -146,6 +150,22 @@ class Service:
                 "invalid_input",
                 "Revision pagination requires one collection and a valid cursor.",
             )
+        validation_start = (
+            self._read_cursor(validation_cursor, "validation")
+            if validation_cursor
+            else 0
+        )
+        validation_scope = copy.deepcopy(CAPABILITY_EVIDENCE)
+        experiments = validation_scope["experiments"]
+        validation_scope["experiments"] = experiments[
+            validation_start : validation_start + 1
+        ]
+        validation_scope["continuation"] = (
+            self._make_cursor("validation", validation_start + 1)
+            if validation_start + 1 < len(experiments)
+            else None
+        )
+        validation_scope["profile_reference"] = copy.deepcopy(PROFILE_REFERENCE)
         start = self._read_cursor(cursor, "collections") if cursor else 0
         repository_description = self.repository.describe(collection)
         raw_collections = repository_description["collections"]
@@ -252,16 +272,15 @@ class Service:
                         for key in (
                             "revision_id",
                             "state",
-                            "observed_start",
-                            "observed_end",
                             "enumeration_complete",
                             "selection_digest",
-                            "counts",
                             "published_at",
                         )
                         if key in revision
                     },
-                    "coverage": coverage,
+                    "collection_scope": self._collection_scope(
+                        revision, members, coverage
+                    ),
                     "revisions": revision_summaries,
                     "revision_continuation": self._make_cursor(
                         f"revisions:{raw['name']}", revision_next
@@ -406,6 +425,7 @@ class Service:
                 "process_journey_budget_bytes": MAX_STATE_BYTES,
                 "revision_page_default": 2,
                 "revision_page_maximum": 20,
+                "inspection_page_minimum": 1,
                 "inspection_page_maximum": 20,
                 "evidence_slice_chars": {"minimum": 1, "maximum": 4000, "default": 800},
             },
@@ -421,7 +441,7 @@ class Service:
                 "preservation": "unavailable",
                 "historical_score_reexecution": "unavailable",
             },
-            "validation": copy.deepcopy(CAPABILITY_EVIDENCE),
+            "validation_scope": validation_scope,
         }
         scope = {
             "collection_filter": collection,
@@ -429,6 +449,50 @@ class Service:
             "collection_offset": start,
         }
         return result, scope, []
+
+    @staticmethod
+    def _collection_scope(revision: dict, members: list[dict], coverage: dict) -> dict:
+        statuses = [member.get("projection_status") for member in members]
+        lexical = {
+            "represented": statuses.count("ready"),
+            "failed": statuses.count("failed"),
+            "unprocessed": sum(
+                value in {"pending", "unprocessed"} for value in statuses
+            ),
+            "unknown": sum(
+                value not in {"ready", "failed", "pending", "unprocessed"}
+                for value in statuses
+            ),
+            "meaning": "selected projection processing status; represented does not imply any or complete text",
+        }
+        metadata = {
+            "represented": len(members),
+            "failed": 0,
+            "unprocessed": 0,
+            "unknown": 0,
+            "meaning": "membership records filterable, including missing values; field-specific unknowns in facets",
+        }
+        return {
+            "revision_id": revision["revision_id"],
+            "observation_interval": [
+                revision.get("observed_start"),
+                revision.get("observed_end"),
+            ],
+            "startup_statement": f"{revision['counts']['artifacts']} current artifacts. Development PDF observations up to 473 artifacts; transcript path pilot inconclusive. Larger scale and navigation benefit unestablished.",
+            "source_files": revision["counts"]["sources"],
+            "distinct_artifacts": revision["counts"]["artifacts"],
+            "count_units": {
+                "source_files": "observed source paths",
+                "distinct_artifacts": "distinct byte hashes",
+                "lenses": "artifacts",
+            },
+            "lenses": {
+                "lexical/v1": lexical,
+                "metadata/v1": metadata,
+                "temporal/v1": dict(metadata),
+            },
+            "coverage": coverage,
+        }
 
     def search(
         self,
@@ -789,7 +853,7 @@ class Service:
             if (
                 not isinstance(limit, int)
                 or isinstance(limit, bool)
-                or not 0 <= limit <= MAX_HITS
+                or not 1 <= limit <= MAX_HITS
             ):
                 raise TampuError("invalid_input", "The inspection limit is invalid.")
             saved = journey["continuations"].get(continuation) if continuation else None
@@ -1191,6 +1255,7 @@ class Service:
         handles = [] if evidence_handles is None else evidence_handles
         finding: dict[str, Any] = {
             "finding_id": self._handle("finding"),
+            "profile_reference": copy.deepcopy(PROFILE_REFERENCE),
             "kind": kind,
             "statement": statement,
             "durability": "process_local",

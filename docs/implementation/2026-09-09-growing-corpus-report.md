@@ -104,3 +104,43 @@ Final documentation, capability evidence, measurements and preserved implementat
 The eight binding MVP criteria and every Task4 brief item are mapped to actual evidence in the results report. Processing/coverage, artifact/work identity, source/publication time, original/diagnostic roles, source support/consumer claims and interface benefit are kept distinct. The main unresolved results are scientific: failure of final original eviction synthesis, missed empirical qualifications in r1, lack of efficacy evidence, successful-empty extractions and limited source checks. The direct diagnosis narrows what the model can do with selected passages but does not isolate a cause. Optional path machinery remains disabled after the inconclusive0/4uptake pilot.
 
 The runner is a fixed experiment tool, not a general framework. It refuses overwrites/dirty observation sources, but its tool monitor observes overrun rather than preventing every excess call. The CLI boundary is not an OS air gap; model identity/generation limits are partly unobservable. Full source-bearing records remain owner-local, so readers need those files to reproduce source judgments. Updated discovery has only contract/regression/smoke evidence, not rerun consumer effectiveness evidence. Independent Task4 and whole-branch reviews remain the controller's next step.
+
+
+## Task 4 review fix round 1
+
+Status: DONE_WITH_CONCERNS; scoped rereview pending. Base: signed/stamped `c074855f10fedf54f4e4397bc44ff530178dfc43`. This wave addresses all three Important findings in the consolidated Task4 review and preserves the extraction-profile decision provenance. It does not rerun original experiments or replace their schemas/observations.
+
+`describe` now separates current selected-revision `collection_scope` from frozen `validation_scope`. The former supplies source-path/artifact counts, observation interval, processing/representation counts and meanings for each lens, coverage and a compact startup statement. Metadata/temporal represented counts mean filterable membership records, including missing fields; they are not counts of complete metadata. The latter supplies the six required enum statuses, linked results, exact evaluated revisions/sizes, frozen implementation identities and task/model limitations for the PDF development observations and transcript path pilot. Only `not_tested` and `inconclusive` are asserted. Its two experiment records are paged one per call via `validation_cursor`; each page and every exported finding carries the same content-hashed profile reference. This report carries that reference through [the preserved profile snapshot](../../experiments/growing_corpus/evidence/validation-profile.json).
+
+The publication guard now requires predecessor final assessment, completed turn, no failed turn or stop reason, exit zero, unchanged source and at least one MCP call. Tests reject each independently invalid summary for both publication stages and show valid summaries reach the next preexisting safety guard without ingestion. Retained legacy originals are not edited to satisfy the new guard. Inspection listing limits now enforce the published 1..20 range through Service and MCP; count-only search at limit zero remains supported.
+
+The exact ignored ledger lines 40–51 are preserved in [profile-decision-ledger.json](../../experiments/growing_corpus/evidence/profile-decision-ledger.json), with source/excerpt hashes and explicit mutable-process provenance. No decision timestamp or signed preregistration is inferred. The result prose now states the initial adapter `-layout` versus readiness-default mismatch, corrected default per-physical-page Poppler comparison (791 pages/774 nonblank), and the unchanged Unstructured choice when prewarming restarted. The controller's completed source and 97-response transport checks remain in the existing source-review/transport evidence.
+
+Verification commands and results:
+
+```
+uv run pytest tests/test_growing_corpus.py tests/test_service.py::test_validation_profile_is_bounded_frozen_and_travels_with_findings tests/test_service.py::test_inspect_rejects_listing_limits_outside_disclosed_range tests/test_mcp.py -q
+RED: 15 failed, 11 passed in 3.89s
+GREEN: 26 passed in 3.64s
+
+uv run pytest tests/test_growing_corpus.py tests/test_service.py tests/test_mcp.py -q
+47 passed in 4.12s
+
+uv run pytest tests/test_growing_corpus.py tests/test_service.py::test_validation_profile_is_bounded_frozen_and_travels_with_findings -q
+23 passed in 0.56s
+
+uvx ruff check src/tampu tests experiments/growing_corpus
+All checks passed!
+
+uv run python -m compileall -q src/tampu tests experiments/growing_corpus
+exit0
+
+git diff --check
+clean
+```
+
+The last focused run followed additional assertions that live failed/unknown/pending projection counts change while evaluated scope remains frozen, plus static-check corrections. Two existing describe assertions were adapted to the deliberate response shape/budget change: selected coverage is now in `collection_scope`, full facet assertions request 16384 bytes, and multi-collection underfill is tested at the default 8192 bytes. An intermediate covering run exposed those old expectations (2 failed/45 passed); the adapted tests retain their original behavioral checks. The focused MCP test uses actual stdio and covers both profile pages and invalid inspection limits.
+
+Live `Service(Repository(load_config())).describe(collection="research")`, followed in the same instance by `describe(collection="research", validation_cursor=first["result"]["validation_scope"]["continuation"])`, returned the PDF and transcript profile records at actual r2 in 8044 and 7600 compact UTF-8 application JSON bytes respectively, both within default 8192. Both responses explicitly omitted projection recipes, failure details and facets; a larger requested budget retrieves those optional details. Wire framing is excluded. [Verification/source hashes](../../experiments/growing_corpus/evidence/review-fix-verification.json) and [revised MCP schemas](../../experiments/growing_corpus/evidence/post-review-mcp-schemas.json) are separate post-observation records.
+
+Files changed: the fixed profile/service/MCP disclosure, publication guard, their three covering test files, current README/reproduction notes, results prose, both Task4 report copies and four new compact evidence records. This wave is committed as a separate signed fix with its automatic signed timestamp receipt; exact commit IDs are supplied in the handoff. Original scientific concerns remain: the eviction-r2 failure is preserved, benefit is unestablished, model/generation details are partly unobservable, and source-bearing files remain owner-local. No broad suite, model rerun, push or merge was performed during this fix wave; the controller owns scoped rereview and the final whole-branch gate.

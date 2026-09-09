@@ -161,6 +161,31 @@ def test_cli_init_ingest_describe_and_real_mcp_stdio_transport(
                         "byte_budget": 1000,
                     },
                 )
+                payload = _application_json(search_call)["result"]
+                for limit in (0, 21):
+                    rejected = await session.call_tool(
+                        "inspect",
+                        {
+                            "journey_id": payload["journey_id"],
+                            "node_id": payload["node_id"],
+                            "limit": limit,
+                        },
+                    )
+                    assert (
+                        _application_json(rejected)["error"]["code"] == "invalid_input"
+                    )
+                validation = _application_json(describe_call)["result"][
+                    "validation_scope"
+                ]
+                next_profile = await session.call_tool(
+                    "describe",
+                    {
+                        "collection": "papers",
+                        "validation_cursor": validation["continuation"],
+                    },
+                )
+                assert _application_json(next_profile)["status"] == "ok"
+                assert len(next_profile.content[0].text.encode("utf-8")) <= 8192
                 malformed = await session.call_tool(
                     "search",
                     {
@@ -206,6 +231,7 @@ def test_cli_init_ingest_describe_and_real_mcp_stdio_transport(
     assert schemas["inspect"]["properties"]["slice_chars"]["minimum"] == 1
     assert schemas["inspect"]["properties"]["slice_chars"]["maximum"] == 4000
     assert schemas["inspect"]["properties"]["limit"]["maximum"] == 20
+    assert schemas["inspect"]["properties"]["limit"]["minimum"] == 1
     inspect_description = next(
         tool.description for tool in listed.tools if tool.name == "inspect"
     )

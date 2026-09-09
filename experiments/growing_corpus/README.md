@@ -135,3 +135,10 @@ container evidence. The old 21-test path harness requires its documented
 separate llm-memory environment and ArangoDB on port 18529; root ran it once,
 then stopped only that container while preserving data. Its exact command/result
 is in [the retained record](evidence/path-pilot-final-regression.json).
+
+
+### Review fixes after observations
+
+Current `describe` moves selected-revision operational counts/coverage into `collections[].collection_scope` and returns empirical conditions/statuses as `validation_scope`. Its two experiment records are paged: pass `validation_scope.continuation` back as `validation_cursor` in the same MCP process. Both pages fit the default 8192-byte budget in the recorded live r2 check; optional facets/recipes may be omitted explicitly, and a larger byte budget retrieves detail. Findings include the profile's content-hashed reference. Inspection listings require 1..20; search still accepts 0 for exact count-only requests.
+
+These changes follow the five originals and sixteen comparisons. Their schemas, frozen masked inputs, outputs and source identities remain unchanged. Recreate the recorded comparisons at the frozen commits above; running current discovery does not recreate the original schema or authorize regenerating matched inputs from the revised profile. The current publication guard requires an actual completed predecessor lifecycle, final assessment, no failed turn/stop reason, exit 0, unchanged source and at least one MCP call. Replay with newly completed current-runner observations; retained legacy summaries are not silently upgraded to satisfy the stricter guard.
