@@ -1,0 +1,32 @@
+[
+  {
+    "case": "short",
+    "equal": true,
+    "candidates": 406
+  },
+  {
+    "case": "long",
+    "equal": true,
+    "candidates": 2
+  },
+  {
+    "case": "proceedings",
+    "equal": true,
+    "candidates": 26
+  },
+  {
+    "case": "alias",
+    "equal": true,
+    "candidates": 0
+  },
+  {
+    "case": "negative",
+    "equal": true,
+    "candidates": 0
+  },
+  {
+    "case": "gap",
+    "equal": true,
+    "candidates": 0
+  }
+]

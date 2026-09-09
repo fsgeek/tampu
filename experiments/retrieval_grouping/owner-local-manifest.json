@@ -1,0 +1,61 @@
+{
+  "root": "/home/tony/projects/tampu/tmp/retrieval-grouping-20260909",
+  "files": {
+    "capture/alias-grouped.json": {
+      "bytes": 782,
+      "sha256": "a28c689ea5a1d63d7833bab442e1980ac4edad3d1ea347570eebee66f4567238"
+    },
+    "capture/alias-passage.json": {
+      "bytes": 782,
+      "sha256": "d886da2cfed1b0245fd9b7ab1ce23856edb0ebb33d6c2310a484466c3e6199f5"
+    },
+    "capture/capture.json": {
+      "bytes": 7289283,
+      "sha256": "35bebc25dbd104e63cd4da65d4bd51a6771ddadcd5fa04e6943c59c537fa5da7"
+    },
+    "capture/gap-grouped.json": {
+      "bytes": 777,
+      "sha256": "029dc59925e0eb27d5106c3a45b63aa0f959e892e1561513525c6153f939b9d8"
+    },
+    "capture/gap-passage.json": {
+      "bytes": 777,
+      "sha256": "6d03a69e3244d4946031f8a0b8fc566f30b18cf7c5cfa3cce1aa77b50444f96a"
+    },
+    "capture/long-grouped.json": {
+      "bytes": 2348,
+      "sha256": "c97e0c03de5d1454dbb13d24f6ceb4210dda6a8b0a34190a7d38f23bca2d3331"
+    },
+    "capture/long-passage.json": {
+      "bytes": 6939,
+      "sha256": "104e7d30a52e86ac1e6ad393010a4460ec1c86460636ab803c940e8959559d27"
+    },
+    "capture/negative-grouped.json": {
+      "bytes": 789,
+      "sha256": "202b5a7162952bead89f5290b500985fdfc42e651ecae3e7415ed0f23cca4bcb"
+    },
+    "capture/negative-passage.json": {
+      "bytes": 789,
+      "sha256": "2062bed65cc90ab6911fa34ad24a2c63b095cd44682ffce83fc907fd9060253b"
+    },
+    "capture/proceedings-grouped.json": {
+      "bytes": 8090,
+      "sha256": "62863bfed816ec9259b691bd81df4023008bab41c693cc776499c08a23373747"
+    },
+    "capture/proceedings-passage.json": {
+      "bytes": 7376,
+      "sha256": "d3701175cade313d569d9a34365c0afa81d50ad0dee24bb72a626263b7d54de1"
+    },
+    "capture/results.json": {
+      "bytes": 24718,
+      "sha256": "34c5b0f03fc06dc291f583098005c482e93fc194d805369a469b66526d2c09eb"
+    },
+    "capture/short-grouped.json": {
+      "bytes": 8115,
+      "sha256": "52be6500a13b5fc95d99e2b775c891e8740a4e14945178ef31433ae8c15202da"
+    },
+    "capture/short-passage.json": {
+      "bytes": 7438,
+      "sha256": "f2403d2ba9f617eb149e9126ba6ad759ae1a61d1067aa31ac318b7dee1d1d737"
+    }
+  }
+}
