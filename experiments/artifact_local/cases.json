@@ -1,0 +1,91 @@
+{
+  "schema": "artifact-local/v1",
+  "collection": "research",
+  "revision_id": "0ea79b79668943969e5ee21dfdcbdfae",
+  "byte_budget": 8192,
+  "calls_per_case": 6,
+  "cases": [
+    {
+      "id": "long",
+      "artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+      "task": "Distinguish the robust policy from the parameter setting used in the reported evaluation.",
+      "queries": [
+        {
+          "query": "switch random",
+          "mode": "all_terms"
+        },
+        {
+          "query": "experimental",
+          "mode": "any_terms"
+        }
+      ],
+      "assessment_probes": [
+        {
+          "artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+          "projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+          "ordinal": 194,
+          "page": 12,
+          "text_sha256": "57c5a72bc10225b4576f739b10c3ea973ae54a20f9d5ada1329d48535757d903",
+          "required_chars": 548
+        },
+        {
+          "artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+          "projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+          "ordinal": 206,
+          "page": 12,
+          "text_sha256": "ba136b7a59fed29b8a7963a15bbf9dbce211f6642b850179e6c2287a32f5286f",
+          "required_chars": 324
+        },
+        {
+          "artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+          "projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+          "ordinal": 239,
+          "page": 14,
+          "text_sha256": "4a5d776a23bb747990c3a2595645a63846a137a18e1a38169349880383707829",
+          "required_chars": 138
+        }
+      ]
+    },
+    {
+      "id": "proceedings",
+      "artifact_id": "6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213",
+      "task": "Identify how LHD/RankCache adapts to workload changes and what implementation mechanisms qualify that account.",
+      "queries": [
+        {
+          "query": "LHD RankCache",
+          "mode": "all_terms"
+        },
+        {
+          "query": "adapt",
+          "mode": "any_terms"
+        }
+      ],
+      "assessment_probes": [
+        {
+          "artifact_id": "6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213",
+          "projection_id": "911304ecadd47d0d3321f219b893ccd3cdf02e08d4b894595d93e508b2e84ce8",
+          "ordinal": 13846,
+          "page": 405,
+          "text_sha256": "501a444dfeb2e1098e2e546e4d4cdfa6b7028a39710577f6ebd5dd59c7b36c7c",
+          "required_chars": 335
+        },
+        {
+          "artifact_id": "6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213",
+          "projection_id": "911304ecadd47d0d3321f219b893ccd3cdf02e08d4b894595d93e508b2e84ce8",
+          "ordinal": 14048,
+          "page": 408,
+          "text_sha256": "ef718edb2e4851e00ca04429cbee99cedf38d7ff16f806e5517cb7fc5efa3cda",
+          "required_chars": 488
+        },
+        {
+          "artifact_id": "6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213",
+          "projection_id": "911304ecadd47d0d3321f219b893ccd3cdf02e08d4b894595d93e508b2e84ce8",
+          "ordinal": 14087,
+          "page": 409,
+          "text_sha256": "617bc500f209da77fa65f7110ecb2a3378b7c3d9af861b03e5ad53395c95417e",
+          "required_chars": 544
+        }
+      ]
+    }
+  ]
+}
