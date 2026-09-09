@@ -10,3 +10,4 @@ current behavior is in source and the linked results.
 - [Bounded MCP service and owner CLI](2026-09-08-mcp-service-report.md)
 - [Growing-corpus experiments and final implementation gate](2026-09-09-growing-corpus-report.md)
 - [Measured development outcomes](../experiments/2026-09-08-usable-prototype-results.md)
+- [Final review scope, recipe, date precision and detail paging fixes](2026-09-09-final-review-fixes.md)
