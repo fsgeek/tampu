@@ -63,6 +63,14 @@ def _safe_key(value: str) -> str:
     return hashlib.sha256(value.encode()).hexdigest()
 
 
+def _file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        while chunk := stream.read(1024 * 1024):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def _instant(value: str) -> datetime:
     try:
         parsed = datetime.fromisoformat(value)
@@ -141,7 +149,7 @@ def _validate_metadata(metadata: dict | None, artifact_ids: set[str]) -> dict:
 
 
 class Repository:
-    def __init__(self, config: dict):
+    def __init__(self, config: dict, *, initialize: bool = True):
         try:
             required = ("endpoint", "database", "username", "password", "store")
             if any(
@@ -149,7 +157,6 @@ class Repository:
             ):
                 raise ValueError
             self.store = Path(config["store"]).expanduser().resolve()
-            self.store.mkdir(parents=True, exist_ok=True)
             self._db = ArangoClient(
                 hosts=config["endpoint"], request_timeout=_TIMEOUT
             ).db(
@@ -158,13 +165,27 @@ class Repository:
                 password=config["password"],
             )
             self._db.version()
-            self._ensure_schema()
+            if initialize:
+                self.store.mkdir(parents=True, exist_ok=True)
+                self._ensure_schema()
+            else:
+                self._verify_schema()
         except TampuError:
             raise
         except (ArangoError, OSError, ValueError, TypeError) as error:
             raise TampuError(
                 "storage_unavailable", "Tampu storage is unavailable."
             ) from error
+
+    def _verify_schema(self) -> None:
+        if any(not self._db.has_collection(name) for name in _COLLECTIONS):
+            raise TampuError(
+                "storage_unavailable", "Tampu storage is not initialized."
+            )
+        if "text_view" not in {view["name"] for view in self._db.views()}:
+            raise TampuError(
+                "storage_unavailable", "Tampu storage is not initialized."
+            )
 
     def _ensure_schema(self) -> None:
         for name in _COLLECTIONS:
@@ -223,8 +244,9 @@ class Repository:
     ) -> dict:
         if not isinstance(collection, str) or not _COLLECTION_KEY.fullmatch(collection):
             raise TampuError("invalid_input", "A collection name is required.")
-        root = Path(root).resolve()
-        if root == self.store or self.store.is_relative_to(root):
+        root = Path(root).absolute()
+        resolved_root = root.resolve()
+        if resolved_root == self.store or self.store.is_relative_to(resolved_root):
             raise TampuError(
                 "invalid_configuration",
                 "The evidence store cannot be inside the source root.",
@@ -475,6 +497,13 @@ function (params) {
         }
 
     def _refresh_index_generation(self) -> dict:
+        generation = self._observe_index_generation()
+        self._db.collection("index_generations").insert(
+            dict(generation, _key="current"), overwrite=True, overwrite_mode="replace"
+        )
+        return generation
+
+    def _observe_index_generation(self) -> dict:
         rows = list(
             self._db.aql.execute(
                 "FOR e IN elements COLLECT projection_id = e.projection_id WITH COUNT INTO element_count SORT projection_id RETURN {projection_id, element_count}",
@@ -482,18 +511,12 @@ function (params) {
             )
         )
         generation = {
-            "_key": "current",
             "generation_id": _digest(rows),
             "projection_count": len(rows),
             "element_count": sum(row["element_count"] for row in rows),
             "observed_at": _now(),
         }
-        self._db.collection("index_generations").insert(
-            generation, overwrite=True, overwrite_mode="replace"
-        )
-        return {
-            key: value for key, value in generation.items() if not key.startswith("_")
-        }
+        return generation
 
     def _coverage(self, memberships, projections):
         ready = [
@@ -540,7 +563,7 @@ function (params) {
         )
         return list(rows)
 
-    def read_projection(self, projection_id: str) -> dict:
+    def read_projection(self, projection_id: str, *, verify_bytes: bool = False) -> dict:
         document = self._db.collection("projections").get(projection_id)
         published = list(
             self._db.aql.execute(
@@ -556,6 +579,31 @@ function (params) {
             or not (self.store / document["elements_path"]).is_file()
         ):
             raise TampuError("missing_evidence", "Projection evidence is unavailable.")
+        if verify_bytes:
+            artifact = self._db.collection("artifacts").get(document["artifact_id"])
+            try:
+                artifact_path = self.store / artifact["store_path"]
+                raw_path = self.store / document["raw_path"]
+                elements_path = self.store / document["elements_path"]
+                expected_artifact = document["artifact_id"]
+                valid = (
+                    artifact.get("artifact_id") == expected_artifact
+                    and artifact.get("sha256") == expected_artifact
+                    and artifact_path.is_file()
+                    and _file_sha256(artifact_path) == expected_artifact
+                    and _file_sha256(raw_path)
+                    == document["recipe"]["output_sha256"]
+                    and _file_sha256(elements_path)
+                    == document["recipe"]["elements_sha256"]
+                )
+            except (KeyError, OSError, TypeError, AttributeError) as error:
+                raise TampuError(
+                    "missing_evidence", "Projection evidence is unavailable."
+                ) from error
+            if not valid:
+                raise TampuError(
+                    "missing_evidence", "Projection evidence is unavailable."
+                )
         return {k: v for k, v in document.items() if not k.startswith("_")}
 
     def search_candidates(
@@ -589,7 +637,7 @@ function (params) {
             raise TampuError(
                 "revision_not_ready", "The requested revision is not published."
             )
-        generation_before = self._refresh_index_generation()
+        generation_before = self._observe_index_generation()
         members = self.members(revision)
         filtered, unknown_count = self._filter_members(members, filters, lens)
         allowed = {m["artifact_id"]: m for m in filtered}
@@ -660,7 +708,7 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
         if len(candidates) > _CAP:
             raise TampuError("candidate_limit", "The candidate limit was exceeded.")
         coverage = self._coverage_for_members(filtered)
-        generation_after = self._refresh_index_generation()
+        generation_after = self._observe_index_generation()
         lens_config = {"lens": lens, "revision_scope": "pinned_projection_selection"}
         if lens == "lexical/v1":
             lens_config.update(

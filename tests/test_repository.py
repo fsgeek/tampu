@@ -283,6 +283,27 @@ def test_rejects_store_inside_root_and_second_root(
     assert raised.value.code == "collection_root_mismatch"
 
 
+def test_ingest_does_not_resolve_a_symlinked_source_root_before_capture(
+    repository_config, fake_extraction, tmp_path
+):
+    outside = tmp_path / "outside"
+    write_pdf(outside, "paper.pdf", "must not be captured")
+    linked_root = tmp_path / "linked-source"
+    linked_root.symlink_to(outside, target_is_directory=True)
+
+    revision = Repository(repository_config).ingest(
+        "papers", linked_root, profile="poppler"
+    )
+
+    assert revision["counts"] == {
+        "sources": 0,
+        "artifacts": 0,
+        "ready": 0,
+        "failed": 0,
+    }
+    assert revision["enumeration_complete"] is False
+
+
 def test_unknown_revision_and_missing_backing_file_are_typed(
     repository_config, fake_extraction, tmp_path
 ):
@@ -629,7 +650,7 @@ def test_supporting_aql_timeout_is_a_controlled_search_error(
     def time_out_generation():
         raise ArangoError("AQL query max runtime exceeded")
 
-    monkeypatch.setattr(repo, "_refresh_index_generation", time_out_generation)
+    monkeypatch.setattr(repo, "_observe_index_generation", time_out_generation)
     with pytest.raises(TampuError) as raised:
         repo.search_candidates(
             revision["revision_id"], "lexical/v1", "alpha", "any_terms", {}
