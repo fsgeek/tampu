@@ -176,9 +176,10 @@ def consumer(args):
             items[event["item"]["id"]] = event["item"]
         if event.get("type") == "turn.completed":
             usage.append(event.get("usage"))
-    final = "\n\n".join(
+    messages = [
         x.get("text", "") for x in items.values() if x.get("type") == "agent_message"
-    )
+    ]
+    final = messages[-1] if messages else ""
     (out / "assessment.txt").write_text(final)
     after = identity()
     summary = {
