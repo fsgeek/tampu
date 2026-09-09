@@ -717,6 +717,13 @@ def test_describe_underfills_initial_and_subsequent_revision_pages(tmp_path: Pat
     assert at_minimum["status"] == "ok"
     assert at_minimum["result"]["collections"][0]["revisions"]
 
+    minimum_budget_error = service.describe(
+        collection="papers", revision_limit=20, byte_budget=256
+    )
+    assert minimum_budget_error["error"]["code"] == "budget_too_small"
+    assert minimum_budget_error["error"]["minimum_bytes"] > 256
+    assert len(encoded(minimum_budget_error)) <= 256
+
 
 def test_trace_is_explicit_and_records_argument_response_pairs(tmp_path: Path):
     trace = tmp_path / "trace.jsonl"

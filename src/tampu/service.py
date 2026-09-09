@@ -1593,7 +1593,7 @@ class Service:
                 return response
             if collections:
                 raise _BudgetError(
-                    "One collection and published revision summary cannot fit the requested budget; increase the budget or narrow the request.",
+                    "One revision summary cannot fit; increase byte_budget or narrow the request.",
                     _size(response),
                 )
         for hit in result.get("hits", []):
