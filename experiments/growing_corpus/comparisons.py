@@ -54,7 +54,7 @@ def main():
     payloads = {}
     sheet = []
     audit = []
-    for case in questions:
+    for case, question in questions.items():
         o = obs[case]
         r = o["response"]["result"]
         assert o["response"]["status"] == "ok" and r["count_kind"] == "exact"
@@ -67,7 +67,7 @@ def main():
         ]
         common = {
             "case": public[case],
-            "question": questions[case],
+            "question": question,
             "status": o["response"]["status"],
             "hits": hits,
             "observation": "One frozen lexical observation.",
@@ -164,7 +164,7 @@ def main():
                         "builder_case": case,
                         "family": family,
                         "arm": arm,
-                        "question": questions[case],
+                        "question": question,
                         "expected_class": expected,
                         "class_points": 2,
                         "claim_boundary": {
