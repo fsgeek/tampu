@@ -25,6 +25,12 @@ SCHEMA_VERSION = "tampu-tools/v1"
 _LOGGER = logging.getLogger("tampu.operations")
 
 
+class _BudgetError(TampuError):
+    def __init__(self, message: str, minimum_bytes: int):
+        super().__init__("budget_too_small", message)
+        self.minimum_bytes = minimum_bytes
+
+
 def compact_json(value: Any) -> str:
     return json.dumps(
         value, ensure_ascii=False, sort_keys=True, separators=(",", ":")
@@ -46,6 +52,7 @@ class Service:
 
     @property
     def active_journey_count(self) -> int:
+        self._reclaim_expired()
         return len(self._journeys)
 
     def describe(
@@ -57,6 +64,8 @@ class Service:
         facet: str | None = None,
         facet_cursor: str | None = None,
         detail_limit: int = 20,
+        revision_cursor: str | None = None,
+        revision_limit: int = 2,
         byte_budget: int = DEFAULT_BYTE_BUDGET,
     ) -> dict:
         arguments = {
@@ -66,6 +75,8 @@ class Service:
             "facet": facet,
             "facet_cursor": facet_cursor,
             "detail_limit": detail_limit,
+            "revision_cursor": revision_cursor,
+            "revision_limit": revision_limit,
             "byte_budget": byte_budget,
         }
         return self._run(
@@ -73,7 +84,14 @@ class Service:
             arguments,
             byte_budget,
             lambda: self._describe(
-                collection, cursor, limit, facet, facet_cursor, detail_limit
+                collection,
+                cursor,
+                limit,
+                facet,
+                facet_cursor,
+                detail_limit,
+                revision_cursor,
+                revision_limit,
             ),
         )
 
@@ -85,6 +103,8 @@ class Service:
         facet: str | None,
         facet_cursor: str | None,
         detail_limit: int,
+        revision_cursor: str | None,
+        revision_limit: int,
     ) -> tuple[dict, dict, list[str]]:
         if not isinstance(limit, int) or isinstance(limit, bool) or not 1 <= limit <= 20:
             raise TampuError("invalid_input", "The collection page limit is invalid.")
@@ -98,6 +118,19 @@ class Service:
             raise TampuError("invalid_input", "The collection filter is invalid.")
         if facet is not None and not isinstance(facet, str):
             raise TampuError("invalid_input", "The requested facet is invalid.")
+        if (
+            not isinstance(revision_limit, int)
+            or isinstance(revision_limit, bool)
+            or not 1 <= revision_limit <= 20
+        ):
+            raise TampuError("invalid_input", "The revision page limit is invalid.")
+        if revision_cursor is not None and (
+            not isinstance(revision_cursor, str) or collection is None
+        ):
+            raise TampuError(
+                "invalid_input",
+                "Revision pagination requires one collection and a valid cursor.",
+            )
         start = self._read_cursor(cursor, "collections") if cursor else 0
         repository_description = self.repository.describe(collection)
         raw_collections = repository_description["collections"]
@@ -107,6 +140,34 @@ class Service:
             revision = self.repository.resolve_revision(
                 raw["name"], raw["current_revision"]
             )
+            published_revisions = self.repository.published_revisions(raw["name"])
+            revision_start = (
+                self._read_cursor(revision_cursor, f"revisions:{raw['name']}")
+                if revision_cursor is not None
+                else 0
+            )
+            revision_page = published_revisions[
+                revision_start : revision_start + revision_limit
+            ]
+            revision_summaries = [
+                {
+                    key: item[key]
+                    for key in (
+                        "revision_id",
+                        "state",
+                        "observed_start",
+                        "observed_end",
+                        "enumeration_complete",
+                        "selection_digest",
+                        "counts",
+                        "aggregate_coverage",
+                        "published_at",
+                    )
+                    if key in item
+                }
+                for item in revision_page
+            ]
+            revision_next = revision_start + len(revision_page)
             members = self.repository.members(revision["revision_id"])
             facets = self._facets(members)
             failures = []
@@ -185,6 +246,12 @@ class Service:
                         if key in revision
                     },
                     "coverage": coverage,
+                    "revisions": revision_summaries,
+                    "revision_continuation": self._make_cursor(
+                        f"revisions:{raw['name']}", revision_next
+                    )
+                    if revision_next < len(published_revisions)
+                    else None,
                     "facets": facets,
                     "facet_detail": facet_detail,
                     "failure_details": failures[:5],
@@ -206,18 +273,105 @@ class Service:
                     "modes": ["any_terms", "all_terms", "phrase"],
                     "analyzer": "text_en",
                     "ordering": "maximum_element_bm25_then_artifact_id",
+                    "filters": {
+                        "common": [
+                            "artifact_id",
+                            "source_alias",
+                            "source_prefix",
+                            "work_id",
+                            "publication_status",
+                        ],
+                        "combination": "conjunctive",
+                    },
+                    "examples": [
+                        {
+                            "query": "lease renewal",
+                            "mode": "all_terms",
+                            "filters": {"publication_status": "published"},
+                        }
+                    ],
                 },
                 "metadata/v1": {
                     "query": "must_be_empty",
                     "mode": "filter",
                     "typed_filters": True,
                     "ordering": "artifact_id",
+                    "filters": {
+                        "common": [
+                            "artifact_id",
+                            "source_alias",
+                            "source_prefix",
+                            "work_id",
+                            "publication_status",
+                        ],
+                        "missing": {
+                            "type": "metadata_field_name",
+                            "enum": [
+                                "title",
+                                "authors",
+                                "work_id",
+                                "publication_status",
+                                "publication_date",
+                                "source_group",
+                                "version",
+                            ],
+                        },
+                        "combination": "conjunctive",
+                    },
+                    "examples": [
+                        {
+                            "query": "",
+                            "mode": "filter",
+                            "filters": {"missing": "publication_date"},
+                        }
+                    ],
                 },
                 "temporal/v1": {
                     "query": "must_be_empty",
                     "mode": "filter",
                     "typed_filters": True,
                     "ordering": "artifact_id",
+                    "filters": {
+                        "common": [
+                            "artifact_id",
+                            "source_alias",
+                            "source_prefix",
+                            "work_id",
+                            "publication_status",
+                        ],
+                        "field": {
+                            "required": True,
+                            "enum": [
+                                "observed_time",
+                                "source_modification_time",
+                                "publication_date",
+                            ],
+                        },
+                        "from": "inclusive ISO date/instant lower bound; publication_date requires YYYY-MM-DD",
+                        "to": "inclusive ISO date/instant upper bound; publication_date requires YYYY-MM-DD",
+                        "missing": "boolean selecting unknown values for the named field",
+                        "timezone": "timezone-free instants are interpreted as UTC",
+                        "combination": "conjunctive",
+                    },
+                    "examples": [
+                        {
+                            "query": "",
+                            "mode": "filter",
+                            "filters": {
+                                "field": "publication_date",
+                                "from": "2024-01-01",
+                                "to": "2024-12-31",
+                            },
+                        },
+                        {
+                            "query": "",
+                            "mode": "filter",
+                            "filters": {
+                                "field": "source_modification_time",
+                                "missing": True,
+                            },
+                        },
+                    ],
                 },
             },
             "limits": {
@@ -234,6 +388,8 @@ class Service:
                 ),
                 "journey_expiry_seconds": JOURNEY_TTL_SECONDS,
                 "process_journey_budget_bytes": MAX_STATE_BYTES,
+                "revision_page_default": 2,
+                "revision_page_maximum": 20,
             },
             "capabilities": {
                 "lexical_search": "available",
@@ -286,6 +442,29 @@ class Service:
             "byte_budget": byte_budget,
         }
         pending: dict[str, Any] = {}
+
+        def preserve_underfill(result: dict) -> None:
+            journey = pending["journey"]
+            node = journey["nodes"][pending["node_id"]]
+            token = result.get("continuation")
+            if token is None:
+                token = self._handle("continuation")
+                result["continuation"] = token
+                journey["continuations"][token] = {
+                    "kind": "results",
+                    "node_id": node["node_id"],
+                    "offset": result["returned_count"],
+                }
+            else:
+                journey["continuations"][token]["offset"] = result[
+                    "returned_count"
+                ]
+            if not self._within_capacity(journey, pending.get("original")):
+                raise TampuError(
+                    "journey_capacity",
+                    "The active journey capacity is exhausted; release a journey with finish.",
+                )
+
         response = self._run(
             "search",
             arguments,
@@ -303,6 +482,7 @@ class Service:
                 pending,
             ),
             lens=lens,
+            on_hits_underfilled=preserve_underfill,
         )
         if response.get("status") == "ok":
             journey = pending["journey"]
@@ -474,6 +654,26 @@ class Service:
         }
         pending: dict[str, Any] = {}
 
+        def preserve_underfill(result: dict) -> None:
+            journey = pending["journey"]
+            offset = result.get("offset", 0) + result["returned_count"]
+            token = result.get("continuation")
+            if token is None:
+                token = self._handle("continuation")
+                result["continuation"] = token
+                journey["continuations"][token] = {
+                    "kind": "results",
+                    "node_id": node_id,
+                    "offset": offset,
+                }
+            else:
+                journey["continuations"][token]["offset"] = offset
+            if not self._within_capacity(journey, pending["original"]):
+                raise TampuError(
+                    "journey_capacity",
+                    "The active journey capacity is exhausted; release a journey with finish.",
+                )
+
         def operation():
             value = self._inspect(
                 journey_id,
@@ -500,7 +700,13 @@ class Service:
                 )
             return value
 
-        response = self._run("inspect", arguments, byte_budget, operation)
+        response = self._run(
+            "inspect",
+            arguments,
+            byte_budget,
+            operation,
+            on_hits_underfilled=preserve_underfill,
+        )
         if response.get("status") == "ok":
             journey = pending["journey"]
             result = response["result"]
@@ -961,6 +1167,11 @@ class Service:
             or not isinstance(release, bool)
         ):
             raise TampuError("invalid_input", "The finding request is malformed.")
+        if semantic_absence and kind == "positive":
+            raise TampuError(
+                "invalid_finding",
+                "A semantic-absence claim cannot be structurally validated.",
+            )
         if not isinstance(statement, str) or not statement.strip():
             raise TampuError("invalid_input", "A finding statement is required.")
         handles = [] if evidence_handles is None else evidence_handles
@@ -1022,7 +1233,13 @@ class Service:
                 raise TampuError(
                     "invalid_input", "An unresolved finding requires a reason."
                 )
-            finding.update({"machine_status": "unresolved", "reason": reason})
+            finding.update(
+                {
+                    "machine_status": "unresolved",
+                    "reason": reason,
+                    "semantic_absence": semantic_absence,
+                }
+            )
         else:
             raise TampuError("invalid_input", "The finding kind is invalid.")
         finding["released"] = bool(release)
@@ -1037,8 +1254,9 @@ class Service:
     def _facets(self, members: list[dict]) -> dict:
         fields = (
             "source_group",
+            "asserted_publication_year",
+            "processing_status",
             "publication_status",
-            "publication_date",
             "work_id",
         )
         result = {}
@@ -1057,10 +1275,22 @@ class Service:
     def _facet_values(self, members: list[dict], field: str) -> list[dict]:
         counts: dict[str, int] = {}
         for member in members:
-            assertion = member.get("metadata", {}).get(field)
-            if not isinstance(assertion, dict) or "value" not in assertion:
+            if field == "processing_status":
+                value = member.get("projection_status")
+            elif field == "asserted_publication_year":
+                assertion = member.get("metadata", {}).get("publication_date")
+                value = (
+                    assertion.get("value", "")[:4]
+                    if isinstance(assertion, dict)
+                    and isinstance(assertion.get("value"), str)
+                    and len(assertion["value"]) >= 4
+                    else None
+                )
+            else:
+                assertion = member.get("metadata", {}).get(field)
+                value = assertion.get("value") if isinstance(assertion, dict) else None
+            if value is None:
                 continue
-            value = assertion["value"]
             key = compact_json(value)
             counts[key] = counts.get(key, 0) + 1
         return [
@@ -1179,6 +1409,7 @@ class Service:
         callback: Callable[[], tuple[dict, dict, list[str]]],
         *,
         lens: str | None = None,
+        on_hits_underfilled: Callable[[dict], None] | None = None,
     ) -> dict:
         started = time.monotonic()
         error_code = None
@@ -1193,12 +1424,16 @@ class Service:
                     "omissions": omissions,
                 },
                 budget,
+                on_hits_underfilled=on_hits_underfilled,
             )
         except TampuError as error:
             error_code = error.code
+            error_payload = {"code": error.code, "message": error.message}
+            if isinstance(error, _BudgetError):
+                error_payload["minimum_bytes"] = error.minimum_bytes
             response = {
                 "status": "error",
-                "error": {"code": error.code, "message": error.message},
+                "error": error_payload,
                 "scope": {"operation": operation},
                 "omissions": [],
             }
@@ -1209,6 +1444,19 @@ class Service:
                 "error": {
                     "code": "internal_error",
                     "message": "The operation could not be completed.",
+                },
+                "scope": {"operation": operation},
+                "omissions": [],
+            }
+        try:
+            self._trace(operation, arguments, response)
+        except (OSError, ValueError, TypeError):
+            error_code = "trace_unavailable"
+            response = {
+                "status": "error",
+                "error": {
+                    "code": "trace_unavailable",
+                    "message": "The configured trace could not be written.",
                 },
                 "scope": {"operation": operation},
                 "omissions": [],
@@ -1225,7 +1473,8 @@ class Service:
             journey = supplied_journey
         event_lens = (
             lens
-            if lens in {"lexical/v1", "metadata/v1", "temporal/v1"}
+            if isinstance(lens, str)
+            and lens in {"lexical/v1", "metadata/v1", "temporal/v1"}
             else None
         )
         event = {
@@ -1239,24 +1488,31 @@ class Service:
             "error_category": error_code,
         }
         _LOGGER.info(compact_json(event))
-        self._trace(operation, arguments, response)
         return response
 
     @staticmethod
     def _budget(value: int) -> int:
-        if (
-            not isinstance(value, int)
-            or isinstance(value, bool)
-            or value < 256
-            or value > HARD_BYTE_BUDGET
-        ):
+        if not isinstance(value, int) or isinstance(value, bool):
+            raise TampuError("invalid_input", "The response byte budget is invalid.")
+        if value > HARD_BYTE_BUDGET:
             raise TampuError(
-                "budget_too_small",
-                "The UTF-8 application JSON byte budget must be between 256 and 32768.",
+                "invalid_input",
+                "The response byte budget exceeds the hard maximum.",
+            )
+        if value < 256:
+            raise _BudgetError(
+                "The UTF-8 application JSON byte budget is too small.",
+                256,
             )
         return value
 
-    def _fit(self, response: dict, budget: int) -> dict:
+    def _fit(
+        self,
+        response: dict,
+        budget: int,
+        *,
+        on_hits_underfilled: Callable[[dict], None] | None = None,
+    ) -> dict:
         if _size(response) <= budget:
             return response
         result = response.get("result", {})
@@ -1309,6 +1565,15 @@ class Service:
         while result.get("hits"):
             result["hits"].pop()
             result["returned_count"] = len(result["hits"])
+            if on_hits_underfilled is not None:
+                on_hits_underfilled(result)
+                if (
+                    "additional_candidates_available_by_continuation"
+                    not in response["omissions"]
+                ):
+                    response["omissions"].append(
+                        "additional_candidates_available_by_continuation"
+                    )
             if "hits" not in response["omissions"]:
                 response["omissions"].append("hits")
             if _size(response) <= budget:
@@ -1337,8 +1602,9 @@ class Service:
                     response["omissions"].append(f"evidence.{key}")
                     if _size(response) <= budget:
                         return response
-        raise TampuError(
-            "budget_too_small", "The response scope cannot fit the requested budget."
+        raise _BudgetError(
+            "The mandatory response scope cannot fit the requested budget.",
+            _size(response),
         )
 
     def _make_cursor(self, kind: str, offset: int) -> str:
@@ -1349,7 +1615,9 @@ class Service:
     def _read_cursor(self, token: str, kind: str) -> int:
         try:
             raw = base64.urlsafe_b64decode(token + "=" * (-len(token) % 4))
-            payload, signature = raw.rsplit(b".", 1)
+            if len(raw) < 14 or raw[-13:-12] != b".":
+                raise ValueError
+            payload, signature = raw[:-13], raw[-12:]
             expected = hmac.new(self._cursor_key, payload, hashlib.sha256).digest()[:12]
             cursor_kind, offset = payload.decode().rsplit(":", 1)
             if not hmac.compare_digest(signature, expected) or cursor_kind != kind:
@@ -1388,10 +1656,21 @@ class Service:
         return sum(self._state_size(journey) for journey in self._journeys.values())
 
     def _within_capacity(self, staged: dict, original: dict | None) -> bool:
+        self._reclaim_expired()
         current = self._total_state_bytes()
-        if original is not None:
+        if original is not None and original["journey_id"] in self._journeys:
             current -= self._state_size(original)
         return current + self._state_size(staged) <= MAX_STATE_BYTES
+
+    def _reclaim_expired(self) -> None:
+        now = time.time()
+        expired = [
+            journey_id
+            for journey_id, journey in self._journeys.items()
+            if now >= journey["expires_at"]
+        ]
+        for journey_id in expired:
+            self._journeys.pop(journey_id, None)
 
     def _trace(self, operation: str, arguments: dict, response: dict) -> None:
         if self.trace_path is None:

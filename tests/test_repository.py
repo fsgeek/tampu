@@ -304,6 +304,29 @@ def test_ingest_does_not_resolve_a_symlinked_source_root_before_capture(
     assert revision["enumeration_complete"] is False
 
 
+def test_published_revision_listing_excludes_staged_records(
+    repository_config, fake_extraction, tmp_path
+):
+    root = tmp_path / "source"
+    write_pdf(root, "paper.pdf", "alpha")
+    repo = Repository(repository_config)
+    published = repo.ingest("papers", root, profile="poppler")
+    repo._db.collection("revisions").insert(
+        {
+            "_key": "future-staged",
+            "revision_id": "future-staged",
+            "collection": "papers",
+            "state": "staged",
+        }
+    )
+
+    revisions = repo.published_revisions("papers")
+
+    assert [item["revision_id"] for item in revisions] == [
+        published["revision_id"]
+    ]
+
+
 def test_unknown_revision_and_missing_backing_file_are_typed(
     repository_config, fake_extraction, tmp_path
 ):

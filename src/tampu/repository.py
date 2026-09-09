@@ -563,6 +563,17 @@ function (params) {
         )
         return list(rows)
 
+    def published_revisions(self, collection: str) -> list[dict]:
+        registered = self._db.collection("collections").get(collection)
+        if not registered:
+            raise TampuError("unknown_collection", "The collection is unknown.")
+        rows = self._db.aql.execute(
+            "FOR r IN revisions FILTER r.collection == @collection AND r.state == 'published' SORT r.published_at DESC, r.revision_id ASC RETURN UNSET(r, '_key', '_id', '_rev')",
+            bind_vars={"collection": collection},
+            max_runtime=_TIMEOUT,
+        )
+        return list(rows)
+
     def read_projection(self, projection_id: str, *, verify_bytes: bool = False) -> dict:
         document = self._db.collection("projections").get(projection_id)
         published = list(

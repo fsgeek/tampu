@@ -28,6 +28,17 @@ class FakeRepository:
                     "title": {"value": f"Paper {number}", "origin": "fixture"},
                     **(
                         {
+                            "publication_date": {
+                                "value": "2024-03" if number == 0 else "2024",
+                                "origin": "fixture",
+                                "precision": "month" if number == 0 else "year",
+                            }
+                        }
+                        if number < 2
+                        else {}
+                    ),
+                    **(
+                        {
                             "source_group": {
                                 "value": "deliberate",
                                 "origin": "fixture",
@@ -116,6 +127,15 @@ class FakeRepository:
 
     def members(self, revision):
         return [dict(member, revision_id=revision) for member in self._members]
+
+    def published_revisions(self, collection):
+        return [
+            self.resolve_revision(collection, "revision-1"),
+            {
+                **self.resolve_revision(collection, "revision-0"),
+                "published_at": "2026-09-07T00:01:01Z",
+            },
+        ]
 
     def search_candidates(self, revision, lens, query, mode, filters):
         self.search_calls.append((revision, lens, query, mode, filters))
@@ -294,7 +314,52 @@ def test_budget_underfill_continues_at_first_undelivered_candidate(service: Serv
     assert page["result"]["hits"][0]["artifact_id"] == "artifact-0"
 
 
+def test_final_search_and_inspect_pages_gain_cursor_when_budget_underfills(
+    service: Service,
+):
+    search = service.search(
+        collection="papers",
+        intent="final search page",
+        query="alpha",
+        limit=3,
+        byte_budget=1300,
+    )
+    assert search["status"] == "ok"
+    assert search["result"]["returned_count"] < 3
+    assert isinstance(search["result"]["continuation"], str)
+    next_search = service.inspect(
+        journey_id=search["result"]["journey_id"],
+        node_id=search["result"]["node_id"],
+        continuation=search["result"]["continuation"],
+        limit=3,
+    )
+    assert next_search["result"]["hits"][0]["artifact_id"] == "artifact-1"
+
+    initial = service.search(
+        collection="papers", intent="final inspect page", query="alpha", limit=1
+    )["result"]
+    final_page = service.inspect(
+        journey_id=initial["journey_id"],
+        node_id=initial["node_id"],
+        continuation=initial["continuation"],
+        limit=2,
+        byte_budget=900,
+    )
+    assert final_page["result"]["returned_count"] < 2
+    assert isinstance(final_page["result"]["continuation"], str)
+    resumed = service.inspect(
+        journey_id=initial["journey_id"],
+        node_id=initial["node_id"],
+        continuation=final_page["result"]["continuation"],
+        limit=2,
+    )
+    assert resumed["result"]["hits"][0]["artifact_id"] == "artifact-2"
+
+
 def test_budget_failure_does_not_create_or_modify_journey(service: Service):
+    oversized = service.describe(byte_budget=32_769)
+    assert oversized["error"]["code"] == "invalid_input"
+
     failed = service.search(
         collection="papers",
         intent="cannot fit",
@@ -302,6 +367,8 @@ def test_budget_failure_does_not_create_or_modify_journey(service: Service):
         byte_budget=256,
     )
     assert failed["error"]["code"] == "budget_too_small"
+    assert isinstance(failed["error"]["minimum_bytes"], int)
+    assert failed["error"]["minimum_bytes"] > 256
     assert service.active_journey_count == 0
 
     created = service.search(
@@ -468,7 +535,7 @@ def test_expiry_capacity_release_and_errors_are_controlled(
         collection="papers", intent="too large", query="alpha"
     )
     assert capacity["error"]["code"] == "journey_capacity"
-    assert service.active_journey_count == 2
+    assert service.active_journey_count == 1
 
     released = service.finish(
         journey_id=releasable["journey_id"],
@@ -479,7 +546,26 @@ def test_expiry_capacity_release_and_errors_are_controlled(
     )
     assert released["result"]["released"] is True
     assert released["result"]["preserved"] is False
-    assert service.active_journey_count == 1
+    assert service.active_journey_count == 0
+
+
+def test_expired_journeys_are_reclaimed_before_capacity_check(
+    service: Service, monkeypatch
+):
+    expired = service.search(
+        collection="papers", intent="expire", query="alpha", limit=0
+    )["result"]
+    service._journeys[expired["journey_id"]]["expires_at"] = 0
+    rejected = service.search(journey_id=expired["journey_id"], query="alpha")
+    assert rejected["error"]["code"] == "expired_journey"
+    monkeypatch.setattr(
+        "tampu.service.MAX_STATE_BYTES", service._total_state_bytes() + 1
+    )
+    replacement = service.search(
+        collection="papers", intent="replacement", query="none", limit=0
+    )
+    assert replacement["status"] == "ok"
+    assert expired["journey_id"] not in service._journeys
 
 
 def test_describe_facets_are_bounded_and_source_groups_require_tags(service: Service):
@@ -493,6 +579,52 @@ def test_describe_facets_are_bounded_and_source_groups_require_tags(service: Ser
     assert source_groups["values"] == [{"value": "deliberate", "artifacts": 2}]
     assert source_groups["unknown_artifacts"] == 1
     assert len(source_groups["values"]) <= 5
+    assert collection["facets"]["asserted_publication_year"] == {
+        "values": [{"value": "2024", "artifacts": 2}],
+        "unknown_artifacts": 1,
+        "omitted_values": 0,
+        "count_unit": "artifacts",
+        "source_group_requires_explicit_assertion": False,
+    }
+    assert collection["facets"]["processing_status"]["values"] == [
+        {"value": "ready", "artifacts": 3}
+    ]
+    assert [item["revision_id"] for item in collection["revisions"]] == [
+        "revision-1",
+        "revision-0",
+    ]
+    first_revision_page = service.describe(
+        collection="papers", revision_limit=1
+    )["result"]["collections"][0]
+    assert [item["revision_id"] for item in first_revision_page["revisions"]] == [
+        "revision-1"
+    ]
+    second_revision_page = service.describe(
+        collection="papers",
+        revision_limit=1,
+        revision_cursor=first_revision_page["revision_continuation"],
+    )["result"]["collections"][0]
+    assert [item["revision_id"] for item in second_revision_page["revisions"]] == [
+        "revision-0"
+    ]
+    assert second_revision_page["revision_continuation"] is None
+    lexical = description["result"]["lenses"]["lexical/v1"]
+    metadata = description["result"]["lenses"]["metadata/v1"]
+    temporal = description["result"]["lenses"]["temporal/v1"]
+    assert lexical["filters"]["common"] == [
+        "artifact_id",
+        "source_alias",
+        "source_prefix",
+        "work_id",
+        "publication_status",
+    ]
+    assert metadata["filters"]["missing"]["type"] == "metadata_field_name"
+    assert temporal["filters"]["field"]["enum"] == [
+        "observed_time",
+        "source_modification_time",
+        "publication_date",
+    ]
+    assert temporal["examples"][0]["query"] == ""
     assert description["result"]["capabilities"]["embeddings"] == "unavailable"
     assert description["result"]["schema_version"] == "tampu-tools/v1"
 
@@ -517,7 +649,7 @@ def test_describe_underfills_collection_page_without_losing_continuation(tmp_pat
 
     repository.describe = describe
     service = Service(repository)
-    first = service.describe(limit=3, byte_budget=2400)
+    first = service.describe(limit=3, byte_budget=5000)
     assert first["status"] == "ok"
     assert len(first["result"]["collections"]) < 3
     assert isinstance(first["result"]["continuation"], str)
@@ -538,6 +670,37 @@ def test_trace_is_explicit_and_records_argument_response_pairs(tmp_path: Path):
     assert [record["operation"] for record in records] == ["search", "inspect"]
     assert records[0]["arguments"]["query"] == "secret sentinel"
     assert records[1]["response"]["error"]["code"] == "unknown_journey"
+
+
+def test_telemetry_and_trace_failures_are_controlled_and_atomic(
+    tmp_path: Path,
+):
+    service = Service(FakeRepository(tmp_path / "store"))
+    malformed = service.search(
+        collection="papers", intent="bad lens", lens=[], query="alpha"
+    )
+    assert malformed["error"]["code"] == "invalid_input"
+
+    traced = Service(
+        FakeRepository(tmp_path / "trace-store"), trace_path=tmp_path
+    )
+    failed = traced.search(
+        collection="papers", intent="trace failure", query="alpha"
+    )
+    assert failed["error"] == {
+        "code": "trace_unavailable",
+        "message": "The configured trace could not be written.",
+    }
+    assert traced.active_journey_count == 0
+
+
+def test_binary_cursors_round_trip_when_signature_contains_delimiter(
+    service: Service,
+):
+    service._cursor_key = bytes(range(32))
+    for offset in range(256):
+        token = service._make_cursor("collections", offset)
+        assert service._read_cursor(token, "collections") == offset
 
 
 def test_consumer_repository_and_service_reads_do_not_mutate_durable_state(
@@ -696,3 +859,22 @@ def test_inspection_rejects_tampered_projection_and_missing_captured_source(
         evidence_handle=handle,
     )
     assert missing_source["error"]["code"] == "missing_evidence"
+
+
+def test_semantic_absence_cannot_be_structurally_validated_positive(service: Service):
+    search = service.search(
+        collection="papers", intent="semantic claim", query="alpha", limit=1
+    )["result"]
+    inspected = service.inspect(
+        journey_id=search["journey_id"],
+        node_id=search["node_id"],
+        evidence_handle=search["hits"][0]["evidence_handle"],
+    )["result"]["evidence"]["handle"]
+    rejected = service.finish(
+        journey_id=search["journey_id"],
+        kind="positive",
+        statement="The concept is absent.",
+        evidence_handles=[inspected],
+        semantic_absence=True,
+    )
+    assert rejected["error"]["code"] == "invalid_finding"

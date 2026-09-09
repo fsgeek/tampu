@@ -176,16 +176,42 @@ def test_cli_init_ingest_describe_and_real_mcp_stdio_transport(
                         "limit": {"RAW_ARGUMENT_SENTINEL": True},
                     },
                 )
+                missing_inspect = await session.call_tool(
+                    "inspect", {"journey_id": "MISSING_NODE_SENTINEL"}
+                )
+                missing_finish = await session.call_tool(
+                    "finish", {"statement": "MISSING_FINISH_SENTINEL"}
+                )
             stderr.flush()
-        return listed, describe_call, search_call, malformed
+        return (
+            listed,
+            describe_call,
+            search_call,
+            malformed,
+            missing_inspect,
+            missing_finish,
+        )
 
-    listed, describe_call, search_call, malformed = asyncio.run(probe())
+    (
+        listed,
+        describe_call,
+        search_call,
+        malformed,
+        missing_inspect,
+        missing_finish,
+    ) = asyncio.run(probe())
     assert [tool.name for tool in listed.tools] == [
         "describe",
         "search",
         "inspect",
         "finish",
     ]
+    schemas = {tool.name: tool.inputSchema for tool in listed.tools}
+    assert {"revision_cursor", "revision_limit"} <= set(
+        schemas["describe"]["properties"]
+    )
+    assert schemas["inspect"]["required"] == ["journey_id", "node_id"]
+    assert schemas["finish"]["required"] == ["journey_id", "kind", "statement"]
     descriptions = "\n".join(tool.description or "" for tool in listed.tools)
     for required in (
         "any_terms",
@@ -210,12 +236,16 @@ def test_cli_init_ingest_describe_and_real_mcp_stdio_transport(
     assert len(search_call.content[0].text.encode("utf-8")) <= 1000
     malformed_payload = _application_json(malformed)
     assert malformed_payload["error"]["code"] == "invalid_input"
+    assert _application_json(missing_inspect)["status"] == "error"
+    assert _application_json(missing_finish)["status"] == "error"
     stderr_text = stderr_path.read_text(encoding="utf-8")
     for sentinel in (
         "RAW_QUERY_SENTINEL",
         "RAW_ARGUMENT_SENTINEL",
         "RAW_JOURNEY_SENTINEL",
         "RAW_LENS_SENTINEL",
+        "MISSING_NODE_SENTINEL",
+        "MISSING_FINISH_SENTINEL",
         "malformed sentinel intent",
         repository_config["password"],
         str(source),

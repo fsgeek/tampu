@@ -31,10 +31,11 @@ def create_server(service: Service) -> FastMCP:
     @server.tool(
         name="describe",
         description=(
-            "Describe published collections, bounded facets, extraction coverage/losses, "
-            "projection recipes, lexical any_terms/all_terms/phrase modes, limits, and "
-            "honestly unavailable capabilities. Detail is paged. This is a durable "
-            "read-only operation."
+            "Describe published collections and paged published revision IDs, bounded "
+            "facets, supported filter keys/examples, extraction coverage/losses, projection "
+            "recipes, lexical any_terms/all_terms/phrase modes, limits, and honestly "
+            "unavailable capabilities. Detail is paged. This is a durable read-only "
+            "operation."
         ),
         annotations=ToolAnnotations(
             readOnlyHint=True,
@@ -51,6 +52,8 @@ def create_server(service: Service) -> FastMCP:
         facet: SkipValidation[str | None] = None,
         facet_cursor: SkipValidation[str | None] = None,
         detail_limit: SkipValidation[int] = 20,
+        revision_cursor: SkipValidation[str | None] = None,
+        revision_limit: SkipValidation[int] = 2,
         byte_budget: SkipValidation[int] = 8192,
     ) -> TextContent:
         return _content(
@@ -61,6 +64,8 @@ def create_server(service: Service) -> FastMCP:
                 facet=facet,
                 facet_cursor=facet_cursor,
                 detail_limit=detail_limit,
+                revision_cursor=revision_cursor,
+                revision_limit=revision_limit,
                 byte_budget=byte_budget,
             )
         )
@@ -130,8 +135,8 @@ def create_server(service: Service) -> FastMCP:
         structured_output=False,
     )
     def inspect(
-        journey_id: SkipValidation[str],
-        node_id: SkipValidation[str],
+        journey_id: SkipValidation[str | None] = None,
+        node_id: SkipValidation[str | None] = None,
         continuation: SkipValidation[str | None] = None,
         limit: SkipValidation[int] = 2,
         evidence_handle: SkipValidation[str | None] = None,
@@ -179,9 +184,9 @@ def create_server(service: Service) -> FastMCP:
         structured_output=False,
     )
     def finish(
-        journey_id: SkipValidation[str],
-        kind: SkipValidation[str],
-        statement: SkipValidation[str],
+        journey_id: SkipValidation[str | None] = None,
+        kind: SkipValidation[str | None] = None,
+        statement: SkipValidation[str | None] = None,
         evidence_handles: SkipValidation[list[str] | None] = None,
         node_id: SkipValidation[str | None] = None,
         reason: SkipValidation[str | None] = None,
@@ -202,6 +207,21 @@ def create_server(service: Service) -> FastMCP:
                 byte_budget=byte_budget,
             )
         )
+
+    required = {
+        "inspect": ("journey_id", "node_id"),
+        "finish": ("journey_id", "kind", "statement"),
+    }
+    for name, fields in required.items():
+        tool = server._tool_manager.get_tool(name)
+        if tool is None:  # pragma: no cover - registration above is deterministic
+            raise RuntimeError("Tampu tool registration failed")
+        tool.parameters["required"] = list(fields)
+        for field in fields:
+            tool.parameters["properties"][field] = {
+                "title": field.replace("_", " ").title(),
+                "type": "string",
+            }
 
     return server
 
