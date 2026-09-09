@@ -24,10 +24,18 @@ def _same_file(left: os.stat_result, right: os.stat_result) -> bool:
     return all(getattr(left, field) == getattr(right, field) for field in fields)
 
 
-def _copy_stable_candidate(path: Path, temporary: Path) -> tuple[str, int, int]:
-    before = path.stat(follow_symlinks=False)
-    flags = os.O_RDONLY | getattr(os, "O_CLOEXEC", 0) | getattr(os, "O_NOFOLLOW", 0)
-    descriptor = os.open(path, flags)
+def _copy_stable_candidate(
+    path: Path,
+    temporary: Path,
+    *,
+    parent_fd: int | None = None,
+    observed: os.stat_result | None = None,
+) -> tuple[str, int, int]:
+    name: str | Path = path.name if parent_fd is not None else path
+    before = observed or os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
+    descriptor = os.open(
+        name, os.O_RDONLY | os.O_CLOEXEC | os.O_NOFOLLOW, dir_fd=parent_fd
+    )
     digest = hashlib.sha256()
     size = 0
     try:
@@ -45,7 +53,7 @@ def _copy_stable_candidate(path: Path, temporary: Path) -> tuple[str, int, int]:
             target.flush()
             os.fsync(target.fileno())
         after_fd = os.fstat(descriptor)
-        after_path = path.stat(follow_symlinks=False)
+        after_path = os.stat(name, dir_fd=parent_fd, follow_symlinks=False)
         if (
             not _same_file(opened, after_fd)
             or not _same_file(opened, after_path)
@@ -87,62 +95,9 @@ def capture_tree(root: Path, store: Path) -> dict:
     temporary_root = store / ".capture-tmp"
     temporary_root.mkdir(parents=True, exist_ok=True)
 
-    def observe_directory(directory: Path) -> bool:
-        nonlocal enumeration_complete
-        try:
-            entries = sorted(os.scandir(directory), key=lambda entry: entry.name)
-        except OSError:
-            enumeration_complete = False
-            relative = (
-                "." if directory == root else directory.relative_to(root).as_posix()
-            )
-            sources.append(
-                {
-                    "relative_path": relative,
-                    "status": "error",
-                    "error_code": "enumeration_failed",
-                }
-            )
-            return False
-        for entry in entries:
-            path = Path(entry.path)
-            relative = path.relative_to(root).as_posix()
-            try:
-                if entry.is_symlink():
-                    sources.append(
-                        {"relative_path": relative, "status": "excluded_symlink"}
-                    )
-                elif entry.is_dir(follow_symlinks=False):
-                    if observe_directory(path):
-                        sources.append(
-                            {"relative_path": relative, "status": "scanned_directory"}
-                        )
-                elif not entry.is_file(follow_symlinks=False):
-                    sources.append(
-                        {"relative_path": relative, "status": "excluded_non_regular"}
-                    )
-                elif path.suffix.casefold() != ".pdf":
-                    info = entry.stat(follow_symlinks=False)
-                    sources.append(
-                        {
-                            "relative_path": relative,
-                            "status": "excluded_extension",
-                            "mtime_ns": info.st_mtime_ns,
-                        }
-                    )
-                else:
-                    observe_pdf(path, relative)
-            except OSError:
-                sources.append(
-                    {
-                        "relative_path": relative,
-                        "status": "error",
-                        "error_code": "observation_failed",
-                    }
-                )
-        return True
-
-    def observe_pdf(path: Path, relative: str) -> None:
+    def observe_pdf(
+        path: Path, relative: str, parent_fd: int, observed: os.stat_result
+    ) -> None:
         last_error: BaseException | None = None
         for _attempt in range(2):
             fd, temporary_name = tempfile.mkstemp(
@@ -151,7 +106,9 @@ def capture_tree(root: Path, store: Path) -> dict:
             os.close(fd)
             temporary = Path(temporary_name)
             try:
-                digest, size, mtime_ns = _copy_stable_candidate(path, temporary)
+                digest, size, mtime_ns = _copy_stable_candidate(
+                    path, temporary, parent_fd=parent_fd, observed=observed
+                )
                 with temporary.open("rb") as copied:
                     header = copied.read(5)
                 if header != b"%PDF-":
@@ -186,6 +143,13 @@ def capture_tree(root: Path, store: Path) -> dict:
                 return
             except _SourceChanged as error:
                 last_error = error
+                try:
+                    observed = os.stat(
+                        path.name, dir_fd=parent_fd, follow_symlinks=False
+                    )
+                except OSError as stat_error:
+                    last_error = stat_error
+                    break
             except OSError as error:
                 last_error = error
                 if isinstance(error, FileNotFoundError) or error.errno in {
@@ -206,7 +170,112 @@ def capture_tree(root: Path, store: Path) -> dict:
             {"relative_path": relative, "status": "error", "error_code": code}
         )
 
-    observe_directory(root)
+    def observe_directory(directory_fd: int, relative_directory: Path) -> bool:
+        nonlocal enumeration_complete
+        try:
+            with os.scandir(directory_fd) as iterator:
+                entries = sorted(iterator, key=lambda entry: entry.name)
+        except OSError:
+            enumeration_complete = False
+            sources.append(
+                {
+                    "relative_path": relative_directory.as_posix(),
+                    "status": "error",
+                    "error_code": "enumeration_failed",
+                }
+            )
+            return False
+        for entry in entries:
+            relative_path = relative_directory / entry.name
+            relative = relative_path.as_posix().removeprefix("./")
+            path = root / relative_path
+            try:
+                if entry.is_symlink():
+                    sources.append(
+                        {"relative_path": relative, "status": "excluded_symlink"}
+                    )
+                elif entry.is_dir(follow_symlinks=False):
+                    observed = entry.stat(follow_symlinks=False)
+                    flags = os.O_RDONLY | os.O_DIRECTORY | os.O_CLOEXEC | os.O_NOFOLLOW
+                    try:
+                        child_fd = os.open(entry.name, flags, dir_fd=directory_fd)
+                        if not _same_file(observed, os.fstat(child_fd)):
+                            os.close(child_fd)
+                            raise OSError(errno.ELOOP, "directory changed")
+                    except OSError as error:
+                        enumeration_complete = False
+                        code = (
+                            "unsafe_source"
+                            if error.errno in {errno.ELOOP, errno.ENOTDIR}
+                            else "enumeration_failed"
+                        )
+                        sources.append(
+                            {
+                                "relative_path": relative,
+                                "status": "error",
+                                "error_code": code,
+                            }
+                        )
+                        continue
+                    try:
+                        if observe_directory(child_fd, relative_path):
+                            sources.append(
+                                {
+                                    "relative_path": relative,
+                                    "status": "scanned_directory",
+                                }
+                            )
+                    finally:
+                        os.close(child_fd)
+                elif not entry.is_file(follow_symlinks=False):
+                    sources.append(
+                        {"relative_path": relative, "status": "excluded_non_regular"}
+                    )
+                elif path.suffix.casefold() != ".pdf":
+                    info = entry.stat(follow_symlinks=False)
+                    sources.append(
+                        {
+                            "relative_path": relative,
+                            "status": "excluded_extension",
+                            "mtime_ns": info.st_mtime_ns,
+                        }
+                    )
+                else:
+                    observe_pdf(
+                        path, relative, directory_fd, entry.stat(follow_symlinks=False)
+                    )
+            except OSError:
+                sources.append(
+                    {
+                        "relative_path": relative,
+                        "status": "error",
+                        "error_code": "observation_failed",
+                    }
+                )
+        return True
+
+    root_flags = os.O_RDONLY | os.O_DIRECTORY | os.O_CLOEXEC | os.O_NOFOLLOW
+    try:
+        root_observed = root.stat(follow_symlinks=False)
+        if not stat.S_ISDIR(root_observed.st_mode):
+            raise OSError(errno.ELOOP, "root is not a real directory")
+        root_fd = os.open(root, root_flags)
+        if not _same_file(root_observed, os.fstat(root_fd)):
+            os.close(root_fd)
+            raise OSError(errno.ELOOP, "root changed")
+    except OSError as error:
+        enumeration_complete = False
+        code = (
+            "unsafe_root"
+            if error.errno in {errno.ELOOP, errno.ENOTDIR}
+            else "enumeration_failed"
+        )
+        sources.append({"relative_path": ".", "status": "error", "error_code": code})
+    else:
+        try:
+            observe_directory(root_fd, Path("."))
+        finally:
+            os.close(root_fd)
     try:
         temporary_root.rmdir()
     except OSError:

@@ -85,7 +85,7 @@ def test_poppler_retains_raw_output_and_one_based_zero_text_pages(
     raw = json.loads((store / projection["raw_path"]).read_text())
     elements = json.loads((store / projection["elements_path"]).read_text())
     assert raw["pdfinfo"]["Pages"] == "3"
-    assert raw["pdftotext"].count("\f") >= 2
+    assert len(raw["pdftotext_pages"]) == 3
     assert [element["page"] for element in elements] == [1, 2, 3]
     assert [element["text"] for element in elements] == ["alpha beta", "", "omega"]
     assert [element["ordinal"] for element in elements] == [0, 1, 2]
@@ -143,7 +143,7 @@ def test_changed_extractor_output_changes_projection_identity(
 
     def changed_output(source: Path, timeout: int):
         raw, elements, details, losses = real_poppler(source, timeout)
-        raw["pdftotext"] += "changed output"
+        raw["pdftotext_pages"][0]["stdout"] += "changed output"
         details["extractor_version"] += " changed"
         return raw, elements, details, losses
 
@@ -153,6 +153,104 @@ def test_changed_extractor_output_changes_projection_identity(
     )
 
     assert second["projection_id"] != first["projection_id"]
+
+
+def test_poppler_extracts_physical_pages_without_splitting_embedded_formfeeds(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    store = tmp_path / "store"
+    artifact = install_artifact(store, make_pdf(["placeholder", "placeholder"]))
+    page_commands = []
+
+    def fake_run(command, **kwargs):
+        if command == ["pdftotext", "-v"]:
+            return subprocess.CompletedProcess(command, 0, "", "pdftotext version test")
+        if command[0] == "pdfinfo":
+            return subprocess.CompletedProcess(command, 0, "Pages: 2\n", "")
+        page_commands.append(command)
+        page = int(command[command.index("-f") + 1])
+        text = "alpha\fembedded\n\f" if page == 1 else "omega\n\f"
+        return subprocess.CompletedProcess(command, 0, text, "")
+
+    monkeypatch.setattr(extraction_module.subprocess, "run", fake_run)
+    projection = extract_artifact(artifact, store, profile="poppler")
+    elements = json.loads((store / projection["elements_path"]).read_text())
+
+    assert [element["text"] for element in elements] == ["alpha\fembedded", "omega"]
+    assert len(page_commands) == 2
+    assert all("-layout" not in command for command in page_commands)
+    assert [
+        (command[command.index("-f") + 1], command[command.index("-l") + 1])
+        for command in page_commands
+    ] == [("1", "1"), ("2", "2")]
+
+
+def test_stored_text_and_character_slice_are_stable_across_extractions(
+    tmp_path: Path,
+) -> None:
+    artifact_bytes = make_pdf(["prefix target suffix"])
+    stores = [tmp_path / "first", tmp_path / "second"]
+    projections = [
+        extract_artifact(
+            install_artifact(store, artifact_bytes), store, profile="poppler"
+        )
+        for store in stores
+    ]
+    elements = [
+        json.loads((store / projection["elements_path"]).read_text())
+        for store, projection in zip(stores, projections, strict=True)
+    ]
+
+    assert projections[0]["projection_id"] == projections[1]["projection_id"]
+    assert elements[0][0]["text"] == elements[1][0]["text"]
+    evidence_address = {
+        "artifact_id": projections[0]["artifact_id"],
+        "projection_id": projections[0]["projection_id"],
+        "ordinal": 0,
+        "start": 7,
+        "end": 13,
+    }
+    assert (
+        elements[0][evidence_address["ordinal"]]["text"][
+            evidence_address["start"] : evidence_address["end"]
+        ]
+        == "target"
+    )
+    assert elements[1][0]["text"][7:13] == "target"
+
+
+def test_corrupted_normalized_evidence_is_not_reused(tmp_path: Path) -> None:
+    store = tmp_path / "store"
+    artifact = install_artifact(store, make_pdf(["evidence"]))
+    projection = extract_artifact(artifact, store, profile="poppler")
+    (store / projection["elements_path"]).write_text("[]")
+
+    with pytest.raises(TampuError) as raised:
+        extract_artifact(artifact, store, profile="poppler")
+
+    assert raised.value.code == "projection_store_conflict"
+
+
+def test_failed_poppler_version_probe_is_a_controlled_projection(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    store = tmp_path / "store"
+    artifact = install_artifact(store, make_pdf(["evidence"]))
+    monkeypatch.setattr(
+        extraction_module.subprocess,
+        "run",
+        lambda command, **kwargs: subprocess.CompletedProcess(command, 1, "", ""),
+    )
+
+    projection = extract_artifact(artifact, store, profile="poppler")
+
+    assert projection["status"] == "failed"
+    assert projection["losses"] == [
+        {
+            "code": "extractor_version_failed",
+            "message": "The Poppler version could not be determined.",
+        }
+    ]
 
 
 @pytest.mark.parametrize(

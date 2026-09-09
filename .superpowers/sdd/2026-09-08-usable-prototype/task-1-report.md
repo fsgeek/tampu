@@ -123,3 +123,28 @@ clean
 - The readiness sample attributed all pages for both born-digital caching papers. An image-heavy two-page Paxos paper attributed content only to page 1 and retained relatively little text; the adapter records unattributed and zero-text page losses, but OCR/hi-res extraction is outside this task.
 - Readiness token overlap against `pdftotext` is comparative lexical coverage only. It does not establish reading order, semantic completeness, or general extractor superiority.
 - The Unstructured integration test is opt-in because it requires Docker and the already-inspected pinned local image. Unit tests still verify its command and normalization contract without network access.
+
+### Review fixes
+
+The Poppler recipe now invokes `pdftotext` once for each physical page, using the PDF page count reported by `pdfinfo`:
+
+```text
+pdftotext -f <page> -l <page> <captured-pdf> -
+```
+
+The `-layout` option was removed. The recipe records `reading_order: "default"` and `physical_pages: true`, so this profile change has a distinct projection identity. Each page command's exact stdout, stderr, return code, and one-based page number are retained under raw `pdftotext_pages`. Embedded form feeds can no longer create extra logical pages, shift attribution, or cause trailing content to be discarded. Regression coverage includes embedded form feeds and a stable stored character slice across repeated extraction.
+
+Projection recipes now record both `output_sha256` for raw JSON and `elements_sha256` for normalized JSON. Successful recipe reuse verifies both immutable files against their recorded digests; missing or corrupted normalized evidence is not accepted. A nonzero or empty Poppler version response produces a failed projection with controlled `extractor_version_failed` loss instead of indexing empty output.
+
+Capture traversal now opens the root and every descended directory with `O_DIRECTORY | O_NOFOLLOW`, compares the opened descriptor with the no-follow observation, enumerates through the directory descriptor, and opens candidate files relative to that descriptor. A symlink root is reported as `unsafe_root`; a directory swapped for a symlink is reported as `unsafe_source`, sets `enumeration_complete` false, and cannot expose files outside the opened root.
+
+Review verification:
+
+```text
+uv run pytest tests/test_capture.py tests/test_extraction.py -q
+23 passed, 1 skipped in 0.69s
+
+TAMPU_TEST_UNSTRUCTURED_IMAGE=<inspected-pinned-image> \
+  uv run pytest tests/test_extraction.py::test_real_unstructured_container_runs_offline_and_records_versions -q
+1 passed in 8.29s
+```

@@ -1,5 +1,6 @@
 import errno
 import hashlib
+import os
 from pathlib import Path
 
 import pytest
@@ -74,13 +75,13 @@ def test_changed_source_is_retried_once_then_captured(
     real_copy = capture_module._copy_stable_candidate
     calls = 0
 
-    def changes_once(path: Path, temporary: Path):
+    def changes_once(path: Path, temporary: Path, *args, **kwargs):
         nonlocal calls
         calls += 1
         if calls == 1:
             candidate.write_bytes(PDF + b"changed")
             raise capture_module._SourceChanged
-        return real_copy(path, temporary)
+        return real_copy(path, temporary, *args, **kwargs)
 
     monkeypatch.setattr(capture_module, "_copy_stable_candidate", changes_once)
 
@@ -101,7 +102,7 @@ def test_repeated_change_and_disappearance_are_controlled_failures(
     (source / "changed.pdf").write_bytes(PDF)
     (source / "gone.pdf").write_bytes(PDF)
 
-    def never_stable(path: Path, temporary: Path):
+    def never_stable(path: Path, temporary: Path, *args, **kwargs):
         if path.name == "gone.pdf":
             raise FileNotFoundError(path)
         raise capture_module._SourceChanged
@@ -129,8 +130,9 @@ def test_safe_open_rejects_file_replaced_by_symlink(
     real_open = capture_module.os.open
 
     def replace_then_open(path, flags, *args, **kwargs):
-        candidate.unlink(missing_ok=True)
-        candidate.symlink_to(target)
+        if path == "paper.pdf":
+            candidate.unlink(missing_ok=True)
+            candidate.symlink_to(target)
         return real_open(path, flags, *args, **kwargs)
 
     monkeypatch.setattr(capture_module.os, "open", replace_then_open)
@@ -152,13 +154,15 @@ def test_read_and_subtree_enumeration_failures_are_recorded(
     real_scandir = capture_module.os.scandir
     real_open = capture_module.os.open
 
+    blocked_inode = blocked.stat().st_ino
+
     def failing_scandir(path):
-        if Path(path) == blocked:
+        if isinstance(path, int) and os.fstat(path).st_ino == blocked_inode:
             raise PermissionError(errno.EACCES, "denied")
         return real_scandir(path)
 
     def failing_open(path, flags, *args, **kwargs):
-        if Path(path) == unreadable:
+        if path == "unreadable.pdf":
             raise PermissionError(errno.EACCES, "denied")
         return real_open(path, flags, *args, **kwargs)
 
@@ -171,3 +175,51 @@ def test_read_and_subtree_enumeration_failures_are_recorded(
     assert outcomes["blocked"]["error_code"] == "enumeration_failed"
     assert outcomes["unreadable.pdf"]["error_code"] == "read_failed"
     assert scan["enumeration_complete"] is False
+
+
+def test_rejects_symlink_root_without_observing_target(tmp_path: Path) -> None:
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    (outside / "paper.pdf").write_bytes(PDF)
+    root = tmp_path / "source"
+    root.symlink_to(outside, target_is_directory=True)
+
+    scan = capture_tree(root, tmp_path / "store")
+
+    assert scan["enumeration_complete"] is False
+    assert scan["artifacts"] == []
+    assert scan["sources"] == [
+        {"relative_path": ".", "status": "error", "error_code": "unsafe_root"}
+    ]
+
+
+def test_parent_directory_swapped_to_symlink_cannot_escape_root(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    root = tmp_path / "source"
+    nested = root / "nested"
+    nested.mkdir(parents=True)
+    (nested / "inside.pdf").write_bytes(PDF)
+    outside = tmp_path / "outside"
+    outside.mkdir()
+    (outside / "outside.pdf").write_bytes(PDF)
+    displaced = root / "displaced"
+    real_open = capture_module.os.open
+    swapped = False
+
+    def swap_then_open(path, flags, *args, **kwargs):
+        nonlocal swapped
+        if path == "nested" and flags & os.O_DIRECTORY and not swapped:
+            swapped = True
+            nested.rename(displaced)
+            nested.symlink_to(outside, target_is_directory=True)
+        return real_open(path, flags, *args, **kwargs)
+
+    monkeypatch.setattr(capture_module.os, "open", swap_then_open)
+    scan = capture_tree(root, tmp_path / "store")
+
+    assert scan["enumeration_complete"] is False
+    assert scan["artifacts"] == []
+    assert scan["sources"] == [
+        {"relative_path": "nested", "status": "error", "error_code": "unsafe_source"}
+    ]

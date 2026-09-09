@@ -96,6 +96,8 @@ def _successful_match(store: Path, artifact_id: str, requested: dict) -> dict | 
                 and elements_path.is_file()
                 and hashlib.sha256(raw_path.read_bytes()).hexdigest()
                 == recipe.get("output_sha256")
+                and hashlib.sha256(elements_path.read_bytes()).hexdigest()
+                == recipe.get("elements_sha256")
             ):
                 return record
     return None
@@ -123,49 +125,43 @@ def _run(command: list[str], timeout: float) -> subprocess.CompletedProcess:
 def _poppler(source: Path, timeout: int) -> tuple[dict, list[dict], dict, list[dict]]:
     deadline = time.monotonic() + timeout
     version = _run(["pdftotext", "-v"], deadline - time.monotonic())
-    version_text = (version.stderr or version.stdout).splitlines()[0]
-    info = _run(["pdfinfo", str(source)], deadline - time.monotonic())
-    if info.returncode:
+    version_output = version.stderr or version.stdout
+    version_process = {
+        "stdout": version.stdout,
+        "stderr": version.stderr,
+        "returncode": version.returncode,
+    }
+    if version.returncode or not version_output.splitlines():
         return (
             {
                 "pdfinfo": {},
-                "pdftotext": "",
-                "processes": {
-                    "pdfinfo": {
-                        "stdout": info.stdout,
-                        "stderr": info.stderr,
-                        "returncode": info.returncode,
-                    },
-                    "pdftotext": None,
-                },
+                "pdftotext_pages": [],
+                "processes": {"version": version_process, "pdfinfo": None},
             },
             [],
-            {"extractor_version": version_text},
+            {},
             [
                 {
-                    "code": "malformed_or_encrypted_pdf",
-                    "message": "The PDF could not be read by Poppler.",
+                    "code": "extractor_version_failed",
+                    "message": "The Poppler version could not be determined.",
                 }
             ],
         )
-    text = _run(["pdftotext", "-layout", str(source), "-"], deadline - time.monotonic())
+    version_text = version_output.splitlines()[0]
+    info = _run(["pdfinfo", str(source)], deadline - time.monotonic())
     raw = {
-        "pdfinfo": _pdfinfo_map(info.stdout),
-        "pdftotext": text.stdout,
+        "pdfinfo": _pdfinfo_map(info.stdout) if not info.returncode else {},
+        "pdftotext_pages": [],
         "processes": {
+            "version": version_process,
             "pdfinfo": {
                 "stdout": info.stdout,
                 "stderr": info.stderr,
                 "returncode": info.returncode,
             },
-            "pdftotext": {
-                "stdout": text.stdout,
-                "stderr": text.stderr,
-                "returncode": text.returncode,
-            },
         },
     }
-    if text.returncode:
+    if info.returncode:
         return (
             raw,
             [],
@@ -178,21 +174,40 @@ def _poppler(source: Path, timeout: int) -> tuple[dict, list[dict], dict, list[d
             ],
         )
     page_count = int(raw["pdfinfo"].get("Pages", "0"))
-    pages = text.stdout.split("\f")
-    if pages and pages[-1] == "":
-        pages.pop()
-    pages.extend([""] * max(0, page_count - len(pages)))
-    pages = pages[:page_count]
     elements = []
-    for ordinal, page_text in enumerate(pages):
-        normalized = page_text.strip("\r\n\f")
+    for page in range(1, page_count + 1):
+        text = _run(
+            ["pdftotext", "-f", str(page), "-l", str(page), str(source), "-"],
+            deadline - time.monotonic(),
+        )
+        raw["pdftotext_pages"].append(
+            {
+                "page": page,
+                "stdout": text.stdout,
+                "stderr": text.stderr,
+                "returncode": text.returncode,
+            }
+        )
+        if text.returncode:
+            return (
+                raw,
+                [],
+                {"extractor_version": version_text},
+                [
+                    {
+                        "code": "malformed_or_encrypted_pdf",
+                        "message": "The PDF could not be read by Poppler.",
+                    }
+                ],
+            )
+        normalized = text.stdout.removesuffix("\f").strip("\r\n")
         elements.append(
             {
-                "ordinal": ordinal,
-                "original_element_id": f"page-{ordinal + 1}",
+                "ordinal": page - 1,
+                "original_element_id": f"page-{page}",
                 "type": "Page",
                 "text": normalized,
-                "page": ordinal + 1,
+                "page": page,
                 "coordinates": None,
             }
         )
@@ -337,7 +352,11 @@ def extract_artifact(
         )
     else:
         requested.update(
-            {"extractor": "pdftotext", "layout": True, "page_breaks": True}
+            {
+                "extractor": "pdftotext",
+                "reading_order": "default",
+                "physical_pages": True,
+            }
         )
     existing = _successful_match(store, artifact["artifact_id"], requested)
     if existing is not None:
@@ -356,7 +375,11 @@ def extract_artifact(
                 raw, elements, details, losses = _unstructured(
                     source, timeout, image, Path(temporary)
                 )  # type: ignore[arg-type]
-        fatal_codes = {"malformed_or_encrypted_pdf", "extraction_failed"}
+        fatal_codes = {
+            "malformed_or_encrypted_pdf",
+            "extraction_failed",
+            "extractor_version_failed",
+        }
         status = (
             "failed" if any(loss["code"] in fatal_codes for loss in losses) else "ready"
         )
@@ -408,6 +431,7 @@ def extract_artifact(
         **requested,
         **details,
         "output_sha256": hashlib.sha256(_canonical_bytes(raw)).hexdigest(),
+        "elements_sha256": hashlib.sha256(_canonical_bytes(elements)).hexdigest(),
     }
     projection_id = _digest({"artifact_id": artifact["artifact_id"], "recipe": recipe})
     raw_path = Path("raw") / f"{projection_id}.json"
