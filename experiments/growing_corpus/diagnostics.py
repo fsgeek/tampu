@@ -77,6 +77,7 @@ def main():
         records.append(
             {"collection": name, "revision": r, "wall_seconds": time.monotonic() - t}
         )
+        write(out / "ingestion-records.json", records)
         return r
 
     def copy(aid, dst):
@@ -141,17 +142,7 @@ def main():
     copy(S, comparisons / "short.pdf")
     copy(L, comparisons / "long.pdf")
     # CORFU is selected from the source inventory by its already recorded identifier.
-    manifest = json.loads(
-        (
-            Path(__file__).resolve().parents[2]
-            / "docs/experiments/2026-09-08-temporal-growth-manifest.json"
-        ).read_text()
-    )
-    corfu = next(
-        x["sha256"]
-        for x in manifest["artifacts"]
-        if any("CORFU" in n.upper() for n in x["source_paths"])
-    )
+    corfu = "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93"
     copy(corfu, comparisons / "corfu.pdf")
     cr = ingest("comparison", comparisons, "unstructured")
     s = Service(repo, trace_path=out / "service-trace.jsonl")
@@ -190,13 +181,25 @@ def main():
             inspection = s.inspect(
                 journey_id=r["journey_id"],
                 node_id=r["node_id"],
-                evidence_handle=r["hits"][0]["evidence_handle"],
+                artifact_id=S,
+                ordinal=38,
                 slice_chars=2400,
             )
             item["inspection"] = inspection
             assert inspection["status"] == "ok"
         observations[name] = item
+        write(out / "observations.json", observations)
     assert observations["absent"]["response"]["result"]["full_count"] == 0
+    absent_result = observations["absent"]["response"]["result"]
+    negative = s.finish(
+        journey_id=absent_result["journey_id"],
+        node_id=absent_result["node_id"],
+        kind="bounded_negative",
+        statement="The exact text_en phrase tampuabsentpredicateqxz has no lexical match in this pinned short-paper projection; no semantic absence claim.",
+        semantic_absence=False,
+    )
+    assert negative["status"] == "ok"
+    observations["bounded_negative_finding"] = negative
     assert (
         observations["alias"]["response"]["result"]["full_count"] == 0
         and observations["alias_check"]["response"]["result"]["full_count"] == 1
