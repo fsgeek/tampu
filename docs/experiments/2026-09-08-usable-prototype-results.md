@@ -138,7 +138,7 @@ The same post-observation review fix rejects inspection listing limits outside 1
 | Real cross-topic task and distinct failure diagnosis | Original final eviction attempt failed; direct-evidence cross-topic diagnostic separately completed, without causal attribution. |
 | Truthful discovery and documentation | Linked runtime evidence statuses and post-observation disclosure correction; deferred capabilities remain unavailable. |
 
-Final verification is recorded in the [Task 4 implementation report](../implementation/2026-09-09-growing-corpus-report.md) and [verification record](../../experiments/growing_corpus/evidence/verification.json). Independent Task 4 review and whole-branch review are pending the controller’s review of the signed handoff. The result is a functioning research prototype with early, limited observations—not established consumer benefit, semantic completeness, production scale or generally superior retrieval.
+The original Task 4 verification is recorded in the [Task 4 implementation report](../implementation/2026-09-09-growing-corpus-report.md) and [verification record](../../experiments/growing_corpus/evidence/verification.json). Independent Task 4 and whole-branch reviews passed after the recorded corrections; the [completion and review record](../implementation/2026-09-09-prototype-completion.md) preserves their findings, dispositions and final 130-pass/1-optional-skip gate. The result is a functioning research prototype with early, limited observations—not established consumer benefit, semantic completeness, production scale or generally superior retrieval.
 
 ### Final review boundary corrections (post-observation)
 
