@@ -436,3 +436,72 @@ def test_real_unstructured_container_runs_offline_and_records_versions(
         element["text"]
         for element in json.loads((store / projection["elements_path"]).read_text())
     )
+
+
+@pytest.mark.parametrize("changed", ["poppler", "adapter", "normalization"])
+def test_same_store_recipe_upgrade_preserves_old_evidence(
+    tmp_path, monkeypatch, changed
+):
+    store = tmp_path / "store"
+    artifact = install_artifact(store, make_pdf(["original evidence"]))
+    old = extract_artifact(artifact, store, profile="poppler")
+    old_bytes = (store / old["elements_path"]).read_bytes()
+    real_run = extraction_module._run
+    if changed == "poppler":
+
+        def upgraded(command, timeout):
+            result = real_run(command, timeout)
+            if command[-1] == "-v":
+                return subprocess.CompletedProcess(
+                    command, 0, "", "pdftotext version upgraded\n"
+                )
+            return result
+
+        monkeypatch.setattr(extraction_module, "_run", upgraded)
+    else:
+        monkeypatch.setattr(
+            extraction_module,
+            "ADAPTER_VERSION" if changed == "adapter" else "NORMALIZATION_VERSION",
+            "test-upgrade",
+            raising=False,
+        )
+    new = extract_artifact(artifact, store, profile="poppler")
+    assert new["projection_id"] != old["projection_id"]
+    assert new["recipe"]["adapter_version"]
+    assert new["recipe"]["normalization_version"]
+    assert extract_artifact(artifact, store, profile="poppler") == new
+    assert (store / old["elements_path"]).read_bytes() == old_bytes
+    assert (store / "projections" / f"{old['projection_id']}.json").exists()
+
+
+def test_failed_current_version_probe_does_not_reuse_success(tmp_path, monkeypatch):
+    store = tmp_path / "store"
+    artifact = install_artifact(store, make_pdf(["old"]))
+    old = extract_artifact(artifact, store, profile="poppler")
+    monkeypatch.setattr(
+        extraction_module,
+        "_run",
+        lambda command, timeout: subprocess.CompletedProcess(
+            command, 1, "", "version probe diagnostic"
+        ),
+    )
+    new = extract_artifact(artifact, store, profile="poppler")
+    assert new["status"] == "failed"
+    assert new["losses"][0]["code"] == "extractor_version_failed"
+    assert new["projection_id"] != old["projection_id"]
+
+
+def test_version_probe_failure_retains_raw_diagnostic(tmp_path, monkeypatch):
+    store = tmp_path / "store"
+    artifact = install_artifact(store, make_pdf(["evidence"]))
+    monkeypatch.setattr(
+        extraction_module,
+        "_run",
+        lambda command, timeout: subprocess.CompletedProcess(
+            command, 1, "", "version probe diagnostic"
+        ),
+    )
+    failed = extract_artifact(artifact, store, profile="poppler")
+    raw = json.loads((store / failed["raw_path"]).read_text())
+    assert raw["processes"]["version"]["stderr"] == "version probe diagnostic"
+    assert failed["losses"][0]["code"] == "extractor_version_failed"

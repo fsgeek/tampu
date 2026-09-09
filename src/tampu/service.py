@@ -27,9 +27,12 @@ _LOGGER = logging.getLogger("tampu.operations")
 
 
 class _BudgetError(TampuError):
-    def __init__(self, message: str, minimum_bytes: int):
+    def __init__(
+        self, message: str, minimum_bytes: int, *, detail_record: dict | None = None
+    ):
         super().__init__("budget_too_small", message)
         self.minimum_bytes = minimum_bytes
+        self.detail_record = detail_record
 
 
 def compact_json(value: Any) -> str:
@@ -66,6 +69,9 @@ class Service:
         revision_cursor: str | None = None,
         revision_limit: int = 2,
         validation_cursor: str | None = None,
+        revision: str | None = None,
+        detail: str | None = None,
+        detail_cursor: str | None = None,
         byte_budget: int = DEFAULT_BYTE_BUDGET,
     ) -> dict:
         arguments = {
@@ -78,6 +84,9 @@ class Service:
             "revision_cursor": revision_cursor,
             "revision_limit": revision_limit,
             "validation_cursor": validation_cursor,
+            "revision": revision,
+            "detail": detail,
+            "detail_cursor": detail_cursor,
             "byte_budget": byte_budget,
         }
         revision_starts: dict[str, int] = {}
@@ -93,19 +102,94 @@ class Service:
             "describe",
             arguments,
             byte_budget,
-            lambda: self._describe(
-                collection,
-                cursor,
-                limit,
-                facet,
-                facet_cursor,
-                detail_limit,
-                revision_cursor,
-                revision_limit,
-                revision_starts,
-                validation_cursor,
+            lambda: (
+                self._describe_details(
+                    collection, revision, detail, detail_cursor, detail_limit
+                )
+                if detail is not None
+                or detail_cursor is not None
+                or revision is not None
+                else self._describe(
+                    collection,
+                    cursor,
+                    limit,
+                    facet,
+                    facet_cursor,
+                    detail_limit,
+                    revision_cursor,
+                    revision_limit,
+                    revision_starts,
+                    validation_cursor,
+                )
             ),
             on_revisions_underfilled=preserve_revision_underfill,
+        )
+
+    def _describe_details(self, collection, revision, detail, cursor, limit):
+        if (
+            not isinstance(collection, str)
+            or not collection
+            or not isinstance(detail, str)
+            or detail not in {"processing", "admission"}
+            or (revision is not None and not isinstance(revision, str))
+            or (
+                cursor is not None and (not isinstance(cursor, str) or revision is None)
+            )
+            or not isinstance(limit, int)
+            or isinstance(limit, bool)
+            or not 1 <= limit <= 100
+        ):
+            raise TampuError(
+                "invalid_input",
+                "Details require one collection, processing or admission, and a pinned revision when continuing.",
+            )
+        resolved = self.repository.resolve_revision(collection, revision)
+        rid = resolved["revision_id"]
+        kind = f"details:{collection}:{rid}:{detail}"
+        start = self._read_cursor(cursor, kind) if cursor else 0
+        records = []
+        if detail == "admission":
+            records = self.repository.admission_details(rid)
+        else:
+            for member in sorted(
+                self.repository.members(rid), key=lambda m: m["artifact_id"]
+            ):
+                identity = {
+                    "artifact_id": member["artifact_id"],
+                    "projection_id": member["projection_id"],
+                }
+                projection = self.repository.read_projection(member["projection_id"])
+                records.append(
+                    {
+                        **identity,
+                        "kind": "recipe",
+                        "recipe": projection.get("recipe", {}),
+                        "projection_status": projection["status"],
+                        "coverage": projection["coverage"],
+                        "loss_count": len(projection.get("losses", [])),
+                    }
+                )
+                records.extend(
+                    {**identity, "kind": "loss", "loss_index": i, "loss": loss}
+                    for i, loss in enumerate(projection.get("losses", []))
+                )
+        page = records[start : start + limit]
+        result = {
+            "schema_version": SCHEMA_VERSION,
+            "collection": collection,
+            "revision_id": rid,
+            "projection_selection": resolved["selection_digest"],
+            "detail": detail,
+            "details": page,
+            "total_records": len(records),
+            "continuation": self._make_cursor(kind, start + len(page))
+            if start + len(page) < len(records)
+            else None,
+        }
+        return (
+            result,
+            {"collection": collection, "revision_id": rid, "detail_offset": start},
+            [],
         )
 
     def _describe(
@@ -218,6 +302,8 @@ class Service:
                     if member["projection_status"] == "failed":
                         failures.append(
                             {
+                                "artifact_id": member["artifact_id"],
+                                "projection_id": member["projection_id"],
                                 "projection_status": "failed",
                                 "details": "unavailable",
                             }
@@ -232,6 +318,8 @@ class Service:
                 if projection["status"] == "failed" or projection.get("losses"):
                     failures.append(
                         {
+                            "artifact_id": member["artifact_id"],
+                            "projection_id": member["projection_id"],
                             "projection_status": projection["status"],
                             "coverage": projection["coverage"],
                             "losses": projection.get("losses", [])[:5],
@@ -289,6 +377,12 @@ class Service:
                     else None,
                     "facets": facets,
                     "facet_detail": facet_detail,
+                    "detail_access": {
+                        "collection": raw["name"],
+                        "revision": revision["revision_id"],
+                        "detail": ["processing", "admission"],
+                        "continuation_argument": "detail_cursor",
+                    },
                     "failure_details": failures[:5],
                     "omitted_failure_details": max(0, len(failures) - 5),
                     "projection_recipes": recipes,
@@ -362,6 +456,7 @@ class Service:
                     ],
                 },
                 "temporal/v1": {
+                    "publication_date_semantics": "publication-date-interval/v1: inclusive calendar intervals; contained is definite, disjoint excluded, partial overlap unknown; missing dates unknown",
                     "query": "must_be_empty",
                     "mode": "filter",
                     "typed_filters": True,
@@ -479,6 +574,7 @@ class Service:
                 revision.get("observed_end"),
             ],
             "startup_statement": f"{revision['counts']['artifacts']} current artifacts. Development PDF observations up to 473 artifacts; transcript path pilot inconclusive. Larger scale and navigation benefit unestablished.",
+            "admission": revision.get("admission", {"scope": "unavailable"}),
             "source_files": revision["counts"]["sources"],
             "distinct_artifacts": revision["counts"]["artifacts"],
             "count_units": {
@@ -669,6 +765,8 @@ class Service:
             "full_count": search["count"],
             "count_kind": search["count_kind"],
             "unknown_count": search.get("unknown_count", 0),
+            "admission": search.get("admission", {"scope": "unavailable"}),
+            "temporal_scope": search.get("temporal_scope"),
             "ordering": search["selection"],
             "coverage": search["coverage"],
             "index_generation": search.get("index_generation"),
@@ -1304,6 +1402,10 @@ class Service:
                         "full_count": 0,
                         "count_kind": "exact",
                         "coverage": node["coverage"],
+                        "admission": node["admission"],
+                        "unknown_count": node["unknown_count"],
+                        "temporal_scope": node["temporal_scope"],
+                        "count_scope": "known_selected_representation",
                     },
                     "semantic_absence": semantic_absence,
                     "limitation": "candidate_absence_does_not_establish_semantic_absence",
@@ -1447,6 +1549,8 @@ class Service:
             "full_count": node["full_count"],
             "count_kind": node["count_kind"],
             "unknown_count": node["unknown_count"],
+            "admission": node["admission"],
+            "temporal_scope": node["temporal_scope"],
             "returned_count": len(hits),
             "ordering": node["ordering"],
             "coverage": node["coverage"],
@@ -1523,6 +1627,10 @@ class Service:
                 "scope": {"operation": operation},
                 "omissions": [],
             }
+            if isinstance(error, _BudgetError) and error.detail_record:
+                error_payload["detail_record"] = error.detail_record
+                if _size(response) > budget:
+                    error_payload.pop("detail_record")
         except Exception:  # noqa: BLE001 - raw dependency failures stop at this boundary
             error_code = "internal_error"
             response = {
@@ -1603,6 +1711,31 @@ class Service:
         if _size(response) <= budget:
             return response
         result = response.get("result", {})
+        if "details" in result:
+            while len(result["details"]) > 1 and _size(response) > budget:
+                result["details"].pop()
+                offset = response["scope"]["detail_offset"] + len(result["details"])
+                kind = f"details:{result['collection']}:{result['revision_id']}:{result['detail']}"
+                result["continuation"] = self._make_cursor(kind, offset)
+                if "details_underfilled_by_budget" not in response["omissions"]:
+                    response["omissions"].append("details_underfilled_by_budget")
+            if _size(response) <= budget:
+                return response
+            raise _BudgetError(
+                "One complete detail record exceeds this budget; hard maximum is 32768 bytes.",
+                _size(response),
+                detail_record={
+                    "revision_id": result["revision_id"],
+                    "offset": response["scope"]["detail_offset"],
+                    **{
+                        key: value
+                        for key, value in (
+                            result["details"][0] if result["details"] else {}
+                        ).items()
+                        if key in {"artifact_id", "projection_id", "kind", "loss_index"}
+                    },
+                },
+            )
         for key in (
             "projection_recipes",
             "failure_details",

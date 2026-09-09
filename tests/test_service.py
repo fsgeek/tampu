@@ -1084,3 +1084,110 @@ def test_inspect_rejects_listing_limits_outside_disclosed_range(
         journey_id=result["journey_id"], node_id=result["node_id"], limit=limit
     )
     assert inspection["error"]["code"] == "invalid_input"
+
+
+def test_processing_pages_include_every_recipe_and_loss_with_pinned_identity(service):
+    import copy
+
+    repo = service.repository
+    template = repo._members[0]
+    repo._members = [
+        dict(
+            copy.deepcopy(template),
+            artifact_id=f"artifact-{i}",
+            projection_id=f"projection-{i}",
+        )
+        for i in range(7)
+    ]
+
+    def projection(pid):
+        return {
+            "projection_id": pid,
+            "status": "ready",
+            "recipe": {"profile": pid},
+            "coverage": {"pages_total": 8},
+            "losses": [{"code": f"loss-{j}", "message": "東京" * 30} for j in range(8)],
+        }
+
+    repo.read_projection = projection
+    cursor = None
+    records = []
+    while True:
+        response = service.describe(
+            collection="papers",
+            revision="revision-1",
+            detail="processing",
+            detail_cursor=cursor,
+            detail_limit=100,
+            byte_budget=8192,
+        )
+        assert response["status"] == "ok", response
+        assert (
+            len(
+                json.dumps(
+                    response, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+                ).encode()
+            )
+            <= 8192
+        )
+        page = response["result"]
+        assert page["revision_id"] == "revision-1"
+        assert page["details"]
+        records.extend(page["details"])
+        cursor = page["continuation"]
+        if not cursor:
+            break
+        repo.current_revision = "revision-2"
+    assert len(records) == 7 * 9
+    assert {row["artifact_id"] for row in records} == {
+        f"artifact-{i}" for i in range(7)
+    }
+    assert all(row["projection_id"] for row in records)
+    assert len([row for row in records if row["kind"] == "recipe"]) == 7
+    first = service.describe(
+        collection="papers", revision="revision-1", detail="processing", detail_limit=1
+    )["result"]
+    wrong = service.describe(
+        collection="papers",
+        revision="revision-2",
+        detail="processing",
+        detail_cursor=first["continuation"],
+    )
+    assert wrong["error"]["code"] == "invalid_continuation"
+    tiny = service.describe(
+        collection="papers", revision="revision-1", detail="processing", byte_budget=256
+    )
+    assert tiny["error"]["code"] == "budget_too_small"
+    assert tiny["error"]["minimum_bytes"] > 256
+    maximum = service.describe(
+        collection="papers",
+        revision="revision-1",
+        detail="processing",
+        detail_limit=100,
+        byte_budget=32768,
+    )
+    assert maximum["status"] == "ok"
+    assert len(json.dumps(maximum, ensure_ascii=False).encode()) < 32768
+
+
+def test_detail_oversize_record_returns_minimum_without_skipping(service):
+    service.repository.read_projection = lambda pid: {
+        "status": "failed",
+        "coverage": {},
+        "recipe": {"oversize": "東京" * 6000},
+        "losses": [{"code": "failure"}],
+    }
+    response = service.describe(
+        collection="papers", detail="processing", byte_budget=32768
+    )
+    assert response["status"] == "error"
+    assert response["error"]["code"] == "budget_too_small"
+    assert response["error"]["minimum_bytes"] > 32768
+    assert response["error"]["detail_record"] == {
+        "revision_id": "revision-1",
+        "offset": 0,
+        "artifact_id": "artifact-0",
+        "projection_id": "projection-0",
+        "kind": "recipe",
+    }
+    assert service.active_journey_count == 0

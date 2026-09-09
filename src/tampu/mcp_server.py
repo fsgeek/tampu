@@ -34,7 +34,7 @@ def create_server(service: Service) -> FastMCP:
             "Describe published collections and paged published revision IDs, bounded "
             "facets, supported filter keys/examples, extraction coverage/losses, projection "
             "recipes, lexical any_terms/all_terms/phrase modes, limits, and honestly "
-            "unavailable capabilities. collection_scope reports current counts; validation_scope reports frozen evaluation conditions and per-mechanism statuses. Follow validation_scope.continuation as validation_cursor for more experiment records. Detail is paged. This is a durable read-only "
+            "unavailable capabilities. collection_scope reports current counts; validation_scope reports frozen evaluation conditions and per-mechanism statuses. Follow validation_scope.continuation as validation_cursor for more experiment records. Use collection plus detail=processing for complete attributed recipes/losses or detail=admission for source outcomes. Repeat returned revision_id as revision and continuation as detail_cursor; detail_limit is 1..100. Detail pages make progress or return a controlled minimum byte size. This is a durable read-only "
             "operation."
         ),
         annotations=ToolAnnotations(
@@ -55,6 +55,9 @@ def create_server(service: Service) -> FastMCP:
         revision_cursor: SkipValidation[str | None] = None,
         revision_limit: SkipValidation[int] = 2,
         validation_cursor: SkipValidation[str | None] = None,
+        revision: SkipValidation[str | None] = None,
+        detail: SkipValidation[str | None] = None,
+        detail_cursor: SkipValidation[str | None] = None,
         byte_budget: SkipValidation[int] = 8192,
     ) -> TextContent:
         return _content(
@@ -68,6 +71,9 @@ def create_server(service: Service) -> FastMCP:
                 revision_cursor=revision_cursor,
                 revision_limit=revision_limit,
                 validation_cursor=validation_cursor,
+                revision=revision,
+                detail=detail,
+                detail_cursor=detail_cursor,
                 byte_budget=byte_budget,
             )
         )

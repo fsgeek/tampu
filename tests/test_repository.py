@@ -322,9 +322,7 @@ def test_published_revision_listing_excludes_staged_records(
 
     revisions = repo.published_revisions("papers")
 
-    assert [item["revision_id"] for item in revisions] == [
-        published["revision_id"]
-    ]
+    assert [item["revision_id"] for item in revisions] == [published["revision_id"]]
 
 
 def test_unknown_revision_and_missing_backing_file_are_typed(
@@ -602,7 +600,7 @@ def test_generation_boundaries_detect_unrecorded_concurrent_element_insert(
     revision = repo.ingest("papers", root, profile="poppler")
     original = repo._filter_members
 
-    def insert_between_boundaries(members, filters, lens):
+    def insert_between_boundaries(members, filters, lens, **kwargs):
         repo._db.collection("elements").insert(
             {
                 "_key": "concurrent-element",
@@ -616,7 +614,7 @@ def test_generation_boundaries_detect_unrecorded_concurrent_element_insert(
                 "type": "Page",
             }
         )
-        return original(members, filters, lens)
+        return original(members, filters, lens, **kwargs)
 
     monkeypatch.setattr(repo, "_filter_members", insert_between_boundaries)
     result = repo.search_candidates(
@@ -700,3 +698,189 @@ def test_http_timeout_in_nonlexical_supporting_read_is_controlled(
         repo.search_candidates(revision["revision_id"], lens, "", "filter", filters)
     assert raised.value.code == "query_timeout"
     assert "private endpoint detail" not in str(raised.value)
+
+
+@pytest.mark.parametrize("with_parent", [True, False])
+@pytest.mark.parametrize("failure", ["file", "subtree", "unsafe_root"])
+def test_admission_uncertainty_survives_public_ingestion_and_negative(
+    repository_config, tmp_path, monkeypatch, failure, with_parent
+):
+    from test_extraction import make_pdf
+
+    import tampu.capture as capture_module
+    from tampu.service import Service, compact_json
+
+    source = tmp_path / "source"
+    source.mkdir()
+    folder = source / "sub"
+    folder.mkdir()
+    paper = folder / "paper.pdf"
+    paper.write_bytes(make_pdf(["old evidence"]))
+    repo = Repository(repository_config)
+    first = repo.ingest("papers", source, profile="poppler") if with_parent else None
+    if failure == "file":
+        monkeypatch.setattr(
+            capture_module,
+            "_copy_stable_candidate",
+            lambda *a, **kw: (_ for _ in ()).throw(PermissionError()),
+        )
+    elif failure == "subtree":
+        real_open = capture_module.os.open
+
+        def fail_sub(path, *a, **kw):
+            if path == "sub":
+                raise PermissionError()
+            return real_open(path, *a, **kw)
+
+        monkeypatch.setattr(capture_module.os, "open", fail_sub)
+    else:
+        source.rename(tmp_path / "moved")
+        source.symlink_to(tmp_path / "moved", target_is_directory=True)
+    second = repo.ingest("papers", source, profile="poppler")
+    assert second["changes"]["removed"] == []
+    assert second["changes"]["unresolved"] == (["sub/paper.pdf"] if with_parent else [])
+    assert second["admission"]["unresolved_admissions"] == 1
+    assert second["admission"]["enumeration_complete"] is (failure == "file")
+    if first:
+        assert repo.members(first["revision_id"])
+    service = Service(repo)
+    response = service.search(
+        collection="papers", intent="scope", query="missing", limit=0, byte_budget=2200
+    )
+    assert response["status"] == "ok"
+    assert len(compact_json(response).encode()) <= 2200
+    result = response["result"]
+    assert result["admission"] == second["admission"]
+    finished = service.finish(
+        journey_id=result["journey_id"],
+        kind="bounded_negative",
+        statement="No selected text candidate",
+        node_id=result["node_id"],
+    )
+    assert finished["status"] == "ok"
+    assert finished["result"]["scope"]["admission"] == second["admission"]
+
+
+@pytest.mark.parametrize(
+    ("value", "precision", "lower", "upper", "matches", "unknown"),
+    [
+        ("2024", "year", "2024-03-15", "2024-03-20", 0, 1),
+        ("2024", "year", "2024-01-01", "2024-01-01", 0, 1),
+        ("2024", "year", "2024-01-01", "2024-12-31", 1, 0),
+        ("2024", "year", "2025-01-01", "2025-12-31", 0, 0),
+        ("2024-03", "month", "2024-03-15", "2024-03-20", 0, 1),
+        ("2024-03", "month", "2024-03-01", "2024-03-31", 1, 0),
+        ("2024-03", "month", "2024-04-01", "2024-04-30", 0, 0),
+        ("2024-03-17", "day", "2024-03-15", "2024-03-20", 1, 0),
+        ("2024-03-17", "day", "2024-03-18", "2024-03-20", 0, 0),
+    ],
+)
+def test_publication_precision_intervals(
+    value, precision, lower, upper, matches, unknown
+):
+    repo = object.__new__(Repository)
+    members = [
+        {
+            "artifact_id": "a",
+            "aliases": [],
+            "metadata": {"publication_date": {"value": value, "precision": precision}},
+        }
+    ]
+    selected, unresolved = repo._filter_members(
+        members,
+        {"field": "publication_date", "from": lower, "to": upper},
+        "temporal/v1",
+    )
+    assert len(selected) == matches
+    assert unresolved == unknown
+
+
+def test_temporal_ambiguity_and_legacy_admission_reach_findings(
+    repository_config, tmp_path
+):
+    from test_extraction import make_pdf
+
+    from tampu.service import Service
+
+    source = tmp_path / "source"
+    source.mkdir()
+    paper = source / "paper.pdf"
+    paper.write_bytes(make_pdf(["evidence"]))
+    aid = hashlib.sha256(paper.read_bytes()).hexdigest()
+    repo = Repository(repository_config)
+    revision = repo.ingest(
+        "papers",
+        source,
+        profile="poppler",
+        metadata={
+            aid: {
+                "publication_date": {
+                    "value": "2024",
+                    "precision": "year",
+                    "origin": "fixture",
+                }
+            }
+        },
+    )
+    # Model a pre-fix published document only in this disposable database.
+    old = repo._db.collection("revisions").get(revision["revision_id"])
+    old.pop("admission")
+    repo._db.collection("revisions").replace(old)
+    assert (
+        repo.resolve_revision("papers", revision["revision_id"])["admission"]
+        == revision["admission"]
+    )
+    assert "admission" not in repo._db.collection("revisions").get(
+        revision["revision_id"]
+    )
+    service = Service(repo)
+    result = service.search(
+        collection="papers",
+        intent="date precision",
+        lens="temporal/v1",
+        mode="filter",
+        filters={"field": "publication_date", "from": "2024-03-15", "to": "2024-03-20"},
+        limit=0,
+        byte_budget=2200,
+    )["result"]
+    assert result["full_count"] == 0
+    assert result["unknown_count"] == 1
+    assert result["temporal_scope"]["unknown_or_ambiguous"] == 1
+    assert result["temporal_scope"]["ambiguous_intervals"] == 1
+    assert result["temporal_scope"]["missing_values"] == 0
+    finding = service.finish(
+        journey_id=result["journey_id"],
+        kind="bounded_negative",
+        statement="No definite interval matches",
+        node_id=result["node_id"],
+    )["result"]
+    assert finding["scope"]["unknown_count"] == 1
+    assert finding["scope"]["temporal_scope"] == result["temporal_scope"]
+    assert finding["scope"]["count_scope"] == "known_selected_representation"
+
+
+def test_recipe_upgrade_changes_new_revision_selection_only(
+    repository_config, tmp_path, monkeypatch
+):
+    from test_extraction import make_pdf
+
+    import tampu.extraction as extraction_module
+
+    source = tmp_path / "source"
+    source.mkdir()
+    (source / "paper.pdf").write_bytes(make_pdf(["retained"]))
+    repo = Repository(repository_config)
+    first = repo.ingest("papers", source, profile="poppler")
+    old_member = repo.members(first["revision_id"])[0]
+    old_projection = repo.read_projection(old_member["projection_id"])
+    monkeypatch.setattr(extraction_module, "NORMALIZATION_VERSION", "regression/v2")
+    second = repo.ingest("papers", source, profile="poppler")
+    assert second["changes"]["processing_changed"] == [old_member["artifact_id"]]
+    assert repo.members(first["revision_id"]) == [old_member]
+    assert repo.read_projection(old_member["projection_id"]) == old_projection
+    assert (
+        repo.search_candidates(
+            first["revision_id"], "lexical/v1", "retained", "any_terms", {}
+        )["count"]
+        == 1
+    )

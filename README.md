@@ -211,7 +211,24 @@ The current four-tool prototype exposes live revision counts as `collection_scop
 and frozen evaluation conditions as `validation_scope` in `describe`. Follow the
 latter's continuation using `validation_cursor` in the same MCP process to read
 both experiment records. Findings carry the same content-hashed profile reference.
-The default response budget is 8192 UTF-8 JSON bytes; omitted optional details are
-named, and a larger requested budget exposes them. These profile and inspection
-contract corrections were made after the recorded consumer observations; see the
+The default response budget is 8192 UTF-8 JSON bytes, with a hard maximum of
+32768. Omitted optional summary fields are named; increasing the budget can recover
+those fields but does not remove the summary's five-record caps. For complete
+processing records, call `describe(collection="papers", detail="processing")`.
+Repeat its `revision_id` as `revision` and `continuation` as `detail_cursor` in the
+same MCP process. `detail_limit` is 1..100; each recipe/coverage record and each
+individual loss carries artifact and projection IDs. `detail="admission"` pages
+source observations, including exclusions and failures. Pages return complete
+records and advance, or return `budget_too_small` with `minimum_bytes`. If one
+record exceeds 32768 bytes, it cannot be delivered through this interface; the
+owner-local immutable record remains available, and nothing is silently skipped.
+
+Search and bounded-negative findings retain revision-wide admission outcomes and
+enumeration uncertainty even when an exact selected-representation count is zero.
+Publication dates use `publication-date-interval/v1`: year/month assertions denote
+inclusive calendar intervals. A fully contained interval is a definite match, a
+disjoint interval is excluded, and partial overlap is unresolved. Search and
+negative scope report `temporal_scope.ambiguous_intervals` and `missing_values`;
+`unknown_count` includes both. These corrections were made after the recorded
+consumer observations; see the
 [results and limitations](docs/experiments/2026-09-08-usable-prototype-results.md).

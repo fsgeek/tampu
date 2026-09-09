@@ -245,3 +245,29 @@ def test_parent_directory_swapped_to_symlink_cannot_escape_root(
     assert scan["sources"] == [
         {"relative_path": "nested", "status": "error", "error_code": "unsafe_source"}
     ]
+
+
+def test_unknown_entry_type_keeps_enumeration_incomplete(tmp_path, monkeypatch):
+    source = tmp_path / "source"
+    source.mkdir()
+    (source / "sub").mkdir()
+
+    class UnreadableEntry:
+        name = "sub"
+
+        def is_symlink(self):
+            raise PermissionError()
+
+    class Entries:
+        def __enter__(self):
+            return iter([UnreadableEntry()])
+
+        def __exit__(self, *args):
+            pass
+
+    monkeypatch.setattr(capture_module.os, "scandir", lambda fd: Entries())
+    scan = capture_tree(source, tmp_path / "store")
+    assert scan["enumeration_complete"] is False
+    assert scan["sources"] == [
+        {"relative_path": "sub", "status": "error", "error_code": "observation_failed"}
+    ]

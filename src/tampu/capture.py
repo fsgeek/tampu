@@ -266,6 +266,8 @@ def capture_tree(root: Path, store: Path) -> dict:
                         path, relative, directory_fd, entry.stat(follow_symlinks=False)
                     )
             except OSError:
+                # Its type is unknown: this could hide an unenumerated subtree.
+                enumeration_complete = False
                 sources.append(
                     {
                         "relative_path": relative,

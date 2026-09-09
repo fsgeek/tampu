@@ -13,6 +13,9 @@ from typing import Any
 
 from .errors import TampuError
 
+ADAPTER_VERSION = "tampu-adapters/v2"
+NORMALIZATION_VERSION = "tampu-elements/v1"
+
 _PINNED_IMAGE = re.compile(r"^[^@\s]+@sha256:[0-9a-f]{64}$")
 _UNSTRUCTURED_SCRIPT = """
 import importlib.metadata
@@ -345,7 +348,15 @@ def extract_artifact(
             "unpinned_extractor_image",
             "Unstructured requires an image pinned by SHA-256 digest.",
         )
-    requested = {"profile": profile, "timeout_seconds": timeout}
+    requested = {
+        "profile": profile,
+        "timeout_seconds": timeout,
+        "profile_version": "poppler-pages/v1"
+        if profile == "poppler"
+        else "unstructured-fast/v1",
+        "adapter_version": ADAPTER_VERSION,
+        "normalization_version": NORMALIZATION_VERSION,
+    }
     if profile == "unstructured":
         requested.update(
             {"image": image, "strategy": "fast", "network": "none", "memory": "8g"}
@@ -358,9 +369,6 @@ def extract_artifact(
                 "physical_pages": True,
             }
         )
-    existing = _successful_match(store, artifact["artifact_id"], requested)
-    if existing is not None:
-        return existing
     source = store / artifact["store_path"]
     started = time.monotonic()
     raw: Any
@@ -368,9 +376,23 @@ def extract_artifact(
     details: dict
     losses: list[dict]
     try:
+        if profile == "poppler":
+            probe = _run(["pdftotext", "-v"], timeout)
+            version_lines = (probe.stderr or probe.stdout).splitlines()
+            if probe.returncode or not version_lines:
+                raise TampuError(
+                    "extractor_version_failed",
+                    "The Poppler version could not be determined.",
+                )
+            requested["extractor_version"] = version_lines[0]
+        existing = _successful_match(store, artifact["artifact_id"], requested)
+        if existing is not None:
+            return existing
         with tempfile.TemporaryDirectory(prefix="tampu-extract-") as temporary:
             if profile == "poppler":
-                raw, elements, details, losses = _poppler(source, timeout)
+                raw, elements, details, losses = _poppler(
+                    source, max(0.001, timeout - (time.monotonic() - started))
+                )
             else:
                 raw, elements, details, losses = _unstructured(
                     source, timeout, image, Path(temporary)
@@ -382,6 +404,24 @@ def extract_artifact(
         }
         status = (
             "failed" if any(loss["code"] in fatal_codes for loss in losses) else "ready"
+        )
+    except TampuError as error:
+        if error.code != "extractor_version_failed":
+            raise
+        raw, elements, details, losses, status = (
+            {
+                "processes": {
+                    "version": {
+                        "stdout": probe.stdout,
+                        "stderr": probe.stderr,
+                        "returncode": probe.returncode,
+                    }
+                }
+            },
+            [],
+            {},
+            [{"code": error.code, "message": error.message}],
+            "failed",
         )
     except FileNotFoundError:
         raw, elements, details, losses, status = (

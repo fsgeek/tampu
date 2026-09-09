@@ -158,7 +158,7 @@ def test_cli_init_ingest_describe_and_real_mcp_stdio_transport(
                         "collection": "papers",
                         "intent": "transport budget",
                         "query": "alpha",
-                        "byte_budget": 1000,
+                        "byte_budget": 1600,
                     },
                 )
                 payload = _application_json(search_call)["result"]
@@ -262,7 +262,7 @@ def test_cli_init_ingest_describe_and_real_mcp_stdio_transport(
     assert _application_json(describe_call)["status"] == "ok"
     search_payload = _application_json(search_call)
     assert search_payload["status"] == "ok"
-    assert len(search_call.content[0].text.encode("utf-8")) <= 1000
+    assert len(search_call.content[0].text.encode("utf-8")) <= 1600
     malformed_payload = _application_json(malformed)
     assert malformed_payload["error"]["code"] == "invalid_input"
     assert _application_json(missing_inspect)["status"] == "error"
@@ -280,3 +280,76 @@ def test_cli_init_ingest_describe_and_real_mcp_stdio_transport(
         str(source),
     ):
         assert sentinel not in stderr_text
+
+
+def test_mcp_processing_and_admission_details_are_paged_and_pinned(
+    repository_config, monkeypatch, tmp_path
+):
+    source = tmp_path / "source"
+    source.mkdir()
+    for number in range(7):
+        (source / f"paper-{number}.pdf").write_bytes(
+            f"%PDF-1.4\nevidence-{number}".encode()
+        )
+    _publish_ready_fixture(repository_config, monkeypatch, source)
+    config_path = tmp_path / "runtime.json"
+    _write_config(repository_config, config_path)
+
+    async def probe():
+        parameters = StdioServerParameters(
+            command=sys.executable,
+            args=["-m", "tampu.cli", "serve"],
+            env={**os.environ, "TAMPU_CONFIG": str(config_path)},
+            cwd=Path.cwd(),
+        )
+        with (tmp_path / "stderr").open("w+") as stderr:
+            async with (
+                stdio_client(parameters, errlog=stderr) as (read, write),
+                ClientSession(read, write) as session,
+            ):
+                await session.initialize()
+                schema = {
+                    t.name: t.inputSchema for t in (await session.list_tools()).tools
+                }["describe"]
+                assert {"detail", "detail_cursor", "revision"} <= schema[
+                    "properties"
+                ].keys()
+                for detail in ["processing", "admission"]:
+                    args = {"collection": "papers", "detail": detail, "detail_limit": 2}
+                    records = []
+                    while True:
+                        response = _application_json(
+                            await session.call_tool("describe", args)
+                        )
+                        assert response["status"] == "ok", response
+                        assert (
+                            len(
+                                json.dumps(
+                                    response,
+                                    ensure_ascii=False,
+                                    sort_keys=True,
+                                    separators=(",", ":"),
+                                ).encode()
+                            )
+                            <= 8192
+                        )
+                        page = response["result"]
+                        assert page["details"]
+                        records.extend(page["details"])
+                        if not page["continuation"]:
+                            break
+                        args.update(
+                            revision=page["revision_id"],
+                            detail_cursor=page["continuation"],
+                        )
+                    assert len(records) == 7
+                    assert len({r["artifact_id"] for r in records}) == 7
+                invalid = _application_json(
+                    await session.call_tool(
+                        "describe",
+                        {"collection": "papers", "detail": [], "detail_limit": True},
+                    )
+                )
+                assert invalid["error"]["code"] == "invalid_input"
+
+    asyncio.run(probe())

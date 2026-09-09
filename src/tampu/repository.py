@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+import calendar
 import hashlib
 import json
 import re
 import uuid
+from collections import Counter
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -179,13 +181,9 @@ class Repository:
 
     def _verify_schema(self) -> None:
         if any(not self._db.has_collection(name) for name in _COLLECTIONS):
-            raise TampuError(
-                "storage_unavailable", "Tampu storage is not initialized."
-            )
+            raise TampuError("storage_unavailable", "Tampu storage is not initialized.")
         if "text_view" not in {view["name"] for view in self._db.views()}:
-            raise TampuError(
-                "storage_unavailable", "Tampu storage is not initialized."
-            )
+            raise TampuError("storage_unavailable", "Tampu storage is not initialized.")
 
     def _ensure_schema(self) -> None:
         for name in _COLLECTIONS:
@@ -313,7 +311,9 @@ class Repository:
                     "metadata": assertions,
                 }
             )
-        changes = self._changes(parent, capture["sources"], memberships)
+        changes = self._changes(
+            parent, capture["sources"], memberships, capture["enumeration_complete"]
+        )
         coverage = self._coverage(memberships, projections)
         revision = {
             "_key": revision_id,
@@ -324,6 +324,9 @@ class Repository:
             "observed_start": capture["observed_start"],
             "observed_end": capture["observed_end"],
             "enumeration_complete": capture["enumeration_complete"],
+            "admission": self._admission_summary(
+                capture["sources"], capture["enumeration_complete"]
+            ),
             "selection_digest": _digest(
                 [
                     {
@@ -458,7 +461,7 @@ function (params) {
                 ) from error
             raise
 
-    def _changes(self, parent, sources, memberships):
+    def _changes(self, parent, sources, memberships, enumeration_complete=True):
         current_paths = {
             s["relative_path"]: s.get("artifact_id")
             for s in sources
@@ -481,9 +484,33 @@ function (params) {
             m["artifact_id"]: (m["projection_id"], m["projection_status"])
             for m in memberships
         }
+        absent = previous_paths.keys() - current_paths.keys()
+        observed = {s["relative_path"]: s["status"] for s in sources}
+        # A failed observation establishes neither removal nor fresh membership.
+        unresolved = {
+            p
+            for p in absent
+            if not enumeration_complete
+            or any(
+                status == "error"
+                and (path == "." or p == path or p.startswith(path + "/"))
+                for path, status in observed.items()
+            )
+        }
+        excluded = {
+            p
+            for p in absent - unresolved
+            if p in observed
+            or any(
+                status.startswith("excluded_") and p.startswith(path + "/")
+                for path, status in observed.items()
+            )
+        }
         return {
             "added": sorted(current_paths.keys() - previous_paths.keys()),
-            "removed": sorted(previous_paths.keys() - current_paths.keys()),
+            "removed": sorted(absent - unresolved - excluded),
+            "unresolved": sorted(unresolved),
+            "excluded": sorted(excluded),
             "replaced": sorted(
                 p
                 for p in current_paths.keys() & previous_paths.keys()
@@ -495,6 +522,35 @@ function (params) {
                 if current_selection[a] != previous_selection[a]
             ),
         }
+
+    @staticmethod
+    def _admission_summary(sources, enumeration_complete):
+        return {
+            "outcomes": dict(sorted(Counter(s["status"] for s in sources).items())),
+            "unresolved_admissions": sum(s["status"] == "error" for s in sources),
+            "enumeration_complete": enumeration_complete,
+            "scope": "revision_source_observations",
+        }
+
+    def admission_details(self, revision: str) -> list[dict]:
+        document = self._db.collection("revisions").get(revision)
+        if not document or document.get("state") != "published":
+            raise TampuError(
+                "revision_not_ready", "The requested revision is not published."
+            )
+        return list(
+            self._db.aql.execute(
+                "FOR o IN observations FILTER o.revision_id == @revision SORT o.relative_path RETURN UNSET(o, '_key', '_id', '_rev')",
+                bind_vars={"revision": revision},
+                max_runtime=_TIMEOUT,
+            )
+        )
+
+    def _revision_admission(self, revision):
+        return revision.get("admission") or self._admission_summary(
+            self.admission_details(revision["revision_id"]),
+            revision["enumeration_complete"],
+        )
 
     def _refresh_index_generation(self) -> dict:
         generation = self._observe_index_generation()
@@ -548,7 +604,9 @@ function (params) {
             raise TampuError(
                 "revision_not_ready", "The requested revision is not published."
             )
-        return {k: v for k, v in document.items() if not k.startswith("_")}
+        result = {k: v for k, v in document.items() if not k.startswith("_")}
+        result["admission"] = self._revision_admission(result)
+        return result
 
     def members(self, revision: str) -> list[dict]:
         document = self._db.collection("revisions").get(revision)
@@ -574,7 +632,9 @@ function (params) {
         )
         return list(rows)
 
-    def read_projection(self, projection_id: str, *, verify_bytes: bool = False) -> dict:
+    def read_projection(
+        self, projection_id: str, *, verify_bytes: bool = False
+    ) -> dict:
         document = self._db.collection("projections").get(projection_id)
         published = list(
             self._db.aql.execute(
@@ -602,8 +662,7 @@ function (params) {
                     and artifact.get("sha256") == expected_artifact
                     and artifact_path.is_file()
                     and _file_sha256(artifact_path) == expected_artifact
-                    and _file_sha256(raw_path)
-                    == document["recipe"]["output_sha256"]
+                    and _file_sha256(raw_path) == document["recipe"]["output_sha256"]
                     and _file_sha256(elements_path)
                     == document["recipe"]["elements_sha256"]
                 )
@@ -650,7 +709,10 @@ function (params) {
             )
         generation_before = self._observe_index_generation()
         members = self.members(revision)
-        filtered, unknown_count = self._filter_members(members, filters, lens)
+        temporal_counts = {}
+        filtered, unknown_count = self._filter_members(
+            members, filters, lens, temporal_counts=temporal_counts
+        )
         allowed = {m["artifact_id"]: m for m in filtered}
         if lens == "lexical/v1":
             predicates = {
@@ -730,6 +792,8 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
                     "tie_breaker": "artifact_id",
                 }
             )
+        if lens == "temporal/v1":
+            lens_config["publication_date_semantics"] = "publication-date-interval/v1"
         return {
             "revision_id": revision,
             "lens": lens,
@@ -739,6 +803,17 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
             "count": len(candidates),
             "count_kind": "exact",
             "unknown_count": unknown_count,
+            "admission": self._revision_admission(revision_doc),
+            "temporal_scope": {
+                "semantics": "publication-date-interval/v1"
+                if filters.get("field") == "publication_date"
+                else "instant-inclusive/v1",
+                "unknown_or_ambiguous": unknown_count,
+                **temporal_counts,
+                "meaning": "missing dates or intervals partly overlapping bounds; exact count covers definite matches",
+            }
+            if lens == "temporal/v1"
+            else None,
             "candidates": candidates,
             "coverage": coverage,
             "selection": "maximum_element_bm25_then_artifact_id"
@@ -831,7 +906,9 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
                 projections[member["artifact_id"]] = document
         return self._coverage(members, projections)
 
-    def _filter_members(self, members, filters, lens):
+    def _filter_members(self, members, filters, lens, *, temporal_counts=None):
+        counts = temporal_counts if temporal_counts is not None else {}
+        counts.update(missing_values=0, ambiguous_intervals=0)
         temporal_field = filters.get("field") if lens == "temporal/v1" else None
         scoped = []
         for m in members:
@@ -869,37 +946,56 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
                 else:
                     value = metadata.get("publication_date", {}).get("value")
                 if value is None:
+                    counts["missing_values"] += 1
                     unknown += 1
                     ok &= filters.get("missing") is True
                 else:
                     if filters.get("missing") is True:
                         ok = False
-                    normalized = value
                     if temporal_field == "publication_date":
-                        normalized = datetime.fromisoformat(
-                            value
-                            + (
-                                "-01-01"
-                                if len(value) == 4
-                                else "-01"
-                                if len(value) == 7
-                                else ""
+                        assertion = metadata["publication_date"]
+                        precision = assertion.get("precision")
+                        if precision == "year":
+                            first = datetime(int(value), 1, 1, tzinfo=UTC)
+                            last = datetime(int(value), 12, 31, tzinfo=UTC)
+                        elif precision == "month":
+                            year, month = map(int, value.split("-"))
+                            first = datetime(year, month, 1, tzinfo=UTC)
+                            last = datetime(
+                                year,
+                                month,
+                                calendar.monthrange(year, month)[1],
+                                tzinfo=UTC,
                             )
-                        ).replace(tzinfo=UTC)
-                    if "from" in filters:
+                        elif precision == "day":
+                            first = last = datetime.fromisoformat(value).replace(
+                                tzinfo=UTC
+                            )
+                        else:
+                            counts["ambiguous_intervals"] += 1
+                            unknown += 1
+                            continue
                         lower = (
                             datetime.fromisoformat(filters["from"]).replace(tzinfo=UTC)
-                            if temporal_field == "publication_date"
-                            else _instant(filters["from"])
+                            if "from" in filters
+                            else datetime.min.replace(tzinfo=UTC)
                         )
-                        ok &= normalized >= lower
-                    if "to" in filters:
                         upper = (
                             datetime.fromisoformat(filters["to"]).replace(tzinfo=UTC)
-                            if temporal_field == "publication_date"
-                            else _instant(filters["to"])
+                            if "to" in filters
+                            else datetime.max.replace(tzinfo=UTC)
                         )
-                        ok &= normalized <= upper
+                        if last < lower or first > upper:
+                            ok = False
+                        elif first < lower or last > upper:
+                            counts["ambiguous_intervals"] += 1
+                            unknown += 1
+                            ok = False
+                    else:
+                        if "from" in filters:
+                            ok &= value >= _instant(filters["from"])
+                        if "to" in filters:
+                            ok &= value <= _instant(filters["to"])
             if ok:
                 result.append(m)
         return result, unknown
