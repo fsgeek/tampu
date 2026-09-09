@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 
 import pytest
+from arango.aql import AQL
 
 from tampu.config import load_config
 from tampu.errors import TampuError
@@ -517,6 +518,10 @@ def test_empty_lexical_query_has_no_metadata_shaped_success(
         ("lexical/v1", "alpha", "any_terms", {"surprise": "ignored"}),
         ("metadata/v1", "", "filter", {"artifact_id": 7}),
         ("metadata/v1", "", "filter", {"missing": "not_supported"}),
+        ("metadata/v1", "", "filter", {"missing": []}),
+        ("metadata/v1", "", "filter", {"missing": {}}),
+        ("temporal/v1", "", "filter", {"field": []}),
+        ("temporal/v1", "", "filter", {"field": {}}),
         ("temporal/v1", "", "filter", {"field": "observed_time", "from": "yesterday"}),
         (
             "temporal/v1",
@@ -540,3 +545,72 @@ def test_invalid_filter_shapes_are_controlled(
     with pytest.raises(TampuError) as raised:
         repo.search_candidates(revision["revision_id"], lens, query, mode, filters)
     assert raised.value.code == "invalid_input"
+
+
+def test_generation_boundaries_detect_unrecorded_concurrent_element_insert(
+    repository_config, fake_extraction, tmp_path, monkeypatch
+):
+    root = tmp_path / "source"
+    write_pdf(root, "one.pdf", "alpha")
+    repo = Repository(repository_config)
+    revision = repo.ingest("papers", root, profile="poppler")
+    original = repo._filter_members
+
+    def insert_between_boundaries(members, filters, lens):
+        repo._db.collection("elements").insert(
+            {
+                "_key": "concurrent-element",
+                "artifact_id": "concurrent-artifact",
+                "projection_id": "concurrent-projection",
+                "ordinal": 0,
+                "text": "concurrent text",
+                "page": 1,
+                "coordinates": None,
+                "original_element_id": "concurrent",
+                "type": "Page",
+            }
+        )
+        return original(members, filters, lens)
+
+    monkeypatch.setattr(repo, "_filter_members", insert_between_boundaries)
+    result = repo.search_candidates(
+        revision["revision_id"], "metadata/v1", "", "filter", {}
+    )
+    assert result["index_generation_stable"] is False
+    assert (
+        result["index_generation_before"]["generation_id"]
+        != result["index_generation"]["generation_id"]
+    )
+
+
+def test_all_database_reads_receive_ten_second_bounds(
+    repository_config, fake_extraction, tmp_path, monkeypatch
+):
+    import tampu.repository as repository_module
+
+    root = tmp_path / "source"
+    write_pdf(root, "one.pdf", "alpha")
+    request_timeouts = []
+    real_client = repository_module.ArangoClient
+
+    def bounded_client(*args, **kwargs):
+        request_timeouts.append(kwargs.get("request_timeout"))
+        return real_client(*args, **kwargs)
+
+    monkeypatch.setattr(repository_module, "ArangoClient", bounded_client)
+    repo = Repository(repository_config)
+    revision = repo.ingest("papers", root, profile="poppler")
+    aql_bounds = []
+    real_execute = AQL.execute
+
+    def bounded_execute(self, *args, **kwargs):
+        aql_bounds.append(kwargs.get("max_runtime"))
+        return real_execute(self, *args, **kwargs)
+
+    monkeypatch.setattr(AQL, "execute", bounded_execute)
+    repo.describe()
+    repo.members(revision["revision_id"])
+    repo.read_projection(repo.members(revision["revision_id"])[0]["projection_id"])
+    repo.search_candidates(revision["revision_id"], "metadata/v1", "", "filter", {})
+    assert request_timeouts == [10]
+    assert aql_bounds and set(aql_bounds) == {10}

@@ -92,7 +92,7 @@ Each generation object is:
 }
 ```
 
-`generation_id` is the digest of the sorted projection IDs and element counts present in the shared immutable element collection. It changes when a newly staged ready projection adds indexed elements, even if that revision later fails publication and the default revision pointer stays unchanged. `index_generation_stable` means the recorded generation IDs immediately before and after this repository execution were equal. It is an observation around execution, not an atomic ArangoSearch-statistics snapshot and not a historical-score replay guarantee.
+`generation_id` is the digest of the sorted projection IDs and element counts present in the shared immutable element collection. The repository recomputes this digest from the actual collection at both execution boundaries and persists the latest observation; it does not trust a cached current-generation record. It changes when a newly staged ready projection adds indexed elements, even if that revision later fails publication and the default revision pointer stays unchanged. `index_generation_stable` means the recomputed generation IDs immediately before and after this repository execution were equal. It is an observation around execution, not an atomic ArangoSearch-statistics snapshot and not a historical-score replay guarantee.
 
 Every `lens_config` contains `lens` and `revision_scope: "pinned_projection_selection"`. Lexical configuration additionally contains `analyzer: "text_en"`, the requested `mode`, `artifact_score: "maximum_matching_element_bm25"`, and `tie_breaker: "artifact_id"`.
 
@@ -240,11 +240,21 @@ git diff --check
 clean
 ```
 
+Review fix round 2 verification:
+
+```text
+uv run pytest tests/test_repository.py -q
+28 passed in 7.27s
+
+uvx ruff check src/tampu/repository.py tests/test_repository.py
+All checks passed
+```
+
 ## Limitations and development observations
 
 - `observed_time` describes the revision scan interval, so it cannot by itself answer when unchanged bytes first entered owner custody. Artifact `captured_at`, revision lineage, and path changes remain separate facts.
 - Source modification time is filesystem-reported and is not a publication or acquisition assertion. When an artifact has multiple aliases, the membership retains every alias mtime; the initial temporal comparison uses the earliest alias mtime.
 - Ready projections with declared losses count separately from failed projections. A failed projection with zero reported pages contributes one artifact to `pages_unknown`; it is not treated as evidence for a zero-page source.
 - Search scores are current ArangoSearch BM25 navigation scores. Pinned revision membership and projections remain fixed, while index statistics may change as later immutable projections, including staged projections, are added. Before/after generation observations expose that possibility without claiming an atomic statistics snapshot or historical score reproduction.
-- Metadata and temporal retrieval still materialize revision memberships and projection coverage in process. Their supporting AQL reads do not all carry the 10-second max-runtime option before candidate-cap enforcement; this deferred whole-branch review item limits the current timeout guarantee to the explicitly bounded search/evidence/generation queries.
+- Every Arango client request has a 10-second HTTP request timeout, every AQL execution also supplies a 10-second database `max_runtime`, and publication transactions carry the same timeout. Metadata and temporal retrieval still materialize revision memberships and perform per-projection coverage reads in process; reducing those N+1 reads and moving filtering/counting into bounded AQL remains a performance optimization rather than an unbounded database-operation gap.
 - The repository returns full candidate records up to its hard cap. Task 3 owns response packing, hit display limits, cursors, and byte budgets.

@@ -142,7 +142,9 @@ class Repository:
                 raise ValueError
             self.store = Path(config["store"]).expanduser().resolve()
             self.store.mkdir(parents=True, exist_ok=True)
-            self._db = ArangoClient(hosts=config["endpoint"]).db(
+            self._db = ArangoClient(
+                hosts=config["endpoint"], request_timeout=_TIMEOUT
+            ).db(
                 config["database"],
                 username=config["username"],
                 password=config["password"],
@@ -378,10 +380,12 @@ class Repository:
         expected = self._db.aql.execute(
             "RETURN LENGTH(FOR e IN elements FILTER e.projection_id IN @ids RETURN 1)",
             bind_vars={"ids": projection_ids},
+            max_runtime=_TIMEOUT,
         ).next()
         visible = self._db.aql.execute(
             'RETURN LENGTH(FOR e IN text_view SEARCH ANALYZER(e.projection_id IN @ids, "identity") OPTIONS {waitForSync: true} RETURN 1)',
             bind_vars={"ids": projection_ids},
+            max_runtime=_TIMEOUT,
         ).next()
         if expected != visible:
             raise TampuError(
@@ -436,6 +440,7 @@ function (params) {
             rows = self._db.aql.execute(
                 "FOR o IN observations FILTER o.revision_id == @r && o.status == 'captured' RETURN o",
                 bind_vars={"r": parent["revision_id"]},
+                max_runtime=_TIMEOUT,
             )
             previous_paths = {r["relative_path"]: r["artifact_id"] for r in rows}
             previous_selection = {
@@ -482,14 +487,6 @@ function (params) {
             key: value for key, value in generation.items() if not key.startswith("_")
         }
 
-    def _index_generation(self) -> dict:
-        document = self._db.collection("index_generations").get("current")
-        if not document:
-            return self._refresh_index_generation()
-        return {
-            key: value for key, value in document.items() if not key.startswith("_")
-        }
-
     def _coverage(self, memberships, projections):
         ready = [
             projections[m["artifact_id"]]
@@ -531,6 +528,7 @@ function (params) {
         rows = self._db.aql.execute(
             "FOR m IN memberships FILTER m.revision_id == @revision SORT m.artifact_id RETURN UNSET(m, '_key', '_id', '_rev')",
             bind_vars={"revision": revision},
+            max_runtime=_TIMEOUT,
         )
         return list(rows)
 
@@ -563,7 +561,7 @@ function (params) {
             raise TampuError(
                 "revision_not_ready", "The requested revision is not published."
             )
-        generation_before = self._index_generation()
+        generation_before = self._refresh_index_generation()
         members = self.members(revision)
         filtered, unknown_count = self._filter_members(members, filters, lens)
         allowed = {m["artifact_id"]: m for m in filtered}
@@ -634,7 +632,7 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
         if len(candidates) > _CAP:
             raise TampuError("candidate_limit", "The candidate limit was exceeded.")
         coverage = self._coverage_for_members(filtered)
-        generation_after = self._index_generation()
+        generation_after = self._refresh_index_generation()
         lens_config = {"lens": lens, "revision_scope": "pinned_projection_selection"}
         if lens == "lexical/v1":
             lens_config.update(
@@ -681,16 +679,21 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
             allowed.add("missing")
             if query or mode != "filter":
                 raise TampuError("invalid_input", "The metadata operation is invalid.")
-            if "missing" in filters and filters["missing"] not in _METADATA_FIELDS:
+            if "missing" in filters and (
+                not isinstance(filters["missing"], str)
+                or filters["missing"] not in _METADATA_FIELDS
+            ):
                 raise TampuError(
                     "invalid_input", "The missing metadata field is invalid."
                 )
         else:
             allowed.update({"field", "from", "to", "missing"})
+            temporal_field = filters.get("field")
             if (
                 query
                 or mode != "filter"
-                or filters.get("field")
+                or not isinstance(temporal_field, str)
+                or temporal_field
                 not in {
                     "observed_time",
                     "source_modification_time",
@@ -818,7 +821,7 @@ SORT best.score DESC, artifact_id ASC LIMIT @_limit RETURN {{artifact_id, best}}
         query = (
             "FOR c IN collections SORT c.name RETURN UNSET(c, '_key', '_id', '_rev')"
         )
-        rows = list(self._db.aql.execute(query))
+        rows = list(self._db.aql.execute(query, max_runtime=_TIMEOUT))
         if collection is not None:
             rows = [r for r in rows if r["name"] == collection]
             if not rows:
