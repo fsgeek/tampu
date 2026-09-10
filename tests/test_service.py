@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -456,6 +457,71 @@ def test_inspect_opens_unseen_candidate_by_artifact_page_and_ordinal(
         page=1,
     )
     assert denied["error"]["code"] == "missing_evidence"
+
+
+@pytest.fixture
+def element_count_journey(service: Service):
+    # Page 2 reproduces the 33-element inspection size without paper text.
+    elements = [
+        {
+            "ordinal": ordinal,
+            "page": 1 if ordinal < 2 else 2 if ordinal < 35 else 3,
+            "type": "NarrativeText",
+            "text": f"Element {ordinal}: " + "café 東京 😀 " * 4,
+        }
+        for ordinal in range(37)
+    ]
+    path = service.repository.store / "elements/projection-0.json"
+    path.write_text(json.dumps(elements, ensure_ascii=False))
+    search = service.search(collection="papers", intent="inspect element counts", query="alpha")["result"]
+    return {k: search[k] for k in ("journey_id", "node_id")}
+
+
+def test_element_counts_follow_physical_page_continuation(service: Service, element_count_journey):
+    first = service.inspect(**element_count_journey, artifact_id="artifact-0", page=2, limit=20)
+    assert first["status"] == "ok"
+    assert len(encoded(first)) <= 8192
+    one = first["result"]
+    assert (one["total_elements"], one["returned_count"], one["remaining_elements"]) == (33, 20, 13)
+    assert one["offset"] == 0
+    assert first["scope"]["full_count"] == 3  # Search artifact count has a different unit.
+    assert [e["ordinal"] for e in one["elements"]] == list(range(2, 22))
+    second = service.inspect(**element_count_journey, continuation=one["continuation"], limit=20)
+    assert second["status"] == "ok"
+    two = second["result"]
+    assert (two["total_elements"], two["returned_count"], two["remaining_elements"]) == (33, 13, 0)
+    assert two["offset"] == 20
+    assert [e["ordinal"] for e in two["elements"]] == list(range(22, 35))
+    assert two["continuation"] is None
+
+
+@pytest.mark.parametrize("selection,total,returned,remaining", [
+    ({}, 37, 20, 17),
+    ({"page": 1}, 2, 2, 0),
+    ({"page": 4}, 0, 0, 0),
+    ({"ordinal": 34}, 1, 1, 0),
+    ({"ordinal": 99}, 0, 0, 0),
+])
+def test_element_counts_describe_selected_range(service: Service, element_count_journey, selection, total, returned, remaining):
+    response = service.inspect(**element_count_journey, artifact_id="artifact-0", limit=20, **selection)
+    assert response["status"] == "ok"
+    result = response["result"]
+    assert (result["total_elements"], result["returned_count"], result["remaining_elements"]) == (total, returned, remaining)
+    assert bool(result["continuation"]) == (remaining > 0)
+
+
+def test_element_counts_budget_failure_preserves_continuation(service: Service, element_count_journey):
+    first = service.inspect(**element_count_journey, artifact_id="artifact-0", page=2, limit=20)["result"]
+    state = copy.deepcopy(service._journeys)
+    rejected = service.inspect(**element_count_journey, continuation=first["continuation"], limit=20, byte_budget=1024)
+    assert rejected["error"]["code"] == "budget_too_small"
+    assert len(encoded(rejected)) <= 1024
+    assert service._journeys == state
+    resumed = service.inspect(**element_count_journey, continuation=first["continuation"], limit=20)
+    assert resumed["status"] == "ok"
+    result = resumed["result"]
+    assert (result["total_elements"], result["offset"], result["remaining_elements"]) == (33, 20, 0)
+    assert [e["ordinal"] for e in result["elements"]] == list(range(22, 35))
 
 
 def test_finish_validates_inspected_evidence_zero_scope_and_semantic_absence(

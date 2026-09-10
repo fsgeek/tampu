@@ -55,6 +55,15 @@ handle** to `finish`. Inspect lists at most 20 entries and slices 1–4,000 Unic
 characters. Journey content is process-local unless the owner explicitly enables
 `serve --trace PATH`.
 
+Artifact/page/ordinal element listings include `total_elements` for the selected
+range and `remaining_elements` after the returned entries. For example, a page
+with 33 elements requested with `limit=20` reports 20 returned and 13 remaining;
+its continuation reports the same total and eventually zero remaining. These
+counts describe normalized elements, not relevance or the search's candidate
+artifact count. An empty selection reports zero for both. Oversized element
+listings return `budget_too_small` without advancing the continuation; reduce
+`limit` or increase `byte_budget` to retry.
+
 ## The problem
 
 Retrieval-augmented generation collapses several distinct activities into one

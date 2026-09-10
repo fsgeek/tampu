@@ -1,0 +1,11 @@
+# Exact element counts for inspection
+
+Implement the count improvement selected in the artifact-local report and authorized by Tony's instruction to move forward. Its purpose is observability of partial output; the corrected experiment does not establish improved retrieval or navigation behavior.
+
+Add `total_elements` and `remaining_elements` to successful `inspect` element-list results. `total_elements` counts the entire selected artifact, physical page, or exact ordinal range in the pinned projection. It is stable across continuation pages. `remaining_elements = total_elements - offset - returned_count` counts elements after the delivered prefix. Both are zero for an empty selection. They count normalized elements, not papers, physical pages, relevance, or text characters. Existing search candidate counts and evidence-slice responses keep their meanings.
+
+Code inspection corrected an earlier assumption: `_fit` does not truncate element lists to fit a byte budget. Oversized element-list responses fail with `budget_too_small`. Preserve this behavior and transactional journey state in this additive change. Counts are mandatory on successful element-list responses and participate in the existing UTF-8 byte accounting. A rejected request must not consume a continuation or retain undelivered evidence handles. If whole-entry budget packing is introduced later, it must update remaining counts to reflect delivery, but that is a separate behavior change.
+
+Use explicit element-named fields rather than overloading `full_count`, which also appears in the search node scope and counts candidate artifacts. Document the distinction in README and the MCP inspect description. No database/index/extraction changes, new consumer study, global ranking change, or historical experiment rewrite.
+
+Verify a 33-element physical page requested in batches of 20 yields `(total, returned, remaining) = (33,20,13)` followed by `(33,13,0)` with contiguous identities. Also verify artifact scope, ordinal scope, empty scope, UTF-8 budget rejection, and successful reuse of the same continuation after rejection. The additional count fields can make a response at a tight previous byte boundary fail; callers can increase budget or reduce limit.

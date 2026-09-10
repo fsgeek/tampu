@@ -1222,6 +1222,8 @@ class Service:
             "selection": {"ordinal": ordinal, "physical_page": page},
             "offset": offset,
             "returned_count": len(returned),
+            "total_elements": len(selected),
+            "remaining_elements": len(selected) - next_offset,
             "elements": returned,
             "continuation": continuation,
         }
