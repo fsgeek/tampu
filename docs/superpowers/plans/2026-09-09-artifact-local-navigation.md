@@ -21,3 +21,5 @@ Follow `docs/superpowers/specs/2026-09-09-artifact-local-navigation-design.md`: 
 - [x] Obtain one focused read-only review, correct material accounting or claim errors, run `git diff --check`, and preserve signed commits. Verify clean tree and unchanged runtime source; do not push or merge.
 
 Execution: one live rehearsal, 12 calls without application errors, exact offline decision/assessment replay, one read-only review. No production change. The decision report selects explicit element totals and remaining counts as the next implementation task. Final signed preservation closes this plan.
+
+2026-09-10 interpretation correction: the single recovered probe was returned directly by search; adjacent-page navigation recovered none. Counts remain a separate observability proposal, not a remedy established by this rehearsal. See `docs/superpowers/specs/2026-09-10-artifact-local-interpretation-review.md`. Frozen inputs and recorded execution are unchanged.
