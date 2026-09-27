@@ -15,14 +15,27 @@ whole journey.
 
 ## Status
 
-**Design stage. No implementation exists yet.**
+**A working prototype exists on unmerged branches. Its benefit to an AI consumer
+is not established.**
 
-What is in this repository today: a founding document, a prototype design, and an
-adversarial review exchange between two AI systems that produced substantive
-corrections to both. No code has been written, no corpus ingested, no experiment
-run. The next deliverable is an experiment protocol, not a release.
+`main` holds the founding document, the prototype design, and the adversarial
+review exchange that corrected it. The implementation lives on signed branches
+that have not been merged:
 
-This README describes what Tampu is *for*. It does not describe working software.
+| Branch | Contents |
+| --- | --- |
+| `experiment/path-holding-pilot` | Ingestion, ArangoDB repository, bounded service, and four MCP tools, grown across 160, 320, and 473 artifacts |
+| `experiment/retrieval-grouping-audit` | Diagnostic: returning more passages globally recovered none of eight known qualifications |
+| `experiment/artifact-local-navigation` | Rehearsal: one probe recovered by direct search, none by adjacent-page navigation |
+| `feat/inspection-element-counts` | Inspection reports total and remaining elements |
+| `design/retrieval-competence-evaluation` | Design for adaptive retrieval competence diagnostics |
+
+The experiments so far are small, builder-selected, and mostly negative. They
+separate what the service can return from whether navigating it helps an AI find
+anything. That second question is open. Each branch's `docs/experiments/` records
+what was run, what was found, and what was corrected after review.
+
+This README describes what Tampu is *for*. The branches describe what exists.
 
 ## The problem
 
