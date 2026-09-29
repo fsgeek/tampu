@@ -266,3 +266,32 @@ only from the frozen task text.
 | Smaller 1. Encoded lengths | Accepted and measured: longest input is 735 tokens. The tokenizer assumption is checked before CLM scoring. |
 | Smaller 2. Lexical replay | Accepted. Now a fresh measurement with no expected result. |
 | Smaller 3. Naming | Accepted. "Deterministic replay" removed. |
+
+## Amendment 1, 2026-09-29, before CLM scoring
+
+**Observation.** CLM fresh-inference repeatability (`eb46ed5`) found the
+proceedings identical on all three repeats. In the long paper, repeats 1
+and 2 were identical, but repeat 0 differed on every element. The
+difference ends exactly where the long paper ends in repeat 0. CLM's
+Noul option texts contain the question, so each artifact has its own
+option vectors, embedded once per engine. The long paper's were
+embedded on the first corpus request after the encoder started. The
+likely cause is cold-start inference in the encoder. That is not proven.
+
+**Change to the CLM scoring pass.** Scoring as frozen would start with
+the long paper immediately after encoder start, the affected condition.
+
+1. **Warm-up.** After the schema check, send 30 synthetic requests,
+   using three synthetic questions ten times each, on an engine that is
+   then discarded. No corpus text is used. Warm-up scores are recorded.
+2. **Scoring** proceeds as frozen, with a new engine.
+3. **Built-in check.** After scoring, a new engine re-scores the first
+   20 elements of each artifact, in ordinal order. For each artifact,
+   if any re-score differs from its scoring-pass value by more than
+   1e-6, that artifact's CLM scores are marked **unstable**, and its
+   CLM verdict is reported as incomplete.
+
+**Unchanged.** Repeatability results stand as recorded, including
+repeat 0. Conditional sensitivity uses all three repeated values, as
+frozen. For the long paper this is conservative, because repeat 0
+includes the cold-start shift.

@@ -123,12 +123,30 @@ def main():
                                                       encoder_tokens=tokens, fresh=tokens > 0, model=model,
                                                       latency_s=time.monotonic() - t0)) + "\n")
             else:
+                # Amendment 1: warm up on synthetic text, score with a new engine, then re-check.
+                warm = new_engine()
+                synth_q = [{"type": "noul", "instructions": f"A researcher is investigating this task: {t}. "
+                            "Does this passage contain information that would help complete the task?"}
+                           for t in ("Decide whether the sky is described.", "Find mentions of weather.",
+                                     "Identify any harbour activity.")]
+                for i in range(30):
+                    p, tokens, _ = score(warm, "The sky was a pale blue over the harbour that morning.", synth_q[i // 10])
+                    out.write(json.dumps(dict(kind="warmup", i=i, score=p, encoder_tokens=tokens)) + "\n")
+                engine = new_engine()
+                scored = {}
                 for cid, case in inputs.items():
                     for e in case["elements"]:
                         t0 = time.monotonic()
                         p, tokens, model = score(engine, e["text"], case["question"])
+                        scored[(cid, e["ordinal"])] = p
                         out.write(json.dumps(dict(case=cid, ordinal=e["ordinal"], score=p, encoder_tokens=tokens,
                                                   model=model, latency_s=time.monotonic() - t0)) + "\n")
+                check = new_engine()
+                for cid, case in inputs.items():
+                    for e in case["elements"][:20]:
+                        p, tokens, _ = score(check, e["text"], case["question"])
+                        out.write(json.dumps(dict(kind="recheck", case=cid, ordinal=e["ordinal"], score=p,
+                                                  scoring_pass=scored[(cid, e["ordinal"])], encoder_tokens=tokens)) + "\n")
             out.write(json.dumps(dict(kind="footer", at=datetime.now(UTC).isoformat(),
                                       head_sha256_after=sha_file(ident["head_file"]))) + "\n")
     finally:
