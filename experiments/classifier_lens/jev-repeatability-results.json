@@ -1,0 +1,90 @@
+{
+ "protocol": "docs/superpowers/specs/2026-09-28-classifier-lens-diagnostic-protocol.md (revision 2)",
+ "measurement": "Jev operational repeatability; TypeSafe caching undisclosed",
+ "model_requested": "jev-1.13.0",
+ "models_returned": [
+  "jev-1.13.0"
+ ],
+ "started_at": "2026-09-29T12:56:41.323540+00:00",
+ "finished_at": "2026-09-29T12:57:00.266420+00:00",
+ "calls": 1218,
+ "worker_errors": [],
+ "raw_records_sha256": "8b00e5ef9db5605fad948fa79905c43c1346869f36c6139b0117410efaae83ae",
+ "cases": {
+  "long": {
+   "sampled_elements": 203,
+   "probes_already_in_random_sample": 0,
+   "missing_scores": 0,
+   "elements_with_all_repeats": 203,
+   "stats": {
+    "elements": 203,
+    "label_changes_at_0_5": 1,
+    "identical_all_repeats": 36,
+    "median_abs_diff": 0.010000000000000009,
+    "max_abs_diff": 0.07000000000000003
+   },
+   "probe_scores": {
+    "194": [
+     0.4,
+     0.39,
+     0.41
+    ],
+    "206": [
+     0.68,
+     0.69,
+     0.68
+    ],
+    "239": [
+     0.68,
+     0.67,
+     0.68
+    ]
+   },
+   "input_tokens_reported": 209751,
+   "calls_with_unknown_usage": 0,
+   "median_latency_s": 0.09448499800055288,
+   "repeat_0_median_latency_s": 0.1071551429995452,
+   "repeat_1_median_latency_s": 0.08778860200254712,
+   "repeat_2_median_latency_s": 0.08916551699803676,
+   "retries": 0
+  },
+  "proceedings": {
+   "sampled_elements": 203,
+   "probes_already_in_random_sample": 0,
+   "missing_scores": 0,
+   "elements_with_all_repeats": 203,
+   "stats": {
+    "elements": 203,
+    "label_changes_at_0_5": 0,
+    "identical_all_repeats": 87,
+    "median_abs_diff": 0.009999999999999995,
+    "max_abs_diff": 0.03999999999999998
+   },
+   "probe_scores": {
+    "13846": [
+     0.89,
+     0.89,
+     0.89
+    ],
+    "14048": [
+     0.91,
+     0.9,
+     0.91
+    ],
+    "14087": [
+     0.87,
+     0.88,
+     0.87
+    ]
+   },
+   "input_tokens_reported": 209868,
+   "calls_with_unknown_usage": 0,
+   "median_latency_s": 0.09275011100544361,
+   "repeat_0_median_latency_s": 0.10387563399854116,
+   "repeat_1_median_latency_s": 0.08396823599468917,
+   "repeat_2_median_latency_s": 0.08735252900078194,
+   "retries": 0
+  }
+ },
+ "note_on_wording": "Task text ends with a period; verbatim substitution yields '..' before 'Does'."
+}
