@@ -1,0 +1,16 @@
+{
+ "long": {
+  "spearman": 0.2024,
+  "jev_reading_set": 17,
+  "clm_reading_set": 25,
+  "overlap": 6,
+  "jaccard": 0.1667
+ },
+ "proceedings": {
+  "spearman": 0.0465,
+  "jev_reading_set": 12,
+  "clm_reading_set": 22,
+  "overlap": 4,
+  "jaccard": 0.1333
+ }
+}

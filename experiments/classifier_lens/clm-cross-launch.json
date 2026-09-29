@@ -1,0 +1,16 @@
+{
+ "long": {
+  "elements": 194,
+  "identical": 0,
+  "median_abs_diff": 0.0092,
+  "max_abs_diff": 0.023,
+  "label_changes_at_0_5": 8
+ },
+ "proceedings": {
+  "elements": 179,
+  "identical": 0,
+  "median_abs_diff": 0.0199,
+  "max_abs_diff": 0.058,
+  "label_changes_at_0_5": 9
+ }
+}

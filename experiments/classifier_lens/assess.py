@@ -57,13 +57,14 @@ def best_cost(ordinals, sizes, scores, probe_index, probe_score):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--compact", type=Path, required=True)
+    parser.add_argument("--lens", choices=("jev", "clm"), default="jev")
     args = parser.parse_args()
     from tampu.config import load_config
     from tampu.repository import Repository
     repo = Repository(load_config(), initialize=False)
     cases = load_cases()
-    jev = json.loads((HERE / "jev-scores.json").read_text())
-    rep = json.loads((HERE / "jev-repeatability-results.json").read_text())
+    jev = json.loads((HERE / f"{args.lens}-scores.json").read_text())
+    rep = json.loads((HERE / f"{args.lens}-repeatability-results.json").read_text())
     rng = np.random.default_rng(SEED)
     results, perm_counts = {}, np.zeros(PERMUTATIONS, dtype=int)
     perm_counts_secondary = np.zeros(PERMUTATIONS, dtype=int)
@@ -150,7 +151,8 @@ def main():
         verdict = "three or more eligible but not above random baseline"
     tie = sum(r["primary_8192"]["tie_dependent"] for c in results.values() for r in c["probes"] if not r["delivered_in_rehearsal"])
     sens = sum(r["primary_8192"]["sensitive"] for c in results.values() for r in c["probes"] if not r["delivered_in_rehearsal"])
-    compact = dict(protocol="revision 2", lens="jev-relevance", model="jev-1.13.0",
+    compact = dict(protocol="revision 2" + (" with amendment 1" if args.lens == "clm" else ""),
+                   lens=f"{args.lens}-relevance", model=jev.get("model_requested") or jev.get("identity", {}).get("package"),
                    undelivered_probes_eligible_at_8192=eligible_total,
                    random_comparator=dict(permutations=PERMUTATIONS, seed=SEED, mean_eligible=mean_random,
                                           p_at_least_observed=p_value,
