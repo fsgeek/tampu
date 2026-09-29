@@ -62,6 +62,6 @@ Ten of Jev's twelve highest-scoring proceedings elements lie on pages 401 to 409
 
 ## Limits
 
-The builder wrote the task texts and selected the probes, and the proceedings task names LHD/RankCache. Both lenses were asked a question closely aligned with the probes. Six builder-selected probes cannot establish retrieval quality in general, and one question wording was tested. The instruction contains a double period from verbatim substitution of the task text, as frozen. CLM's CLM-specific numbers come from one scoring launch.
+The builder wrote the task texts and selected the probes, and the proceedings task names LHD/RankCache. Both lenses were asked a question closely aligned with the probes. Six builder-selected probes cannot establish retrieval quality in general, and one question wording was tested. The instruction contains a double period from verbatim substitution of the task text, as frozen. CLM's scores come from one scoring launch.
 
 Raw records stay owner-local under `tmp/classifier-lens-20260929/`. Compact results are in `experiments/classifier_lens/`.
