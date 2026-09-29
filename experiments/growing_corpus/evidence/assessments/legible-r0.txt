@@ -1,0 +1,13 @@
+The published artifact is **v2**, source alias `2603.28788v2.pdf`, stable artifact ID `267a676ecf034576a43dae4f773d169d9fcbed9275ee15287ab778b7bbf68f3f`. The arXiv/version mark appears on one-based physical PDF page 1.
+
+- **Theoretical requirement:** Section 7.1 relaxes Phase 2 to any \(k\) of \(|E|\) Earth nodes. To ensure every Phase 1 quorum intersects every such Phase 2 quorum, Phase 1 must contain at least
+  \[
+  |E|-k+1
+  \]
+  Earth nodes. Otherwise, at least \(k\) Earth nodes remain outside Phase 1 and could form a disjoint Phase 2 quorum. With five Earth nodes, this yields two Earth nodes for 4-of-5 Phase 2 and three for 3-of-5. The displayed quorum-family definition incorporates this threshold. [artifact above, one-based physical PDF p. 10]
+
+- **Paper’s explanation:** The text motivates the threshold by claiming that any two \(k\)-of-\(|E|\) Phase 2 quorums overlap in at least \(|E|-k+1\) nodes “by pigeonhole.” That intermediate claim is not generally correct: the ordinary pairwise lower bound is \(\max(0,2k-|E|)\). For 3-of-5 it is one, not three. The resulting Phase 1 requirement remains correct through the hitting-set argument above. Whether the pairwise-overlap sentence is a typo, shorthand relying on an unstated restriction, or a proof error is unresolved. [same artifact, physical PDF p. 10]
+
+- **Evaluated behavior:** The paper says both the 4-of-5/2-node and 3-of-5/3-node constructions were exhaustively verified in TLA+. This is the paper’s reported evaluation, not an independently reproduced result. [same artifact, physical PDF p. 10]
+
+Evidence was inspected under published collection revision `fa9221b03c3b4aaaa7c54125f23eadb9`, projection `e358eddab928ef4530b47feb06bcf11a929fd5cd3ca6533026fded31ca327288`. Supported and unresolved findings were recorded and the temporary journey released.

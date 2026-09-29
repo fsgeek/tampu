@@ -1,0 +1,335 @@
+{
+  "seed": 20260909,
+  "execution_order": [
+    "C-scope-scope_absent",
+    "A-count_coverage-count_only",
+    "D-count_coverage-count_only",
+    "D-scope-scope_present",
+    "D-scope-scope_absent",
+    "B-scope-scope_present",
+    "A-count_coverage-combined",
+    "A-count_coverage-coverage_only",
+    "A-scope-scope_present",
+    "B-scope-scope_absent",
+    "D-count_coverage-coverage_only",
+    "C-scope-scope_present",
+    "D-count_coverage-neither",
+    "D-count_coverage-combined",
+    "A-scope-scope_absent",
+    "A-count_coverage-neither"
+  ],
+  "provider_observations_sha256": "019898cd0b5029cba3ee9cb1950d4589549a6d7aefd3e2f2c5c0982bc21ea4cb",
+  "provider_cases": {
+    "present": {
+      "request": {
+        "collection": "comparison",
+        "revision": "05146497610646da9c334e5fef49dffb",
+        "intent": "Owner diagnostic and frozen response development observation",
+        "query": "Blind Oracle",
+        "mode": "phrase",
+        "filters": {},
+        "limit": 1
+      },
+      "response_sha256": "858dc5fb5aaa23655facbffa376547fb191cc67601eefb0fb12482c01f5cb41d",
+      "response_bytes": 2126,
+      "timestamp": 1788943858.747009,
+      "response_schema_version": "tampu-tools/v1 (Service constant, not an envelope field)",
+      "projection_recipes": [
+        {
+          "artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+          "recipe": {
+            "elements_sha256": "f70c4643b4705ce8dbf5f90a03cc6c9cfa2451ab222e3fdacd98090b7afa6cb3",
+            "extractor_versions": {
+              "pypdf": "6.10.0",
+              "unstructured": "0.23.3",
+              "unstructured-inference": "1.6.12"
+            },
+            "image": "downloads.unstructured.io/unstructured-io/unstructured@sha256:806726e3997d33bce9e32facd86c947b241101c58496f2774ad5f09f86e798bc",
+            "memory": "8g",
+            "network": "none",
+            "output_sha256": "5aab33c96645de8f8138009479887b97049b0946d0bfc0cc29ecfd815b9fea6f",
+            "profile": "unstructured",
+            "strategy": "fast",
+            "timeout_seconds": 300
+          }
+        },
+        {
+          "artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+          "projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+          "recipe": {
+            "elements_sha256": "b9281a84d4a6bd8f5bca379ecc4117548ebbf30df00842814d4963ce73dc8248",
+            "extractor_versions": {
+              "pypdf": "6.10.0",
+              "unstructured": "0.23.3",
+              "unstructured-inference": "1.6.12"
+            },
+            "image": "downloads.unstructured.io/unstructured-io/unstructured@sha256:806726e3997d33bce9e32facd86c947b241101c58496f2774ad5f09f86e798bc",
+            "memory": "8g",
+            "network": "none",
+            "output_sha256": "d42a5fecb483027c19724634c76d44604fdf8028b849e702a39e259741086ad9",
+            "profile": "unstructured",
+            "strategy": "fast",
+            "timeout_seconds": 300
+          }
+        },
+        {
+          "artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+          "projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+          "recipe": {
+            "elements_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "extractor_versions": {
+              "pypdf": "6.10.0",
+              "unstructured": "0.23.3",
+              "unstructured-inference": "1.6.12"
+            },
+            "image": "downloads.unstructured.io/unstructured-io/unstructured@sha256:806726e3997d33bce9e32facd86c947b241101c58496f2774ad5f09f86e798bc",
+            "memory": "8g",
+            "network": "none",
+            "output_sha256": "1a4a5b6a72d92d790dcec16307b6a730ea78cc6e2347c028a455daa5128f3f9f",
+            "profile": "unstructured",
+            "strategy": "fast",
+            "timeout_seconds": 300
+          }
+        }
+      ]
+    },
+    "absent": {
+      "request": {
+        "collection": "comparison",
+        "revision": "05146497610646da9c334e5fef49dffb",
+        "intent": "Owner diagnostic and frozen response development observation",
+        "query": "tampuabsentpredicateqxz",
+        "mode": "phrase",
+        "filters": {
+          "artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578"
+        },
+        "limit": 1
+      },
+      "response_sha256": "a0060ee615fb3f015d71f701fc8dda6e30c270059776bb7d9ab35ca49be95e77",
+      "response_bytes": 1672,
+      "timestamp": 1788943858.8009996,
+      "response_schema_version": "tampu-tools/v1 (Service constant, not an envelope field)",
+      "projection_recipes": [
+        {
+          "artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+          "recipe": {
+            "elements_sha256": "f70c4643b4705ce8dbf5f90a03cc6c9cfa2451ab222e3fdacd98090b7afa6cb3",
+            "extractor_versions": {
+              "pypdf": "6.10.0",
+              "unstructured": "0.23.3",
+              "unstructured-inference": "1.6.12"
+            },
+            "image": "downloads.unstructured.io/unstructured-io/unstructured@sha256:806726e3997d33bce9e32facd86c947b241101c58496f2774ad5f09f86e798bc",
+            "memory": "8g",
+            "network": "none",
+            "output_sha256": "5aab33c96645de8f8138009479887b97049b0946d0bfc0cc29ecfd815b9fea6f",
+            "profile": "unstructured",
+            "strategy": "fast",
+            "timeout_seconds": 300
+          }
+        }
+      ]
+    },
+    "alias": {
+      "request": {
+        "collection": "comparison",
+        "revision": "05146497610646da9c334e5fef49dffb",
+        "intent": "Owner diagnostic and frozen response development observation",
+        "query": "PredictiveMarker",
+        "mode": "phrase",
+        "filters": {
+          "artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578"
+        },
+        "limit": 1
+      },
+      "response_sha256": "43733a6a582e1add75fe57865bd7f0a87d675458e9944ec41c466620375651aa",
+      "response_bytes": 1665,
+      "timestamp": 1788943858.8318112,
+      "response_schema_version": "tampu-tools/v1 (Service constant, not an envelope field)",
+      "projection_recipes": [
+        {
+          "artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+          "recipe": {
+            "elements_sha256": "f70c4643b4705ce8dbf5f90a03cc6c9cfa2451ab222e3fdacd98090b7afa6cb3",
+            "extractor_versions": {
+              "pypdf": "6.10.0",
+              "unstructured": "0.23.3",
+              "unstructured-inference": "1.6.12"
+            },
+            "image": "downloads.unstructured.io/unstructured-io/unstructured@sha256:806726e3997d33bce9e32facd86c947b241101c58496f2774ad5f09f86e798bc",
+            "memory": "8g",
+            "network": "none",
+            "output_sha256": "5aab33c96645de8f8138009479887b97049b0946d0bfc0cc29ecfd815b9fea6f",
+            "profile": "unstructured",
+            "strategy": "fast",
+            "timeout_seconds": 300
+          }
+        }
+      ]
+    },
+    "processing_gap": {
+      "request": {
+        "collection": "comparison",
+        "revision": "05146497610646da9c334e5fef49dffb",
+        "intent": "Owner diagnostic and frozen response development observation",
+        "query": "shared log",
+        "mode": "phrase",
+        "filters": {
+          "artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93"
+        },
+        "limit": 1
+      },
+      "response_sha256": "12b511197cff7c7533cb7703bc0972075d85c11fc8b0568a654733f895b9be33",
+      "response_bytes": 1660,
+      "timestamp": 1788943858.8682513,
+      "response_schema_version": "tampu-tools/v1 (Service constant, not an envelope field)",
+      "projection_recipes": [
+        {
+          "artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+          "projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+          "recipe": {
+            "elements_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+            "extractor_versions": {
+              "pypdf": "6.10.0",
+              "unstructured": "0.23.3",
+              "unstructured-inference": "1.6.12"
+            },
+            "image": "downloads.unstructured.io/unstructured-io/unstructured@sha256:806726e3997d33bce9e32facd86c947b241101c58496f2774ad5f09f86e798bc",
+            "memory": "8g",
+            "network": "none",
+            "output_sha256": "1a4a5b6a72d92d790dcec16307b6a730ea78cc6e2347c028a455daa5128f3f9f",
+            "profile": "unstructured",
+            "strategy": "fast",
+            "timeout_seconds": 300
+          }
+        }
+      ]
+    }
+  },
+  "provider_observations_path": "/home/tony/projects/tampu/tmp/prototype-readiness/task4-diagnostics-corrected/observations-final.json",
+  "revision_id": "05146497610646da9c334e5fef49dffb",
+  "model": "gpt-5.6-sol",
+  "reasoning": "medium",
+  "sampling": "CLI defaults",
+  "numeric_output_cap": "Not exposed/configured by supported CLI route; identical default settings, retain truncation/termination",
+  "case_sheet_sha256": "54bdd3d9c88667ec26ae3d320f9e8aaa0cc679bb584a60f025601d0f2b64cbdc",
+  "mask_audit_sha256": "d817c88611adc353312ec6add8d0e9473edd7b81e98e5f948680cf92cf3a0848",
+  "common_prompt_sha256": "cbadba8784ba745c5241fe023203662c1e1be20147789e7d0f517fa960234c58",
+  "payloads": [
+    {
+      "label": "A-scope-scope_present",
+      "payload_sha256": "ec98f383dd463a5ff7b2ad4d2671c84424102362b51645bd3aee754160554a96",
+      "file_sha256": "0925b33f9a371baff3e82846af31b2d41f0ef2576d78e1885cd4388ebc2a265d",
+      "prompt_sha256": "84152603c08938d584d221d29d5bce8dfa1ed86fb598264644a86625e6adb009",
+      "bytes": 2796
+    },
+    {
+      "label": "A-scope-scope_absent",
+      "payload_sha256": "260a71f2b391c6296fa00c808928863bc8c9d5684fc919a3ff6286d1249a5342",
+      "file_sha256": "9ad93cf76504e4455e94d4f6934d41bf75673ee82b4d24c2f8fc25899ef8bf45",
+      "prompt_sha256": "5086b28cea58d410e0695c3fd5fcf399998e23834bd4a7afbf1550ab72f655e8",
+      "bytes": 1020
+    },
+    {
+      "label": "A-count_coverage-neither",
+      "payload_sha256": "dd58a17896bf53c772cbf8781aafa8b3107ac8e873c7bda8a9e406b3e01c46d8",
+      "file_sha256": "1c1178744e4606175a74ebd7b96782c6a43c98056f835d9a2eaefae9719abfe4",
+      "prompt_sha256": "76214c415571091bbe52c35258ed1b5b4b261061f6a69b81c3848dcb83ad9549",
+      "bytes": 1767
+    },
+    {
+      "label": "A-count_coverage-count_only",
+      "payload_sha256": "74bd7c24824edded4d45eb7db321dd8a5b3c8acfe5851dd7563a7dbd3231c9ab",
+      "file_sha256": "4a9031f8223e83a06ec4b4e3fe7eeacf0dfb85fe9e0d0dbbbd63531d0e77ada4",
+      "prompt_sha256": "7c4dac44c585f3514cb2648e97c3611c370e7eb25c5a8c015d7d9696ce5b617a",
+      "bytes": 1808
+    },
+    {
+      "label": "A-count_coverage-coverage_only",
+      "payload_sha256": "acc3bab4eb4f439a4ddfafecc4979dfd3a63b0db05dd40852497de72db084ca6",
+      "file_sha256": "a8d56081207422504636934ed1d6642dbb72e8ca413ea7b4d71fdaaf5a23318e",
+      "prompt_sha256": "593a9b719aff22533b7ec032a919260f6110a69129d65d137b195c09bb3b0008",
+      "bytes": 2777
+    },
+    {
+      "label": "A-count_coverage-combined",
+      "payload_sha256": "7b088f508990ef3cdd8a18719dc6f4c4d3817c8a02049c31011e2aa02210e1c2",
+      "file_sha256": "5c3e6ef0eac2fcb80eb1b8508f4547f6b357085cf17fe2fe64a8783dc94c4604",
+      "prompt_sha256": "bb2999caf70004bea742e3249db78a082d4f8e43654d9e8c9cc9ca4d4120ffa3",
+      "bytes": 2818
+    },
+    {
+      "label": "B-scope-scope_present",
+      "payload_sha256": "84d2170a6f28c7dc74c32922ea7e5b1268f77af7c41ad1bdca886affb2b7dabe",
+      "file_sha256": "0afabe21d86368c491d2145046bddef8bc1e9a406454ba2c3ac5f8e4c589afb5",
+      "prompt_sha256": "b6ce7ac7a630beee29aff3bbffd6202557a0698b71517259e1ca03b25f8ea081",
+      "bytes": 1193
+    },
+    {
+      "label": "B-scope-scope_absent",
+      "payload_sha256": "1223862b18ff6cfeba9e0c0c80f14f206e2cff0a03db3ffa0e5fddff9ab7bf95",
+      "file_sha256": "709e62f5635e9727d465da54db71c21cbb2991c95cfff3a3fa91decd98aa3eeb",
+      "prompt_sha256": "22e34c7afdf0793e326fdc31aba1149246ed489047efb235caea463e068fda8f",
+      "bytes": 267
+    },
+    {
+      "label": "C-scope-scope_present",
+      "payload_sha256": "48393d1b6e225fe4d0922ffdc9a89dad1a9a35d1683047932417246200a2e070",
+      "file_sha256": "fb5d3ea5831006e83dc97e9eda998309737e1481eb9f79aeac1cdd3fde8741da",
+      "prompt_sha256": "2a1c502c1e0ff1e6eb2b8e63ed3eae3973b3553323e1f6e2c18ca619726fcf39",
+      "bytes": 1128
+    },
+    {
+      "label": "C-scope-scope_absent",
+      "payload_sha256": "b1a9d109289cabf006c9072781e0b53c2c8bce6667388d09bc064dc96b2eab4d",
+      "file_sha256": "1908067335c00a5e8eacd112623af57e25e2f62cbc4e7bd600d2fcc664ab0f43",
+      "prompt_sha256": "f7f76dddedc306c0a4c7d086395c66f6e5d54afbe093d7b2a839a2546d5baa5c",
+      "bytes": 209
+    },
+    {
+      "label": "D-scope-scope_present",
+      "payload_sha256": "35b7e26460bde43359622a85256a9c765fb031603e411729449f4788d408e3ed",
+      "file_sha256": "c99063b454094e38f534105008fe82ee9c0583ef68ac981a57367e91a8986c98",
+      "prompt_sha256": "feee91867413ef213e7609c13ba45483ab1a21f13843ae0f4cb0684c2947031f",
+      "bytes": 1299
+    },
+    {
+      "label": "D-scope-scope_absent",
+      "payload_sha256": "96de42fc623e69d1d51725032091ce08ea9b160309a92e4427777e70a95e41fe",
+      "file_sha256": "f8f02310319730eafbd42a1383f889bf107a8f5b5deadc6da5e52de0db4806e3",
+      "prompt_sha256": "b33560806b053fe18662e53f3c473299d5c00a956a4276e58a0e8427789883b6",
+      "bytes": 227
+    },
+    {
+      "label": "D-count_coverage-neither",
+      "payload_sha256": "c4a4616267116098a1a8156bd1c38b87a8abe67c527977509122378b5a810834",
+      "file_sha256": "2e54ff26d6b5adfe22118a2107ba494a616172b79a0f77a3c10181745a304289",
+      "prompt_sha256": "0fd78855dcdc054c2d97d63d3a8611549687922e04b7be9d8e2dc5422cec5e20",
+      "bytes": 720
+    },
+    {
+      "label": "D-count_coverage-count_only",
+      "payload_sha256": "70a40c69e4c7745bca52a6df3ec47cf9438e5ae2a9217e75c210223e97069db1",
+      "file_sha256": "4f2621bd450d48d353be2645c2dee64a25c6ed772f755e30ba0874d79b27113b",
+      "prompt_sha256": "602842cdf6e6880a3b782a002d67ebcb9c9152e80e2150cb01c5104fe1ba00b9",
+      "bytes": 761
+    },
+    {
+      "label": "D-count_coverage-coverage_only",
+      "payload_sha256": "998afd2d8f2ae7d2229ac7ef9113ee9509901cf8b310b8f05f262e0e92068210",
+      "file_sha256": "37851338bcd268d55d5b15eccab39c1a0b963ce63ce601e8770310ce63e5f132",
+      "prompt_sha256": "bb9d50c3701f90a3cfe73ea143c5c161ad8cf3680af82286e2b67d185894f91e",
+      "bytes": 1280
+    },
+    {
+      "label": "D-count_coverage-combined",
+      "payload_sha256": "d30d67a567bc17d7d765d09636c0e4919fcabd5e5a1921e181853287f611c435",
+      "file_sha256": "c1896b89d374d6d3a95c0940523d7678e8530aa13bac9929c469e685ea8a8e55",
+      "prompt_sha256": "6a94e43baa5f3bada8d3e04bcc5895555eaccfff44d02074d940bca092a8062f",
+      "bytes": 1321
+    }
+  ]
+}

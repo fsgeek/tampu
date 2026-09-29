@@ -1,0 +1,17 @@
+{
+  "root": "/home/tony/projects/tampu/tmp/artifact-local-20260909",
+  "files": {
+    "capture/record.json": {
+      "bytes": 44490,
+      "sha256": "e1208e993c257c0cfd0ea29f3643391049d1b7972b587e6d2fc4a3df4a66a68f"
+    },
+    "capture/results.json": {
+      "bytes": 7529,
+      "sha256": "2c0bc8aa43d679e3a89eca1b92f6a0e2bcdf7c011290f84a1fb8b395d3138783"
+    },
+    "capture/service-trace.jsonl": {
+      "bytes": 44631,
+      "sha256": "7ef99c90e722dac0ff58417b5acb77a44fcdb04da0156969085d6cc24838e553"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "timestamp": 1788945250.320876,
+  "selected_artifacts": 473,
+  "selected_profiles": [
+    "unstructured"
+  ],
+  "logical_selected_file_bytes": {
+    "captured_pdf_bytes": 952559194,
+    "selected_raw_extraction_bytes": 235070019,
+    "selected_normalized_element_bytes": 155828193
+  },
+  "excludes": "ArangoDB on-disk/index overhead, duplicate snapshot copies, diagnostic alternate projections and extra raw attempts; no durable DBdiskcost attributed",
+  "runtime": {
+    "python": "3.14.3",
+    "arango": "3.12.9-4",
+    "python_arango": "8.3.5",
+    "mcp": "1.30.0",
+    "codex_cli": "0.153.4"
+  }
+}

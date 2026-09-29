@@ -1,0 +1,45 @@
+{
+  "kind": "implementation contract check; known page supplied; not a navigation experiment",
+  "revision_id": "0ea79b79668943969e5ee21dfdcbdfae",
+  "artifact_id": "6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213",
+  "physical_page": 409,
+  "index_generation": "7cc579dba1871a77c78acfc23eb097bad272facc22894d0a00a8f019fd3c9bb2",
+  "index_stable": true,
+  "pages": [
+    {
+      "offset": 0,
+      "returned_count": 20,
+      "total_elements": 33,
+      "remaining_elements": 13,
+      "response_bytes": 6646,
+      "sha256": "c5f38f8d80391207a1b91d0ac6a5e7adeacb1290b9f804b73b904631464151e9"
+    },
+    {
+      "offset": 20,
+      "returned_count": 13,
+      "total_elements": 33,
+      "remaining_elements": 0,
+      "response_bytes": 4500,
+      "sha256": "6bd4b23632a33a26d0e7a08368e325210402d56aebd2b83a1177182d9da46a10"
+    }
+  ],
+  "owner_local_root": "/home/tony/projects/tampu/tmp/inspection-counts-20260910",
+  "files": {
+    "first.json": {
+      "bytes": 6646,
+      "sha256": "c5f38f8d80391207a1b91d0ac6a5e7adeacb1290b9f804b73b904631464151e9"
+    },
+    "search.json": {
+      "bytes": 2280,
+      "sha256": "449e7ecc258a5ada0867fa77c406047bc6fc4745082587ad99918c3440a13b30"
+    },
+    "second.json": {
+      "bytes": 4500,
+      "sha256": "6bd4b23632a33a26d0e7a08368e325210402d56aebd2b83a1177182d9da46a10"
+    },
+    "service-trace.jsonl": {
+      "bytes": 14522,
+      "sha256": "02032659f448055ab9bbe7df09671b4a776722a1b2307892a29d4cdb5ffad6c8"
+    }
+  }
+}

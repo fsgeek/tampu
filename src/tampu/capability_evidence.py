@@ -1,0 +1,79 @@
+"""Post-observation profile; evaluation conditions never follow live corpus growth."""
+
+import hashlib
+import json
+
+RESULT = "docs/experiments/2026-09-08-usable-prototype-results.md"
+PATH_RESULT = "docs/experiments/2026-09-08-path-pilot-results.json"
+CAPABILITY_EVIDENCE = {
+    "schema": "tampu-validation/v1",
+    "limits": "Development observations only; no established navigation benefit, held-out efficacy, or tested scale beyond these fixtures. Current interface revised after observations.",
+    "mechanisms": {
+        "sample_ambiguity": {
+            "status": "inconclusive",
+            "experiment": "growing_corpus",
+            "result": RESULT + "#sixteen-matched-response-observations",
+        },
+        "context_accumulation": {"status": "not_tested", "result": RESULT},
+        "missed_relationships": {
+            "status": "inconclusive",
+            "experiment": "growing_corpus",
+            "result": RESULT,
+        },
+        "embedding_candidate_crowding": {"status": "not_tested", "result": RESULT},
+        "staleness": {
+            "status": "inconclusive",
+            "experiment": "growing_corpus",
+            "result": RESULT,
+        },
+        "path_affordance": {
+            "status": "inconclusive",
+            "experiment": "transcript_path",
+            "result": PATH_RESULT,
+        },
+    },
+    "experiments": [
+        {
+            "id": "growing_corpus",
+            "protocol": "experiments/growing_corpus/README.md",
+            "comparison_protocol": "experiments/growing_corpus/comparison-protocol.md",
+            "implementation_versions": {
+                "r0": "4995f634ebe487afa25e807cb7ec28280fe01427",
+                "r1": "704cdef99d3aed0b36dba1d537273c4761b37a05",
+                "r2_and_comparisons": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+            },
+            "corpus": {
+                "type": "local research PDF development fixture; pinned Unstructured fast",
+                "revisions": {
+                    "fa9221b03c3b4aaaa7c54125f23eadb9": 160,
+                    "7e44b119852a4f16b5f470b321fa91ef": 320,
+                    "0ea79b79668943969e5ee21dfdcbdfae": 473,
+                },
+                "size_unit": "distinct artifacts",
+                "comparison_scope": "separate diagnostic database; frozen visible inputs linked by protocol",
+            },
+            "conditions": "gpt-5.6-sol requested alias, medium, Codex 0.153.4; resolved model revision, numeric output cap and sampling defaults unknown. Five staged caching/consensus investigations: four completed, one budget stop. Sixteen fresh response-only observations; no retries or causal comparison. Prior final text supplied to successors; no continuous-memory test.",
+            "result": RESULT,
+        },
+        {
+            "id": "transcript_path",
+            "protocol": "docs/experiments/2026-09-08-path-pilot-protocol.md",
+            "implementation_versions": ["18c3f448085b2e248a0f22481f654f3dbc1256be"],
+            "corpus": {
+                "type": "selected llm-memory transcript episodes",
+                "revision_sha256": "210a1dca4d9a5a740105d1598e8ae4ad96277ac507aa1bb2d1d19b11e5297881",
+                "size": 1000,
+                "size_unit": "episodes",
+            },
+            "conditions": "gpt-6-astra high; eight fresh consumers, two task families, four natural/four diagnostic starts, ordinary context retained. Zero of four treatment consumers accessed the optional record. Unknown sampling details; no PDF transfer, context-pressure or automatic restoration test.",
+            "result": PATH_RESULT,
+        },
+    ],
+}
+PROFILE_REFERENCE = {
+    "schema": CAPABILITY_EVIDENCE["schema"],
+    "sha256": hashlib.sha256(
+        json.dumps(CAPABILITY_EVIDENCE, sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest(),
+    "record": "src/tampu/capability_evidence.py",
+}

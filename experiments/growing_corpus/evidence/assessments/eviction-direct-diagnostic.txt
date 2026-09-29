@@ -1,0 +1,36 @@
+The passages strengthen the “graceful fallback” idea, but they warrant an important qualification: robustness is a configurable property of the framework, not necessarily the behavior of the evaluated PredictiveMarker configuration.
+
+### Reported behavior
+
+- In the ordinary caching experiments previously assessed, PredictiveMarker reportedly degraded gradually under increasing perturbation and remained ahead of LRU and randomized Marker, whereas Blind Oracle became expensive. That remains the direct empirical support for graceful deterioration, but only for the stated synthetic setup (\(k=10\), lognormal perturbations) and preliminary traces. [artifact `3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578`, physical PDF p. 2]
+
+- The longer paper says its evaluated PredictiveMarker configuration sets the switching threshold to \(k\) and “therefore never switch[es] to random evictions.” Thus, the experimental result should not be described as demonstrating an operational fallback from predictions to prediction-independent random eviction. It demonstrates comparatively gradual degradation of a prediction-using policy; the explicit switch-to-random safeguard belongs to a parameterized variant. [artifact `d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e`, physical PDF p. 14]
+
+- The LLM-context study reports two degenerate outputs among its sessions (11%), attributed to eviction of tool content that a later prompt implicitly needed. It identifies semantic forward references as a failure mode of the current “consumed plus outside recency window” heuristic. [artifact `88a539374c58d18b1087a5e1e06429cd8a7eddb4ffacc589f6818fc69baf0c4d`, physical PDF p. 12]
+
+- That study also presents a fault-response policy: after an eviction causes a fault, the matching page version is retained on later eviction attempts; an edit changes the content hash and starts a new fault cycle. This is a reactive safeguard based on observed mistakes, rather than evidence that predictions themselves remain accurate under deterioration. [artifact `88a539374c58d18b1087a5e1e06429cd8a7eddb4ffacc589f6818fc69baf0c4d`, physical PDF p. 5]
+
+### Theoretical claims
+
+- The longer caching paper explicitly parameterizes trust in the oracle. Switching after a chain reaches \(\gamma H_k\) yields a claimed robustness–competitiveness tradeoff: small \(\gamma\) switches earlier and improves the bound when oracle error is large; large \(\gamma\) trusts the oracle longer and improves it when error is small. [artifact `d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e`, physical PDF p. 12]
+
+- This supports a more precise formulation of graceful fallback: the framework provides a tunable cap on exposure to bad advice, conditional on the theorem’s assumptions, including the stated loss-spread and concavity conditions. The pinned excerpt does not contain the completed bound, so it does not independently settle the earlier discrepancy in exact constants or justify calling this particular result “2-consistent.” [artifact `d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e`, physical PDF p. 12]
+
+- The broader \(O(\log k)\) worst-case characterization remains a claim of the cited caching papers, subject to the prior caveats about the differing displayed bounds, definitions, and unverified complete proof. [artifact `d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e`, physical PDF pp. 8–9; artifact `3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578`, physical PDF pp. 1–2]
+
+### Inference and transfer to LLM context eviction
+
+The warranted design inference is a layered policy:
+
+1. use predicted re-reference to improve eviction choices when confidence is adequate;
+2. limit how long or how strongly predictions can control an eviction chain;
+3. fall back to a prediction-independent rule as evidence of error accumulates; and
+4. retain or protect items implicated in actual faults, invalidating that protection when their content changes.
+
+This combines the caching paper’s bounded-trust mechanism with the LLM study’s version-sensitive fault feedback. It is a design inference, not a tested LLM policy.
+
+The transfer is plausible but not automatic. The LLM study proposes cross-session prediction of turns until next reference from recurring coding-session access patterns; it labels this as future work rather than reporting an evaluated predictor. [artifact `88a539374c58d18b1087a5e1e06429cd8a7eddb4ffacc589f6818fc69baf0c4d`, physical PDF pp. 12–13] Moreover, its observed failures show that LLM “faults” can depend on semantic references to content, not merely on the next request for a cache key. Consequently, ordinary next-arrival error, cache size \(k\), and miss count may not directly capture variable context sizes, unequal reconstruction costs, dependencies between context items, or catastrophic generation failures.
+
+The RankCache passages suggest additional implementation patterns—online monitoring, decayed statistics, exploration, synthetic sampling for under-observed classes, and averaging across decisions—but they do not establish robustness to deteriorating learned predictions or validate those mechanisms for LLM context eviction. [artifact `6a054c5086a016af3438a8aa208097fc47ccb90ef84c6d8e9588b088d6638213`, physical PDF pp. 405, 408–409]
+
+Accordingly, the earlier conclusion should be qualified to: prediction-assisted eviction can be designed for graceful fallback, and limited ordinary-cache experiments report gradual degradation, but the evaluated PredictiveMarker reportedly did not exercise the explicit random-eviction switch. For LLM context, bounded trust, online error monitoring, exploration, and fault-aware protection are promising transferred principles; their guarantees and behavior under correlated errors, semantic dependencies, distribution shift, and severe prediction failure remain unestablished by these excerpts.

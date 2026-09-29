@@ -1,0 +1,9 @@
+{
+  "artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+  "physical_pdf_page": 9,
+  "printed_page": "8",
+  "render_path": "/home/tony/projects/tampu/tmp/prototype-readiness/visual/long-caching-p9-controller.png",
+  "render_sha256": "23e7d2fd8a55331eb5617237c60182bfb76009228fb1910aedb7713a429ad7ae",
+  "observation": "Controller visual inspection confirms Section3.2 displays 2*min(2+2*sqrt(eta1/OPT),2H_k), including outerfactor2 and full ratio under square root. This supports the consumer reported-formula comparison, not independent proof validity or a lower bound on actual algorithm performance.",
+  "scope": "Post-original independent source review; not evidence delivered to original consumer; no full paper audit."
+}

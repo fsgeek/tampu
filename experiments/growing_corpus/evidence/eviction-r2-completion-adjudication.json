@@ -1,0 +1,11 @@
+{
+  "original_summary_retained": true,
+  "original_assessment_text_retained": true,
+  "actual_outcome": "budget-overrun failure; no final assessment; no recorded finding",
+  "actual_mcp_calls": 24,
+  "turn_completed_event": false,
+  "finish_calls": 0,
+  "usage_available": false,
+  "why_summary_was_wrong": "Original runner treated any nonempty agent_message as final; assessment.txt is the last progress message. exit_code0 does not establish completion.",
+  "interpretation": "No substantive final cross-topic synthesis. Preserve original as failure; separate direct-evidence diagnostic cannot replace it."
+}

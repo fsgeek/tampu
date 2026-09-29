@@ -1,0 +1,14 @@
+{
+  "kind": "controller_final_old_path_pilot_regression",
+  "time_utc": "2026-09-09T08:38:11.757799+00:00",
+  "source_commit": "6ae4ad6b36a34666a72318b4fc745da84455232f",
+  "command": "/home/tony/projects/llm-memory/.venv/bin/python -m pytest experiments/path_holding/test_harness.py -q",
+  "exit_code": 0,
+  "output": "..................... [100%]\n21 passed in 1.58s\n",
+  "isolation": "Unique disposable fixture databases on dedicated18529container; live llm-memory configuration unused.",
+  "cleanup": {
+    "command": "docker stop tampu-path-pilot-20260908",
+    "exit_code": 0,
+    "state": "stopped; container filesystem preserved"
+  }
+}

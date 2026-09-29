@@ -1,0 +1,266 @@
+{
+ "protocol": "revision 2",
+ "lens": "jev-relevance",
+ "model": "jev-1.13.0",
+ "undelivered_probes_eligible_at_8192": 5,
+ "random_comparator": {
+  "permutations": 10000,
+  "seed": 20260928,
+  "mean_eligible": 0.2894,
+  "p_at_least_observed": 0.0,
+  "proceedings_mean_eligible_at_49152": 0.0519
+ },
+ "tie_dependent": 0,
+ "sensitive": 0,
+ "verdict": "supports a follow-up",
+ "cases": {
+  "long": {
+   "nonempty_elements": 359,
+   "text_bytes": 56719,
+   "distinct_scores": 46,
+   "elements_in_shared_8192_reading_set": 17,
+   "score_at_8192_boundary": 0.37,
+   "probes": [
+    {
+     "ordinal": 194,
+     "page": 12,
+     "score": 0.4,
+     "repeated_scores": [
+      0.4,
+      0.39,
+      0.41
+     ],
+     "shared_rank": 14,
+     "worst_rank": 14,
+     "best_rank": 12,
+     "percentile": 96.38,
+     "worst_text_cost": 6075,
+     "best_text_cost": 5006,
+     "sensitivity_worst_costs": {
+      "0.39": 6075,
+      "0.4": 6075,
+      "0.41": 5006
+     },
+     "delivered_in_rehearsal": false,
+     "primary_8192": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     },
+     "secondary_49152": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     }
+    },
+    {
+     "ordinal": 206,
+     "page": 12,
+     "score": 0.69,
+     "repeated_scores": [
+      0.68,
+      0.69,
+      0.68
+     ],
+     "shared_rank": 2,
+     "worst_rank": 2,
+     "best_rank": 2,
+     "percentile": 99.72,
+     "worst_text_cost": 868,
+     "best_text_cost": 868,
+     "sensitivity_worst_costs": {
+      "0.68": 868,
+      "0.69": 868
+     },
+     "delivered_in_rehearsal": false,
+     "primary_8192": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     },
+     "secondary_49152": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     }
+    },
+    {
+     "ordinal": 239,
+     "page": 14,
+     "score": 0.67,
+     "repeated_scores": [
+      0.68,
+      0.67,
+      0.68
+     ],
+     "shared_rank": 3,
+     "worst_rank": 3,
+     "best_rank": 3,
+     "percentile": 99.44,
+     "worst_text_cost": 1006,
+     "best_text_cost": 1006,
+     "sensitivity_worst_costs": {
+      "0.67": 1006,
+      "0.68": 1006
+     },
+     "delivered_in_rehearsal": true,
+     "primary_8192": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     },
+     "secondary_49152": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     }
+    }
+   ],
+   "lexical_replay": [
+    {
+     "query": "switch random",
+     "mode": "all_terms",
+     "matched": 6,
+     "probe_ranks": {
+      "194": 3,
+      "206": 4,
+      "239": 1
+     }
+    },
+    {
+     "query": "experimental",
+     "mode": "any_terms",
+     "matched": 2,
+     "probe_ranks": {
+      "194": null,
+      "206": null,
+      "239": null
+     }
+    }
+   ]
+  },
+  "proceedings": {
+   "nonempty_elements": 20989,
+   "text_bytes": 2921695,
+   "distinct_scores": 86,
+   "elements_in_shared_8192_reading_set": 12,
+   "score_at_8192_boundary": 0.84,
+   "probes": [
+    {
+     "ordinal": 13846,
+     "page": 405,
+     "score": 0.88,
+     "repeated_scores": [
+      0.89,
+      0.89,
+      0.89
+     ],
+     "shared_rank": 5,
+     "worst_rank": 5,
+     "best_rank": 5,
+     "percentile": 99.98,
+     "worst_text_cost": 3225,
+     "best_text_cost": 3225,
+     "sensitivity_worst_costs": {
+      "0.89": 3225
+     },
+     "delivered_in_rehearsal": false,
+     "primary_8192": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     },
+     "secondary_49152": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     }
+    },
+    {
+     "ordinal": 14048,
+     "page": 408,
+     "score": 0.9,
+     "repeated_scores": [
+      0.91,
+      0.9,
+      0.91
+     ],
+     "shared_rank": 3,
+     "worst_rank": 3,
+     "best_rank": 3,
+     "percentile": 99.99,
+     "worst_text_cost": 1383,
+     "best_text_cost": 1383,
+     "sensitivity_worst_costs": {
+      "0.9": 1383,
+      "0.91": 1383
+     },
+     "delivered_in_rehearsal": false,
+     "primary_8192": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     },
+     "secondary_49152": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     }
+    },
+    {
+     "ordinal": 14087,
+     "page": 409,
+     "score": 0.86,
+     "repeated_scores": [
+      0.87,
+      0.88,
+      0.87
+     ],
+     "shared_rank": 7,
+     "worst_rank": 7,
+     "best_rank": 7,
+     "percentile": 99.97,
+     "worst_text_cost": 4355,
+     "best_text_cost": 4355,
+     "sensitivity_worst_costs": {
+      "0.87": 4355,
+      "0.88": 3769
+     },
+     "delivered_in_rehearsal": false,
+     "primary_8192": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     },
+     "secondary_49152": {
+      "eligible": true,
+      "tie_dependent": false,
+      "sensitive": false
+     }
+    }
+   ],
+   "lexical_replay": [
+    {
+     "query": "LHD RankCache",
+     "mode": "all_terms",
+     "matched": 23,
+     "probe_ranks": {
+      "13846": null,
+      "14048": null,
+      "14087": 15
+     }
+    },
+    {
+     "query": "adapt",
+     "mode": "any_terms",
+     "matched": 101,
+     "probe_ranks": {
+      "13846": null,
+      "14048": null,
+      "14087": null
+     }
+    }
+   ]
+  }
+ }
+}

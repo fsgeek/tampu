@@ -1,0 +1,7 @@
+{
+  "stage": "r0",
+  "record_field": "source_commit",
+  "meaning": "Repository HEAD when the publication record was written, not a captured hash of the imported Python module.",
+  "limitation": "The publication process started while Task2 search-timeout fixes were in progress. Exact imported module bytes were not recorded. The reviewed 91e72da..2b4bab7 source diff changes timeout classification/search wrapper only; capture, extraction, staging and publication code are unchanged in that interval.",
+  "future_recording": "Capture clean commit and relevant source-file hashes before execution, and again after execution; do not retroactively invent the r0 import hash."
+}

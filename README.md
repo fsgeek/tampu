@@ -15,27 +15,56 @@ whole journey.
 
 ## Status
 
-**A working prototype exists on unmerged branches. Its benefit to an AI consumer
-is not established.**
+**Working research prototype; development evidence is mixed.**
 
-`main` holds the founding document, the prototype design, and the adversarial
-review exchange that corrected it. The implementation lives on signed branches
-that have not been merged:
+Tampu captures PDFs, preserves byte identity and immutable collection revisions,
+indexes page-attributed lexical evidence, and exposes four bounded MCP tools:
+`describe`, `search`, `inspect`, and `finish`. The local growing-corpus run
+published **160 → 320 → 473 artifacts**, exercised five real model investigations
+and sixteen matched response observations, and retained failures. One final-stage
+investigation exceeded its tool budget and produced no final assessment. The
+Legible Consensus investigation correctly distinguished a changed explanation
+from an unchanged threshold.
 
-| Branch | Contents |
-| --- | --- |
-| `experiment/path-holding-pilot` | Ingestion, ArangoDB repository, bounded service, and four MCP tools, grown across 160, 320, and 473 artifacts |
-| `experiment/retrieval-grouping-audit` | Diagnostic: returning more passages globally recovered none of eight known qualifications |
-| `experiment/artifact-local-navigation` | Rehearsal: one probe recovered by direct search, none by adjacent-page navigation |
-| `feat/inspection-element-counts` | Inspection reports total and remaining elements |
-| `design/retrieval-competence-evaluation` | Design for adaptive retrieval competence diagnostics |
+[Observed results and limitations](docs/experiments/2026-09-08-usable-prototype-results.md)
+separate working invariants from consumer benefit, which remains unestablished.
+All 473 primary extractions completed, but 27 returned no text; successful
+processing does not certify semantic coverage. Optional path machinery remains
+disabled after an inconclusive earlier pilot. Embeddings, composition, durable
+journey preservation, and historical score re-execution are unavailable.
 
-The experiments so far are small, builder-selected, and mostly negative. They
-separate what the service can return from whether navigating it helps an AI find
-anything. That second question is open. Each branch's `docs/experiments/` records
-what was run, what was found, and what was corrected after review.
+For setup and the recorded experiment commands, see the
+[reproduction guide](experiments/growing_corpus/README.md). The current interface
+includes inspection guidance corrected **after** the original observations;
+that guide identifies the frozen commits needed to recreate their interface.
 
-This README describes what Tampu is *for*. The branches describe what exists.
+```sh
+uv sync
+uv run tampu --help
+# After provisioning a dedicated database/user and private runtime configuration:
+uv run tampu init
+uv run tampu ingest research /absolute/path/to/papers --profile poppler
+uv run tampu describe --collection research
+uv run tampu serve
+```
+
+A consumer starts with `search(collection=..., intent=..., query=...)`. To record
+a positive finding, follow a search or listing preview handle with
+`inspect(evidence_handle=...)`, then pass the **returned inspected citation
+handle** to `finish`. Inspect lists at most 20 entries and slices 1–4,000 Unicode
+characters. Journey content is process-local unless the owner explicitly enables
+`serve --trace PATH`.
+
+Artifact/page/ordinal element listings include `total_elements` for the selected
+range and `remaining_elements` after the returned entries. For example, a page
+with 33 elements requested with `limit=20` reports 20 returned and 13 remaining;
+its continuation reports the same total and eventually zero remaining. These
+counts describe normalized elements, not relevance or the search's candidate
+artifact count. An empty selection reports zero for both. Oversized element
+listings return `budget_too_small` without advancing the continuation; reduce
+`limit` or increase `byte_budget` to retry.
+
+Later diagnostics on the same collection are recorded separately: [retrieval grouping](docs/experiments/2026-09-09-retrieval-grouping-results.md), [artifact-local navigation](docs/experiments/2026-09-09-artifact-local-navigation-results.md), and a [classifier lens comparison](docs/experiments/2026-09-29-classifier-lens-results.md) of Jev and CLM as relevance lenses. None establishes consumer benefit.
 
 ## The problem
 
@@ -67,15 +96,16 @@ Tampu is built on a handful of commitments that follow from that:
 term, sampling results, discovering the set is far larger or smaller than
 expected, and using something found in one result to decide where to look next.
 It involves dead ends, revised language, and returning to earlier points. These
-are not interface failures — they are ordinary wayfinding. Tampu models the
-process as an immutable graph, so an AI can branch and backtrack without
-reconstructing its path from memory.
+are not interface failures — they are ordinary wayfinding. The prototype pins
+queries and evidence within an expiring process-local journey. Parent-based
+branching, history navigation and replay remain deferred after an inconclusive
+external path pilot.
 
 **Absence is a finding.** Determining that something is *not* in a collection can
 be as valuable as locating it. Tampu distinguishes *found*, *not found within a
 defined scope*, and *unresolved* — and refuses to let an empty result silently
-become a claim of absence. An exhaustive lexical index can support "this token
-does not appear." An approximate semantic index supports only "no candidate was
+become a claim of absence. An exhaustive lexical index can support "this predicate has no match in the
+selected representation." An approximate semantic index supports only "no candidate was
 identified under this representation and threshold." Those are different
 statements and Tampu reports them differently.
 
@@ -121,8 +151,8 @@ material available.
 - **Not a conversational memory system.** [qhaway](https://github.com/fsgeek/qhaway)
   and llm-memory address accumulated model interactions. Tampu concerns artifacts
   selected for a task or archive.
-- **Not an ontology-authoring environment.** It can use, expose, compare, and
-  compose ontological lenses supplied by others. It does not build them.
+- **Not an ontology-authoring environment.** The prototype exposes lexical, metadata and temporal lenses. Additional lenses
+  and composition remain future work.
 - **Not a storage, sync, or backup platform.** It owns artifact admission,
   identity, and processing status where those are needed for honest retrieval. It
   may refer to artifacts held elsewhere.
@@ -155,7 +185,10 @@ claims that did not survive scrutiny, and who refuted them.
 | --- | --- |
 | [`docs/tampu-founding-document.md`](docs/tampu-founding-document.md) | The architectural argument and its commitments |
 | [`docs/superpowers/specs/`](docs/superpowers/specs/) | Prototype design, review, response, and dispositions |
-| `scripts/` | OpenTimestamps hooks for the commit record |
+| [`src/tampu/`](src/tampu/) | CLI, MCP service, capture, extraction and revision repository |
+| [`experiments/growing_corpus/`](experiments/growing_corpus/) | Frozen inputs, runner and compact measured evidence |
+| [`docs/implementation/`](docs/implementation/) | Preserved implementation reports |
+| `scripts/` | Dedicated database provisioning and OpenTimestamps hooks |
 | `timestamps/` | Pending and Bitcoin-anchored proofs |
 
 Start with the founding document.
@@ -183,3 +216,30 @@ Substantial portions of this repository were generated by AI systems and may not
 be copyrightable in the United States. [`NOTICE`](NOTICE) states what is
 protected, what is uncertain, and how to determine authorship from the commit
 record rather than taking the question on trust.
+
+
+The current four-tool prototype exposes live revision counts as `collection_scope`
+and frozen evaluation conditions as `validation_scope` in `describe`. Follow the
+latter's continuation using `validation_cursor` in the same MCP process to read
+both experiment records. Findings carry the same content-hashed profile reference.
+The default response budget is 8192 UTF-8 JSON bytes, with a hard maximum of
+32768. Omitted optional summary fields are named; increasing the budget can recover
+those fields but does not remove the summary's five-record caps. For complete
+processing records, call `describe(collection="papers", detail="processing")`.
+Repeat its `revision_id` as `revision` and `continuation` as `detail_cursor` in the
+same MCP process. `detail_limit` is 1..100; each recipe/coverage record and each
+individual loss carries artifact and projection IDs. `detail="admission"` pages
+source observations, including exclusions and failures. Pages return complete
+records and advance, or return `budget_too_small` with `minimum_bytes`. If one
+record exceeds 32768 bytes, it cannot be delivered through this interface; the
+owner-local immutable record remains available, and nothing is silently skipped.
+
+Search and bounded-negative findings retain revision-wide admission outcomes and
+enumeration uncertainty even when an exact selected-representation count is zero.
+Publication dates use `publication-date-interval/v1`: year/month assertions denote
+inclusive calendar intervals. A fully contained interval is a definite match, a
+disjoint interval is excluded, and partial overlap is unresolved. Search and
+negative scope report `temporal_scope.ambiguous_intervals` and `missing_values`;
+`unknown_count` includes both. These corrections were made after the recorded
+consumer observations; see the
+[results and limitations](docs/experiments/2026-09-08-usable-prototype-results.md).

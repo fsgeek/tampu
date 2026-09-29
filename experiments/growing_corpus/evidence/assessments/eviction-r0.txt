@@ -1,0 +1,37 @@
+The collection supports a “graceful fallback” conclusion for prediction-assisted eviction, but only under a specific learning-augmented caching model.
+
+Evaluated behavior
+
+- The evaluated policies are:
+
+  - **Blind Oracle:** evict the cached item predicted to be requested furthest in the future.
+  - **PredictiveMarker:** use that prediction only to break Marker’s eviction ties, with an additional fallback resembling random eviction when prediction quality is poor.
+  - Baselines: **LRU**, randomized **Marker**, and offline optimum.
+
+  [*Better Caching with Machine Learned Advice*, artifact `3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578`, PDF p. 2]
+
+- In the synthetic experiment, cache size was \(k=10\); prediction deterioration was simulated by adding i.i.d. lognormal noise to true next-arrival times. PredictiveMarker reportedly degraded slowly as average error increased and remained better than LRU and Marker, whereas Blind Oracle worked at very low error but quickly became extremely costly. [same artifact, PDF p. 2]
+
+- A second, preliminary experiment used BrightKite check-in sequences and an untuned PLECO repeat-consumption predictor. Reported normalized eviction ratios were Blind Oracle 2.049, LRU 1.280, Marker 1.310, and PredictiveMarker 1.266; the PredictiveMarker advantage was reported significant at \(p<0.001\). [same artifact, PDF p. 2]
+
+Theoretical claims
+
+- Blindly following predicted next-use times is not robust: the paper constructs a \(k=2\) sequence where a single concentrated prediction error causes repeated misses despite low average oracle error. It says the competitive ratio can grow without bound even when the oracle only overestimates arrival times. [same artifact, PDF p. 2]
+
+- For PredictiveMarker, the stated competitive-ratio bound is
+
+  \[
+  \min\!\left(2+2\sqrt{\eta_1/\mathrm{OPT}},\,4\log k\right),
+  \]
+
+  where \(\eta_1\) is the oracle’s aggregate/average-error loss, \(\mathrm{OPT}\) is offline-optimal cost, and \(k\) is cache size. Thus useful predictions improve the error-dependent term, while deteriorating predictions are capped by a classical randomized-caching-scale fallback. The paper labels this “2-consistent and 4-competitive.” [same artifact, PDF p. 2]
+
+- The intended assumptions are deliberately weak about prediction accuracy: results are parameterized by average oracle error rather than a pointwise accuracy guarantee. The design goal is consistency as error decreases and worst-case competitiveness independent of oracle quality. [same artifact, PDF p. 1]
+
+Unresolved
+
+- This three-page artifact defers proofs to a full version, so the collection evidence inspected here does not independently establish the theorem or fully define \(\eta_1\), `OPT`, and the precise interpretation of “4-competitive” relative to the displayed \(4\log k\) cap. [same artifact, PDF p. 2]
+- The evaluation is explicitly preliminary. It does not establish production robustness, generalization across cache sizes or broad workloads, or empirical behavior under correlated, adversarial, or distribution-shifted prediction failures.
+- The successful extraction of all three pages does not demonstrate that the collection search was semantically complete.
+
+Collection revision: `fa9221b03c3b4aaaa7c54125f23eadb9`; projection `5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba`. Supported and unresolved findings were recorded and the temporary journey released.

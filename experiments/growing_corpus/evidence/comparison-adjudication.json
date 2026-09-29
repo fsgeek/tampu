@@ -1,0 +1,555 @@
+{
+  "exposure": "Builder-authored cases, observed source evidence, no held-out claim",
+  "rubric_sha256": "54bdd3d9c88667ec26ae3d320f9e8aaa0cc679bb584a60f025601d0f2b64cbdc",
+  "scoring": "Class mechanically compared to frozen arm rubric; calibration/next-step manually adjudicated from visible payload only. No aggregate efficacy statistic.",
+  "observations": [
+    {
+      "label": "A-scope-scope_present",
+      "builder_case": "present",
+      "expected_class": "present",
+      "response": {
+        "conclusion_class": "present",
+        "conclusion": "The displayed evidence supports that Blind Oracle evicts the cached item predicted to be requested furthest in the future.",
+        "basis": [
+          "E1"
+        ],
+        "next_step": "stop",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Direct inspected rule supports present; stop is appropriate for this narrow proposition. Candidate count and coverage produced no stated-step change in these arms.",
+      "raw_response_sha256": "1e76f85b22ff0612a935a3bb308435b8a39320529062e9bb542f1eee9f778b7b",
+      "wall_seconds": 4.766034067957662,
+      "usage": [
+        {
+          "input_tokens": 9719,
+          "cached_input_tokens": 5888,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 51,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "A-scope-scope_absent",
+      "builder_case": "present",
+      "expected_class": "present",
+      "response": {
+        "conclusion_class": "present",
+        "conclusion": "The displayed evidence states that Blind Oracle evicts the element predicted to be furthest in the future.",
+        "basis": [
+          "E1"
+        ],
+        "next_step": "stop",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Direct inspected rule supports present; stop is appropriate for this narrow proposition. Candidate count and coverage produced no stated-step change in these arms.",
+      "raw_response_sha256": "121f2b5e8dbf8726a2438c8b11170d40f4de3c2f244a1bb6b978c4f862530c9f",
+      "wall_seconds": 6.267802877002396,
+      "usage": [
+        {
+          "input_tokens": 9036,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 49,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "A-count_coverage-neither",
+      "builder_case": "present",
+      "expected_class": "present",
+      "response": {
+        "conclusion_class": "present",
+        "conclusion": "The displayed evidence states that Blind Oracle evicts the element predicted to be furthest in the future.",
+        "basis": [
+          "inspected_evidence:E1"
+        ],
+        "next_step": "stop",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Direct inspected rule supports present; stop is appropriate for this narrow proposition. Candidate count and coverage produced no stated-step change in these arms.",
+      "raw_response_sha256": "e1528a961d715b7b49fb344c8f9325013d679a2a49669ca2495581c51c662afd",
+      "wall_seconds": 5.515251222066581,
+      "usage": [
+        {
+          "input_tokens": 9368,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 53,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "A-count_coverage-count_only",
+      "builder_case": "present",
+      "expected_class": "present",
+      "response": {
+        "conclusion_class": "present",
+        "conclusion": "The displayed evidence states that Blind Oracle evicts the element predicted to be furthest in the future.",
+        "basis": [
+          "E1"
+        ],
+        "next_step": "stop",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Direct inspected rule supports present; stop is appropriate for this narrow proposition. Candidate count and coverage produced no stated-step change in these arms.",
+      "raw_response_sha256": "121f2b5e8dbf8726a2438c8b11170d40f4de3c2f244a1bb6b978c4f862530c9f",
+      "wall_seconds": 5.017292688018642,
+      "usage": [
+        {
+          "input_tokens": 9378,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 49,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "A-count_coverage-coverage_only",
+      "builder_case": "present",
+      "expected_class": "present",
+      "response": {
+        "conclusion_class": "present",
+        "conclusion": "The displayed evidence states that Blind Oracle evicts the element predicted to be furthest in the future.",
+        "basis": [
+          "inspected_evidence",
+          "hits"
+        ],
+        "next_step": "stop",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Direct inspected rule supports present; stop is appropriate for this narrow proposition. Candidate count and coverage produced no stated-step change in these arms.",
+      "raw_response_sha256": "2f1fb937dcb53345c0c5c55f93119b2d8c64844cae1c9f4168cdcfa0f48b7072",
+      "wall_seconds": 9.271416659001261,
+      "usage": [
+        {
+          "input_tokens": 9505,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 53,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "A-count_coverage-combined",
+      "builder_case": "present",
+      "expected_class": "present",
+      "response": {
+        "conclusion_class": "present",
+        "conclusion": "The displayed evidence supports that Blind Oracle evicts the cached item predicted to be requested furthest in the future.",
+        "basis": [
+          "inspected_evidence.E1"
+        ],
+        "next_step": "stop",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Direct inspected rule supports present; stop is appropriate for this narrow proposition. Candidate count and coverage produced no stated-step change in these arms.",
+      "raw_response_sha256": "ecbfd3454a14166c676b45935b139b188f64d13d4856500fa7ceafe9f842ffd5",
+      "wall_seconds": 5.2669343469897285,
+      "usage": [
+        {
+          "input_tokens": 9723,
+          "cached_input_tokens": 2304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 55,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "B-scope-scope_present",
+      "builder_case": "absent",
+      "expected_class": "bounded_negative",
+      "response": {
+        "conclusion_class": "bounded_negative",
+        "conclusion": "The exact phrase \u201ctampuabsentpredicateqxz\u201d has no match in the stated short-paper subset\u2019s text_en representation.",
+        "basis": [
+          "candidate_count",
+          "count_kind",
+          "scope.coverage"
+        ],
+        "next_step": "stop",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Matches the visible-evidence class; claim and proposed action remain within shown evidence.",
+      "raw_response_sha256": "ffc068d5867a150961ca46ab5c31640de8e41d184308832b40b24f5eee29cb9c",
+      "wall_seconds": 8.519935272983275,
+      "usage": [
+        {
+          "input_tokens": 9138,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 64,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "B-scope-scope_absent",
+      "builder_case": "absent",
+      "expected_class": "unresolved",
+      "response": {
+        "conclusion_class": "bounded_negative",
+        "conclusion": "The exact lexical phrase \"tampuabsentpredicateqxz\" has no match in the stated short-paper subset and searched representation.",
+        "basis": [
+          "candidate_count",
+          "count_kind",
+          "status"
+        ],
+        "next_step": "stop",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 0,
+        "calibration": 0,
+        "next_step": 0,
+        "total": 0
+      },
+      "adjudicator_notes": "Overconfident bounded negative and stop despite hidden representation/revision/coverage scope. Exactzero alone did not satisfy this pre-frozen arm rubric.",
+      "raw_response_sha256": "2600a20c4e659d885e55558ccd4098ff88c23edb572900272d752ea21c7973d8",
+      "wall_seconds": 7.769873956916854,
+      "usage": [
+        {
+          "input_tokens": 8803,
+          "cached_input_tokens": 8576,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 62,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "C-scope-scope_present",
+      "builder_case": "alias",
+      "expected_class": "unresolved",
+      "response": {
+        "conclusion_class": "unresolved",
+        "conclusion": "No exact \u201cPredictiveMarker\u201d phrase appears in the covered text, but this does not determine whether the collection supports the described policy under other terminology.",
+        "basis": [
+          "candidate_count",
+          "scope.predicate",
+          "scope.coverage"
+        ],
+        "next_step": "Search the extracted text for conceptual variants combining prediction, Marker, and caching terminology.",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Keeps concept unresolved and proposes terminology variants; scoped arm names failed literal predicate without claiming concept absence.",
+      "raw_response_sha256": "b78ac3d5819ca18dcc2445fa0fe16a5645de8c07990316b91fac5458e36ae122",
+      "wall_seconds": 8.52004333899822,
+      "usage": [
+        {
+          "input_tokens": 9120,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 166,
+          "reasoning_output_tokens": 82
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "C-scope-scope_absent",
+      "builder_case": "alias",
+      "expected_class": "unresolved",
+      "response": {
+        "conclusion_class": "unresolved",
+        "conclusion": "The observation does not establish whether the collection supports a prediction-guided Marker caching policy.",
+        "basis": [
+          "candidate_count",
+          "hits",
+          "count_kind"
+        ],
+        "next_step": "Search the collection for passages describing prediction-guided caching and Marker-specific cache policies, including relevant terminology variants.",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Keeps concept unresolved and proposes terminology variants; scoped arm names failed literal predicate without claiming concept absence.",
+      "raw_response_sha256": "9b88801e58cbd57daf36123ad54ada86248d8acff899e76f0c76667ab4af5469",
+      "wall_seconds": 10.273877515923232,
+      "usage": [
+        {
+          "input_tokens": 8790,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 71,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "D-scope-scope_present",
+      "builder_case": "processing_gap",
+      "expected_class": "unresolved",
+      "response": {
+        "conclusion_class": "unresolved",
+        "conclusion": "Whether CORFU supports implementing a shared log across a cluster cannot be determined because none of the PDF's 24 pages contain searchable text in the selected representation.",
+        "basis": [
+          "candidate_count",
+          "scope.coverage",
+          "projection_processing"
+        ],
+        "next_step": "Extract searchable text from the PDF and rerun the phrase search for \"shared log\".",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Keeps source support unresolved using displayed zero-text coverage and requests extraction/review. Extract-or-OCR is a proposed intervention, not a claimed automatic fallback; combined wording could more explicitly name the selected representation.",
+      "raw_response_sha256": "7f919a5cf4e6249065ccaaa011525abb6cb0ba9e10031a2632a73e57bdd0adee",
+      "wall_seconds": 6.769053553929552,
+      "usage": [
+        {
+          "input_tokens": 9196,
+          "cached_input_tokens": 5888,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 84,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "D-scope-scope_absent",
+      "builder_case": "processing_gap",
+      "expected_class": "unresolved",
+      "response": {
+        "conclusion_class": "unresolved",
+        "conclusion": "The shown lexical observation does not establish whether CORFU supports implementing a shared log across a cluster.",
+        "basis": [
+          "candidate_count",
+          "hits",
+          "count_kind"
+        ],
+        "next_step": "Inspect the source PDF for passages describing CORFU's shared-log architecture and cluster deployment.",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Matches the visible-evidence class; claim and proposed action remain within shown evidence.",
+      "raw_response_sha256": "c87c20ad2b17107121121da1ce26b05fe3f1842dcab28de9c7693031cd3062bd",
+      "wall_seconds": 5.517525032977574,
+      "usage": [
+        {
+          "input_tokens": 8795,
+          "cached_input_tokens": 2304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 69,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "D-count_coverage-neither",
+      "builder_case": "processing_gap",
+      "expected_class": "unresolved",
+      "response": {
+        "conclusion_class": "unresolved",
+        "conclusion": "The shown zero matches for the phrase \u201cshared log\u201d in the selected English-text projection do not establish whether CORFU supports implementing a shared log across a cluster.",
+        "basis": [
+          "hits",
+          "identity.predicate",
+          "identity.selected_projections"
+        ],
+        "next_step": "Inspect the source PDF or search its text using broader terms for CORFU\u2019s distributed-log architecture and cluster implementation.",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Unresolved class and source-review action are appropriate. \u201cShown zero matches\u201d can refer to the visible empty hits array; it does not explicitly assert a hidden total candidate count, so credit calibration. Wording remains ambiguous. Root independent review prompted this more literal reading; initial judgment retained locally.",
+      "raw_response_sha256": "0de7b4f7345a3153b11f640e02c6b7e18abc7e291dcf8280f06f1da54408f7db",
+      "wall_seconds": 7.017924809013493,
+      "usage": [
+        {
+          "input_tokens": 8999,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 90,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "D-count_coverage-count_only",
+      "builder_case": "processing_gap",
+      "expected_class": "unresolved",
+      "response": {
+        "conclusion_class": "bounded_negative",
+        "conclusion": "The exact phrase \"shared log\" has no lexical matches in the selected text_en projection for the specified artifact, so the broader implementation-support question remains unanswered.",
+        "basis": [
+          "candidate_count",
+          "identity.predicate",
+          "identity.selected_projections"
+        ],
+        "next_step": "Review the source PDF for passages describing how CORFU implements a log across cluster nodes.",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 0,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 2
+      },
+      "adjudicator_notes": "Class label differs from pre-frozen source-question unresolved class. Sentence nevertheless makes a precise predicate-only negative and explicitly leaves source support unanswered; calibration and source-review next step receive credit, not a hidden-truth penalty.",
+      "raw_response_sha256": "22d940728a5c2f8c238708eeb75c3d1b4bb3af422244cc5bc4929130c150ad41",
+      "wall_seconds": 9.772201624000445,
+      "usage": [
+        {
+          "input_tokens": 9009,
+          "cached_input_tokens": 2304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 208,
+          "reasoning_output_tokens": 121
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "D-count_coverage-coverage_only",
+      "builder_case": "processing_gap",
+      "expected_class": "unresolved",
+      "response": {
+        "conclusion_class": "unresolved",
+        "conclusion": "The shown evidence cannot determine whether CORFU supports implementing a shared log across a cluster because none of the PDF's 24 pages contains attributed text in the searched representation.",
+        "basis": [
+          "coverage_scope",
+          "hits"
+        ],
+        "next_step": "Extract or OCR the PDF pages into the text_en representation, then search for passages describing CORFU's shared-log implementation across a cluster.",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Keeps source support unresolved using displayed zero-text coverage and requests extraction/review. Extract-or-OCR is a proposed intervention, not a claimed automatic fallback; combined wording could more explicitly name the selected representation.",
+      "raw_response_sha256": "548fea25fbc866ebf6e0d0890016d22380eccdd838ce2d3b845b7931d4db79e7",
+      "wall_seconds": 6.269092160044238,
+      "usage": [
+        {
+          "input_tokens": 9190,
+          "cached_input_tokens": 2304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 90,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    },
+    {
+      "label": "D-count_coverage-combined",
+      "builder_case": "processing_gap",
+      "expected_class": "unresolved",
+      "response": {
+        "conclusion_class": "unresolved",
+        "conclusion": "The observation does not establish whether CORFU supports implementing a shared log across a cluster because none of the PDF's 24 pages contain searchable text.",
+        "basis": [
+          "coverage_scope",
+          "hits"
+        ],
+        "next_step": "Extract or OCR the PDF's pages, then search the resulting text for passages describing CORFU's shared-log implementation across a cluster.",
+        "confidence": "high"
+      },
+      "score": {
+        "class": 2,
+        "calibration": 1,
+        "next_step": 1,
+        "total": 4
+      },
+      "adjudicator_notes": "Keeps source support unresolved using displayed zero-text coverage and requests extraction/review. Extract-or-OCR is a proposed intervention, not a claimed automatic fallback; combined wording could more explicitly name the selected representation.",
+      "raw_response_sha256": "ec232ee0d329151666ebb95791ba6672a66e7d11778da3c819d64d119b0c967e",
+      "wall_seconds": 6.017258592997678,
+      "usage": [
+        {
+          "input_tokens": 9200,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 85,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "model_source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6"
+    }
+  ],
+  "review_note": "Root independently reviewed B and D arms. Class mismatch for Dcount_only retains calibration/next-step credit. Dneither ambiguity is described rather than categorically penalized as invented totalcount."
+}

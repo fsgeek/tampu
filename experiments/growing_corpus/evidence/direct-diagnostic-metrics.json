@@ -1,0 +1,39 @@
+{
+  "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/diagnostic-consumers/eviction-direct",
+  "summary": {
+    "exit_code": 0,
+    "stop_reason": null,
+    "wall_seconds": 48.10423581907526,
+    "mcp_tool_calls": 0,
+    "usage": [
+      {
+        "input_tokens": 12389,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1554,
+        "reasoning_output_tokens": 154
+      }
+    ],
+    "item_types": [
+      "agent_message",
+      "error"
+    ],
+    "has_final_assessment": true,
+    "turn_completed": true,
+    "turn_failed": false,
+    "source_unchanged": true,
+    "original_summary_has_final_assessment": true,
+    "turn_completed_observed": true
+  },
+  "source_commit": "1738ef4f4835eb0034d5b9149c73a6e81ba71e02",
+  "calls": [],
+  "operation_counts": {},
+  "application_response_bytes": 0,
+  "mcp_result_json_bytes": 0,
+  "tool_schema_json_bytes": 0,
+  "events_file_bytes": 6701,
+  "cli_warnings": [
+    "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+  ],
+  "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+}

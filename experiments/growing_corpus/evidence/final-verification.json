@@ -1,0 +1,73 @@
+{
+  "tested_implementation_commit": "0a813955847447d4e3be2efa5a0e260bc9eec822",
+  "reviewed_head": "86f7c33b535e4197836831406af36abe1249fa7f",
+  "test_gate": {
+    "command": "uv run pytest tests -q",
+    "result": "130 passed, 1 skipped in 14.81s",
+    "skip": "Existing opt-in real Unstructured container test; actual pinned-container pilot/full extraction evidence retained separately."
+  },
+  "static_checks": {
+    "ruff": "passed",
+    "compileall": "passed",
+    "git_diff_check": "passed"
+  },
+  "old_unchanged_path_gate": {
+    "result": "21 passed in 1.58s",
+    "evidence": "path-pilot-final-regression.json"
+  },
+  "live_read_only_application_bytes": {
+    "summary": 8003,
+    "processing": 7982,
+    "admission": 5764,
+    "budget": 8192
+  },
+  "review": {
+    "task_4": "PASS after one fix round",
+    "whole_branch": "PASS after one consolidated fix wave and one scoped rereview",
+    "open_material_findings": 0,
+    "final_report": "../../../docs/implementation/reviews/2026-09-09-final-closure.md"
+  },
+  "controller_post_fix_audit": {
+    "head": "86f7c33b535e4197836831406af36abe1249fa7f",
+    "verified_runtime_hashes": [
+      {
+        "path": "src/tampu/capture.py",
+        "matches": true
+      },
+      {
+        "path": "src/tampu/extraction.py",
+        "matches": true
+      },
+      {
+        "path": "src/tampu/repository.py",
+        "matches": true
+      },
+      {
+        "path": "src/tampu/service.py",
+        "matches": true
+      },
+      {
+        "path": "src/tampu/mcp_server.py",
+        "matches": true
+      }
+    ],
+    "commit_count": 54,
+    "invalid_signatures": [],
+    "clean_tree": true,
+    "local_links_checked": 61,
+    "broken_links": []
+  },
+  "runtime_source_sha256": {
+    "src/tampu/__init__.py": "a0ab02a688904925f1e7b0c6b3655f63378ed6e9094317469d5fb6842dc12343",
+    "src/tampu/capability_evidence.py": "fba6b16790e1172a141ff8a10e41f47e4f1e8856ee8b1e5bc95ba815d5af12d6",
+    "src/tampu/capture.py": "30382d51bdb3c9741b4b406581b2990b45aae40dba860b623d3f828386777532",
+    "src/tampu/cli.py": "eee147780a941371f98e0d3c3128590fdfd9d275157718324257c0f04df66e09",
+    "src/tampu/config.py": "6c2deaf604307682653d1caf6ec6b9ba60bc55cfd487031b8e012b8111681400",
+    "src/tampu/errors.py": "0c61962c3014093b6c34938772a68af533c90999c570978dac2049747fef3ae4",
+    "src/tampu/extraction.py": "be37df25ea8ce8730278971e6163b64261fae13baf73143ded0286a459396452",
+    "src/tampu/mcp_server.py": "0db5711cf5881f526f49015981988f9386d639ae683cbcf629f28e2c9f58cb12",
+    "src/tampu/repository.py": "7743754a81179fba12f9396eaeaebe2a66752d7060ccb8bddf96eabc6b60a1de",
+    "src/tampu/service.py": "f754251a6cc69ee7f131fbef2d6c44cf4382a30acd71b5172525521257b76215"
+  },
+  "limits": "Working local prototype; mixed consumer observations, no demonstrated superiority or semantic completeness. Final preservation changes documentation only."
+}

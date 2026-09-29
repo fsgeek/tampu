@@ -1,0 +1,594 @@
+{
+  "A-scope-scope_present": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/A-scope-scope_present",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 4.766034067957662,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9719,
+          "cached_input_tokens": 5888,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 51,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 903,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "D-scope-scope_present": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/D-scope-scope_present",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 6.769053553929552,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9196,
+          "cached_input_tokens": 5888,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 84,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 1103,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "A-count_coverage-combined": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/A-count_coverage-combined",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 5.2669343469897285,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9723,
+          "cached_input_tokens": 2304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 55,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 922,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "A-count_coverage-count_only": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/A-count_coverage-count_only",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 5.017292688018642,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9378,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 49,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 884,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "D-count_coverage-count_only": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/D-count_coverage-count_only",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 9.772201624000445,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9009,
+          "cached_input_tokens": 2304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 208,
+          "reasoning_output_tokens": 121
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 1141,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "A-count_coverage-neither": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/A-count_coverage-neither",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 5.515251222066581,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9368,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 53,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 903,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "B-scope-scope_present": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/B-scope-scope_present",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 8.519935272983275,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9138,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 64,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 954,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "D-count_coverage-coverage_only": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/D-count_coverage-coverage_only",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 6.269092160044238,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9190,
+          "cached_input_tokens": 2304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 90,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 1143,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "C-scope-scope_present": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/C-scope-scope_present",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 8.52004333899822,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9120,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 166,
+          "reasoning_output_tokens": 82
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 1108,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "D-count_coverage-combined": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/D-count_coverage-combined",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 6.017258592997678,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9200,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 85,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 1096,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "C-scope-scope_absent": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/C-scope-scope_absent",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 10.273877515923232,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 8790,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 71,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 1071,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "A-count_coverage-coverage_only": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/A-count_coverage-coverage_only",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 9.271416659001261,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9505,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 53,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 909,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "D-count_coverage-neither": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/D-count_coverage-neither",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 7.017924809013493,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 8999,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 90,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 1149,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "B-scope-scope_absent": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/B-scope-scope_absent",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 7.769873956916854,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 8803,
+          "cached_input_tokens": 8576,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 62,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 960,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "A-scope-scope_absent": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/A-scope-scope_absent",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 6.267802877002396,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 9036,
+          "cached_input_tokens": 8192,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 49,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 887,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  },
+  "D-scope-scope_absent": {
+    "local_path": "/home/tony/projects/tampu/tmp/prototype-readiness/comparison-consumers/D-scope-scope_absent",
+    "summary": {
+      "exit_code": 0,
+      "stop_reason": null,
+      "wall_seconds": 5.517525032977574,
+      "mcp_tool_calls": 0,
+      "usage": [
+        {
+          "input_tokens": 8795,
+          "cached_input_tokens": 2304,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 69,
+          "reasoning_output_tokens": 0
+        }
+      ],
+      "item_types": [
+        "agent_message",
+        "error"
+      ],
+      "has_final_assessment": true,
+      "source_unchanged": true,
+      "original_summary_has_final_assessment": true,
+      "turn_completed_observed": true
+    },
+    "source_commit": "427112ba6e3f70f7930b97526c9bf5a3152befb6",
+    "calls": [],
+    "operation_counts": {},
+    "application_response_bytes": 0,
+    "mcp_result_json_bytes": 0,
+    "tool_schema_json_bytes": 0,
+    "events_file_bytes": 1034,
+    "cli_warnings": [
+      "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /home/tony/.codex/config.toml."
+    ],
+    "accounting_limits": "Application JSON bytes exclude MCP wrappers. Compact serialized result wrapper size is an observed framing proxy, not wire bytes. Pretty tools/list schema bytes are separate. Cumulative model input includes cached repeated context, not unique evidence."
+  }
+}

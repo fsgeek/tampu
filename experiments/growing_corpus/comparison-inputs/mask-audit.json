@@ -1,0 +1,2359 @@
+{
+  "payloads": [
+    {
+      "label": "A-scope-scope_present",
+      "payload_sha256": "ec98f383dd463a5ff7b2ad4d2671c84424102362b51645bd3aee754160554a96",
+      "file_sha256": "0925b33f9a371baff3e82846af31b2d41f0ef2576d78e1885cd4388ebc2a265d",
+      "prompt_sha256": "84152603c08938d584d221d29d5bce8dfa1ed86fb598264644a86625e6adb009",
+      "bytes": 2796,
+      "paths": {
+        "$.case": "A",
+        "$.question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+        "$.status": "ok",
+        "$.hits[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.hits[0].source_aliases[0]": "short.pdf",
+        "$.hits[0].physical_page": 2,
+        "$.hits[0].extract": "Algorithm Blind Oracle LRU Marker Predictive Marker",
+        "$.observation": "One frozen lexical observation.",
+        "$.inspected_evidence.label": "E1",
+        "$.inspected_evidence.text": "We compare our approach against the all-seeing ex-post optimal, the standard marker algorithm with the random tie-breaking rule, aswellasLRU.Finally,todemonstratethepitfallinsimplyfollowing the oracle, we add an algorithm that evicts the element predicted to be furthest in the future, which we refer to as BlindOracle.",
+        "$.inspected_evidence.artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.inspected_evidence.projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.inspected_evidence.ordinal": 38,
+        "$.inspected_evidence.physical_page": 2,
+        "$.candidate_count": 2,
+        "$.count_kind": "exact",
+        "$.scope.predicate.query": "Blind Oracle",
+        "$.scope.predicate.mode": "phrase",
+        "$.scope.lens": "lexical/v1",
+        "$.scope.representation": "text_en",
+        "$.scope.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.scope.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.scope.selected_projections[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.scope.selected_projections[0].projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.scope.selected_projections[1].artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+        "$.scope.selected_projections[1].projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+        "$.scope.selected_projections[2].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.scope.selected_projections[2].projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+        "$.scope.coverage.artifacts": 3,
+        "$.scope.coverage.ready_artifacts": 3,
+        "$.scope.coverage.failed_artifacts": 0,
+        "$.scope.coverage.pages_total": 46,
+        "$.scope.coverage.pages_with_text": 22,
+        "$.scope.coverage.blank_or_partial_artifacts": 2,
+        "$.scope.coverage.pages_unknown": 0,
+        "$.scope.enumeration_complete": true,
+        "$.scope.projection_processing[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.scope.projection_processing[0].status": "ready",
+        "$.scope.projection_processing[0].coverage.elements": 64,
+        "$.scope.projection_processing[0].coverage.pages_total": 3,
+        "$.scope.projection_processing[0].coverage.pages_with_text": 3,
+        "$.scope.projection_processing[0].losses": [],
+        "$.scope.projection_processing[1].artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+        "$.scope.projection_processing[1].status": "ready",
+        "$.scope.projection_processing[1].coverage.elements": 379,
+        "$.scope.projection_processing[1].coverage.pages_total": 19,
+        "$.scope.projection_processing[1].coverage.pages_with_text": 19,
+        "$.scope.projection_processing[1].losses[0].code": "zero_text_elements",
+        "$.scope.projection_processing[1].losses[0].message": "Some attributed elements contain no text.",
+        "$.scope.projection_processing[1].losses[0].pages[0]": 19,
+        "$.scope.projection_processing[2].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.scope.projection_processing[2].status": "ready",
+        "$.scope.projection_processing[2].coverage.elements": 0,
+        "$.scope.projection_processing[2].coverage.pages_total": 24,
+        "$.scope.projection_processing[2].coverage.pages_with_text": 0,
+        "$.scope.projection_processing[2].losses[0].code": "unattributed_pages",
+        "$.scope.projection_processing[2].losses[0].message": "Some PDF pages have no attributed elements.",
+        "$.scope.projection_processing[2].losses[0].pages[0]": 1,
+        "$.scope.projection_processing[2].losses[0].pages[1]": 2,
+        "$.scope.projection_processing[2].losses[0].pages[2]": 3,
+        "$.scope.projection_processing[2].losses[0].pages[3]": 4,
+        "$.scope.projection_processing[2].losses[0].pages[4]": 5,
+        "$.scope.projection_processing[2].losses[0].pages[5]": 6,
+        "$.scope.projection_processing[2].losses[0].pages[6]": 7,
+        "$.scope.projection_processing[2].losses[0].pages[7]": 8,
+        "$.scope.projection_processing[2].losses[0].pages[8]": 9,
+        "$.scope.projection_processing[2].losses[0].pages[9]": 10,
+        "$.scope.projection_processing[2].losses[0].pages[10]": 11,
+        "$.scope.projection_processing[2].losses[0].pages[11]": 12,
+        "$.scope.projection_processing[2].losses[0].pages[12]": 13,
+        "$.scope.projection_processing[2].losses[0].pages[13]": 14,
+        "$.scope.projection_processing[2].losses[0].pages[14]": 15,
+        "$.scope.projection_processing[2].losses[0].pages[15]": 16,
+        "$.scope.projection_processing[2].losses[0].pages[16]": 17,
+        "$.scope.projection_processing[2].losses[0].pages[17]": 18,
+        "$.scope.projection_processing[2].losses[0].pages[18]": 19,
+        "$.scope.projection_processing[2].losses[0].pages[19]": 20,
+        "$.scope.projection_processing[2].losses[0].pages[20]": 21,
+        "$.scope.projection_processing[2].losses[0].pages[21]": 22,
+        "$.scope.projection_processing[2].losses[0].pages[22]": 23,
+        "$.scope.projection_processing[2].losses[0].pages[23]": 24
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "inspected_evidence": "dict",
+        "candidate_count": "int",
+        "count_kind": "str",
+        "scope": "dict"
+      }
+    },
+    {
+      "label": "A-scope-scope_absent",
+      "payload_sha256": "260a71f2b391c6296fa00c808928863bc8c9d5684fc919a3ff6286d1249a5342",
+      "file_sha256": "9ad93cf76504e4455e94d4f6934d41bf75673ee82b4d24c2f8fc25899ef8bf45",
+      "prompt_sha256": "5086b28cea58d410e0695c3fd5fcf399998e23834bd4a7afbf1550ab72f655e8",
+      "bytes": 1020,
+      "paths": {
+        "$.case": "A",
+        "$.question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+        "$.status": "ok",
+        "$.hits[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.hits[0].source_aliases[0]": "short.pdf",
+        "$.hits[0].physical_page": 2,
+        "$.hits[0].extract": "Algorithm Blind Oracle LRU Marker Predictive Marker",
+        "$.observation": "One frozen lexical observation.",
+        "$.inspected_evidence.label": "E1",
+        "$.inspected_evidence.text": "We compare our approach against the all-seeing ex-post optimal, the standard marker algorithm with the random tie-breaking rule, aswellasLRU.Finally,todemonstratethepitfallinsimplyfollowing the oracle, we add an algorithm that evicts the element predicted to be furthest in the future, which we refer to as BlindOracle.",
+        "$.inspected_evidence.artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.inspected_evidence.projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.inspected_evidence.ordinal": 38,
+        "$.inspected_evidence.physical_page": 2,
+        "$.candidate_count": 2,
+        "$.count_kind": "exact"
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "inspected_evidence": "dict",
+        "candidate_count": "int",
+        "count_kind": "str"
+      }
+    },
+    {
+      "label": "A-count_coverage-neither",
+      "payload_sha256": "dd58a17896bf53c772cbf8781aafa8b3107ac8e873c7bda8a9e406b3e01c46d8",
+      "file_sha256": "1c1178744e4606175a74ebd7b96782c6a43c98056f835d9a2eaefae9719abfe4",
+      "prompt_sha256": "76214c415571091bbe52c35258ed1b5b4b261061f6a69b81c3848dcb83ad9549",
+      "bytes": 1767,
+      "paths": {
+        "$.case": "A",
+        "$.question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+        "$.status": "ok",
+        "$.hits[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.hits[0].source_aliases[0]": "short.pdf",
+        "$.hits[0].physical_page": 2,
+        "$.hits[0].extract": "Algorithm Blind Oracle LRU Marker Predictive Marker",
+        "$.observation": "One frozen lexical observation.",
+        "$.inspected_evidence.label": "E1",
+        "$.inspected_evidence.text": "We compare our approach against the all-seeing ex-post optimal, the standard marker algorithm with the random tie-breaking rule, aswellasLRU.Finally,todemonstratethepitfallinsimplyfollowing the oracle, we add an algorithm that evicts the element predicted to be furthest in the future, which we refer to as BlindOracle.",
+        "$.inspected_evidence.artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.inspected_evidence.projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.inspected_evidence.ordinal": 38,
+        "$.inspected_evidence.physical_page": 2,
+        "$.identity.predicate.query": "Blind Oracle",
+        "$.identity.predicate.mode": "phrase",
+        "$.identity.lens": "lexical/v1",
+        "$.identity.representation": "text_en",
+        "$.identity.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.identity.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.identity.selected_projections[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.identity.selected_projections[0].projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.identity.selected_projections[1].artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+        "$.identity.selected_projections[1].projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+        "$.identity.selected_projections[2].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.selected_projections[2].projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed"
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "inspected_evidence": "dict",
+        "identity": "dict"
+      }
+    },
+    {
+      "label": "A-count_coverage-count_only",
+      "payload_sha256": "74bd7c24824edded4d45eb7db321dd8a5b3c8acfe5851dd7563a7dbd3231c9ab",
+      "file_sha256": "4a9031f8223e83a06ec4b4e3fe7eeacf0dfb85fe9e0d0dbbbd63531d0e77ada4",
+      "prompt_sha256": "7c4dac44c585f3514cb2648e97c3611c370e7eb25c5a8c015d7d9696ce5b617a",
+      "bytes": 1808,
+      "paths": {
+        "$.case": "A",
+        "$.question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+        "$.status": "ok",
+        "$.hits[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.hits[0].source_aliases[0]": "short.pdf",
+        "$.hits[0].physical_page": 2,
+        "$.hits[0].extract": "Algorithm Blind Oracle LRU Marker Predictive Marker",
+        "$.observation": "One frozen lexical observation.",
+        "$.inspected_evidence.label": "E1",
+        "$.inspected_evidence.text": "We compare our approach against the all-seeing ex-post optimal, the standard marker algorithm with the random tie-breaking rule, aswellasLRU.Finally,todemonstratethepitfallinsimplyfollowing the oracle, we add an algorithm that evicts the element predicted to be furthest in the future, which we refer to as BlindOracle.",
+        "$.inspected_evidence.artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.inspected_evidence.projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.inspected_evidence.ordinal": 38,
+        "$.inspected_evidence.physical_page": 2,
+        "$.identity.predicate.query": "Blind Oracle",
+        "$.identity.predicate.mode": "phrase",
+        "$.identity.lens": "lexical/v1",
+        "$.identity.representation": "text_en",
+        "$.identity.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.identity.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.identity.selected_projections[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.identity.selected_projections[0].projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.identity.selected_projections[1].artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+        "$.identity.selected_projections[1].projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+        "$.identity.selected_projections[2].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.selected_projections[2].projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+        "$.candidate_count": 2,
+        "$.count_kind": "exact"
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "inspected_evidence": "dict",
+        "identity": "dict",
+        "candidate_count": "int",
+        "count_kind": "str"
+      }
+    },
+    {
+      "label": "A-count_coverage-coverage_only",
+      "payload_sha256": "acc3bab4eb4f439a4ddfafecc4979dfd3a63b0db05dd40852497de72db084ca6",
+      "file_sha256": "a8d56081207422504636934ed1d6642dbb72e8ca413ea7b4d71fdaaf5a23318e",
+      "prompt_sha256": "593a9b719aff22533b7ec032a919260f6110a69129d65d137b195c09bb3b0008",
+      "bytes": 2777,
+      "paths": {
+        "$.case": "A",
+        "$.question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+        "$.status": "ok",
+        "$.hits[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.hits[0].source_aliases[0]": "short.pdf",
+        "$.hits[0].physical_page": 2,
+        "$.hits[0].extract": "Algorithm Blind Oracle LRU Marker Predictive Marker",
+        "$.observation": "One frozen lexical observation.",
+        "$.inspected_evidence.label": "E1",
+        "$.inspected_evidence.text": "We compare our approach against the all-seeing ex-post optimal, the standard marker algorithm with the random tie-breaking rule, aswellasLRU.Finally,todemonstratethepitfallinsimplyfollowing the oracle, we add an algorithm that evicts the element predicted to be furthest in the future, which we refer to as BlindOracle.",
+        "$.inspected_evidence.artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.inspected_evidence.projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.inspected_evidence.ordinal": 38,
+        "$.inspected_evidence.physical_page": 2,
+        "$.identity.predicate.query": "Blind Oracle",
+        "$.identity.predicate.mode": "phrase",
+        "$.identity.lens": "lexical/v1",
+        "$.identity.representation": "text_en",
+        "$.identity.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.identity.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.identity.selected_projections[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.identity.selected_projections[0].projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.identity.selected_projections[1].artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+        "$.identity.selected_projections[1].projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+        "$.identity.selected_projections[2].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.selected_projections[2].projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+        "$.coverage_scope.coverage.artifacts": 3,
+        "$.coverage_scope.coverage.ready_artifacts": 3,
+        "$.coverage_scope.coverage.failed_artifacts": 0,
+        "$.coverage_scope.coverage.pages_total": 46,
+        "$.coverage_scope.coverage.pages_with_text": 22,
+        "$.coverage_scope.coverage.blank_or_partial_artifacts": 2,
+        "$.coverage_scope.coverage.pages_unknown": 0,
+        "$.coverage_scope.enumeration_complete": true,
+        "$.coverage_scope.projection_processing[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.coverage_scope.projection_processing[0].status": "ready",
+        "$.coverage_scope.projection_processing[0].coverage.elements": 64,
+        "$.coverage_scope.projection_processing[0].coverage.pages_total": 3,
+        "$.coverage_scope.projection_processing[0].coverage.pages_with_text": 3,
+        "$.coverage_scope.projection_processing[0].losses": [],
+        "$.coverage_scope.projection_processing[1].artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+        "$.coverage_scope.projection_processing[1].status": "ready",
+        "$.coverage_scope.projection_processing[1].coverage.elements": 379,
+        "$.coverage_scope.projection_processing[1].coverage.pages_total": 19,
+        "$.coverage_scope.projection_processing[1].coverage.pages_with_text": 19,
+        "$.coverage_scope.projection_processing[1].losses[0].code": "zero_text_elements",
+        "$.coverage_scope.projection_processing[1].losses[0].message": "Some attributed elements contain no text.",
+        "$.coverage_scope.projection_processing[1].losses[0].pages[0]": 19,
+        "$.coverage_scope.projection_processing[2].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.coverage_scope.projection_processing[2].status": "ready",
+        "$.coverage_scope.projection_processing[2].coverage.elements": 0,
+        "$.coverage_scope.projection_processing[2].coverage.pages_total": 24,
+        "$.coverage_scope.projection_processing[2].coverage.pages_with_text": 0,
+        "$.coverage_scope.projection_processing[2].losses[0].code": "unattributed_pages",
+        "$.coverage_scope.projection_processing[2].losses[0].message": "Some PDF pages have no attributed elements.",
+        "$.coverage_scope.projection_processing[2].losses[0].pages[0]": 1,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[1]": 2,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[2]": 3,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[3]": 4,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[4]": 5,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[5]": 6,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[6]": 7,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[7]": 8,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[8]": 9,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[9]": 10,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[10]": 11,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[11]": 12,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[12]": 13,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[13]": 14,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[14]": 15,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[15]": 16,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[16]": 17,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[17]": 18,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[18]": 19,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[19]": 20,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[20]": 21,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[21]": 22,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[22]": 23,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[23]": 24
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "inspected_evidence": "dict",
+        "identity": "dict",
+        "coverage_scope": "dict"
+      }
+    },
+    {
+      "label": "A-count_coverage-combined",
+      "payload_sha256": "7b088f508990ef3cdd8a18719dc6f4c4d3817c8a02049c31011e2aa02210e1c2",
+      "file_sha256": "5c3e6ef0eac2fcb80eb1b8508f4547f6b357085cf17fe2fe64a8783dc94c4604",
+      "prompt_sha256": "bb2999caf70004bea742e3249db78a082d4f8e43654d9e8c9cc9ca4d4120ffa3",
+      "bytes": 2818,
+      "paths": {
+        "$.case": "A",
+        "$.question": "Does the displayed evidence support that Blind Oracle evicts the cached item predicted to be requested furthest in the future?",
+        "$.status": "ok",
+        "$.hits[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.hits[0].source_aliases[0]": "short.pdf",
+        "$.hits[0].physical_page": 2,
+        "$.hits[0].extract": "Algorithm Blind Oracle LRU Marker Predictive Marker",
+        "$.observation": "One frozen lexical observation.",
+        "$.inspected_evidence.label": "E1",
+        "$.inspected_evidence.text": "We compare our approach against the all-seeing ex-post optimal, the standard marker algorithm with the random tie-breaking rule, aswellasLRU.Finally,todemonstratethepitfallinsimplyfollowing the oracle, we add an algorithm that evicts the element predicted to be furthest in the future, which we refer to as BlindOracle.",
+        "$.inspected_evidence.artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.inspected_evidence.projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.inspected_evidence.ordinal": 38,
+        "$.inspected_evidence.physical_page": 2,
+        "$.identity.predicate.query": "Blind Oracle",
+        "$.identity.predicate.mode": "phrase",
+        "$.identity.lens": "lexical/v1",
+        "$.identity.representation": "text_en",
+        "$.identity.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.identity.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.identity.selected_projections[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.identity.selected_projections[0].projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.identity.selected_projections[1].artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+        "$.identity.selected_projections[1].projection_id": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+        "$.identity.selected_projections[2].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.selected_projections[2].projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+        "$.candidate_count": 2,
+        "$.count_kind": "exact",
+        "$.coverage_scope.coverage.artifacts": 3,
+        "$.coverage_scope.coverage.ready_artifacts": 3,
+        "$.coverage_scope.coverage.failed_artifacts": 0,
+        "$.coverage_scope.coverage.pages_total": 46,
+        "$.coverage_scope.coverage.pages_with_text": 22,
+        "$.coverage_scope.coverage.blank_or_partial_artifacts": 2,
+        "$.coverage_scope.coverage.pages_unknown": 0,
+        "$.coverage_scope.enumeration_complete": true,
+        "$.coverage_scope.projection_processing[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.coverage_scope.projection_processing[0].status": "ready",
+        "$.coverage_scope.projection_processing[0].coverage.elements": 64,
+        "$.coverage_scope.projection_processing[0].coverage.pages_total": 3,
+        "$.coverage_scope.projection_processing[0].coverage.pages_with_text": 3,
+        "$.coverage_scope.projection_processing[0].losses": [],
+        "$.coverage_scope.projection_processing[1].artifact_id": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+        "$.coverage_scope.projection_processing[1].status": "ready",
+        "$.coverage_scope.projection_processing[1].coverage.elements": 379,
+        "$.coverage_scope.projection_processing[1].coverage.pages_total": 19,
+        "$.coverage_scope.projection_processing[1].coverage.pages_with_text": 19,
+        "$.coverage_scope.projection_processing[1].losses[0].code": "zero_text_elements",
+        "$.coverage_scope.projection_processing[1].losses[0].message": "Some attributed elements contain no text.",
+        "$.coverage_scope.projection_processing[1].losses[0].pages[0]": 19,
+        "$.coverage_scope.projection_processing[2].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.coverage_scope.projection_processing[2].status": "ready",
+        "$.coverage_scope.projection_processing[2].coverage.elements": 0,
+        "$.coverage_scope.projection_processing[2].coverage.pages_total": 24,
+        "$.coverage_scope.projection_processing[2].coverage.pages_with_text": 0,
+        "$.coverage_scope.projection_processing[2].losses[0].code": "unattributed_pages",
+        "$.coverage_scope.projection_processing[2].losses[0].message": "Some PDF pages have no attributed elements.",
+        "$.coverage_scope.projection_processing[2].losses[0].pages[0]": 1,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[1]": 2,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[2]": 3,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[3]": 4,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[4]": 5,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[5]": 6,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[6]": 7,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[7]": 8,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[8]": 9,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[9]": 10,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[10]": 11,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[11]": 12,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[12]": 13,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[13]": 14,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[14]": 15,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[15]": 16,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[16]": 17,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[17]": 18,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[18]": 19,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[19]": 20,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[20]": 21,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[21]": 22,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[22]": 23,
+        "$.coverage_scope.projection_processing[2].losses[0].pages[23]": 24
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "inspected_evidence": "dict",
+        "identity": "dict",
+        "candidate_count": "int",
+        "count_kind": "str",
+        "coverage_scope": "dict"
+      }
+    },
+    {
+      "label": "B-scope-scope_present",
+      "payload_sha256": "84d2170a6f28c7dc74c32922ea7e5b1268f77af7c41ad1bdca886affb2b7dabe",
+      "file_sha256": "0afabe21d86368c491d2145046bddef8bc1e9a406454ba2c3ac5f8e4c589afb5",
+      "prompt_sha256": "b6ce7ac7a630beee29aff3bbffd6202557a0698b71517259e1ca03b25f8ea081",
+      "bytes": 1193,
+      "paths": {
+        "$.case": "B",
+        "$.question": "Does the exact lexical phrase tampuabsentpredicateqxz have a match in the stated short-paper subset and searched representation?",
+        "$.status": "ok",
+        "$.hits": [],
+        "$.observation": "One frozen lexical observation.",
+        "$.candidate_count": 0,
+        "$.count_kind": "exact",
+        "$.scope.predicate.query": "tampuabsentpredicateqxz",
+        "$.scope.predicate.mode": "phrase",
+        "$.scope.predicate.filters.artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.scope.lens": "lexical/v1",
+        "$.scope.representation": "text_en",
+        "$.scope.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.scope.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.scope.selected_projections[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.scope.selected_projections[0].projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.scope.coverage.artifacts": 1,
+        "$.scope.coverage.ready_artifacts": 1,
+        "$.scope.coverage.failed_artifacts": 0,
+        "$.scope.coverage.pages_total": 3,
+        "$.scope.coverage.pages_with_text": 3,
+        "$.scope.coverage.blank_or_partial_artifacts": 0,
+        "$.scope.coverage.pages_unknown": 0,
+        "$.scope.enumeration_complete": true,
+        "$.scope.projection_processing[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.scope.projection_processing[0].status": "ready",
+        "$.scope.projection_processing[0].coverage.elements": 64,
+        "$.scope.projection_processing[0].coverage.pages_total": 3,
+        "$.scope.projection_processing[0].coverage.pages_with_text": 3,
+        "$.scope.projection_processing[0].losses": []
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "candidate_count": "int",
+        "count_kind": "str",
+        "scope": "dict"
+      }
+    },
+    {
+      "label": "B-scope-scope_absent",
+      "payload_sha256": "1223862b18ff6cfeba9e0c0c80f14f206e2cff0a03db3ffa0e5fddff9ab7bf95",
+      "file_sha256": "709e62f5635e9727d465da54db71c21cbb2991c95cfff3a3fa91decd98aa3eeb",
+      "prompt_sha256": "22e34c7afdf0793e326fdc31aba1149246ed489047efb235caea463e068fda8f",
+      "bytes": 267,
+      "paths": {
+        "$.case": "B",
+        "$.question": "Does the exact lexical phrase tampuabsentpredicateqxz have a match in the stated short-paper subset and searched representation?",
+        "$.status": "ok",
+        "$.hits": [],
+        "$.observation": "One frozen lexical observation.",
+        "$.candidate_count": 0,
+        "$.count_kind": "exact"
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "candidate_count": "int",
+        "count_kind": "str"
+      }
+    },
+    {
+      "label": "C-scope-scope_present",
+      "payload_sha256": "48393d1b6e225fe4d0922ffdc9a89dad1a9a35d1683047932417246200a2e070",
+      "file_sha256": "fb5d3ea5831006e83dc97e9eda998309737e1481eb9f79aeac1cdd3fde8741da",
+      "prompt_sha256": "2a1c502c1e0ff1e6eb2b8e63ed3eae3973b3553323e1f6e2c18ca619726fcf39",
+      "bytes": 1128,
+      "paths": {
+        "$.case": "C",
+        "$.question": "Does the collection support a prediction-guided Marker caching policy?",
+        "$.status": "ok",
+        "$.hits": [],
+        "$.observation": "One frozen lexical observation.",
+        "$.candidate_count": 0,
+        "$.count_kind": "exact",
+        "$.scope.predicate.query": "PredictiveMarker",
+        "$.scope.predicate.mode": "phrase",
+        "$.scope.predicate.filters.artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.scope.lens": "lexical/v1",
+        "$.scope.representation": "text_en",
+        "$.scope.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.scope.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.scope.selected_projections[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.scope.selected_projections[0].projection_id": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+        "$.scope.coverage.artifacts": 1,
+        "$.scope.coverage.ready_artifacts": 1,
+        "$.scope.coverage.failed_artifacts": 0,
+        "$.scope.coverage.pages_total": 3,
+        "$.scope.coverage.pages_with_text": 3,
+        "$.scope.coverage.blank_or_partial_artifacts": 0,
+        "$.scope.coverage.pages_unknown": 0,
+        "$.scope.enumeration_complete": true,
+        "$.scope.projection_processing[0].artifact_id": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+        "$.scope.projection_processing[0].status": "ready",
+        "$.scope.projection_processing[0].coverage.elements": 64,
+        "$.scope.projection_processing[0].coverage.pages_total": 3,
+        "$.scope.projection_processing[0].coverage.pages_with_text": 3,
+        "$.scope.projection_processing[0].losses": []
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "candidate_count": "int",
+        "count_kind": "str",
+        "scope": "dict"
+      }
+    },
+    {
+      "label": "C-scope-scope_absent",
+      "payload_sha256": "b1a9d109289cabf006c9072781e0b53c2c8bce6667388d09bc064dc96b2eab4d",
+      "file_sha256": "1908067335c00a5e8eacd112623af57e25e2f62cbc4e7bd600d2fcc664ab0f43",
+      "prompt_sha256": "f7f76dddedc306c0a4c7d086395c66f6e5d54afbe093d7b2a839a2546d5baa5c",
+      "bytes": 209,
+      "paths": {
+        "$.case": "C",
+        "$.question": "Does the collection support a prediction-guided Marker caching policy?",
+        "$.status": "ok",
+        "$.hits": [],
+        "$.observation": "One frozen lexical observation.",
+        "$.candidate_count": 0,
+        "$.count_kind": "exact"
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "candidate_count": "int",
+        "count_kind": "str"
+      }
+    },
+    {
+      "label": "D-scope-scope_present",
+      "payload_sha256": "35b7e26460bde43359622a85256a9c765fb031603e411729449f4788d408e3ed",
+      "file_sha256": "c99063b454094e38f534105008fe82ee9c0583ef68ac981a57367e91a8986c98",
+      "prompt_sha256": "feee91867413ef213e7609c13ba45483ab1a21f13843ae0f4cb0684c2947031f",
+      "bytes": 1299,
+      "paths": {
+        "$.case": "D",
+        "$.question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+        "$.status": "ok",
+        "$.hits": [],
+        "$.observation": "One frozen lexical observation.",
+        "$.candidate_count": 0,
+        "$.count_kind": "exact",
+        "$.scope.predicate.query": "shared log",
+        "$.scope.predicate.mode": "phrase",
+        "$.scope.predicate.filters.artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.scope.lens": "lexical/v1",
+        "$.scope.representation": "text_en",
+        "$.scope.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.scope.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.scope.selected_projections[0].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.scope.selected_projections[0].projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+        "$.scope.coverage.artifacts": 1,
+        "$.scope.coverage.ready_artifacts": 1,
+        "$.scope.coverage.failed_artifacts": 0,
+        "$.scope.coverage.pages_total": 24,
+        "$.scope.coverage.pages_with_text": 0,
+        "$.scope.coverage.blank_or_partial_artifacts": 1,
+        "$.scope.coverage.pages_unknown": 0,
+        "$.scope.enumeration_complete": true,
+        "$.scope.projection_processing[0].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.scope.projection_processing[0].status": "ready",
+        "$.scope.projection_processing[0].coverage.elements": 0,
+        "$.scope.projection_processing[0].coverage.pages_total": 24,
+        "$.scope.projection_processing[0].coverage.pages_with_text": 0,
+        "$.scope.projection_processing[0].losses[0].code": "unattributed_pages",
+        "$.scope.projection_processing[0].losses[0].message": "Some PDF pages have no attributed elements.",
+        "$.scope.projection_processing[0].losses[0].pages[0]": 1,
+        "$.scope.projection_processing[0].losses[0].pages[1]": 2,
+        "$.scope.projection_processing[0].losses[0].pages[2]": 3,
+        "$.scope.projection_processing[0].losses[0].pages[3]": 4,
+        "$.scope.projection_processing[0].losses[0].pages[4]": 5,
+        "$.scope.projection_processing[0].losses[0].pages[5]": 6,
+        "$.scope.projection_processing[0].losses[0].pages[6]": 7,
+        "$.scope.projection_processing[0].losses[0].pages[7]": 8,
+        "$.scope.projection_processing[0].losses[0].pages[8]": 9,
+        "$.scope.projection_processing[0].losses[0].pages[9]": 10,
+        "$.scope.projection_processing[0].losses[0].pages[10]": 11,
+        "$.scope.projection_processing[0].losses[0].pages[11]": 12,
+        "$.scope.projection_processing[0].losses[0].pages[12]": 13,
+        "$.scope.projection_processing[0].losses[0].pages[13]": 14,
+        "$.scope.projection_processing[0].losses[0].pages[14]": 15,
+        "$.scope.projection_processing[0].losses[0].pages[15]": 16,
+        "$.scope.projection_processing[0].losses[0].pages[16]": 17,
+        "$.scope.projection_processing[0].losses[0].pages[17]": 18,
+        "$.scope.projection_processing[0].losses[0].pages[18]": 19,
+        "$.scope.projection_processing[0].losses[0].pages[19]": 20,
+        "$.scope.projection_processing[0].losses[0].pages[20]": 21,
+        "$.scope.projection_processing[0].losses[0].pages[21]": 22,
+        "$.scope.projection_processing[0].losses[0].pages[22]": 23,
+        "$.scope.projection_processing[0].losses[0].pages[23]": 24
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "candidate_count": "int",
+        "count_kind": "str",
+        "scope": "dict"
+      }
+    },
+    {
+      "label": "D-scope-scope_absent",
+      "payload_sha256": "96de42fc623e69d1d51725032091ce08ea9b160309a92e4427777e70a95e41fe",
+      "file_sha256": "f8f02310319730eafbd42a1383f889bf107a8f5b5deadc6da5e52de0db4806e3",
+      "prompt_sha256": "b33560806b053fe18662e53f3c473299d5c00a956a4276e58a0e8427789883b6",
+      "bytes": 227,
+      "paths": {
+        "$.case": "D",
+        "$.question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+        "$.status": "ok",
+        "$.hits": [],
+        "$.observation": "One frozen lexical observation.",
+        "$.candidate_count": 0,
+        "$.count_kind": "exact"
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "candidate_count": "int",
+        "count_kind": "str"
+      }
+    },
+    {
+      "label": "D-count_coverage-neither",
+      "payload_sha256": "c4a4616267116098a1a8156bd1c38b87a8abe67c527977509122378b5a810834",
+      "file_sha256": "2e54ff26d6b5adfe22118a2107ba494a616172b79a0f77a3c10181745a304289",
+      "prompt_sha256": "0fd78855dcdc054c2d97d63d3a8611549687922e04b7be9d8e2dc5422cec5e20",
+      "bytes": 720,
+      "paths": {
+        "$.case": "D",
+        "$.question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+        "$.status": "ok",
+        "$.hits": [],
+        "$.observation": "One frozen lexical observation.",
+        "$.identity.predicate.query": "shared log",
+        "$.identity.predicate.mode": "phrase",
+        "$.identity.predicate.filters.artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.lens": "lexical/v1",
+        "$.identity.representation": "text_en",
+        "$.identity.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.identity.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.identity.selected_projections[0].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.selected_projections[0].projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed"
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "identity": "dict"
+      }
+    },
+    {
+      "label": "D-count_coverage-count_only",
+      "payload_sha256": "70a40c69e4c7745bca52a6df3ec47cf9438e5ae2a9217e75c210223e97069db1",
+      "file_sha256": "4f2621bd450d48d353be2645c2dee64a25c6ed772f755e30ba0874d79b27113b",
+      "prompt_sha256": "602842cdf6e6880a3b782a002d67ebcb9c9152e80e2150cb01c5104fe1ba00b9",
+      "bytes": 761,
+      "paths": {
+        "$.case": "D",
+        "$.question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+        "$.status": "ok",
+        "$.hits": [],
+        "$.observation": "One frozen lexical observation.",
+        "$.identity.predicate.query": "shared log",
+        "$.identity.predicate.mode": "phrase",
+        "$.identity.predicate.filters.artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.lens": "lexical/v1",
+        "$.identity.representation": "text_en",
+        "$.identity.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.identity.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.identity.selected_projections[0].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.selected_projections[0].projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+        "$.candidate_count": 0,
+        "$.count_kind": "exact"
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "identity": "dict",
+        "candidate_count": "int",
+        "count_kind": "str"
+      }
+    },
+    {
+      "label": "D-count_coverage-coverage_only",
+      "payload_sha256": "998afd2d8f2ae7d2229ac7ef9113ee9509901cf8b310b8f05f262e0e92068210",
+      "file_sha256": "37851338bcd268d55d5b15eccab39c1a0b963ce63ce601e8770310ce63e5f132",
+      "prompt_sha256": "bb9d50c3701f90a3cfe73ea143c5c161ad8cf3680af82286e2b67d185894f91e",
+      "bytes": 1280,
+      "paths": {
+        "$.case": "D",
+        "$.question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+        "$.status": "ok",
+        "$.hits": [],
+        "$.observation": "One frozen lexical observation.",
+        "$.identity.predicate.query": "shared log",
+        "$.identity.predicate.mode": "phrase",
+        "$.identity.predicate.filters.artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.lens": "lexical/v1",
+        "$.identity.representation": "text_en",
+        "$.identity.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.identity.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.identity.selected_projections[0].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.selected_projections[0].projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+        "$.coverage_scope.coverage.artifacts": 1,
+        "$.coverage_scope.coverage.ready_artifacts": 1,
+        "$.coverage_scope.coverage.failed_artifacts": 0,
+        "$.coverage_scope.coverage.pages_total": 24,
+        "$.coverage_scope.coverage.pages_with_text": 0,
+        "$.coverage_scope.coverage.blank_or_partial_artifacts": 1,
+        "$.coverage_scope.coverage.pages_unknown": 0,
+        "$.coverage_scope.enumeration_complete": true,
+        "$.coverage_scope.projection_processing[0].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.coverage_scope.projection_processing[0].status": "ready",
+        "$.coverage_scope.projection_processing[0].coverage.elements": 0,
+        "$.coverage_scope.projection_processing[0].coverage.pages_total": 24,
+        "$.coverage_scope.projection_processing[0].coverage.pages_with_text": 0,
+        "$.coverage_scope.projection_processing[0].losses[0].code": "unattributed_pages",
+        "$.coverage_scope.projection_processing[0].losses[0].message": "Some PDF pages have no attributed elements.",
+        "$.coverage_scope.projection_processing[0].losses[0].pages[0]": 1,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[1]": 2,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[2]": 3,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[3]": 4,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[4]": 5,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[5]": 6,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[6]": 7,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[7]": 8,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[8]": 9,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[9]": 10,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[10]": 11,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[11]": 12,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[12]": 13,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[13]": 14,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[14]": 15,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[15]": 16,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[16]": 17,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[17]": 18,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[18]": 19,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[19]": 20,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[20]": 21,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[21]": 22,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[22]": 23,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[23]": 24
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "identity": "dict",
+        "coverage_scope": "dict"
+      }
+    },
+    {
+      "label": "D-count_coverage-combined",
+      "payload_sha256": "d30d67a567bc17d7d765d09636c0e4919fcabd5e5a1921e181853287f611c435",
+      "file_sha256": "c1896b89d374d6d3a95c0940523d7678e8530aa13bac9929c469e685ea8a8e55",
+      "prompt_sha256": "6a94e43baa5f3bada8d3e04bcc5895555eaccfff44d02074d940bca092a8062f",
+      "bytes": 1321,
+      "paths": {
+        "$.case": "D",
+        "$.question": "Does CORFU: A Distributed Shared Log support implementing a shared log across a cluster?",
+        "$.status": "ok",
+        "$.hits": [],
+        "$.observation": "One frozen lexical observation.",
+        "$.identity.predicate.query": "shared log",
+        "$.identity.predicate.mode": "phrase",
+        "$.identity.predicate.filters.artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.lens": "lexical/v1",
+        "$.identity.representation": "text_en",
+        "$.identity.revision_id": "05146497610646da9c334e5fef49dffb",
+        "$.identity.projection_selection": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+        "$.identity.selected_projections[0].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.identity.selected_projections[0].projection_id": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+        "$.candidate_count": 0,
+        "$.count_kind": "exact",
+        "$.coverage_scope.coverage.artifacts": 1,
+        "$.coverage_scope.coverage.ready_artifacts": 1,
+        "$.coverage_scope.coverage.failed_artifacts": 0,
+        "$.coverage_scope.coverage.pages_total": 24,
+        "$.coverage_scope.coverage.pages_with_text": 0,
+        "$.coverage_scope.coverage.blank_or_partial_artifacts": 1,
+        "$.coverage_scope.coverage.pages_unknown": 0,
+        "$.coverage_scope.enumeration_complete": true,
+        "$.coverage_scope.projection_processing[0].artifact_id": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+        "$.coverage_scope.projection_processing[0].status": "ready",
+        "$.coverage_scope.projection_processing[0].coverage.elements": 0,
+        "$.coverage_scope.projection_processing[0].coverage.pages_total": 24,
+        "$.coverage_scope.projection_processing[0].coverage.pages_with_text": 0,
+        "$.coverage_scope.projection_processing[0].losses[0].code": "unattributed_pages",
+        "$.coverage_scope.projection_processing[0].losses[0].message": "Some PDF pages have no attributed elements.",
+        "$.coverage_scope.projection_processing[0].losses[0].pages[0]": 1,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[1]": 2,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[2]": 3,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[3]": 4,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[4]": 5,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[5]": 6,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[6]": 7,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[7]": 8,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[8]": 9,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[9]": 10,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[10]": 11,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[11]": 12,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[12]": 13,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[13]": 14,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[14]": 15,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[15]": 16,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[16]": 17,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[17]": 18,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[18]": 19,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[19]": 20,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[20]": 21,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[21]": 22,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[22]": 23,
+        "$.coverage_scope.projection_processing[0].losses[0].pages[23]": 24
+      },
+      "top_level_schema": {
+        "case": "str",
+        "question": "str",
+        "status": "str",
+        "hits": "list",
+        "observation": "str",
+        "identity": "dict",
+        "candidate_count": "int",
+        "count_kind": "str",
+        "coverage_scope": "dict"
+      }
+    }
+  ],
+  "diffs": [
+    {
+      "baseline": "A-scope-scope_present",
+      "arm": "A-scope-scope_absent",
+      "path_value_diff": {
+        "$.scope.projection_processing[2].losses[0].pages[9]": {
+          "baseline": 10,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[8]": {
+          "baseline": 9,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[4]": {
+          "baseline": 5,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[1].losses[0].message": {
+          "baseline": "Some attributed elements contain no text.",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[0]": {
+          "baseline": 1,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[6]": {
+          "baseline": 7,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[1].artifact_id": {
+          "baseline": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[22]": {
+          "baseline": 23,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].status": {
+          "baseline": "ready",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[15]": {
+          "baseline": 16,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.pages_total": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.revision_id": {
+          "baseline": "05146497610646da9c334e5fef49dffb",
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.query": {
+          "baseline": "Blind Oracle",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[11]": {
+          "baseline": 12,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses": {
+          "baseline": [],
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[2]": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].artifact_id": {
+          "baseline": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[13]": {
+          "baseline": 14,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.pages_with_text": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[3]": {
+          "baseline": 4,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].message": {
+          "baseline": "Some PDF pages have no attributed elements.",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.elements": {
+          "baseline": 64,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_total": {
+          "baseline": 46,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[1].coverage.elements": {
+          "baseline": 379,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_selection": {
+          "baseline": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[1].coverage.pages_total": {
+          "baseline": 19,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[5]": {
+          "baseline": 6,
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[1].artifact_id": {
+          "baseline": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[1].losses[0].pages[0]": {
+          "baseline": 19,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[1].coverage.pages_with_text": {
+          "baseline": 19,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].coverage.elements": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].code": {
+          "baseline": "unattributed_pages",
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.mode": {
+          "baseline": "phrase",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[21]": {
+          "baseline": 22,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[19]": {
+          "baseline": 20,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[12]": {
+          "baseline": 13,
+          "arm": "<absent>"
+        },
+        "$.scope.enumeration_complete": {
+          "baseline": true,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_unknown": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[17]": {
+          "baseline": 18,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.failed_artifacts": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].artifact_id": {
+          "baseline": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[23]": {
+          "baseline": 24,
+          "arm": "<absent>"
+        },
+        "$.scope.representation": {
+          "baseline": "text_en",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[1].status": {
+          "baseline": "ready",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[20]": {
+          "baseline": 21,
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[1].projection_id": {
+          "baseline": "afeb2a66d3c7ee8066e91518a6c1d47a86e56fd492425f6fafc7e971a846a329",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].coverage.pages_with_text": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.artifacts": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[18]": {
+          "baseline": 19,
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[2].projection_id": {
+          "baseline": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[2].artifact_id": {
+          "baseline": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[16]": {
+          "baseline": 17,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[7]": {
+          "baseline": 8,
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[0].projection_id": {
+          "baseline": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[0].artifact_id": {
+          "baseline": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[1].losses[0].code": {
+          "baseline": "zero_text_elements",
+          "arm": "<absent>"
+        },
+        "$.scope.lens": {
+          "baseline": "lexical/v1",
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.ready_artifacts": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.blank_or_partial_artifacts": {
+          "baseline": 2,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].status": {
+          "baseline": "ready",
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_with_text": {
+          "baseline": 22,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[1]": {
+          "baseline": 2,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[10]": {
+          "baseline": 11,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].losses[0].pages[14]": {
+          "baseline": 15,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[2].coverage.pages_total": {
+          "baseline": 24,
+          "arm": "<absent>"
+        }
+      }
+    },
+    {
+      "baseline": "A-count_coverage-neither",
+      "arm": "A-count_coverage-count_only",
+      "path_value_diff": {
+        "$.candidate_count": {
+          "baseline": "<absent>",
+          "arm": 2
+        },
+        "$.count_kind": {
+          "baseline": "<absent>",
+          "arm": "exact"
+        }
+      }
+    },
+    {
+      "baseline": "A-count_coverage-neither",
+      "arm": "A-count_coverage-coverage_only",
+      "path_value_diff": {
+        "$.coverage_scope.projection_processing[2].losses[0].pages[22]": {
+          "baseline": "<absent>",
+          "arm": 23
+        },
+        "$.coverage_scope.coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 46
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[1]": {
+          "baseline": "<absent>",
+          "arm": 2
+        },
+        "$.coverage_scope.coverage.pages_unknown": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[14]": {
+          "baseline": "<absent>",
+          "arm": 15
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[23]": {
+          "baseline": "<absent>",
+          "arm": 24
+        },
+        "$.coverage_scope.projection_processing[0].coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.coverage.artifacts": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.projection_processing[2].coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[16]": {
+          "baseline": "<absent>",
+          "arm": 17
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[9]": {
+          "baseline": "<absent>",
+          "arm": 10
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[6]": {
+          "baseline": "<absent>",
+          "arm": 7
+        },
+        "$.coverage_scope.coverage.failed_artifacts": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[0].artifact_id": {
+          "baseline": "<absent>",
+          "arm": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578"
+        },
+        "$.coverage_scope.projection_processing[0].status": {
+          "baseline": "<absent>",
+          "arm": "ready"
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[7]": {
+          "baseline": "<absent>",
+          "arm": 8
+        },
+        "$.coverage_scope.coverage.ready_artifacts": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[0]": {
+          "baseline": "<absent>",
+          "arm": 1
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[8]": {
+          "baseline": "<absent>",
+          "arm": 9
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[13]": {
+          "baseline": "<absent>",
+          "arm": 14
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[4]": {
+          "baseline": "<absent>",
+          "arm": 5
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[17]": {
+          "baseline": "<absent>",
+          "arm": 18
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[5]": {
+          "baseline": "<absent>",
+          "arm": 6
+        },
+        "$.coverage_scope.projection_processing[1].losses[0].message": {
+          "baseline": "<absent>",
+          "arm": "Some attributed elements contain no text."
+        },
+        "$.coverage_scope.projection_processing[0].losses": {
+          "baseline": "<absent>",
+          "arm": []
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[20]": {
+          "baseline": "<absent>",
+          "arm": 21
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[3]": {
+          "baseline": "<absent>",
+          "arm": 4
+        },
+        "$.coverage_scope.projection_processing[1].coverage.elements": {
+          "baseline": "<absent>",
+          "arm": 379
+        },
+        "$.coverage_scope.projection_processing[2].coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 24
+        },
+        "$.coverage_scope.projection_processing[2].artifact_id": {
+          "baseline": "<absent>",
+          "arm": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93"
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].code": {
+          "baseline": "<absent>",
+          "arm": "unattributed_pages"
+        },
+        "$.coverage_scope.projection_processing[1].losses[0].code": {
+          "baseline": "<absent>",
+          "arm": "zero_text_elements"
+        },
+        "$.coverage_scope.coverage.blank_or_partial_artifacts": {
+          "baseline": "<absent>",
+          "arm": 2
+        },
+        "$.coverage_scope.coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 22
+        },
+        "$.coverage_scope.projection_processing[1].coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 19
+        },
+        "$.coverage_scope.projection_processing[2].status": {
+          "baseline": "<absent>",
+          "arm": "ready"
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[12]": {
+          "baseline": "<absent>",
+          "arm": 13
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[19]": {
+          "baseline": "<absent>",
+          "arm": 20
+        },
+        "$.coverage_scope.projection_processing[1].artifact_id": {
+          "baseline": "<absent>",
+          "arm": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e"
+        },
+        "$.coverage_scope.projection_processing[2].coverage.elements": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[1].status": {
+          "baseline": "<absent>",
+          "arm": "ready"
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[11]": {
+          "baseline": "<absent>",
+          "arm": 12
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[18]": {
+          "baseline": "<absent>",
+          "arm": 19
+        },
+        "$.coverage_scope.projection_processing[1].coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 19
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[21]": {
+          "baseline": "<absent>",
+          "arm": 22
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].message": {
+          "baseline": "<absent>",
+          "arm": "Some PDF pages have no attributed elements."
+        },
+        "$.coverage_scope.enumeration_complete": {
+          "baseline": "<absent>",
+          "arm": true
+        },
+        "$.coverage_scope.projection_processing[0].coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[10]": {
+          "baseline": "<absent>",
+          "arm": 11
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[15]": {
+          "baseline": "<absent>",
+          "arm": 16
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[2]": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.projection_processing[0].coverage.elements": {
+          "baseline": "<absent>",
+          "arm": 64
+        },
+        "$.coverage_scope.projection_processing[1].losses[0].pages[0]": {
+          "baseline": "<absent>",
+          "arm": 19
+        }
+      }
+    },
+    {
+      "baseline": "A-count_coverage-neither",
+      "arm": "A-count_coverage-combined",
+      "path_value_diff": {
+        "$.candidate_count": {
+          "baseline": "<absent>",
+          "arm": 2
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[22]": {
+          "baseline": "<absent>",
+          "arm": 23
+        },
+        "$.coverage_scope.coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 46
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[1]": {
+          "baseline": "<absent>",
+          "arm": 2
+        },
+        "$.coverage_scope.coverage.pages_unknown": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[14]": {
+          "baseline": "<absent>",
+          "arm": 15
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[23]": {
+          "baseline": "<absent>",
+          "arm": 24
+        },
+        "$.coverage_scope.projection_processing[0].coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.count_kind": {
+          "baseline": "<absent>",
+          "arm": "exact"
+        },
+        "$.coverage_scope.coverage.artifacts": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.projection_processing[2].coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[16]": {
+          "baseline": "<absent>",
+          "arm": 17
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[9]": {
+          "baseline": "<absent>",
+          "arm": 10
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[6]": {
+          "baseline": "<absent>",
+          "arm": 7
+        },
+        "$.coverage_scope.coverage.failed_artifacts": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[0].artifact_id": {
+          "baseline": "<absent>",
+          "arm": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578"
+        },
+        "$.coverage_scope.projection_processing[0].status": {
+          "baseline": "<absent>",
+          "arm": "ready"
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[7]": {
+          "baseline": "<absent>",
+          "arm": 8
+        },
+        "$.coverage_scope.coverage.ready_artifacts": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[0]": {
+          "baseline": "<absent>",
+          "arm": 1
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[8]": {
+          "baseline": "<absent>",
+          "arm": 9
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[13]": {
+          "baseline": "<absent>",
+          "arm": 14
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[4]": {
+          "baseline": "<absent>",
+          "arm": 5
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[17]": {
+          "baseline": "<absent>",
+          "arm": 18
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[5]": {
+          "baseline": "<absent>",
+          "arm": 6
+        },
+        "$.coverage_scope.projection_processing[1].losses[0].message": {
+          "baseline": "<absent>",
+          "arm": "Some attributed elements contain no text."
+        },
+        "$.coverage_scope.projection_processing[0].losses": {
+          "baseline": "<absent>",
+          "arm": []
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[20]": {
+          "baseline": "<absent>",
+          "arm": 21
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[3]": {
+          "baseline": "<absent>",
+          "arm": 4
+        },
+        "$.coverage_scope.projection_processing[1].coverage.elements": {
+          "baseline": "<absent>",
+          "arm": 379
+        },
+        "$.coverage_scope.projection_processing[2].coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 24
+        },
+        "$.coverage_scope.projection_processing[2].artifact_id": {
+          "baseline": "<absent>",
+          "arm": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93"
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].code": {
+          "baseline": "<absent>",
+          "arm": "unattributed_pages"
+        },
+        "$.coverage_scope.projection_processing[1].losses[0].code": {
+          "baseline": "<absent>",
+          "arm": "zero_text_elements"
+        },
+        "$.coverage_scope.coverage.blank_or_partial_artifacts": {
+          "baseline": "<absent>",
+          "arm": 2
+        },
+        "$.coverage_scope.coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 22
+        },
+        "$.coverage_scope.projection_processing[1].coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 19
+        },
+        "$.coverage_scope.projection_processing[2].status": {
+          "baseline": "<absent>",
+          "arm": "ready"
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[12]": {
+          "baseline": "<absent>",
+          "arm": 13
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[19]": {
+          "baseline": "<absent>",
+          "arm": 20
+        },
+        "$.coverage_scope.projection_processing[1].artifact_id": {
+          "baseline": "<absent>",
+          "arm": "d2c7c7af6c801c3ef7657d282bfa8f1b5c6193a758bd74179cb7c5d0e423142e"
+        },
+        "$.coverage_scope.projection_processing[2].coverage.elements": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[1].status": {
+          "baseline": "<absent>",
+          "arm": "ready"
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[11]": {
+          "baseline": "<absent>",
+          "arm": 12
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[18]": {
+          "baseline": "<absent>",
+          "arm": 19
+        },
+        "$.coverage_scope.projection_processing[1].coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 19
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[21]": {
+          "baseline": "<absent>",
+          "arm": 22
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].message": {
+          "baseline": "<absent>",
+          "arm": "Some PDF pages have no attributed elements."
+        },
+        "$.coverage_scope.enumeration_complete": {
+          "baseline": "<absent>",
+          "arm": true
+        },
+        "$.coverage_scope.projection_processing[0].coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[10]": {
+          "baseline": "<absent>",
+          "arm": 11
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[15]": {
+          "baseline": "<absent>",
+          "arm": 16
+        },
+        "$.coverage_scope.projection_processing[2].losses[0].pages[2]": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.projection_processing[0].coverage.elements": {
+          "baseline": "<absent>",
+          "arm": 64
+        },
+        "$.coverage_scope.projection_processing[1].losses[0].pages[0]": {
+          "baseline": "<absent>",
+          "arm": 19
+        }
+      }
+    },
+    {
+      "baseline": "B-scope-scope_present",
+      "arm": "B-scope-scope_absent",
+      "path_value_diff": {
+        "$.scope.coverage.failed_artifacts": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses": {
+          "baseline": [],
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].artifact_id": {
+          "baseline": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.pages_with_text": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[0].projection_id": {
+          "baseline": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[0].artifact_id": {
+          "baseline": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "arm": "<absent>"
+        },
+        "$.scope.representation": {
+          "baseline": "text_en",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.elements": {
+          "baseline": 64,
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.filters.artifact_id": {
+          "baseline": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "arm": "<absent>"
+        },
+        "$.scope.lens": {
+          "baseline": "lexical/v1",
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_total": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_selection": {
+          "baseline": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.ready_artifacts": {
+          "baseline": 1,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.blank_or_partial_artifacts": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.artifacts": {
+          "baseline": 1,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].status": {
+          "baseline": "ready",
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_with_text": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.mode": {
+          "baseline": "phrase",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.pages_total": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.revision_id": {
+          "baseline": "05146497610646da9c334e5fef49dffb",
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.query": {
+          "baseline": "tampuabsentpredicateqxz",
+          "arm": "<absent>"
+        },
+        "$.scope.enumeration_complete": {
+          "baseline": true,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_unknown": {
+          "baseline": 0,
+          "arm": "<absent>"
+        }
+      }
+    },
+    {
+      "baseline": "C-scope-scope_present",
+      "arm": "C-scope-scope_absent",
+      "path_value_diff": {
+        "$.scope.coverage.failed_artifacts": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses": {
+          "baseline": [],
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].artifact_id": {
+          "baseline": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.pages_with_text": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[0].projection_id": {
+          "baseline": "5cea6056dd8d34054ae51c7bf3107ed15dbc2c499086d70b62511cdd3ec8e9ba",
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[0].artifact_id": {
+          "baseline": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "arm": "<absent>"
+        },
+        "$.scope.representation": {
+          "baseline": "text_en",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.elements": {
+          "baseline": 64,
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.filters.artifact_id": {
+          "baseline": "3bd6c331a38201a5ead0db2135e0067de43707131962a6314e2cf974755a1578",
+          "arm": "<absent>"
+        },
+        "$.scope.lens": {
+          "baseline": "lexical/v1",
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_total": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_selection": {
+          "baseline": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.ready_artifacts": {
+          "baseline": 1,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.blank_or_partial_artifacts": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.artifacts": {
+          "baseline": 1,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].status": {
+          "baseline": "ready",
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_with_text": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.mode": {
+          "baseline": "phrase",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.pages_total": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.revision_id": {
+          "baseline": "05146497610646da9c334e5fef49dffb",
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.query": {
+          "baseline": "PredictiveMarker",
+          "arm": "<absent>"
+        },
+        "$.scope.enumeration_complete": {
+          "baseline": true,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_unknown": {
+          "baseline": 0,
+          "arm": "<absent>"
+        }
+      }
+    },
+    {
+      "baseline": "D-scope-scope_present",
+      "arm": "D-scope-scope_absent",
+      "path_value_diff": {
+        "$.scope.coverage.failed_artifacts": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[8]": {
+          "baseline": 9,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[9]": {
+          "baseline": 10,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].message": {
+          "baseline": "Some PDF pages have no attributed elements.",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[2]": {
+          "baseline": 3,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[15]": {
+          "baseline": 16,
+          "arm": "<absent>"
+        },
+        "$.scope.representation": {
+          "baseline": "text_en",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[20]": {
+          "baseline": 21,
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.filters.artifact_id": {
+          "baseline": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[12]": {
+          "baseline": 13,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[4]": {
+          "baseline": 5,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.artifacts": {
+          "baseline": 1,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].code": {
+          "baseline": "unattributed_pages",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[14]": {
+          "baseline": 15,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[1]": {
+          "baseline": 2,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[10]": {
+          "baseline": 11,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.pages_total": {
+          "baseline": 24,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[21]": {
+          "baseline": 22,
+          "arm": "<absent>"
+        },
+        "$.scope.revision_id": {
+          "baseline": "05146497610646da9c334e5fef49dffb",
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.query": {
+          "baseline": "shared log",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].artifact_id": {
+          "baseline": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[16]": {
+          "baseline": 17,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.pages_with_text": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[0].projection_id": {
+          "baseline": "e457dfba8b9be69726027be895ee3069eeedf1ccb290e05ff4b0343e6bcf01ed",
+          "arm": "<absent>"
+        },
+        "$.scope.selected_projections[0].artifact_id": {
+          "baseline": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].coverage.elements": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.lens": {
+          "baseline": "lexical/v1",
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_total": {
+          "baseline": 24,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[7]": {
+          "baseline": 8,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[18]": {
+          "baseline": 19,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[22]": {
+          "baseline": 23,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.ready_artifacts": {
+          "baseline": 1,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.blank_or_partial_artifacts": {
+          "baseline": 1,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[17]": {
+          "baseline": 18,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[19]": {
+          "baseline": 20,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].status": {
+          "baseline": "ready",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[5]": {
+          "baseline": 6,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_with_text": {
+          "baseline": 0,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[3]": {
+          "baseline": 4,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[11]": {
+          "baseline": 12,
+          "arm": "<absent>"
+        },
+        "$.scope.predicate.mode": {
+          "baseline": "phrase",
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[23]": {
+          "baseline": 24,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[13]": {
+          "baseline": 14,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[6]": {
+          "baseline": 7,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_processing[0].losses[0].pages[0]": {
+          "baseline": 1,
+          "arm": "<absent>"
+        },
+        "$.scope.projection_selection": {
+          "baseline": "26dfb3971f5191ce9908a9dd5229e10751e26f584d9049236bb965a785a81a14",
+          "arm": "<absent>"
+        },
+        "$.scope.enumeration_complete": {
+          "baseline": true,
+          "arm": "<absent>"
+        },
+        "$.scope.coverage.pages_unknown": {
+          "baseline": 0,
+          "arm": "<absent>"
+        }
+      }
+    },
+    {
+      "baseline": "D-count_coverage-neither",
+      "arm": "D-count_coverage-count_only",
+      "path_value_diff": {
+        "$.candidate_count": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.count_kind": {
+          "baseline": "<absent>",
+          "arm": "exact"
+        }
+      }
+    },
+    {
+      "baseline": "D-count_coverage-neither",
+      "arm": "D-count_coverage-coverage_only",
+      "path_value_diff": {
+        "$.coverage_scope.coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 24
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[22]": {
+          "baseline": "<absent>",
+          "arm": 23
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[14]": {
+          "baseline": "<absent>",
+          "arm": 15
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[0]": {
+          "baseline": "<absent>",
+          "arm": 1
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[7]": {
+          "baseline": "<absent>",
+          "arm": 8
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].message": {
+          "baseline": "<absent>",
+          "arm": "Some PDF pages have no attributed elements."
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].code": {
+          "baseline": "<absent>",
+          "arm": "unattributed_pages"
+        },
+        "$.coverage_scope.coverage.blank_or_partial_artifacts": {
+          "baseline": "<absent>",
+          "arm": 1
+        },
+        "$.coverage_scope.coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.coverage.pages_unknown": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[2]": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[4]": {
+          "baseline": "<absent>",
+          "arm": 5
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[18]": {
+          "baseline": "<absent>",
+          "arm": 19
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[19]": {
+          "baseline": "<absent>",
+          "arm": 20
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[20]": {
+          "baseline": "<absent>",
+          "arm": 21
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[1]": {
+          "baseline": "<absent>",
+          "arm": 2
+        },
+        "$.coverage_scope.projection_processing[0].coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 24
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[11]": {
+          "baseline": "<absent>",
+          "arm": 12
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[9]": {
+          "baseline": "<absent>",
+          "arm": 10
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[3]": {
+          "baseline": "<absent>",
+          "arm": 4
+        },
+        "$.coverage_scope.coverage.artifacts": {
+          "baseline": "<absent>",
+          "arm": 1
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[5]": {
+          "baseline": "<absent>",
+          "arm": 6
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[17]": {
+          "baseline": "<absent>",
+          "arm": 18
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[12]": {
+          "baseline": "<absent>",
+          "arm": 13
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[15]": {
+          "baseline": "<absent>",
+          "arm": 16
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[23]": {
+          "baseline": "<absent>",
+          "arm": 24
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[6]": {
+          "baseline": "<absent>",
+          "arm": 7
+        },
+        "$.coverage_scope.coverage.failed_artifacts": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.enumeration_complete": {
+          "baseline": "<absent>",
+          "arm": true
+        },
+        "$.coverage_scope.projection_processing[0].artifact_id": {
+          "baseline": "<absent>",
+          "arm": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93"
+        },
+        "$.coverage_scope.projection_processing[0].status": {
+          "baseline": "<absent>",
+          "arm": "ready"
+        },
+        "$.coverage_scope.projection_processing[0].coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[8]": {
+          "baseline": "<absent>",
+          "arm": 9
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[21]": {
+          "baseline": "<absent>",
+          "arm": 22
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[13]": {
+          "baseline": "<absent>",
+          "arm": 14
+        },
+        "$.coverage_scope.coverage.ready_artifacts": {
+          "baseline": "<absent>",
+          "arm": 1
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[10]": {
+          "baseline": "<absent>",
+          "arm": 11
+        },
+        "$.coverage_scope.projection_processing[0].coverage.elements": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[16]": {
+          "baseline": "<absent>",
+          "arm": 17
+        }
+      }
+    },
+    {
+      "baseline": "D-count_coverage-neither",
+      "arm": "D-count_coverage-combined",
+      "path_value_diff": {
+        "$.candidate_count": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 24
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[22]": {
+          "baseline": "<absent>",
+          "arm": 23
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[14]": {
+          "baseline": "<absent>",
+          "arm": 15
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[0]": {
+          "baseline": "<absent>",
+          "arm": 1
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[7]": {
+          "baseline": "<absent>",
+          "arm": 8
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].message": {
+          "baseline": "<absent>",
+          "arm": "Some PDF pages have no attributed elements."
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].code": {
+          "baseline": "<absent>",
+          "arm": "unattributed_pages"
+        },
+        "$.coverage_scope.coverage.blank_or_partial_artifacts": {
+          "baseline": "<absent>",
+          "arm": 1
+        },
+        "$.coverage_scope.coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.coverage.pages_unknown": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[2]": {
+          "baseline": "<absent>",
+          "arm": 3
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[4]": {
+          "baseline": "<absent>",
+          "arm": 5
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[18]": {
+          "baseline": "<absent>",
+          "arm": 19
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[19]": {
+          "baseline": "<absent>",
+          "arm": 20
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[20]": {
+          "baseline": "<absent>",
+          "arm": 21
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[1]": {
+          "baseline": "<absent>",
+          "arm": 2
+        },
+        "$.coverage_scope.projection_processing[0].coverage.pages_total": {
+          "baseline": "<absent>",
+          "arm": 24
+        },
+        "$.count_kind": {
+          "baseline": "<absent>",
+          "arm": "exact"
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[11]": {
+          "baseline": "<absent>",
+          "arm": 12
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[9]": {
+          "baseline": "<absent>",
+          "arm": 10
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[3]": {
+          "baseline": "<absent>",
+          "arm": 4
+        },
+        "$.coverage_scope.coverage.artifacts": {
+          "baseline": "<absent>",
+          "arm": 1
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[5]": {
+          "baseline": "<absent>",
+          "arm": 6
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[17]": {
+          "baseline": "<absent>",
+          "arm": 18
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[12]": {
+          "baseline": "<absent>",
+          "arm": 13
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[15]": {
+          "baseline": "<absent>",
+          "arm": 16
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[23]": {
+          "baseline": "<absent>",
+          "arm": 24
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[6]": {
+          "baseline": "<absent>",
+          "arm": 7
+        },
+        "$.coverage_scope.coverage.failed_artifacts": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.enumeration_complete": {
+          "baseline": "<absent>",
+          "arm": true
+        },
+        "$.coverage_scope.projection_processing[0].artifact_id": {
+          "baseline": "<absent>",
+          "arm": "e334015c41058d0906ec96718624a7009c4d75a8c7ce07ab4fed5d8208983a93"
+        },
+        "$.coverage_scope.projection_processing[0].status": {
+          "baseline": "<absent>",
+          "arm": "ready"
+        },
+        "$.coverage_scope.projection_processing[0].coverage.pages_with_text": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[8]": {
+          "baseline": "<absent>",
+          "arm": 9
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[21]": {
+          "baseline": "<absent>",
+          "arm": 22
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[13]": {
+          "baseline": "<absent>",
+          "arm": 14
+        },
+        "$.coverage_scope.coverage.ready_artifacts": {
+          "baseline": "<absent>",
+          "arm": 1
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[10]": {
+          "baseline": "<absent>",
+          "arm": 11
+        },
+        "$.coverage_scope.projection_processing[0].coverage.elements": {
+          "baseline": "<absent>",
+          "arm": 0
+        },
+        "$.coverage_scope.projection_processing[0].losses[0].pages[16]": {
+          "baseline": "<absent>",
+          "arm": 17
+        }
+      }
+    }
+  ],
+  "direct_field_leakage_audit": "Allowlist drops opaque handles, all alternate counts/coverage, profile/recipe, omissions, summaries, scores, and cursors. Common evidence strips projection status; identity contains only stable hashes. Human string inspection required before execution.",
+  "logical_overlap": "Visible hit length reveals returned hits; zero text coverage can imply zero lexical candidates. This is not information-theoretic concealment."
+}
