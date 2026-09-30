@@ -1,6 +1,6 @@
 # Classifier lens diagnostic: results
 
-Protocol: `docs/superpowers/specs/2026-09-28-classifier-lens-diagnostic-protocol.md`, revision 2, frozen in `357deae` before any corpus call. Amendment 1 (`ec2bc49`) added a warm-up and re-check to the CLM scoring pass before it ran. Each lens's repeatability results were committed before its scoring pass, and its scores before its assessment. This file replaced an interim Jev-only report committed in `f3dd8a7`.
+Protocol: `docs/superpowers/specs/2026-09-28-classifier-lens-diagnostic-protocol.md`, revision 2, frozen in `357deae` before any corpus call. Amendment 1 (`ec2bc49`) added a warm-up and re-check to the CLM scoring pass before it ran. Each lens's repeatability results were committed before its scoring pass, and its scores before its assessment. This file replaced an interim Jev-only report committed in `69f7508`.
 
 ## Result
 
