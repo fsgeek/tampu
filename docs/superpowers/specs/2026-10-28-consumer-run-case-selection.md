@@ -49,3 +49,11 @@ Committed after the pool arrived and was checked, and before the selection was c
 - Verbatim questions enter Git only as part of a frozen consumer prompt, and only for cases whose source is published or which Tony clears. A case whose question can't be cleared runs with its prompt kept owner-local and its hash in Git.
 
 Pool check results: all 21 accepted candidates' verbatim questions were found in their source session files, and none is from the `tampu` project. No candidate was dropped.
+
+## Amendment 2: the pool check was redone through khipumaq recall
+
+Amendment 1 reported that all 21 verbatim questions were found in their source session files. That check was invalid. It grepped `~/.claude/projects` and `~/.codex/sessions` with no exclusions, and for four of the six cases later selected it matched this session's own transcript or a subagent's. Those files contained the question only because a subagent had quoted it here. A later context-extraction subagent found the error.
+
+The check was redone as this rule specifies, against the recalled episode. Each of the 21 accepted keys was recalled from khipumaq, and its question was compared as an exact substring after whitespace normalization only. Result: 21 of 21 found (16 in the user message, 5 in the assistant response), from four hosts. No episode is labelled `tampu`, and no source file lies under the tampu project directory. No candidate is dropped, and the selection committed in `f763b46` stands unchanged.
+
+Separately, the candidate from episode `2df8883c` (`cloudflare`, not selected) is recorded with asker "tony". Its source turn is a subagent prompt, so the asker was an instance. The compact record is left as committed, and this note corrects it.
