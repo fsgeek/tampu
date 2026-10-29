@@ -15,7 +15,16 @@ The service declares both losses; the loss is visible, not silent. Lexical searc
 
 Decision: no re-extraction before the run. Re-extracting after a case has been seen would change the system under test in response to that case. These gaps are what a consumer faces today. The yanantin_construction case becomes, in the terms of the 2026-09-11 design, an unavailable-extraction case. Its rubric will credit a consumer that locates the title-matching artifact and reports that its text is unavailable, and will not credit an answer that claims content it could not have read.
 
-Collection-wide, `describe` reports 115 of 473 artifacts as blank or partial (12,198 of 16,990 pages with text). The README's "27 returned no text" counts artifacts with no text at all, so the two figures measure different things. The README should state both.
+Collection-wide, `describe` reports `blank_or_partial_artifacts: 115`. An earlier version of this note repeated that as "115 of 473 artifacts blank or partial", which was wrong. The field counts artifacts with any declared loss (`src/tampu/repository.py`, `_coverage`). By page coverage:
+
+| Artifacts | Condition |
+| ---: | --- |
+| 27 | no page with text |
+| 24 | some pages without text |
+| 64 | text on every page, but some elements are empty (`zero_text_elements` only) |
+| 358 | no declared loss |
+
+12,198 of 16,990 pages have text. The README's "27 returned no text" is correct but leaves out the 24 partial artifacts. Consumers see the field's name in `describe` and may read it as 115 artifacts missing text. That is part of the interface under test and is not changed before the run; rubrics note it where a consumer reports coverage.
 
 ## yanantin_construction: source facts (from the PDF, not from Tampu)
 

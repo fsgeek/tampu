@@ -28,7 +28,8 @@ from an unchanged threshold.
 
 [Observed results and limitations](docs/experiments/2026-09-08-usable-prototype-results.md)
 separate working invariants from consumer benefit, which remains unestablished.
-All 473 primary extractions completed, but 27 returned no text; successful
+All 473 primary extractions completed, but 27 returned no text and 24 more
+lack text on some pages; successful
 processing does not certify semantic coverage. Optional path machinery remains
 disabled after an inconclusive earlier pilot. Embeddings, composition, durable
 journey preservation, and historical score re-execution are unavailable.
