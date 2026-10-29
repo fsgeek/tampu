@@ -1,0 +1,150 @@
+{
+ "likely_present": {
+  "quota": 4,
+  "selected": [
+   "019b1434-a698-7550-a60a-68b236c1861a-line196",
+   "a362114b-c07b-46b4-9b4b-3031e2afdee9",
+   "019f43ed-81bb-7c63-863f-330d0f49330e-msg_0713a026bfc28512016a4fa837451c8198b7c8b8585a9c7fde",
+   "019f9030-ae70-79b3-b958-8257f0ff22cf-msg_094a7d06f5742f37016a625cb92bd88195ba6b5ba6407ef380"
+  ],
+  "shortfall": 0,
+  "ordering": [
+   {
+    "episode_key": "019b1434-a698-7550-a60a-68b236c1861a-line196",
+    "key_sha256": "096c7b23a288d00e2cc8447719506913278b20fbeb5130b2a1ea97941ccb4c69",
+    "project": "pips",
+    "selected": true
+   },
+   {
+    "episode_key": "a362114b-c07b-46b4-9b4b-3031e2afdee9",
+    "key_sha256": "14016f7bcb4b540b022424e650135baf25bd39af890a04773b4eb0427043f70a",
+    "project": "yupi",
+    "selected": true
+   },
+   {
+    "episode_key": "019f43ed-81bb-7c63-863f-330d0f49330e-msg_0713a026bfc28512016a4fa837451c8198b7c8b8585a9c7fde",
+    "key_sha256": "1c6aa7782210a0d45f62d394204d3166e4d25501580917af86c6e62c6a35fac3",
+    "project": "yanantin_construction",
+    "selected": true
+   },
+   {
+    "episode_key": "019f9030-ae70-79b3-b958-8257f0ff22cf-msg_094a7d06f5742f37016a625cb92bd88195ba6b5ba6407ef380",
+    "key_sha256": "480534fde97c081575753eae5a146388dab44ba2eaa6019004282a1177ebd050",
+    "project": "eidolon",
+    "selected": true
+   },
+   {
+    "episode_key": "4aee8c09-a34c-4287-9db3-d7499aa20c60",
+    "key_sha256": "4c16d611a98227a115ffb00dd4850fcc1f8328a6a606623c6cdd31d897a3bd86",
+    "project": "cpsc416",
+    "selected": false
+   },
+   {
+    "episode_key": "658ed73a-66ff-4f14-bd54-1e04410fe323",
+    "key_sha256": "53b5499af97061bb7b88505e8aa0fb6a7a9234750e922e42f2ba65eadba665ce",
+    "project": "vmtp",
+    "selected": false
+   },
+   {
+    "episode_key": "01a03a7e-b904-7af1-a5a3-2435a8a69546-msg_0e398cee26097b15016a8df792cd2c87d18c9f15e62d61ebda",
+    "key_sha256": "5d4b9bdacdbff9d7ccf729e12d91cdbf8d4cdf4512ab6918268762e16ad1885c",
+    "project": "codex",
+    "selected": false
+   },
+   {
+    "episode_key": "ef61d13a-f1a6-46f5-b05b-1660204adc90",
+    "key_sha256": "6185b100a014c25cb3610810980cb63551634781aee2636b17d8d7904e0f804b",
+    "project": "qhaway",
+    "selected": false
+   },
+   {
+    "episode_key": "4ff6fc78-93d9-4e53-8a8d-1cd4182587db",
+    "key_sha256": "7b251ad4128c4d7eaf578638dd8f84dfa04cae3cb5005d96acd7f1e787283dd9",
+    "project": "vmtp",
+    "selected": false
+   },
+   {
+    "episode_key": "dcec0811-5643-44c5-bc61-7fbbf01080cc",
+    "key_sha256": "81d9a8fee84cf6ff713c97b58670e746bceedadb9f4ff3bfc9cfc96af756907f",
+    "project": "quantumos",
+    "selected": false
+   },
+   {
+    "episode_key": "45c8fee4-1df2-42ca-9f52-248110aacd64",
+    "key_sha256": "a696ec1dde3732feeb45104cae77b7da0c97f3e06f8b3d3d9c98834abce5e4e4",
+    "project": "eidolon",
+    "selected": false
+   },
+   {
+    "episode_key": "11d14d6b-d4c2-403d-a5a7-b307953b5e63",
+    "key_sha256": "b2fd55caf46193838ec824dd90c6d58d63b48fce2a3b02e7155961f256839e57",
+    "project": "episode",
+    "selected": false
+   },
+   {
+    "episode_key": "19f99a79-9d66-445a-bb0c-ca8d16b601ed",
+    "key_sha256": "badd1e02eddf36a4baefa1394f31c04fbaa3f95da1e646990a79bd110ee50b08",
+    "project": "yanantin_construction",
+    "selected": false
+   },
+   {
+    "episode_key": "d58d0f07-45c5-4546-a192-a6a676ca1db7",
+    "key_sha256": "c77547431fb2bc17a24bc49b283566bbbe29b9966115b8039f857822d610c3d3",
+    "project": "cpsc416",
+    "selected": false
+   },
+   {
+    "episode_key": "cecdc896-acf0-4a80-b3ec-d3841ab3aa6b",
+    "key_sha256": "e617c1d7d12a5ccd9bc2f09b1112d6c98ac65c986ae814a52dfd6c78ce4fb894",
+    "project": "cpsc416",
+    "selected": false
+   },
+   {
+    "episode_key": "efaef3f9-513c-46e7-a058-f4cb358bb451",
+    "key_sha256": "f7cd8372848f3ba44c82035c90db2ef6878abdb0764bc0ec7b5f9a18974d43ca",
+    "project": "ai-honesty",
+    "selected": false
+   }
+  ]
+ },
+ "likely_absent": {
+  "quota": 2,
+  "selected": [
+   "71972e00-d5df-4988-ad4d-2ee14cbaf0e3",
+   "019cc9cd-9d62-7362-b8cc-4850e2ce7721-line144"
+  ],
+  "shortfall": 0,
+  "ordering": [
+   {
+    "episode_key": "71972e00-d5df-4988-ad4d-2ee14cbaf0e3",
+    "key_sha256": "551d7b706f5e98b4b13f41e9844e7b94dde7cf7800644dea083221d6e974a5a0",
+    "project": "eidolon",
+    "selected": true
+   },
+   {
+    "episode_key": "019cc9cd-9d62-7362-b8cc-4850e2ce7721-line144",
+    "key_sha256": "6698d30cf35af84d168680281a4d60dc3eb7ffe3cde503aa62f34ed2c65ca5a9",
+    "project": "pichay",
+    "selected": true
+   },
+   {
+    "episode_key": "019cdea3-829a-79d1-8e4e-af73dc6d7b5f-line2447",
+    "key_sha256": "9eacdedbef9571e2ea77affb7f83d01bc3f48ea936999298aae6a2e0deb9dc83",
+    "project": "pichay",
+    "selected": false
+   },
+   {
+    "episode_key": "83d71741-f46d-4dc5-aa65-77214914221e",
+    "key_sha256": "e1d41674d495b5b6f289de115477b2fcdfdd86d3a35560b13a6f1a2431e33996",
+    "project": "quantumos",
+    "selected": false
+   },
+   {
+    "episode_key": "2df8883c-b5ca-40f1-8825-2a20224a65d4",
+    "key_sha256": "eca43335744c702cb52d99f31d2c66a493e25ca884611dca74199313bd9154cd",
+    "project": "cloudflare",
+    "selected": false
+   }
+  ]
+ }
+}
