@@ -39,3 +39,13 @@ Rubrics, prompts, consumer model and settings, service commit, corpus revision a
 - The builder writes the rubrics. A cross-lineage review reduces this risk but doesn't remove it.
 - Questions that were asked of an AI already holding some context are being re-asked here without it. Context quoted from the episode only partly closes that gap.
 - Six cases or fewer cannot establish general retrieval competence or consumer benefit. Each case produces a case report under section 5 of the 2026-09-11 design, not a score.
+
+## Amendment 1: custody of the candidate log (before selection)
+
+Committed after the pool arrived and was checked, and before the selection was computed. The candidate log quotes Tony's words and instances' responses from other projects' sessions, some of them private (course material, unpublished research). Committing it to Git would publish them at the next push. Under the repository's existing custody policy, source-bearing material stays owner-local, with hashes and compact records in Git. Accordingly:
+
+- The full log, the subagent's search log and the verbatim check stay owner-local under `tmp/consumer-run-20261028/`.
+- Git receives, for every considered candidate: episode key, project, asker, stratum, accepted or rejected with the reason category, conclusion status, and the SHA-256 of its verbatim question text. The selected list and the full ordering are derived from these.
+- Verbatim questions enter Git only as part of a frozen consumer prompt, and only for cases whose source is published or which Tony clears. A case whose question can't be cleared runs with its prompt kept owner-local and its hash in Git.
+
+Pool check results: all 21 accepted candidates' verbatim questions were found in their source session files, and none is from the `tampu` project. No candidate was dropped.
